@@ -34,6 +34,10 @@ public class BackMenu : MonoBehaviour {
 			if(b != null)
 			{
 				b.interactable = false;
+				if(b.name == "attk3")
+				{
+					b.GetComponentInChildren<Text>().text = "yoyo";
+				}
 			}
 
 			//Button temp = (Button)child;
