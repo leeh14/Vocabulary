@@ -9,7 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using live2d;
-
+using UnityEngine;
 namespace live2d.framework
 {
     public class L2DBaseModel
@@ -137,7 +137,6 @@ namespace live2d.framework
         public void loadModelData(String path)
         {
             IPlatformManager pm = Live2DFramework.getPlatformManager();
-
 
             if (debugMode) pm.log("Load model : " + path);
 

@@ -44,11 +44,11 @@ public class LAppModelProxy : MonoBehaviour
 	{
 		if(!isVisible) return;
 		if(model==null)return;
-		if(model.GetLive2DModelUnity().getRenderMode() == Live2D.L2D_RENDER_DRAW_MESH_NOW)
-		{
+		//if(model.GetLive2DModelUnity().getRenderMode() == Live2D.L2D_RENDER_DRAW_MESH_NOW)
+		//{
 			model.Update();
             model.Draw();
-		}
+		//}
 		
 		if (LAppDefine.DEBUG_DRAW_HIT_AREA)
 		{
@@ -63,11 +63,12 @@ public class LAppModelProxy : MonoBehaviour
 		if(!isVisible) return;
         if (model == null) return;
 
-        if (model.GetLive2DModelUnity().getRenderMode() == Live2D.L2D_RENDER_DRAW_MESH)
-        {
+		model.SetExpression ("f01");
+        //if (model.GetLive2DModelUnity().getRenderMode() == Live2D.L2D_RENDER_DRAW_MESH)
+        //{
             model.Update();
             model.Draw();
-        }
+        //}
 	}
 
 

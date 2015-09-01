@@ -78,6 +78,7 @@ public class LAppModel :L2DBaseModel
 
         if (LAppDefine.DEBUG_LOG) Debug.Log("Start to load model");
 
+
         // Live2D Model
         if (modelSetting.GetModelFile() != null)
         {
@@ -146,7 +147,6 @@ public class LAppModel :L2DBaseModel
 
         
         eyeBlink = new L2DEyeBlink();
-
         view.SetupView(
             live2DModel.getCanvasWidth(),
             live2DModel.getCanvasHeight());
