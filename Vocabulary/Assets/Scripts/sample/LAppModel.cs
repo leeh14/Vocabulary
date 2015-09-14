@@ -183,11 +183,18 @@ public class LAppModel :L2DBaseModel
         double t = timeSec * 2 * Math.PI;
 
         
-        if (mainMotionManager.isFinished())
-        {
-            
-            StartRandomMotion(LAppDefine.MOTION_GROUP_IDLE, LAppDefine.PRIORITY_IDLE);
-        }
+        //if (mainMotionManager.isFinished())
+        //{   
+         //   StartRandomMotion(LAppDefine.MOTION_GROUP_IDLE, LAppDefine.PRIORITY_IDLE);
+        //}
+
+		if (Input.GetButton ("Fire1") && mainMotionManager.isFinished()) 
+		{
+			Debug.Log("ahit");
+			int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
+			int no = (int)(rand.NextDouble() * max);
+			StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
+		}
         //-----------------------------------------------------------------
         live2DModel.loadParam();
 

@@ -37,6 +37,9 @@ public class LAppModelProxy : MonoBehaviour
 
         Debug.Log("Load " + dir +"  filename:"+ filename);
 		model.LoadFromStreamingAssets(dir, filename);
+
+		//settings intial expression
+		model.SetExpression ("f02");
     }
 	
 
@@ -63,7 +66,8 @@ public class LAppModelProxy : MonoBehaviour
 		if(!isVisible) return;
         if (model == null) return;
 
-		model.SetExpression ("f01");
+		//StartRandomMotion(LAppDefine.MOTION_GROUP_IDLE, LAppDefine.PRIORITY_IDLE);
+
         //if (model.GetLive2DModelUnity().getRenderMode() == Live2D.L2D_RENDER_DRAW_MESH)
         //{
             model.Update();
