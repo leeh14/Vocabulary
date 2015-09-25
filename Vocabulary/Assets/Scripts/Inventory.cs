@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour {
 	public static Inventory _Inventory;
 	public static List<Item> _Items;
 	public static List<Recipe> _Recipes;
+	public static List<int> _RemoveIndex;
 	public static bool showItems = true;
 	public static bool showRecipes = true;
 	
@@ -24,6 +25,7 @@ public class Inventory : MonoBehaviour {
 
 		_Items = new List<Item>();
 		_Recipes = new List<Recipe>();
+		_RemoveIndex = new List<int>();
 	}// end of Awake
 
 	// Save Data
@@ -74,17 +76,33 @@ public class Inventory : MonoBehaviour {
 
 	// Remove certain amount of item
 	public static void RemoveItem(string name, int removeAmount){
+
+		int currentIndex = 0;
+
 		// increase exisitng item amount
 		foreach(Item it in _Items){
 			if(it.name == name){
 				it.RemoveMore(removeAmount);
 				if(it.amount == 0){
-					_Items.Remove(it);
+					_RemoveIndex.Add(currentIndex);
 				}
 				break;
 			}
+			currentIndex++;
 		}
 	} // end of RemoveItem
+
+	// Remove stuff schedule to remove
+	public static void RemoveUpdate(){
+		if (_RemoveIndex.Count != 0) {
+			int j = 0;
+			for(int i = 0; i < _RemoveIndex.Count; i++){
+				_Items.RemoveAt(_RemoveIndex[i]-j);
+				j++;
+			}
+			_RemoveIndex.Clear();
+		}
+	}// end of RemoveUpdate
 
 	// Show all the items player have
 	public static void ShowItems(){
@@ -157,18 +175,17 @@ public class Inventory : MonoBehaviour {
 						}
 					}
 				}
-				_Items.Add(re.product);
+				AddItem(re.product.type, re.product.name, re.product.amount);
 			}
 		}
 	}// end of MakeRecipe
-	
+
 	public void OnGUI(){
 		if (showItems) {
 			string stmp = "The Items: \n";
 			foreach (Item it in _Items) {
 				stmp += it.name + ": " + it.amount + "\n";
 			}
-
 			GUI.Label(new Rect(300, 10, 100, 1000),stmp);
 		}
 
@@ -182,7 +199,7 @@ public class Inventory : MonoBehaviour {
 			}
 			GUI.Label(new Rect(500, 10, 1000, 1000),stmp);
 		}
-
+		
 	}// end of OnGUI
 }// end of Inventory
 
