@@ -11,6 +11,7 @@ public class ChoiceMenu : MonoBehaviour {
         Button Start = gameObject.GetComponentInChildren<Button>();
         //the format to add the onclick function to it
         Start.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().BeginBattle());
+		//begin battle takes in a list of enemiers
     }
 	
 	// Update is called once per frame

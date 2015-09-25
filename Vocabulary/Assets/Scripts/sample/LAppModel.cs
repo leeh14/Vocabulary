@@ -190,10 +190,22 @@ public class LAppModel :L2DBaseModel
 
 		if (Input.GetButton ("Fire1") && mainMotionManager.isFinished()) 
 		{
-			Debug.Log("ahit");
-			int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
-			int no = (int)(rand.NextDouble() * max);
-			StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
+			if(TapEvent(Input.mousePosition.x,Input.mousePosition.y) == true)
+			{
+				Debug.Log("tap hit");
+				int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
+				int no = (int)(rand.NextDouble() * max);
+				StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
+			}
+			//Debug.Log(Input.mousePosition.x + Input.mousePosition.y);
+			if(HitTest(LAppDefine.HIT_AREA_HEAD,Input.mousePosition.x,Input.mousePosition.y))
+			{
+				Debug.Log("ahit");
+				int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
+				int no = (int)(rand.NextDouble() * max);
+				StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
+			}
+
 		}
         //-----------------------------------------------------------------
         live2DModel.loadParam();
@@ -428,6 +440,7 @@ public class LAppModel :L2DBaseModel
     
     public bool HitTest(string id, float testX, float testY)
     {
+
         if (modelSetting == null) return false;
         int len = modelSetting.GetHitAreasNum();
         for (int i = 0; i < len; i++)
@@ -438,6 +451,7 @@ public class LAppModel :L2DBaseModel
                 return hitTestSimple(drawID,testX,testY);
             }
         }
+
         return false;
     }
    
@@ -470,16 +484,18 @@ public class LAppModel :L2DBaseModel
     
     public bool TapEvent(float x, float y)
     {
+		Debug.Log("Tap event");
         if (LAppDefine.DEBUG_LOG) Debug.Log("tapEvent view x:" + x + " y:" + y);
 
         if (HitTest(LAppDefine.HIT_AREA_HEAD, x, y))
         {
-            
+			Debug.Log("hit head");
             if (LAppDefine.DEBUG_LOG) Debug.Log("Tapped face");
             SetRandomExpression();
         }
         else if (HitTest(LAppDefine.HIT_AREA_BODY, x, y))
         {
+			Debug.Log("hit body");
             if (LAppDefine.DEBUG_LOG) Debug.Log("Tapped body");
             StartRandomMotion(LAppDefine.MOTION_GROUP_TAP_BODY, LAppDefine.PRIORITY_NORMAL);
         }
