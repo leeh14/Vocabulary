@@ -4,12 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GameMaster_Control : MonoBehaviour{
-    GameObject CurrentMenu;
-	GameObject Enemies;
+    public GameObject CurrentMenu;
+	public GameObject TextMenu;
+	public GameObject Enemies;
 	private GameObject player;
 	public Mesh livemesh;
 	public List<string[]> questions;
 	public QuestionData CurrentQuestion;
+	public bool TurnContinue = false;
     // Use this for initialization
     void Start() {
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -61,6 +63,7 @@ public class GameMaster_Control : MonoBehaviour{
 	void ClearMenu()
 	{
 		Destroy(CurrentMenu);
+		Destroy (TextMenu);
 	}
 	#endregion
 	#region Combat
@@ -99,33 +102,71 @@ public class GameMaster_Control : MonoBehaviour{
 		//Debug.Log("changin" + correct + "  " + obj.Answer + "df" + playerchoice);
 		//CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Answer"));
 		//Text[] ans = CurrentMenu.GetComponentsInChildren<Text>();
-		if(correct)
-		{
+
+		if (correct) {
 			//attack the enemy
-			Enemies.GetComponent<Goblin>().ReceiveDamage(2);
-			if(Enemies.GetComponent<Goblin>().Alive == false)
-			{
+			//output damage to screen
+//			TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
+//			Text combat = TextMenu.GetComponentInChildren<Text>();
+			//yield return StartCoroutine(PlayerTurn( player.GetComponent<Player> ().Damage,"goblin"));
+			StartCoroutine(WaitTurn());
+			Enemies.GetComponent<Goblin> ().ReceiveDamage (2);
+
+			if (Enemies.GetComponent<Goblin> ().Alive == false) {
 				//go back to main menu after killing enemies
-				ClearMenu();
-				LoadMenu();
-
+				ClearMenu ();
+				LoadMenu ();
+				
 				//adding the definition of the word into learned dictionary
-				player.GetComponent<Player>().WordDict.Add(CurrentQuestion.Answer,CurrentQuestion.definition);
+				player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
+				return;
+			}
+
+
+		} else {
+			player.GetComponent<Player> ().ReceiveDamage (2);
+			if (player.GetComponent<Player> ().Alive == false) {
+				//player is dead
+				ClearMenu ();
+				CurrentMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/BattleLost"));
 
 				return;
 			}
-		}
-		else
-		{
 
-			player.GetComponent<Player>().ReceiveDamage(2);
-			if(player.GetComponent<Player>().Alive == false)
-			{
-				ClearMenu();
-				CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleLost"));
-				return;
-			}
 		}
+		//Let the enemy go and attack
+		if (TurnContinue == true) {
+			StartCoroutine (EnemyTurn ());
+		}
+
+
+	}
+	public IEnumerator WaitTurn()
+	{
+		yield return StartCoroutine (PlayerTurn (1, "goblin"));
+	}
+	public IEnumerator PlayerTurn(int damage, string enemyname)
+	{
+		//TurnContinue = true;
+		TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
+		Text combat = TextMenu.GetComponentInChildren<Text>();
+		combat.text = "You have dealt " + damage + " to " + enemyname;
+
+		yield return new WaitForSeconds(2f);
+		//TurnContinue = false;
+		TurnContinue = true;
+		Destroy (TextMenu);
+		StartCoroutine (EnemyTurn ());
+	}
+	public IEnumerator EnemyTurn()
+	{
+
+		TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
+		Text combat = TextMenu.GetComponentInChildren<Text>();
+		combat.text = "Goblin deals " + Enemies.GetComponent<Goblin>().Damage +" damage to you.";
+		player.GetComponent<Player>().ReceiveDamage(Enemies.GetComponent<Goblin>().Damage );
+		yield return new WaitForSeconds(2f);
+
 
 		//reset 
 		RedoBattle ();
