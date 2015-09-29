@@ -143,31 +143,38 @@ public class Inventory : MonoBehaviour {
 		}
 	}// end of ShowRecipes
 
-	public static void MakeProduct(string name){
+	public static bool CanMake(string name){
 		Recipe re = GetRecipe (name);
 		if (re == null) {
-			Debug.LogError("Method MakeRecipe: No Such Recipe.");
+			Debug.LogError ("Method MakeRecipe: No Such Recipe.");
+			return false;
 		} else {
 			bool makeAble = true;
-			foreach(Item ma in re.materials){
+			foreach (Item ma in re.materials) {
 				bool found = false;
-				foreach(Item it in _Items){
-					if(ma.name == it.name){
+				foreach (Item it in _Items) {
+					if (ma.name == it.name) {
 						found = true;
-						if(it.amount < ma.amount){
+						if (it.amount < ma.amount) {
 							makeAble = false;
 						}
 					}
 				}
-				if(!found ||!makeAble){
+				if (!found || !makeAble) {
 					Debug.Log ("Method MakeRecipe: Cannot make");
 					break;
-				}else{
+				} else {
 					found = false;
 				}
 			}
+			return makeAble;
+		}
+		return false;
+	}
 
-			if(makeAble){
+	public static void MakeProduct(string name){
+		Recipe re = GetRecipe (name);
+			if(CanMake(name)){
 				foreach(Item ma in re.materials){
 					foreach(Item it in _Items){
 						if(ma.name == it.name){
@@ -177,30 +184,8 @@ public class Inventory : MonoBehaviour {
 				}
 				AddItem(re.product.type, re.product.name, re.product.amount);
 			}
-		}
 	}// end of MakeRecipe
 
-	public void OnGUI(){
-		if (showItems) {
-			string stmp = "The Items: \n";
-			foreach (Item it in _Items) {
-				stmp += it.name + ": " + it.amount + "\n";
-			}
-			GUI.Label(new Rect(300, 10, 100, 1000),stmp);
-		}
-
-		if (showRecipes) {
-			string stmp = "The Recipes: \n";
-			foreach (Recipe re in _Recipes) {
-				stmp += re.name + " material needed: \n";
-				foreach(Item it in re.materials){
-					stmp += " _" + it.name + " " + it.amount + "\n";
-				}
-			}
-			GUI.Label(new Rect(500, 10, 1000, 1000),stmp);
-		}
-		
-	}// end of OnGUI
 }// end of Inventory
 
 [Serializable]
@@ -232,8 +217,8 @@ public class Recipe : IComparable<Recipe>
 [Serializable]
 public class Item : IComparable<Item>
 {
-	public int type; 		// 0 - armor, 1 - weapons, 2 - material, 3 - potion
-	public string name;		// name of the item
+	public int type; 			// 0 - armor, 1 - weapons, 2 - material, 3 - potion
+	public string name;			// name of the item
 	public int amount = 0;		// amount the player owns
 
 	// constructor
