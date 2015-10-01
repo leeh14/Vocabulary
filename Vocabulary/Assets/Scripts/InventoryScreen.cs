@@ -93,7 +93,7 @@ public class InventoryScreen : MonoBehaviour {
 			sib.nameLable.text = ib.name;
 			sib.typeLabel.text = ib.type.ToString();
 			sib.amountLabel.text = ib.amount.ToString();
-			sib.icon = Resources.Load(ib.name+".png") as Image;
+			sib.icon.sprite = Resources.Load<Sprite>(ib.name);
 			newButton.transform.SetParent(contentPanel, false);
 		}
 	}
@@ -104,7 +104,7 @@ public class InventoryScreen : MonoBehaviour {
 			GameObject newButton = Instantiate(sampleButton2Pf) as GameObject;
 			SampleRecipeButton sib = newButton.GetComponent<SampleRecipeButton>();
 			sib.nameLable.text = re.name;
-			sib.icon = Resources.Load(re.name+".png") as Image;
+			sib.icon.sprite = Resources.Load<Sprite>(re.name);
 			sib.canMake = Inventory.CanMake(re.name);
 			sib.button.interactable = sib.canMake;
 			UnityEngine.Events.UnityAction ClickMake = () => {
@@ -137,6 +137,7 @@ public class InventoryScreen : MonoBehaviour {
 
 	public void MakeClick(string name){
 		Inventory.MakeProduct (name);
+		UpdateList(name);
 	}
 
 	public void SaveButtonClick(){
@@ -157,6 +158,19 @@ public class InventoryScreen : MonoBehaviour {
 		ltmp.Add(new Item(3, "Orange", 3));
 		Item itmp = new Item(3, "Banana", 1);
 		Inventory.AddRecipe("Banana", ltmp, itmp); 
+	}
+
+	public void UpdateList(string name){
+		if (contentPanel != null) {
+			foreach(Transform child in contentPanel.transform){
+				Button bt = child.GetComponent<Button>();
+				if(bt){
+					if(!Inventory.CanMake(name)){
+						bt.interactable = false;
+					}
+				}
+			}
+		}
 	}
 
 	// utilities
