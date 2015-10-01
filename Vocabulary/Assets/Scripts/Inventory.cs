@@ -183,6 +183,7 @@ public class Inventory : MonoBehaviour {
 					}
 				}
 				AddItem(re.product.type, re.product.name, re.product.amount);
+			Debug.Log ("Crafted: " + re.product.name);
 			}
 	}// end of MakeRecipe
 
