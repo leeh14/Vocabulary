@@ -21,7 +21,7 @@ public class LAppModelProxy : MonoBehaviour
     public String path="";
     public int sceneNo = 0;
 
-    private LAppModel model;
+    public LAppModel model;
 
 	private bool				isVisible = false ;
 	

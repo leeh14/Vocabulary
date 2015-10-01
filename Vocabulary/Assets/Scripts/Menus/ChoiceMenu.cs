@@ -8,9 +8,21 @@ public class ChoiceMenu : MonoBehaviour {
 	void Start () {
         master = GameObject.FindGameObjectWithTag("GameMaster");
         //add listnener
-        Button Start = gameObject.GetComponentInChildren<Button>();
+        Button[] Start = gameObject.GetComponentsInChildren<Button>();
         //the format to add the onclick function to it
-        Start.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().BeginBattle());
+		foreach (Button b in Start) {
+			if (b.name == "Battle")
+			{
+				b.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().BeginBattle());
+			}
+			else if (b.name == "Inven")
+			{
+				//for now just go to inventory scene
+
+				b.onClick.AddListener(() => Application.LoadLevel("Inventory_Craft"));
+			}
+		}
+        
 		//begin battle takes in a list of enemiers
     }
 	
