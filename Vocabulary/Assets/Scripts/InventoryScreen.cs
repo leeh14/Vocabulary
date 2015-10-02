@@ -23,6 +23,9 @@ public class InventoryScreen : MonoBehaviour {
 	public GameObject BackButton;
 	public GameObject SaveButton;
 	public GameObject LoadButton;
+	public GameObject ArmorButton;
+	public GameObject WeaponButton;
+	public GameObject Canvas;
 	
 	public Transform canvas;
 	public Transform contentPanel;
@@ -37,9 +40,14 @@ public class InventoryScreen : MonoBehaviour {
 	public GameObject BackButtonPf;
 	public GameObject SaveButtonPf;
 	public GameObject LoadButtonPf;
+	public GameObject ArmorButtonPf;
+	public GameObject WeaponButtonPf;
+	public GameObject CanvasPf;
 
 	// Use this for initialization
 	void Start () {
+		Canvas = Instantiate (CanvasPf) as GameObject;
+		canvas = Canvas.transform;
 		CreateMainScreen ();
 		JustDebug ();
 	}
@@ -57,7 +65,19 @@ public class InventoryScreen : MonoBehaviour {
 		UnityEngine.Events.UnityAction ClickRecipe = () => {
 			this.RecipeButtonClick();};
 		RecipeButton.GetComponent<Button>().onClick.AddListener(ClickRecipe);
-	
+
+		ArmorButton = Instantiate (ArmorButtonPf) as GameObject;
+		ArmorButton.transform.SetParent (canvas, false);
+		UnityEngine.Events.UnityAction ClickArmor = () => {
+			this.ArmorButtonClick();};
+		ArmorButton.GetComponent<Button> ().onClick.AddListener (ClickArmor);
+
+		WeaponButton = Instantiate (WeaponButtonPf) as GameObject;
+		WeaponButton.transform.SetParent (canvas, false);
+		UnityEngine.Events.UnityAction ClickWeapon = () => {
+			this.WeaponButtonClick();};
+		WeaponButton.GetComponent<Button> ().onClick.AddListener (ClickWeapon);
+
 		SaveButton = Instantiate (SaveButtonPf) as GameObject;
 		SaveButton.transform.SetParent (canvas, false);
 		UnityEngine.Events.UnityAction ClickSave = () => {
@@ -114,6 +134,41 @@ public class InventoryScreen : MonoBehaviour {
 		}
 	}
 
+	// Populate the armor list
+	void PopulateArmorList(){
+		foreach (Item ib in Inventory._Items) {
+			if (ib.type == 0) {
+				GameObject newButton = Instantiate (sampleButton2Pf) as GameObject;
+				SampleRecipeButton sib = newButton.GetComponent<SampleRecipeButton> ();
+				sib.nameLable.text = ib.name;
+				sib.icon.sprite = Resources.Load<Sprite> (ib.name);
+				sib.canMake = Inventory.CanMake (ib.name);
+				sib.button.interactable = sib.canMake;
+				UnityEngine.Events.UnityAction ClickArmor = () => {
+					newButton.GetComponent<Button>().interactable = false;};
+				newButton.GetComponent<Button> ().onClick.AddListener (ClickArmor);
+				newButton.transform.SetParent (contentPanel, false);
+			}
+		}
+	}
+
+	void PopulateWeaponList(){
+		foreach (Item ib in Inventory._Items) {
+			if (ib.type == 1) {
+				GameObject newButton = Instantiate (sampleButton2Pf) as GameObject;
+				SampleRecipeButton sib = newButton.GetComponent<SampleRecipeButton> ();
+				sib.nameLable.text = ib.name;
+				sib.icon.sprite = Resources.Load<Sprite> (ib.name);
+				sib.canMake = Inventory.CanMake (ib.name);
+				sib.button.interactable = sib.canMake;
+				UnityEngine.Events.UnityAction ClickWeapon = () => {
+					newButton.GetComponent<Button>().interactable = false;};
+				newButton.GetComponent<Button> ().onClick.AddListener (ClickWeapon);
+				newButton.transform.SetParent (contentPanel, false);
+			}
+		}
+	}
+
 	// Buttons
 
 	public void RecipeButtonClick(){
@@ -140,6 +195,9 @@ public class InventoryScreen : MonoBehaviour {
 		UpdateList(name);
 	}
 
+	public void ArmorClick(){
+	}
+
 	public void SaveButtonClick(){
 		Inventory.Save ();
 	}
@@ -148,10 +206,26 @@ public class InventoryScreen : MonoBehaviour {
 		Inventory.Load ();
 	}
 
+	public void ArmorButtonClick(){
+		ClearCanvas ();
+		CreateListPanel ();
+		PopulateArmorList ();
+	}
+
+	public void WeaponButtonClick(){
+		ClearCanvas ();
+		CreateListPanel ();
+		PopulateWeaponList ();
+	}
+
 	// just for debug purpose
 	void JustDebug(){
 		Inventory.AddItem (2, "Apple", 5);
 		Inventory.AddItem (2, "Orange", 10);
+		Inventory.AddItem (0, "Wood Sword", 1);
+		Inventory.AddItem (0, "Silver Sword", 1);
+		Inventory.AddItem (1, "Wood Armor", 1);
+		Inventory.AddItem (1, "Silver Armor", 1);
 
 		List<Item> ltmp = new List<Item>();
 		ltmp.Add(new Item(3, "Apple", 2));
@@ -178,8 +252,11 @@ public class InventoryScreen : MonoBehaviour {
 	// Clear everything in Canvas
 	void ClearCanvas(){
 		var children = new List<GameObject> ();
-		foreach (Transform child in canvas)
-			children.Add (child.gameObject);
+		foreach (Transform child in canvas) {
+			if(child.name != "EventSystem"){
+				children.Add (child.gameObject);
+			}
+		}
 		children.ForEach (child => Destroy (child));
 	}
 }
