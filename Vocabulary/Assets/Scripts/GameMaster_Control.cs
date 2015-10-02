@@ -19,6 +19,7 @@ public class GameMaster_Control : MonoBehaviour{
     // Use this for initialization
     void Start() {
 		player = GameObject.FindGameObjectWithTag("Player");
+        
         //debugging purposes in scene just auto generate the choice menu
         CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
 		//for now just set it to be the 1 answer questions
@@ -258,7 +259,7 @@ public class GameMaster_Control : MonoBehaviour{
 	public List<string[]> GenerateMediumQuestions()
 	{
 		List<string[]> temp = new List<string[]>();
-		string[] question = {"Best Pokemon?" , "Charmander", "Greninja", "Magikarp", "Suicune"};
+		string[] question = {"Best Pokemon?" , "Charmander + Pikachu", "Greninja", "Magikarp", "Suicune"};
 		temp.Add (question);
 		return temp;
 	}
