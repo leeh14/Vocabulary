@@ -25,6 +25,8 @@ public class CombatQuestion : MonoBehaviour {
 			if(b.name == "Question")
 			{
 				b.GetComponentInChildren<Text>().text = data.Question;
+				b.GetComponentInChildren<Text>().verticalOverflow = VerticalWrapMode.Overflow;
+
 			}
 			else
 			{

@@ -3,15 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 public class Player : MonoBehaviour {
     public int Health;
-    public int CurrentArmor;
-	public int Damage;
+    public GenericArmor CurrentArmor;
+	public int Damage =1;
+	public GenericWeapon CurrentWeapon;
 	public bool Alive = true;
 	public Dictionary<string, string> WordDict = new Dictionary<string, string>();
 
     // Use this for initialization
     void Start() {
 		Health = 3;
-		CurrentArmor = 1;
+		//CurrentArmor = 1;
     }
 
     // Update is called once per frame
@@ -31,10 +32,23 @@ public class Player : MonoBehaviour {
     public void CreateBattle()
     {
     }
+	public void SetWeapon(GenericWeapon weapon)
+	{
 
+		CurrentWeapon = weapon;
+		Debug.Log("seweapon" + CurrentWeapon.Damage);
+	}
+	public void SetArmor(GenericArmor arm)
+	{
+		CurrentArmor = arm;
+	}
+	public int DealDamage()
+	{
+		return Damage + CurrentWeapon.Damage;
+	}
 	public void ReceiveDamage(int damage)
 	{
-		damage -= CurrentArmor;
+		damage -= CurrentArmor.Armor;
 		Health -= damage;
 		Debug.Log ("Player" + Health);
 		if (Health <= 0) {

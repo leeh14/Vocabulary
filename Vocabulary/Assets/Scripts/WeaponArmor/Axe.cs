@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Goblin : GenericEnemy {
+public class Axe : GenericWeapon {
 
+	public Axe()
+	{
+		Start();
+	}
 	// Use this for initialization
 	void Start () {
-		Health = 10;
-		Armor = 0;
-		Damage = 1;
+		Debug.Log("create damadge");
+		Damage = 3;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
-
 }

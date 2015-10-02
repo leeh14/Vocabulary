@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Goblin : GenericEnemy {
-
+public class Spear : GenericWeapon {
+	public Spear()
+	{
+		Start();
+	}
 	// Use this for initialization
 	void Start () {
-		Health = 10;
-		Armor = 0;
-		Damage = 1;
+		Damage = 2;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
-
 }

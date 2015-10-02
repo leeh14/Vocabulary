@@ -7,23 +7,54 @@ public class GameMaster_Control : MonoBehaviour{
     public GameObject CurrentMenu;
 	public GameObject TextMenu;
 	public GameObject Enemies;
-	private GameObject player;
+	public GameObject Enemies2;
+	private GameObject CurrentEnemy;
+	private List<GameObject> AvailableEnemies = new List<GameObject>();
+	public GameObject player;
 	public Mesh livemesh;
 	public List<string[]> questions;
 	public QuestionData CurrentQuestion;
 	public bool TurnContinue = false;
+	public Inventory Inventory = new Inventory();
+	private GenericWeapon DebugWeapon;
     // Use this for initialization
     void Start() {
 		player = GameObject.FindGameObjectWithTag("Player");
+        
         //debugging purposes in scene just auto generate the choice menu
         CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
 		//for now just set it to be the 1 answer questions
 		questions = GenerateEasyQuestions ();
+		DebugWeapon = new Axe();
+		player.GetComponent<Player>().SetWeapon(DebugWeapon);
+		GenericArmor DebugArmor = new WoodArmor();
+		player.GetComponent<Player>().SetArmor(DebugArmor);
+
     }
 
     // Update is called once per frame
     void Update() {
-
+		if(Input.GetKey(KeyCode.A))
+		{
+			Debug.Log("switch to axe");
+			DebugWeapon = new Axe();
+			player.GetComponent<Player>().SetWeapon(DebugWeapon);
+		}else if (Input.GetKey(KeyCode.S))
+		{
+			Debug.Log("switch tp spear");
+			DebugWeapon = new Spear();
+			player.GetComponent<Player>().SetWeapon(DebugWeapon);
+		}
+		else if(Input.GetKey(KeyCode.W))
+		{
+			GenericArmor DebugArmor = new WoodArmor();
+			player.GetComponent<Player>().SetArmor(DebugArmor);
+		}
+		else if(Input.GetKey(KeyCode.C))
+		{
+			GenericArmor DebugArmor = new CrystalArmor();
+			player.GetComponent<Player>().SetArmor(DebugArmor);
+		}
     }
     //keep the data here
     void Awake() {
@@ -39,8 +70,12 @@ public class GameMaster_Control : MonoBehaviour{
 	public void RedoBattle()
 	{
 		ClearMenu();
+
 		//reset everything
-		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
+		if(CurrentEnemy != null)
+		{
+			CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
+		}
 		Refresh ();
 	}
 	public void Refresh()
@@ -71,18 +106,40 @@ public class GameMaster_Control : MonoBehaviour{
     public void BeginBattle()
     {
         ClearMenu();
-        CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
+        //CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
 		//Iterate through list of enemies and generate corresponding prefabs
 
 		//generate the enemy canvas
 		Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Testingshizuku"));
-		//MeshFilter m = Enemies.GetComponent<MeshFilter> ();
-		//m.mesh = livemesh;
-		//MeshRenderer mr = Enemies.GetComponent<MeshRenderer> ();
-		//mr.material = new Material(Shader.Find("Legacy Shaders/Transparent/Diffuse"));
-		Enemies.transform.position = new Vector3 (18, 15, 2);
+
+		Enemies.transform.position = new Vector3 (4.3f, 16.71f, 1f);
+		Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
+		Enemies.name = "Goblin1";
+		Enemies.GetComponent<Goblin>().SetMaster(gameObject);
+
+		//second enemy
+		Enemies2 = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Testingshizuku"));
+
+		Enemies2.transform.position = new Vector3 (-3.5f, 16.71f, 1f);
+		Enemies2.transform.localScale = new Vector3(.38f,1f,.33f);
+		Enemies2.name = "Goblin2";
+		Enemies2.GetComponent<Goblin>().SetMaster(gameObject);
+		AvailableEnemies.Add (Enemies);
+		AvailableEnemies.Add (Enemies2);
 
     }
+	public void CreateBattle(string name)
+	{
+		Debug.Log("create");
+		if (name == "Goblin1") {
+			CurrentEnemy = Enemies;
+		} else {
+			CurrentEnemy = Enemies2;
+		}
+		ClearMenu();
+
+		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
+	}
     //the multiple choices for combat
     public void BeginCombat(string[] data)
     {
@@ -99,27 +156,37 @@ public class GameMaster_Control : MonoBehaviour{
 	{
 		bool correct = obj.CheckAnswer (playerchoice);
 		ClearMenu ();
-		//Debug.Log("changin" + correct + "  " + obj.Answer + "df" + playerchoice);
-		//CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Answer"));
-		//Text[] ans = CurrentMenu.GetComponentsInChildren<Text>();
+
 
 		if (correct) {
-			//attack the enemy
-			//output damage to screen
-//			TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
-//			Text combat = TextMenu.GetComponentInChildren<Text>();
-			//yield return StartCoroutine(PlayerTurn( player.GetComponent<Player> ().Damage,"goblin"));
-			StartCoroutine(WaitTurn());
-			Enemies.GetComponent<Goblin> ().ReceiveDamage (2);
 
-			if (Enemies.GetComponent<Goblin> ().Alive == false) {
-				//go back to main menu after killing enemies
-				ClearMenu ();
-				LoadMenu ();
-				
-				//adding the definition of the word into learned dictionary
-				player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
-				return;
+			StartCoroutine(WaitTurn(player.GetComponent<Player>().DealDamage()));
+
+			CurrentEnemy.GetComponent<Goblin> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
+		
+			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
+			if (CurrentEnemy.GetComponent<Goblin> ().Alive == false) {
+				//go through list and remove enemy
+				//StartCoroutine(DropItem("Apple"));
+				Debug.Log("dead");
+				//StartCoroutine(WaitItem());
+				AvailableEnemies.Remove(CurrentEnemy);
+
+				if(AvailableEnemies.Count ==  0)
+				{
+					Debug.Log("end");
+					//go back to main menu after killing enemies
+					ClearMenu ();
+					LoadMenu ();
+					//need to drop random item
+					//Inventory.AddItem(1,"apples",1);
+					//adding the definition of the word into learned dictionary
+					player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
+					return;
+				}
+				//StartCoroutine(DropItem("apple"));
+				ClearMenu();
+
 			}
 
 
@@ -135,42 +202,71 @@ public class GameMaster_Control : MonoBehaviour{
 
 		}
 		//Let the enemy go and attack
-		if (TurnContinue == true) {
-			StartCoroutine (EnemyTurn ());
-		}
+//		if (TurnContinue == true) {
+//			StartCoroutine (EnemyTurn ());
+//		}
 
 
 	}
-	public IEnumerator WaitTurn()
+	#region coroutines
+	public IEnumerator WaitTurn(int dmg)
 	{
-		yield return StartCoroutine (PlayerTurn (1, "goblin"));
+		yield return StartCoroutine (PlayerTurn (dmg, CurrentEnemy.name));
+	}
+	public IEnumerator WaitItem()
+	{
+		ClearMenu();
+		yield return StartCoroutine(DropItem("apple"));
 	}
 	public IEnumerator PlayerTurn(int damage, string enemyname)
 	{
-		//TurnContinue = true;
+		TurnContinue = true;
 		TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
 		Text combat = TextMenu.GetComponentInChildren<Text>();
+		combat.verticalOverflow = VerticalWrapMode.Overflow;
 		combat.text = "You have dealt " + damage + " to " + enemyname;
 
 		yield return new WaitForSeconds(2f);
 		//TurnContinue = false;
-		TurnContinue = true;
+		TurnContinue = false;
 		Destroy (TextMenu);
 		StartCoroutine (EnemyTurn ());
 	}
 	public IEnumerator EnemyTurn()
 	{
+		if(TurnContinue == false)
+		{
+			if(CurrentEnemy != null)
+			{
+				TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
+				Text combat = TextMenu.GetComponentInChildren<Text>();
+				combat.verticalOverflow = VerticalWrapMode.Overflow;
+				combat.text = "Goblin deals " + CurrentEnemy.GetComponent<Goblin>().Damage +" damage to you.";
+				player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<Goblin>().Damage );
+
+			}else
+			{
+				StartCoroutine(DropItem("apple"));
+			}
+
+			yield return new WaitForSeconds(2f);
+
+			StopAllCoroutines ();
+			//reset 
+
+			RedoBattle ();
+		}
+	}
+	public IEnumerator DropItem(string itemname)
+	{
 
 		TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
 		Text combat = TextMenu.GetComponentInChildren<Text>();
-		combat.text = "Goblin deals " + Enemies.GetComponent<Goblin>().Damage +" damage to you.";
-		player.GetComponent<Player>().ReceiveDamage(Enemies.GetComponent<Goblin>().Damage );
+		combat.verticalOverflow = VerticalWrapMode.Overflow;
+		combat.text = "goblin drops " + itemname;
 		yield return new WaitForSeconds(2f);
-
-
-		//reset 
-		RedoBattle ();
 	}
+	#endregion
 	#endregion
 	#region GenerateQuestions
 	//Generating the questions 
@@ -189,7 +285,7 @@ public class GameMaster_Control : MonoBehaviour{
 	public List<string[]> GenerateMediumQuestions()
 	{
 		List<string[]> temp = new List<string[]>();
-		string[] question = {"Best Pokemon?" , "Charmander", "Greninja", "Magikarp", "Suicune"};
+		string[] question = {"Best Pokemon?" , "Charmander + Pikachu", "Greninja", "Magikarp", "Suicune"};
 		temp.Add (question);
 		return temp;
 	}

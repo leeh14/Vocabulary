@@ -156,7 +156,12 @@ public class LAppModel :L2DBaseModel
     }
 
 
-    
+    public void GetDamaged()
+	{
+		int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
+		int no = (int)(rand.NextDouble() * max);
+		StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
+	}
     public void Update()
     {
         if ( ! isInitialized() || isUpdating())
@@ -188,25 +193,25 @@ public class LAppModel :L2DBaseModel
          //   StartRandomMotion(LAppDefine.MOTION_GROUP_IDLE, LAppDefine.PRIORITY_IDLE);
         //}
 
-		if (Input.GetButton ("Fire1") && mainMotionManager.isFinished()) 
-		{
-			if(TapEvent(Input.mousePosition.x,Input.mousePosition.y) == true)
-			{
-				Debug.Log("tap hit");
-				int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
-				int no = (int)(rand.NextDouble() * max);
-				StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
-			}
-			//Debug.Log(Input.mousePosition.x + Input.mousePosition.y);
-			if(HitTest(LAppDefine.HIT_AREA_HEAD,Input.mousePosition.x,Input.mousePosition.y))
-			{
-				Debug.Log("ahit");
-				int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
-				int no = (int)(rand.NextDouble() * max);
-				StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
-			}
+//		if (Input.GetButton ("Fire1") && mainMotionManager.isFinished()) 
+//		{
+//			if(TapEvent(Input.mousePosition.x,Input.mousePosition.y) == true)
+//			{
+//				Debug.Log("tap hit");
+//				int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
+//				int no = (int)(rand.NextDouble() * max);
+//				StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
+//			}
+//			//Debug.Log(Input.mousePosition.x + Input.mousePosition.y);
+//			if(HitTest(LAppDefine.HIT_AREA_HEAD,Input.mousePosition.x,Input.mousePosition.y))
+//			{
+//				Debug.Log("ahit");
+//				int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
+//				int no = (int)(rand.NextDouble() * max);
+//				StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
+//			}
 
-		}
+		//}
         //-----------------------------------------------------------------
         live2DModel.loadParam();
 
