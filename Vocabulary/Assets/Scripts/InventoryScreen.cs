@@ -45,7 +45,7 @@ public class InventoryScreen : MonoBehaviour {
 	public GameObject CanvasPf;
 
 	// Use this for initialization
-	void Start () {
+	public void StartInventory() {
 		Canvas = Instantiate (CanvasPf) as GameObject;
 		canvas = Canvas.transform;
 		CreateMainScreen ();

@@ -55,6 +55,7 @@ public class Inventory : MonoBehaviour {
 		}
 	}// end of Load
 
+	// type: 0 - armor, 1 - weapons, 2 - material, 3 - potiont
 	// Add / find a item and throw into items 
 	public static void AddItem(int type, string name, int addAmount){
 
