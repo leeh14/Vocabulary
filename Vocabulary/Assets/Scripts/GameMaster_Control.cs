@@ -10,12 +10,13 @@ public class GameMaster_Control : MonoBehaviour{
 	public GameObject Enemies2;
 	private GameObject CurrentEnemy;
 	private List<GameObject> AvailableEnemies = new List<GameObject>();
-	private GameObject player;
+	public GameObject player;
 	public Mesh livemesh;
 	public List<string[]> questions;
 	public QuestionData CurrentQuestion;
 	public bool TurnContinue = false;
 	public Inventory Inventory = new Inventory();
+	private GenericWeapon DebugWeapon;
     // Use this for initialization
     void Start() {
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -24,11 +25,36 @@ public class GameMaster_Control : MonoBehaviour{
         CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
 		//for now just set it to be the 1 answer questions
 		questions = GenerateEasyQuestions ();
+		DebugWeapon = new Axe();
+		player.GetComponent<Player>().SetWeapon(DebugWeapon);
+		GenericArmor DebugArmor = new WoodArmor();
+		player.GetComponent<Player>().SetArmor(DebugArmor);
+
     }
 
     // Update is called once per frame
     void Update() {
-
+		if(Input.GetKey(KeyCode.A))
+		{
+			Debug.Log("switch to axe");
+			DebugWeapon = new Axe();
+			player.GetComponent<Player>().SetWeapon(DebugWeapon);
+		}else if (Input.GetKey(KeyCode.S))
+		{
+			Debug.Log("switch tp spear");
+			DebugWeapon = new Spear();
+			player.GetComponent<Player>().SetWeapon(DebugWeapon);
+		}
+		else if(Input.GetKey(KeyCode.W))
+		{
+			GenericArmor DebugArmor = new WoodArmor();
+			player.GetComponent<Player>().SetArmor(DebugArmor);
+		}
+		else if(Input.GetKey(KeyCode.C))
+		{
+			GenericArmor DebugArmor = new CrystalArmor();
+			player.GetComponent<Player>().SetArmor(DebugArmor);
+		}
     }
     //keep the data here
     void Awake() {
@@ -134,9 +160,9 @@ public class GameMaster_Control : MonoBehaviour{
 
 		if (correct) {
 
-			StartCoroutine(WaitTurn());
+			StartCoroutine(WaitTurn(player.GetComponent<Player>().DealDamage()));
 
-			CurrentEnemy.GetComponent<Goblin> ().ReceiveDamage (2);
+			CurrentEnemy.GetComponent<Goblin> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
 		
 			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
 			if (CurrentEnemy.GetComponent<Goblin> ().Alive == false) {
@@ -183,9 +209,9 @@ public class GameMaster_Control : MonoBehaviour{
 
 	}
 	#region coroutines
-	public IEnumerator WaitTurn()
+	public IEnumerator WaitTurn(int dmg)
 	{
-		yield return StartCoroutine (PlayerTurn (1, CurrentEnemy.name));
+		yield return StartCoroutine (PlayerTurn (dmg, CurrentEnemy.name));
 	}
 	public IEnumerator WaitItem()
 	{
