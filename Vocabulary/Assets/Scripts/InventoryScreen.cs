@@ -170,7 +170,6 @@ public class InventoryScreen : MonoBehaviour {
 	}
 
 	// Buttons
-
 	public void RecipeButtonClick(){
 		ClearCanvas ();
 		CreateListPanel ();
