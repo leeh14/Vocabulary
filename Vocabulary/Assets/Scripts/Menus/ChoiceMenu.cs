@@ -13,7 +13,7 @@ public class ChoiceMenu : MonoBehaviour {
 		foreach (Button b in Start) {
 			if (b.name == "Battle")
 			{
-				b.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().BeginBattle());
+				b.onClick.AddListener(() => master.GetComponent<MapScreen>().StartMap());
 			}
 			else if (b.name == "Inven")
 			{

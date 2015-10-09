@@ -42,10 +42,7 @@ public class MapLevels : MonoBehaviour {
 		}else if(_MapLevels!= this){
 			Destroy(gameObject);
 		}
-	}
 
-	// Use this for initialization
-	void Start () {
 		_Levels = new List<LevelData> ();
 		Load ();
 		//UploadData ();

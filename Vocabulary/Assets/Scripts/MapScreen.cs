@@ -24,13 +24,8 @@ public class MapScreen : MonoBehaviour {
 	public MapData lastMapData;
 	public bool battle = false;
 
-	// Use this for initialization
-	void Start () {
-		StartMap ();
-	}
-
 	// Start up the map menu
-	void StartMap(){
+	public void StartMap(){
 		Canvas = Instantiate (CanvasPf) as GameObject;
 		canvas = Canvas.transform;
 		CreateListPanel ();
