@@ -100,6 +100,11 @@ public class GameMaster_Control : MonoBehaviour{
 		Destroy(CurrentMenu);
 		Destroy (TextMenu);
 	}
+    public void LoadInventory()
+    {
+        ClearMenu();
+        gameObject.GetComponent<InventoryScreen>().StartInventory();
+    }
 	#endregion
 	#region Combat
 	//future add argument a list of enemiers
@@ -179,12 +184,11 @@ public class GameMaster_Control : MonoBehaviour{
 					ClearMenu ();
 					LoadMenu ();
 					//need to drop random item
-					//Inventory.AddItem(1,"apples",1);
+					Inventory.AddItem(2,"apples",1);
 					//adding the definition of the word into learned dictionary
 					player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
 					return;
 				}
-				//StartCoroutine(DropItem("apple"));
 				ClearMenu();
 
 			}

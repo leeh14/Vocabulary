@@ -19,7 +19,7 @@ public class ChoiceMenu : MonoBehaviour {
 			{
 				//for now just go to inventory scene
 
-				b.onClick.AddListener(() => master.GetComponent<InventoryScreen>().StartInventory());
+				b.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().LoadInventory());
 			}
 		}
         
