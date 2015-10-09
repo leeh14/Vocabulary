@@ -1,0 +1,8 @@
+{
+	"type": "Live2D Model Setting",
+	"name": "slimerg",
+	"model": "slimerg.moc",
+	"textures": [
+		"slimerg.1024/texture_00.png"
+	]
+}
