@@ -6,6 +6,7 @@ public class GenericEnemy : MonoBehaviour {
     public int Health;
     public int Armor;
     public int Damage;
+	public string name;
 	public bool Alive = true;
 	// Use this for initialization
 	void Start () {

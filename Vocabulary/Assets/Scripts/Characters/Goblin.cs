@@ -8,6 +8,7 @@ public class Goblin : GenericEnemy {
 		Health = 10;
 		Armor = 0;
 		Damage = 1;
+		name = "Goblin";
 	}
 	
 	// Update is called once per frame
