@@ -7,7 +7,7 @@ public class GameMaster_Control : MonoBehaviour{
     public GameObject CurrentMenu;
 	public GameObject TextMenu;
 	public GameObject Enemies;
-	public GameObject Enemies2;
+	//public GameObject Enemies2;
 	private GameObject CurrentEnemy;
 	private List<GameObject> AvailableEnemies = new List<GameObject>();
 	public GameObject player;
@@ -95,52 +95,98 @@ public class GameMaster_Control : MonoBehaviour{
 		}
 	}
 	//remove the current menu on the screen
-	void ClearMenu()
+	public void ClearMenu()
 	{
 		Destroy(CurrentMenu);
 		Destroy (TextMenu);
+
+	}
+	public void ClearEnemies()
+	{
+		for(int i = 0; i < AvailableEnemies.Count; i ++)
+		{
+			Destroy(AvailableEnemies[i]);
+		}
+		AvailableEnemies.Clear();
 	}
     public void LoadInventory()
     {
         ClearMenu();
         gameObject.GetComponent<InventoryScreen>().StartInventory();
     }
+	public void LoadMap()
+	{
+		ClearMenu();
+		gameObject.GetComponent<MapScreen>().StartMap();
+	}
 	#endregion
 	#region Combat
 	//future add argument a list of enemiers
-    public void BeginBattle()
+	public void BeginBattle(List<string> Enemy)
     {
         ClearMenu();
         //CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
 		//Iterate through list of enemies and generate corresponding prefabs
 
 		//generate the enemy canvas
-		Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Testingshizuku"));
+//		Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Testingshizuku"));
+//
+//		Enemies.transform.position = new Vector3 (4.3f, 16.71f, 1f);
+//		Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
+//		Enemies.name = "Goblin1";
+//		Enemies.GetComponent<Goblin>().SetMaster(gameObject);
+//
+//		//second enemy
+//		Enemies2 = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Testingshizuku"));
+//
+//		Enemies2.transform.position = new Vector3 (-3.5f, 16.71f, 1f);
+//		Enemies2.transform.localScale = new Vector3(.38f,1f,.33f);
+//		Enemies2.name = "Goblin2";
+//		Enemies2.GetComponent<Goblin>().SetMaster(gameObject);
+//		AvailableEnemies.Add (Enemies);
+//		AvailableEnemies.Add (Enemies2);
+		for (int m = 0 ; m < Enemy.Count; m ++)
+		{
+			Debug.Log(Enemy[m]);
+			if (Enemy[m] == "Goblin")
+			{
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Testingshizuku"));
+				if(Enemy.Count > 1)
+				{
+					if(m ==  0)
+					{
+						Enemies.transform.position = new Vector3 (4.3f, 13f, 1f);
+						Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
+					}
+					else 
+					{
+						Enemies.transform.position = new Vector3 (-3.5f, 13f, 1f);
+						Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
+					}
+				}
+			}
+			Enemies.name = Enemies.name + m;
+			Enemies.GetComponent<Goblin>().SetMaster(gameObject);
+			AvailableEnemies.Add(Enemies);
+		}
 
-		Enemies.transform.position = new Vector3 (4.3f, 16.71f, 1f);
-		Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
-		Enemies.name = "Goblin1";
-		Enemies.GetComponent<Goblin>().SetMaster(gameObject);
-
-		//second enemy
-		Enemies2 = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Testingshizuku"));
-
-		Enemies2.transform.position = new Vector3 (-3.5f, 16.71f, 1f);
-		Enemies2.transform.localScale = new Vector3(.38f,1f,.33f);
-		Enemies2.name = "Goblin2";
-		Enemies2.GetComponent<Goblin>().SetMaster(gameObject);
-		AvailableEnemies.Add (Enemies);
-		AvailableEnemies.Add (Enemies2);
 
     }
 	public void CreateBattle(string name)
 	{
 		Debug.Log("create");
-		if (name == "Goblin1") {
-			CurrentEnemy = Enemies;
-		} else {
-			CurrentEnemy = Enemies2;
+		foreach (GameObject ene in AvailableEnemies)
+		{
+			if(ene.name == name)
+			{
+				CurrentEnemy = ene;
+			}
 		}
+//		if (name == "Goblin1") {
+//			CurrentEnemy = Enemies;
+//		} else {
+//			CurrentEnemy = Enemies2;
+//		}
 		ClearMenu();
 
 		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));

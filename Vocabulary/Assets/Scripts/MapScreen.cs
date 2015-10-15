@@ -65,22 +65,29 @@ public class MapScreen : MonoBehaviour {
 
 	// load the given name level
 	void PopulateLevelButtons(LevelData ld){
+		//Debug.Log("here");
 		int i = 0;
-		foreach (string mon in ld.monsters) {
-			GameObject newButton = Instantiate(SampleMonsterButtonPf) as GameObject;
-			SampleMonsterButton mb = newButton.GetComponent<SampleMonsterButton>();
-			mb.nameLable.text = mon;
-			newButton.transform.SetParent(contentPanel, false);
-			UnityEngine.Events.UnityAction ClickLevel = () => {
-				this.LevelClick(mb.name);};
-			newButton.GetComponent<Button>().onClick.AddListener(ClickLevel);
-			newButton.transform.SetParent(contentPanel, false);
-
-			if(i > ld.currentLevel && i != 0){
-				newButton.GetComponent<Button>().interactable = false;
-			}
-			i++;
+		//create monster
+		foreach(string s in ld.monsters)
+		{
+			Debug.Log("dsf" +s);
 		}
+		gameObject.GetComponent<GameMaster_Control>().BeginBattle(ld.monsters);
+//		foreach (string mon in ld.monsters) {
+//			GameObject newButton = Instantiate(SampleMonsterButtonPf) as GameObject;
+//			SampleMonsterButton mb = newButton.GetComponent<SampleMonsterButton>();
+//			mb.nameLable.text = mon;
+//			newButton.transform.SetParent(contentPanel, false);
+//			UnityEngine.Events.UnityAction ClickLevel = () => {
+//				this.LevelClick(mb.name);};
+//			newButton.GetComponent<Button>().onClick.AddListener(ClickLevel);
+//			newButton.transform.SetParent(contentPanel, false);
+//
+//			if(i > ld.currentLevel && i != 0){
+//				newButton.GetComponent<Button>().interactable = false;
+//			}
+//			i++;
+//		}
 
 		BackButton = Instantiate (BackButtonPf) as GameObject;
 		BackButton.transform.SetParent (canvas, false);
@@ -92,6 +99,7 @@ public class MapScreen : MonoBehaviour {
 	// when a map is clicked, load the levels
 	void MapClick(LevelData ld){
 		ClearList ();
+		//change to battle sequqn
 		PopulateLevelButtons (ld);
 	}
 
@@ -104,6 +112,8 @@ public class MapScreen : MonoBehaviour {
 	// move back to map option	
 	void BackToMap(){
 		ClearList ();
+		gameObject.GetComponent<GameMaster_Control>().ClearEnemies();
+		gameObject.GetComponent<GameMaster_Control>().ClearMenu();
 		PopulateMapButtons ();
 	}
 
