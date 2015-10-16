@@ -144,18 +144,17 @@ public class Inventory : MonoBehaviour {
 			bool makeAble = true;
 			foreach (Item ma in re.materials) {
 				bool found = false;
-				foreach (Item it in _Items) {
-					if (ma.name == it.name) {
+				foreach(Item it in Inventory._Items){
+					if(ma.name == it.name){
 						found = true;
-						if (it.amount < ma.amount) {
+						if(ma.amount > it.amount){
 							makeAble = false;
 						}
 					}
 				}
-				if (!found || !makeAble) {
+				if(!makeAble || !found){
+					makeAble = false;
 					break;
-				} else {
-					found = false;
 				}
 			}
 			return makeAble;
