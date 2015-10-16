@@ -285,6 +285,12 @@ public class InventoryScreen : MonoBehaviour {
 		Item itmp = new Item(3, "Banana", 1);
 		Inventory.AddRecipe("Banana", ltmp, itmp); 
 
+		List<Item> ltmp2 = new List<Item>();
+		ltmp2.Add(new Item(2, "Apple", 2));
+		ltmp2.Add(new Item(2, "Banana", 9));
+		Item itmp2 = new Item(3, "Watermelon", 1);
+		Inventory.AddRecipe("Watermelon", ltmp2, itmp2); 
+
 		currentArmor = "Wood Armor";
 		currentWeapon = "Axe";
 	}
