@@ -6,14 +6,14 @@ using System.IO;
 using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour {
-	
-	public static Inventory _Inventory;
-	public static List<Item> _Items;
-	public static List<Recipe> _Recipes;
-	public static List<int> _RemoveIndex;
-	public static bool showItems = true;
-	public static bool showRecipes = true;
-	
+
+	#region Data
+	public static Inventory _Inventory;				// the Inventory reference
+	public static List<Item> _Items;				// the list of currently own items
+	public static List<Recipe> _Recipes;			// the list of currently own recipes
+	public static List<int> _RemoveIndex;			// the removing item index
+	#endregion
+
 	// Use this for initialization
 	void Awake () {
 		if (_Inventory == null) {
@@ -26,8 +26,9 @@ public class Inventory : MonoBehaviour {
 		_Items = new List<Item>();
 		_Recipes = new List<Recipe>();
 		_RemoveIndex = new List<int>();
-	}// end of Awake
+	}
 
+	#region Save & Load
 	// Save Data
 	public static void Save(){
 
@@ -39,7 +40,7 @@ public class Inventory : MonoBehaviour {
 
 		bf.Serialize (file, data);
 		file.Close ();
-	}// end of Save
+	}
 
 	// Load Data
 	public static void Load(){
@@ -53,9 +54,11 @@ public class Inventory : MonoBehaviour {
 			_Items = data._Items;
 			_Recipes = data._Recipes;
 		}
-	}// end of Load
+	}
+	#endregion
 
-	// type: 0 - armor, 1 - weapons, 2 - material, 3 - potiont
+	#region Item
+	// type: 0 - armor, 1 - weapons, 2 - material, 3 - potion
 	// Add / find a item and throw into items 
 	public static void AddItem(int type, string name, int addAmount){
 
@@ -73,7 +76,7 @@ public class Inventory : MonoBehaviour {
 		if (found == false) {
 			_Items.Add(new Item(type, name, addAmount));
 		}
-	}// end of CreateItem
+	}
 
 	// Remove certain amount of item
 	public static void RemoveItem(string name, int removeAmount){
@@ -91,7 +94,7 @@ public class Inventory : MonoBehaviour {
 			}
 			currentIndex++;
 		}
-	} // end of RemoveItem
+	} 
 
 	// Remove stuff schedule to remove
 	public static void RemoveUpdate(){
@@ -105,14 +108,9 @@ public class Inventory : MonoBehaviour {
 		}
 	}// end of RemoveUpdate
 
-	// Show all the items player have
-	public static void ShowItems(){
-		Debug.Log("New Item List: ");
-		foreach (Item it in _Items) {
-			Debug.Log(it.name + ": " + it.amount);
-		}
-	} // end of showItems
+	#endregion
 
+	#region Recipe
 	// Add a recipe
 	public static void AddRecipe(string name, List<Item> material, Item product){
 
@@ -120,7 +118,7 @@ public class Inventory : MonoBehaviour {
 		if (GetRecipe(name) == null) {
 			_Recipes.Add(new Recipe(name, material, product));
 		}
-	}// end of AddRecipe
+	}
 
 	// Get a Recipe
 	public static Recipe GetRecipe(string name){
@@ -131,41 +129,32 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 		return null;
-	}// end of GetRecipe
+	}
+	#endregion
 
-	// Show Recipes
-	public static void ShowRecipes(){
-		Debug.Log("New Recipe List: ");
-		foreach (Recipe re in _Recipes) {
-			Debug.Log(re.name + " material needed:");
-			foreach(Item it in re.materials){
-				Debug.Log("_" + it.name + " " + it.amount);
-			}
-		}
-	}// end of ShowRecipes
+	#region Utilities
 
+	// check if a product can be make
 	public static bool CanMake(string name){
 		Recipe re = GetRecipe (name);
 		if (re == null) {
-			Debug.LogError ("Method MakeRecipe: No Such Recipe.");
+			Debug.LogError ("Method MakeRecipe: " + name + " No Such Recipe.");
 			return false;
 		} else {
 			bool makeAble = true;
 			foreach (Item ma in re.materials) {
 				bool found = false;
-				foreach (Item it in _Items) {
-					if (ma.name == it.name) {
+				foreach(Item it in Inventory._Items){
+					if(ma.name == it.name){
 						found = true;
-						if (it.amount < ma.amount) {
+						if(ma.amount > it.amount){
 							makeAble = false;
 						}
 					}
 				}
-				if (!found || !makeAble) {
-					Debug.Log ("Method MakeRecipe: Cannot make");
+				if(!makeAble || !found){
+					makeAble = false;
 					break;
-				} else {
-					found = false;
 				}
 			}
 			return makeAble;
@@ -173,6 +162,7 @@ public class Inventory : MonoBehaviour {
 		return false;
 	}
 
+	// make the product
 	public static void MakeProduct(string name){
 		Recipe re = GetRecipe (name);
 			if(CanMake(name)){
@@ -184,9 +174,10 @@ public class Inventory : MonoBehaviour {
 					}
 				}
 				AddItem(re.product.type, re.product.name, re.product.amount);
-			Debug.Log ("Crafted: " + re.product.name);
+				Debug.Log ("Crafted: " + re.product.name);
 			}
-	}// end of MakeRecipe
+	}
+	#endregion
 
 }// end of Inventory
 
@@ -214,7 +205,7 @@ public class Recipe : IComparable<Recipe>
 			return 1;
 		}
 	}
-}// end of Recipe
+}
 
 [Serializable]
 public class Item : IComparable<Item>
@@ -258,11 +249,11 @@ public class Item : IComparable<Item>
 			return 1;
 		}
 	}
-}// end of Item
+}
 
 [Serializable]
 class InventoryData
 {
 	public List<Item> _Items;
 	public List<Recipe> _Recipes;
-}// end of InventoryData
+}

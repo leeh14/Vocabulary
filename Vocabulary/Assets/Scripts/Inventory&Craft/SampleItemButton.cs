@@ -2,9 +2,16 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class SampleRecipeButton : MonoBehaviour {
+
+public class SampleItemButton : MonoBehaviour {
+
 	public Button button;
 	public Text nameLable;
 	public Image icon;
-	public bool canMake = false;
+	public Text typeLabel;
+	public Text amountLabel;
+
+	void UpdateType(){
+	
+	}
 }

@@ -5,4 +5,8 @@
 	"textures": [
 		"SlimerG.1024/texture_00.png"
 	]
+	"motions":
+	{
+		"idle":[{"file":"slimerg.mtn" , "fade_in":1, "fade_out":1}]
+	}
 }

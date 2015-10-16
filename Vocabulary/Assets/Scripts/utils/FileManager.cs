@@ -48,6 +48,7 @@ public class FileManager
 
 	public static byte[] LoadBin(string path)
 	{
+        Debug.Log(path);
 		TextAsset ta = (TextAsset)Resources.Load( path , typeof(TextAsset) ) ;
 		byte[] buf = ta.bytes ;
 		return buf;
