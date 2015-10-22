@@ -8,6 +8,7 @@ public class Spear : GenericWeapon {
 	}
 	// Use this for initialization
 	void Start () {
+		name = "Spear";
 		Damage = 2;
 	}
 	
