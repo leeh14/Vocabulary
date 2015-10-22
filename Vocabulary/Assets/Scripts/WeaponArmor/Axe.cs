@@ -10,6 +10,7 @@ public class Axe : GenericWeapon {
 	// Use this for initialization
 	void Start () {
 		Debug.Log("create damadge");
+		name = "Axe";
 		Damage = 3;
 	}
 	

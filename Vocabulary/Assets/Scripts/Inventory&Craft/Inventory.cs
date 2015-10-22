@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -9,9 +9,14 @@ public class Inventory : MonoBehaviour {
 
 	#region Data
 	public static Inventory _Inventory;				// the Inventory reference
+	public static List<GenericWeapon> _Weapons;		// the weapon list
+	public static List<GenericArmor> _Armors;		// the armor list
 	public static List<Item> _Items;				// the list of currently own items
 	public static List<Recipe> _Recipes;			// the list of currently own recipes
 	public static List<int> _RemoveIndex;			// the removing item index
+
+	public static int currentWeapon;				// current player weapon
+	public static int currentArmor;					// current player armor
 	#endregion
 
 	// Use this for initialization
@@ -24,6 +29,8 @@ public class Inventory : MonoBehaviour {
 		}
 
 		_Items = new List<Item>();
+		_Weapons = new List<GenericWeapon> ();
+		_Armors = new List<GenericArmor> ();
 		_Recipes = new List<Recipe>();
 		_RemoveIndex = new List<int>();
 	}
@@ -108,6 +115,62 @@ public class Inventory : MonoBehaviour {
 		}
 	}// end of RemoveUpdate
 
+	#endregion
+
+	#region Armor and Weapon
+	// change weapon
+	public static void ChangeWeapon(string name){
+		int index = 0;
+		foreach(GenericWeapon weapon in _Weapons){
+			if(weapon.name == name){
+				currentWeapon = index;
+				break;
+			}
+			index++;
+		}
+	}
+
+	// add a weapon to weapon list
+	public static void AddWeapon(string name){
+		switch (name) {
+		case "Axe":
+			_Weapons.Add(new Axe());
+			break;
+		case "Spear":
+			_Weapons.Add (new Spear());
+			break;
+		default:
+			Debug.Log ("No such Weapon");
+			break;
+		}
+	}
+
+	// change armor
+	public static void ChangeArmor(string name){
+		int index = 0;
+		foreach (GenericArmor armor in _Armors) {
+			if(armor.name == name){
+				currentArmor = index;
+				break;
+			}
+			index++;
+		}
+	}
+
+	// add an armor to armor list
+	public static void AddArmor(string name){
+		switch (name) {
+		case "Crystal Armor":
+			_Armors.Add (new CrystalArmor());
+			break;
+		case "Wood Armor":
+			_Armors.Add(new WoodArmor());
+			break;
+		default:
+			Debug.Log ("No such Armor");
+			break;
+		}
+	}
 	#endregion
 
 	#region Recipe

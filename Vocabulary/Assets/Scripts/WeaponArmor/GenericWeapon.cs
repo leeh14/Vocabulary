@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class GenericWeapon : MonoBehaviour {
+	public string name;
 	public int Damage;
 	public string Attribute;
 	// Use this for initialization

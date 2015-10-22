@@ -48,11 +48,6 @@ public class InventoryScreen : MonoBehaviour {
 	public GameObject RecipeListButtonPf;
 	public GameObject ArmorListButtonPf;
 	public GameObject WeaponListButtonPf;
-
-	// for debug purpose
-	public static string currentArmor;
-	public static string currentWeapon;
-
 	#endregion
 
 	// Use this for initialization
@@ -165,37 +160,37 @@ public class InventoryScreen : MonoBehaviour {
 
 	// Populate the armor list
 	void PopulateArmorList(){
-		foreach (Item ib in Inventory._Items) {
-			if (ib.type == 0) {
-				GameObject newButton = Instantiate (ArmorListButtonPf) as GameObject;
-				SampleArmorButton sab = newButton.GetComponent<SampleArmorButton> ();
-				sab.nameLable.text = ib.name;
-				sab.icon.sprite = Resources.Load<Sprite> (ib.name);
-				sab.equipped = false;
-				if(ib.name == currentArmor){
+		foreach (GenericArmor ga in Inventory._Armors) {
+			GameObject newButton = Instantiate (ArmorListButtonPf) as GameObject;
+			SampleArmorButton sab = newButton.GetComponent<SampleArmorButton> ();
+			sab.nameLable.text = ga.name;
+			sab.icon.sprite = Resources.Load<Sprite> (ga.name);
+			sab.equipped = false;
+			if(Inventory.currentArmor != null){
+				if(ga.name == Inventory._Armors[Inventory.currentArmor].name){
 					sab.button.interactable = false;
 					sab.equipped = true;
 				}
-				newButton.transform.SetParent (contentPanel, false);
 			}
+			newButton.transform.SetParent (contentPanel, false);
 		}
 	}
 
 	// Populate the weapon list
 	void PopulateWeaponList(){
-		foreach (Item ib in Inventory._Items) {
-			if (ib.type == 1) {
-				GameObject newButton = Instantiate (WeaponListButtonPf) as GameObject;
-				SampleWeaponButton swb = newButton.GetComponent<SampleWeaponButton> ();
-				swb.nameLable.text = ib.name;
-				swb.icon.sprite = Resources.Load<Sprite> (ib.name);
-				swb.equipped = false;
-				if(ib.name == currentWeapon){
+		foreach (GenericWeapon gw in Inventory._Weapons) {
+			GameObject newButton = Instantiate (WeaponListButtonPf) as GameObject;
+			SampleWeaponButton swb = newButton.GetComponent<SampleWeaponButton> ();
+			swb.nameLable.text = gw.name;
+			swb.icon.sprite = Resources.Load<Sprite> (gw.name);
+			swb.equipped = false;
+			if(Inventory.currentWeapon != null){
+				if(gw.name == Inventory._Weapons[Inventory.currentWeapon].name){
 					swb.button.interactable = false;
 					swb.equipped = true;
 				}
-				newButton.transform.SetParent (contentPanel, false);
 			}
+			newButton.transform.SetParent (contentPanel, false);
 		}
 	}
 
@@ -255,16 +250,16 @@ public class InventoryScreen : MonoBehaviour {
 	
 	// onclick for change armor in armor
 	public static void ArmorChange(string name){
-		currentArmor = name;
+		Inventory.ChangeArmor (name);
 		Debug.Log ("change armor to: " + name);
-		UpdateArmorList ();
+		UpdateArmorList (name);
 	}
 
 	// onclick for change weapon in weapon
 	public static void WeaponChange(string name){
-		currentWeapon = name;
+		Inventory.ChangeWeapon (name);
 		Debug.Log ("change weapon to: " + name);
-		UpdateWeaponList ();
+		UpdateWeaponList (name);
 	}
 
 	#endregion
@@ -291,8 +286,11 @@ public class InventoryScreen : MonoBehaviour {
 		Item itmp2 = new Item(3, "Watermelon", 1);
 		Inventory.AddRecipe("Watermelon", ltmp2, itmp2); 
 
-		currentArmor = "Wood Armor";
-		currentWeapon = "Axe";
+		Inventory.AddArmor ("Wood Armor");
+		Inventory.AddArmor ("Crystal Armor");
+
+		Inventory.AddWeapon ("Axe");
+		Inventory.AddWeapon ("Spear");
 	}
 	#endregion
 
@@ -323,12 +321,12 @@ public class InventoryScreen : MonoBehaviour {
 	}
 
 	// refresh the armor list
-	public static void UpdateArmorList(){
+	public static void UpdateArmorList(string name){
 		if (contentPanel != null) {
 			foreach(Transform child in contentPanel.transform){
 				SampleArmorButton sab = child.GetComponent<SampleArmorButton>();
 				if(sab){
-					if(sab.nameLable.text != currentArmor){
+					if(sab.nameLable.text != name){
 						sab.button.interactable = true;
 						sab.equipped = false;
 					}else{
@@ -341,12 +339,12 @@ public class InventoryScreen : MonoBehaviour {
 	}
 
 	// refresh the weapon list
-	public static void UpdateWeaponList(){
+	public static void UpdateWeaponList(string name){
 		if (contentPanel != null) {
 			foreach(Transform child in contentPanel.transform){
 				SampleWeaponButton swb = child.GetComponent<SampleWeaponButton>();
 				if(swb){
-					if(swb.nameLable.text != currentWeapon){
+					if(swb.nameLable.text != name){
 						swb.button.interactable = true;
 						swb.equipped = false;
 					}else{
