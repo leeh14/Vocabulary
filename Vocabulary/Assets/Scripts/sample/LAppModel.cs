@@ -187,31 +187,34 @@ public class LAppModel :L2DBaseModel
         double timeSec = timeMSec / 1000.0;
         double t = timeSec * 2 * Math.PI;
 
-        
-        //if (mainMotionManager.isFinished())
-        //{   
-         //   StartRandomMotion(LAppDefine.MOTION_GROUP_IDLE, LAppDefine.PRIORITY_IDLE);
+
+        if (mainMotionManager.isFinished())
+        {   
+            int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_IDLE);
+            int no = (int)(rand.NextDouble() * max);
+            Debug.Log("DSAFDSAFSFSAFD" + no);
+            StartMotion(LAppDefine.MOTION_GROUP_IDLE, no, 1);
+        }
+
+        //		if (Input.GetButton ("Fire1") && mainMotionManager.isFinished()) 
+        //		{
+        //			if(TapEvent(Input.mousePosition.x,Input.mousePosition.y) == true)
+        //			{
+        //				Debug.Log("tap hit");
+        //				int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
+        //				int no = (int)(rand.NextDouble() * max);
+        //				StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
+        //			}
+        //			//Debug.Log(Input.mousePosition.x + Input.mousePosition.y);
+        //			if(HitTest(LAppDefine.HIT_AREA_HEAD,Input.mousePosition.x,Input.mousePosition.y))
+        //			{
+        //				Debug.Log("ahit");
+        //				int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
+        //				int no = (int)(rand.NextDouble() * max);
+        //				StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
+        //			}
+
         //}
-
-//		if (Input.GetButton ("Fire1") && mainMotionManager.isFinished()) 
-//		{
-//			if(TapEvent(Input.mousePosition.x,Input.mousePosition.y) == true)
-//			{
-//				Debug.Log("tap hit");
-//				int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
-//				int no = (int)(rand.NextDouble() * max);
-//				StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
-//			}
-//			//Debug.Log(Input.mousePosition.x + Input.mousePosition.y);
-//			if(HitTest(LAppDefine.HIT_AREA_HEAD,Input.mousePosition.x,Input.mousePosition.y))
-//			{
-//				Debug.Log("ahit");
-//				int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
-//				int no = (int)(rand.NextDouble() * max);
-//				StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
-//			}
-
-		//}
         //-----------------------------------------------------------------
         live2DModel.loadParam();
 
@@ -336,7 +339,7 @@ public class LAppModel :L2DBaseModel
     public void StartMotion(string group, int no, int priority)
     {
         string motionName = modelSetting.GetMotionFile(group, no);
-
+        
         if (motionName == null || motionName.Equals(""))
         {
             if (LAppDefine.DEBUG_LOG) Debug.Log("Motion name is invalid");
