@@ -33,8 +33,15 @@ public class SampleRecipeButton : MonoBehaviour {
 
 	// update the info after craft
 	public void UpdateDisplay(){
-		Destroy(detailPanel);
-		CreatePanel();
+		foreach (Transform gb in this.transform.parent) {
+			if(gb.GetComponent<SampleRecipeButton>() != null){
+				SampleRecipeButton srb = gb.GetComponent<SampleRecipeButton>();
+				if(srb.panelOpen){
+					Destroy(srb.detailPanel);
+					srb.CreatePanel();
+				}
+			}
+		}
 	}
 
 	// create the panel
