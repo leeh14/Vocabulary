@@ -10,6 +10,7 @@ public class GameMaster_Control : MonoBehaviour{
 	//public GameObject Enemies2;
 	private GameObject CurrentEnemy;
 	private List<GameObject> AvailableEnemies = new List<GameObject>();
+	private GameObject Background;
 	public GameObject player;
 	public Mesh livemesh;
 	public List<string[]> questions;
@@ -30,31 +31,33 @@ public class GameMaster_Control : MonoBehaviour{
 		GenericArmor DebugArmor = new WoodArmor();
 		player.GetComponent<Player>().SetArmor(DebugArmor);
 
+		Background = GameObject.FindGameObjectWithTag("bg");
+
     }
 
     // Update is called once per frame
     void Update() {
-		if(Input.GetKey(KeyCode.A))
-		{
-			Debug.Log("switch to axe");
-			DebugWeapon = new Axe();
-			player.GetComponent<Player>().SetWeapon(DebugWeapon);
-		}else if (Input.GetKey(KeyCode.S))
-		{
-			Debug.Log("switch tp spear");
-			DebugWeapon = new Spear();
-			player.GetComponent<Player>().SetWeapon(DebugWeapon);
-		}
-		else if(Input.GetKey(KeyCode.W))
-		{
-			GenericArmor DebugArmor = new WoodArmor();
-			player.GetComponent<Player>().SetArmor(DebugArmor);
-		}
-		else if(Input.GetKey(KeyCode.C))
-		{
-			GenericArmor DebugArmor = new CrystalArmor();
-			player.GetComponent<Player>().SetArmor(DebugArmor);
-		}
+//		if(Input.GetKey(KeyCode.A))
+//		{
+//			Debug.Log("switch to axe");
+//			DebugWeapon = new Axe();
+//			player.GetComponent<Player>().SetWeapon(DebugWeapon);
+//		}else if (Input.GetKey(KeyCode.S))
+//		{
+//			Debug.Log("switch tp spear");
+//			DebugWeapon = new Spear();
+//			player.GetComponent<Player>().SetWeapon(DebugWeapon);
+//		}
+//		else if(Input.GetKey(KeyCode.W))
+//		{
+//			GenericArmor DebugArmor = new WoodArmor();
+//			player.GetComponent<Player>().SetArmor(DebugArmor);
+//		}
+//		else if(Input.GetKey(KeyCode.C))
+//		{
+//			GenericArmor DebugArmor = new CrystalArmor();
+//			player.GetComponent<Player>().SetArmor(DebugArmor);
+//		}
     }
     //keep the data here
     void Awake() {
@@ -124,6 +127,8 @@ public class GameMaster_Control : MonoBehaviour{
 	//future add argument a list of enemiers
 	public void BeginBattle(List<string> Enemy)
     {
+		//load the background image
+		Background.GetComponent<Background>().LoadCombatBG();
         ClearMenu();
         //CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
 		//Iterate through list of enemies and generate corresponding prefabs
@@ -175,6 +180,7 @@ public class GameMaster_Control : MonoBehaviour{
 	public void CreateBattle(string name)
 	{
 		Debug.Log("create");
+		Background.GetComponent<Background>().LoadQuestionbg1();
 		foreach (GameObject ene in AvailableEnemies)
 		{
 			if(ene.name == name)
@@ -194,6 +200,8 @@ public class GameMaster_Control : MonoBehaviour{
     //the multiple choices for combat
     public void BeginCombat(string[] data)
     {
+		Debug.Log("combat");
+		Background.GetComponent<Background>().LoadQuestionbg1();
         ClearMenu();
         CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/CombatQuestion"));
         //add the questions to the buttons
