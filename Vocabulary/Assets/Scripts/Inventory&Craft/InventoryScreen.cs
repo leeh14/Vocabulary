@@ -18,8 +18,6 @@ public class InventoryScreen : MonoBehaviour {
 	private GameObject InventoryButton;
 	private GameObject RecipeButton;
 	private GameObject BackButton;
-	private GameObject SaveButton;
-	private GameObject LoadButton;
 	private GameObject ArmorButton;
 	private GameObject WeaponButton;
 
@@ -36,8 +34,6 @@ public class InventoryScreen : MonoBehaviour {
 	public GameObject InventoryButtonPf;
 	public GameObject RecipeButtonPf;
 	public GameObject BackButtonPf;
-	public GameObject SaveButtonPf;
-	public GameObject LoadButtonPf;
 	public GameObject ArmorButtonPf;
 	public GameObject WeaponButtonPf;
 
@@ -90,20 +86,6 @@ public class InventoryScreen : MonoBehaviour {
 		UnityEngine.Events.UnityAction ClickWeapon = () => {
 			this.WeaponButtonClick();};
 		WeaponButton.GetComponent<Button> ().onClick.AddListener (ClickWeapon);
-
-		// Save Button
-		SaveButton = Instantiate (SaveButtonPf) as GameObject;
-		SaveButton.transform.SetParent (canvas, false);
-		UnityEngine.Events.UnityAction ClickSave = () => {
-			this.SaveButtonClick();};
-		SaveButton.GetComponent<Button>().onClick.AddListener(ClickSave);
-
-		// Load Button
-		LoadButton = Instantiate (LoadButtonPf) as GameObject;
-		LoadButton.transform.SetParent (canvas, false);
-		UnityEngine.Events.UnityAction ClickLoad = () => {
-			this.LoadButtonClick();};
-		LoadButton.GetComponent<Button>().onClick.AddListener(ClickLoad);
 	}
 
 	// Create Item List Panel
@@ -233,16 +215,6 @@ public class InventoryScreen : MonoBehaviour {
 		PopulateWeaponList ();
 	}
 
-	// onclick for save
-	public void SaveButtonClick(){
-		Inventory.Save ();
-	}
-	
-	// onclick for load
-	public void LoadButtonClick(){
-		Inventory.Load ();
-	}
-	
 	// onclick for make in recipe menu
 	public static void MakeClick(string name){
 		Inventory.MakeProduct (name);

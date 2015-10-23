@@ -33,7 +33,13 @@ public class GameMaster_Control : MonoBehaviour{
 
 		Background = GameObject.FindGameObjectWithTag("bg");
 
+		this.transform.GetComponent<DataBase> ().Load ();
     }
+
+	// on game exit
+	void OnApplicationQuit(){
+		this.transform.GetComponent<DataBase> ().Save ();
+	}
 
     // Update is called once per frame
     void Update() {

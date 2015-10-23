@@ -35,35 +35,6 @@ public class Inventory : MonoBehaviour {
 		_RemoveIndex = new List<int>();
 	}
 
-	#region Save & Load
-	// Save Data
-	public static void Save(){
-
-		BinaryFormatter bf = new BinaryFormatter ();
-		FileStream file = File.Create(Application.persistentDataPath + "/InventoryData.dat");
-		InventoryData data = new InventoryData ();
-		data._Items = _Items;
-		data._Recipes = _Recipes;
-
-		bf.Serialize (file, data);
-		file.Close ();
-	}
-
-	// Load Data
-	public static void Load(){
-
-		if (File.Exists (Application.persistentDataPath + "/InventoryData.dat")) {
-			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath + "/InventoryData.dat", FileMode.Open);
-			InventoryData data = (InventoryData)bf.Deserialize(file);
-			file.Close ();
-
-			_Items = data._Items;
-			_Recipes = data._Recipes;
-		}
-	}
-	#endregion
-
 	#region Item
 	// type: 0 - armor, 1 - weapons, 2 - material, 3 - potion
 	// Add / find a item and throw into items 
