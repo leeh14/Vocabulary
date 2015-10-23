@@ -46,6 +46,7 @@ public class InventoryScreen : MonoBehaviour {
 
 	public GameObject ItemListButtonPf;
 	public GameObject RecipeListButtonPf;
+	public GameObject RecipePanelPf;
 	public GameObject ArmorListButtonPf;
 	public GameObject WeaponListButtonPf;
 	#endregion
@@ -147,14 +148,15 @@ public class InventoryScreen : MonoBehaviour {
 
 	// Populate the recipe list
 	void PopulateRecipeList(){
+		int i = 0;
 		foreach (Recipe re in Inventory._Recipes) {
 			GameObject newButton = Instantiate(RecipeListButtonPf) as GameObject;
 			SampleRecipeButton sib = newButton.GetComponent<SampleRecipeButton>();
-			sib.nameLable.text = re.name;
-			sib.icon.sprite = Resources.Load<Sprite>(re.name);
+			sib.nameLabel.text = re.name;
+			sib.index = i;
 			sib.canMake = Inventory.CanMake(re.name);
-			sib.button.interactable = sib.canMake;
 			newButton.transform.SetParent(contentPanel, false);
+			i++;
 		}
 	}
 
@@ -240,14 +242,13 @@ public class InventoryScreen : MonoBehaviour {
 	public void LoadButtonClick(){
 		Inventory.Load ();
 	}
-
 	
 	// onclick for make in recipe menu
 	public static void MakeClick(string name){
 		Inventory.MakeProduct (name);
 		UpdateRecipeList(name);
 	}
-	
+
 	// onclick for change armor in armor
 	public static void ArmorChange(string name){
 		Inventory.ChangeArmor (name);

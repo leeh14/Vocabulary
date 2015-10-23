@@ -115,6 +115,19 @@ public class Inventory : MonoBehaviour {
 		}
 	}// end of RemoveUpdate
 
+	// check how much of this item the player have
+	public static int CheckItem(string name){
+	
+		// find the item
+		foreach(Item it in _Items){
+			if(it.name == name){
+				return it.amount;
+			}
+		}
+		
+		return 0;
+	}
+
 	#endregion
 
 	#region Armor and Weapon
@@ -196,6 +209,20 @@ public class Inventory : MonoBehaviour {
 	#endregion
 
 	#region Utilities
+
+	// check if enough of this material
+	public static bool CheckEnough(string name, int amount){
+		bool enough = false;
+		foreach(Item it in _Items){
+			if(it.name == name){
+				if(it.amount >= amount){
+					enough = true;
+				}
+				break;
+			}
+		}
+		return enough;
+	}
 
 	// check if a product can be make
 	public static bool CanMake(string name){
