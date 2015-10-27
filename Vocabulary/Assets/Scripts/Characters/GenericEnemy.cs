@@ -8,6 +8,7 @@ public class GenericEnemy : MonoBehaviour {
     public int Damage;
 	public string name;
 	public bool Alive = true;
+	public bool Active = false;
 	// Use this for initialization
 	void Start () {
 		master = GameObject.FindGameObjectWithTag ("GameMaster");
@@ -24,7 +25,7 @@ public class GenericEnemy : MonoBehaviour {
 	}
 	public void OnMouseOver()
 	{
-		if (Input.GetButton ("Fire1")) {
+		if (Input.GetButton ("Fire1") && master.GetComponent<GameMaster_Control>().InBattle == false) {
 			Debug.Log("works" + gameObject.name);
             if (gameObject.name == "Goblin2")
             {

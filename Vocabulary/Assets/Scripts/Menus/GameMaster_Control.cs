@@ -17,6 +17,8 @@ public class GameMaster_Control : MonoBehaviour{
 	public QuestionData CurrentQuestion;
 	public bool TurnContinue = false;
 	public Inventory Inventory = new Inventory();
+
+	public bool InBattle =false;
 	private GenericWeapon DebugWeapon;
     // Use this for initialization
     void Start() {
@@ -159,9 +161,9 @@ public class GameMaster_Control : MonoBehaviour{
 		for (int m = 0 ; m < Enemy.Count; m ++)
 		{
 			Debug.Log(Enemy[m]);
-			if (Enemy[m] == "Goblin")
+			if (Enemy[m] == "Slime")
 			{
-				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Testingshizuku"));
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Slime"));
 				if(Enemy.Count > 1)
 				{
 					if(m ==  0)
@@ -177,7 +179,7 @@ public class GameMaster_Control : MonoBehaviour{
 				}
 			}
 			Enemies.name = Enemies.name + m;
-			Enemies.GetComponent<Goblin>().SetMaster(gameObject);
+			Enemies.GetComponent<Slime>().SetMaster(gameObject);
 			AvailableEnemies.Add(Enemies);
 		}
 
@@ -186,6 +188,7 @@ public class GameMaster_Control : MonoBehaviour{
 	public void CreateBattle(string name)
 	{
 		Debug.Log("create");
+		InBattle = true;
 		Background.GetComponent<Background>().LoadQuestionbg1();
 		foreach (GameObject ene in AvailableEnemies)
 		{
@@ -227,10 +230,11 @@ public class GameMaster_Control : MonoBehaviour{
 
 			StartCoroutine(WaitTurn(player.GetComponent<Player>().DealDamage()));
 
-			CurrentEnemy.GetComponent<Goblin> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
+			CurrentEnemy.GetComponent<GenericEnemy> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
 		
 			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
-			if (CurrentEnemy.GetComponent<Goblin> ().Alive == false) {
+
+			if (CurrentEnemy.GetComponent<GenericEnemy> ().Alive == false) {
 				//go through list and remove enemy
 				//StartCoroutine(DropItem("Apple"));
 				Debug.Log("dead");
@@ -275,7 +279,7 @@ public class GameMaster_Control : MonoBehaviour{
 	#region coroutines
 	public IEnumerator WaitTurn(int dmg)
 	{
-		yield return StartCoroutine (PlayerTurn (dmg, CurrentEnemy.name));
+		yield return StartCoroutine (PlayerTurn (dmg, CurrentEnemy.GetComponent<GenericEnemy>().name));
 	}
 	public IEnumerator WaitItem()
 	{
@@ -305,8 +309,8 @@ public class GameMaster_Control : MonoBehaviour{
 				TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
 				Text combat = TextMenu.GetComponentInChildren<Text>();
 				combat.verticalOverflow = VerticalWrapMode.Overflow;
-				combat.text = "Goblin deals " + CurrentEnemy.GetComponent<Goblin>().Damage +" damage to you.";
-				player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<Goblin>().Damage );
+				combat.text = CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.";
+				player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
 
 			}else
 			{
@@ -314,7 +318,7 @@ public class GameMaster_Control : MonoBehaviour{
 			}
 
 			yield return new WaitForSeconds(2f);
-
+			InBattle = false;
 			StopAllCoroutines ();
 			//reset 
 
@@ -327,7 +331,7 @@ public class GameMaster_Control : MonoBehaviour{
 		TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
 		Text combat = TextMenu.GetComponentInChildren<Text>();
 		combat.verticalOverflow = VerticalWrapMode.Overflow;
-		combat.text = "goblin drops " + itemname;
+		combat.text = CurrentEnemy.GetComponent<GenericEnemy>().name +" drops " + itemname;
 		yield return new WaitForSeconds(2f);
 	}
 	#endregion

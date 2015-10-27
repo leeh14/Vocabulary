@@ -81,13 +81,10 @@ public class MapLevels : MonoBehaviour {
 		for (int i = 0; i <= amount ; i++)
 		{
 			//randoomizze the different names of the enemies
-			string mon = "Goblin";
+			string mon = "Slime";
 			Monsters.Add(mon);
 		}
-//		foreach(string s in Monsters)
-//		{
-//			Debug.Log(s);
-//		}
+
 		return Monsters;
 	}
 	// Debug upload data
