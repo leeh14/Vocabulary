@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 public class Player : MonoBehaviour {
     public int Health;
+	public int MaxHealth;
     public GenericArmor CurrentArmor;
 	public int Damage =1;
 	public GenericWeapon CurrentWeapon;
@@ -12,9 +13,12 @@ public class Player : MonoBehaviour {
     // Use this for initialization
     void Start() {
 		Health = 3;
+		MaxHealth = 20;
 		//CurrentArmor = 1;
     }
-
+	void Awake() {
+		DontDestroyOnLoad(transform.gameObject);
+	}
     // Update is called once per frame
     void Update() {
         
@@ -36,7 +40,7 @@ public class Player : MonoBehaviour {
 	{
 
 		CurrentWeapon = weapon;
-		Debug.Log("seweapon" + CurrentWeapon.Damage);
+		//Debug.Log("seweapon" + CurrentWeapon.Damage);
 	}
 	public void SetArmor(GenericArmor arm)
 	{
@@ -50,7 +54,6 @@ public class Player : MonoBehaviour {
 	{
 		damage -= CurrentArmor.Armor;
 		Health -= damage;
-		Debug.Log ("Player" + Health);
 		if (Health <= 0) {
 			Alive = false;
 		}

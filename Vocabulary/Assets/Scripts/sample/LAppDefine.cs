@@ -40,7 +40,9 @@ public class LAppDefine
 	public const string MOTION_GROUP_FLICK_HEAD		="flick_head";	
 	public const string MOTION_GROUP_PINCH_IN		="pinch_in";	
 	public const string MOTION_GROUP_PINCH_OUT		="pinch_out";	
-	public const string MOTION_GROUP_SHAKE			="shake";		
+	public const string MOTION_GROUP_SHAKE			="shake";
+	public const string MOTION_GROUP_ATTACK			="attack";
+	public const string MOTION_GROUP_DAMAGED		="damaged";
 	
 	
 	public const string HIT_AREA_HEAD				="head";

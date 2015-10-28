@@ -8,6 +8,7 @@ public class StaffofVisions : GenericWeapon {
 		name = "StaffofVisions";
 		Damage = 3;
 		AffectAnswers = true;
+		Special = true;
 	}
 	public override void SpecialMove (int dmg, System.Collections.Generic.List<GameObject> Enemies)
 	{

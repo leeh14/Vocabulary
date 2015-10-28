@@ -158,9 +158,15 @@ public class LAppModel :L2DBaseModel
 
     public void GetDamaged()
 	{
-		int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_SHAKE);
+		int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_DAMAGED);
 		int no = (int)(rand.NextDouble() * max);
-		StartMotion(LAppDefine.MOTION_GROUP_SHAKE, no, 1);
+		StartMotion(LAppDefine.MOTION_GROUP_DAMAGED, no, 2);
+	}
+	public void AttackAnimation()
+	{
+		int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_ATTACK);
+		int no = (int)(rand.NextDouble() * max);
+		StartMotion(LAppDefine.MOTION_GROUP_ATTACK, no, 3);
 	}
     public void Update()
     {
@@ -192,7 +198,7 @@ public class LAppModel :L2DBaseModel
         {   
             int max = modelSetting.GetMotionNum(LAppDefine.MOTION_GROUP_IDLE);
             int no = (int)(rand.NextDouble() * max);
-            Debug.Log("DSAFDSAFSFSAFD" + no);
+            //Debug.Log("DSAFDSAFSFSAFD" + no);
             StartMotion(LAppDefine.MOTION_GROUP_IDLE, no, 1);
         }
 
@@ -339,7 +345,7 @@ public class LAppModel :L2DBaseModel
     public void StartMotion(string group, int no, int priority)
     {
         string motionName = modelSetting.GetMotionFile(group, no);
-        
+		Debug.Log("motion start" + motionName);
         if (motionName == null || motionName.Equals(""))
         {
             if (LAppDefine.DEBUG_LOG) Debug.Log("Motion name is invalid");

@@ -17,9 +17,12 @@ public class GameMaster_Control : MonoBehaviour{
 	public QuestionData CurrentQuestion;
 	public bool TurnContinue = false;
 	public Inventory Inventory = new Inventory();
-
+	public bool HideAnswer = false;
 	public bool InBattle =false;
 	private GenericWeapon DebugWeapon;
+	private string CurrentEnemyName = "";
+	private bool RoundOver = false;
+	private bool loadback = false;
     // Use this for initialization
     void Start() {
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -54,9 +57,13 @@ public class GameMaster_Control : MonoBehaviour{
 		}else if (Input.GetKey(KeyCode.S))
 		{
 			Debug.Log("switch tp staff");
-			DebugWeapon = new StaffofVisions
-				();
+			DebugWeapon = new StaffofVisions();
 			player.GetComponent<Player>().SetWeapon(DebugWeapon);
+		}
+		if(loadback == true)
+		{
+			LoadMap();
+			loadback = false;
 		}
 //		else if(Input.GetKey(KeyCode.W))
 //		{
@@ -78,6 +85,8 @@ public class GameMaster_Control : MonoBehaviour{
 	public void LoadMenu()
 	{
 		ClearMenu ();
+		Debug.Log("loading");
+		Background.GetComponent<Background>().LoadStart();
 		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
 	}
 	public void RedoBattle()
@@ -115,6 +124,7 @@ public class GameMaster_Control : MonoBehaviour{
 		Destroy (TextMenu);
 
 	}
+	//Clear the enemies
 	public void ClearEnemies()
 	{
 		for(int i = 0; i < AvailableEnemies.Count; i ++)
@@ -123,11 +133,13 @@ public class GameMaster_Control : MonoBehaviour{
 		}
 		AvailableEnemies.Clear();
 	}
+	//go to the inventory
     public void LoadInventory()
     {
         ClearMenu();
         gameObject.GetComponent<InventoryScreen>().StartInventory();
     }
+	//goes to map menu
 	public void LoadMap()
 	{
 		ClearMenu();
@@ -135,9 +147,10 @@ public class GameMaster_Control : MonoBehaviour{
 	}
 	#endregion
 	#region Combat
-	//future add argument a list of enemiers
+	//loads the enemies onto the screen
 	public void BeginBattle(List<string> Enemy)
     {
+		Debug.Log("yeah");
 		//load the background image
 		Background.GetComponent<Background>().LoadCombatBG();
         ClearMenu();
@@ -171,12 +184,12 @@ public class GameMaster_Control : MonoBehaviour{
 				{
 					if(m ==  0)
 					{
-						Enemies.transform.position = new Vector3 (4.3f, 13f, 1f);
+						Enemies.transform.position = new Vector3 (4.5f, 13f, 1f);
 						Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
 					}
 					else 
 					{
-						Enemies.transform.position = new Vector3 (-3.5f, 13f, 1f);
+						Enemies.transform.position = new Vector3 (-1.5f, 13f, 1f);
 						Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
 					}
 				}
@@ -188,6 +201,7 @@ public class GameMaster_Control : MonoBehaviour{
 
 
     }
+	//loading the battle menu
 	public void CreateBattle(string name)
 	{
 		InBattle = true;
@@ -199,11 +213,6 @@ public class GameMaster_Control : MonoBehaviour{
 				CurrentEnemy = ene;
 			}
 		}
-//		if (name == "Goblin1") {
-//			CurrentEnemy = Enemies;
-//		} else {
-//			CurrentEnemy = Enemies2;
-//		}
 		ClearMenu();
 
 		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
@@ -222,6 +231,11 @@ public class GameMaster_Control : MonoBehaviour{
         //add the questions to the buttons
 		CurrentQuestion = new QuestionData(data);
 		//Debug.Log (question);
+		if(HideAnswer == true)
+		{
+			CurrentMenu.GetComponent<CombatQuestion>().RemoveAnswer();
+			HideAnswer = false;
+		}
 		CurrentMenu.GetComponent<CombatQuestion>().CreateQuestions(CurrentQuestion);
 	}
 	
@@ -230,7 +244,11 @@ public class GameMaster_Control : MonoBehaviour{
 	{
 		bool correct = obj.CheckAnswer (playerchoice);
 		ClearMenu ();
-
+		//reenable vision of enemies 
+		foreach (GameObject en in AvailableEnemies)
+		{
+			en.SetActive(true);
+		}
 
 		if (correct) {
 
@@ -240,48 +258,53 @@ public class GameMaster_Control : MonoBehaviour{
 //			CurrentEnemy.GetComponent<GenericEnemy> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
 //		
 //			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
-			if(player.GetComponent<Player>().CurrentWeapon.Special  == true && player.GetComponent<Player>().CurrentWeapon.Special  == true  )
+			if(player.GetComponent<Player>().CurrentWeapon.Special  == true && player.GetComponent<Player>().CurrentWeapon.AffectAnswers == true )
 			{
-				CurrentMenu.GetComponent<CombatQuestion>().RemoveAnswer();
+				HideAnswer = true;
 			}
 			if (CurrentEnemy.GetComponent<GenericEnemy> ().Alive == false) {
 				//go through list and remove enemy
 				//StartCoroutine(DropItem("Apple"));
 				//StartCoroutine(WaitItem());
-				AvailableEnemies.Remove(CurrentEnemy);
 
+				RoundOver = true;
+
+				AvailableEnemies.Remove(CurrentEnemy);
+				//iterate thorught the rest of enemies in case of cleave damage
+				for(int i = 0; i < AvailableEnemies.Count; i ++)
+				{
+					if(AvailableEnemies[i].GetComponent<GenericEnemy>().Alive == false)
+					{
+						AvailableEnemies.RemoveAt(i);
+					}
+				}
 				if(AvailableEnemies.Count ==  0)
 				{
+					RoundOver = true;
 					Debug.Log("end");
-					//go back to main menu after killing enemies
-					ClearMenu ();
-					LoadMenu ();
-					//need to drop random item
-					Inventory.AddItem(2,"apples",1);
-					//adding the definition of the word into learned dictionary
-					player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
+					//ClearMenu ();
+					//LoadMenu ();
 					return;
 				}
-				ClearMenu();
+				//ClearMenu();
 
 			}
 
 
 		} else {
-			player.GetComponent<Player> ().ReceiveDamage (2);
+			player.GetComponent<Player> ().ReceiveDamage (CurrentEnemy.GetComponent<GenericEnemy>().Damage);
+			//determine if player is alive
 			if (player.GetComponent<Player> ().Alive == false) {
 				//player is dead
 				ClearMenu ();
 				CurrentMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/BattleLost"));
-
 				return;
 			}
+			//show enemy dealing damage
+			TurnContinue = false;
+			StartCoroutine(EnemyTurn());
 
 		}
-		//Let the enemy go and attack
-//		if (TurnContinue == true) {
-//			StartCoroutine (EnemyTurn ());
-//		}
 
 
 	}
@@ -290,18 +313,14 @@ public class GameMaster_Control : MonoBehaviour{
 	{
 		yield return StartCoroutine (PlayerTurn (dmg, CurrentEnemy.GetComponent<GenericEnemy>().name));
 	}
-	public IEnumerator WaitItem()
-	{
-		ClearMenu();
-		yield return StartCoroutine(DropItem("apple"));
-	}
 	public IEnumerator PlayerTurn(int damage, string enemyname)
 	{
+		CurrentEnemyName = enemyname;
 		TurnContinue = true;
 		bool dealt = false;
 		//deal damage to enemies
 		string combattext = "";
-		if(player.GetComponent<Player>().CurrentWeapon.Special == true)
+		if(player.GetComponent<Player>().CurrentWeapon.Special == true && player.GetComponent<Player>().CurrentWeapon.AffectAnswers == false)
 		{
 			player.GetComponent<Player>().CurrentWeapon.SpecialMove(damage, AvailableEnemies);
 			dealt = true;
@@ -312,27 +331,27 @@ public class GameMaster_Control : MonoBehaviour{
 			temp.Add(CurrentEnemy);
 			player.GetComponent<Player>().CurrentWeapon.DealDamage(damage, temp);
 		}
-		//CurrentEnemy.GetComponent<GenericEnemy> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
 		if(dealt == true)
 		{
 			foreach(GameObject e in AvailableEnemies)
 			{
 				combattext += "You have dealt " + damage + " to " + e.GetComponent<GenericEnemy>().name + "\n";
+				e.GetComponent<LAppModelProxy>().model.GetDamaged();
 			}
 		}
 		else
 		{
 			combattext = "You have dealt " + damage + " to " + enemyname;
+			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
 		}
-		//animation here
-		CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
+
 		//combat text
 		TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
 		Text combat = TextMenu.GetComponentInChildren<Text>();
 		combat.verticalOverflow = VerticalWrapMode.Overflow;
 		combat.text = combattext;
 
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(3f);
 		//TurnContinue = false;
 		TurnContinue = false;
 		Destroy (TextMenu);
@@ -344,15 +363,21 @@ public class GameMaster_Control : MonoBehaviour{
 		{
 			if(CurrentEnemy != null)
 			{
+				//attack animation
+				CurrentEnemy.GetComponent<LAppModelProxy>().model.AttackAnimation();
+
+				//combat text
 				TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
 				Text combat = TextMenu.GetComponentInChildren<Text>();
 				combat.verticalOverflow = VerticalWrapMode.Overflow;
 				combat.text = CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.";
 				player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
 
-			}else
+			}
+			else
 			{
 				StartCoroutine(DropItem("apple"));
+
 			}
 
 			yield return new WaitForSeconds(2f);
@@ -360,9 +385,12 @@ public class GameMaster_Control : MonoBehaviour{
 			//disable vision of enemies 
 			foreach (GameObject en in AvailableEnemies)
 			{
-				en.SetActive(true);
+				if(en != null)
+				{
+					en.SetActive(true);
+			
+				}
 			}
-
 			StopAllCoroutines ();
 			//reset 
 
@@ -375,8 +403,24 @@ public class GameMaster_Control : MonoBehaviour{
 		TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
 		Text combat = TextMenu.GetComponentInChildren<Text>();
 		combat.verticalOverflow = VerticalWrapMode.Overflow;
-		combat.text = CurrentEnemy.GetComponent<GenericEnemy>().name +" drops " + itemname;
+		combat.text = CurrentEnemyName +" drops " + itemname;
 		yield return new WaitForSeconds(2f);
+		//Debug.Log("round" + RoundOver);
+		if(RoundOver == true)
+		{
+
+			//go back to main menu after killing enemies
+			//Debug.Log("inside");
+			//ClearMenu ();
+			//LoadMenu ();
+			//CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
+			//need to drop random item
+			//Inventory.AddItem(2,"apples",1);
+			//adding the definition of the word into learned dictionary
+			player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
+			RoundOver = false;
+			loadback = true;
+		}
 	}
 	#endregion
 	#endregion

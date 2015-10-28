@@ -11,6 +11,14 @@
 		[
 			{"file":"motions/SlimerG Idle.mtn" },
 			{"file":"motions/SlimerG Idle2.mtn"}
+		],
+		"attack":
+		[
+			{"file":"motions/SlimerGAttack.mtn"}
+		],
+		"damaged":
+		[
+			{"file":"motions/SlimerGHurt.mtn"}
 		]
 	}
 }

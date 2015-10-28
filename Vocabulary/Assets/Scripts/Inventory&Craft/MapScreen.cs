@@ -89,11 +89,11 @@ public class MapScreen : MonoBehaviour {
 //			i++;
 //		}
 
-		BackButton = Instantiate (BackButtonPf) as GameObject;
-		BackButton.transform.SetParent (canvas, false);
-		UnityEngine.Events.UnityAction ClickBack = () => {
-			this.BackToMap();};
-		BackButton.GetComponent<Button>().onClick.AddListener(ClickBack);
+//		BackButton = Instantiate (BackButtonPf) as GameObject;
+//		BackButton.transform.SetParent (canvas, false);
+//		UnityEngine.Events.UnityAction ClickBack = () => {
+//			this.BackToMap();};
+//		BackButton.GetComponent<Button>().onClick.AddListener(ClickBack);
 	}
 
 	// when a map is clicked, load the levels

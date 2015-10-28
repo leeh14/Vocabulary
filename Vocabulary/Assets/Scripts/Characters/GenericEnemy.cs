@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class GenericEnemy : MonoBehaviour {
 	public GameObject master;
     public int Health;
@@ -9,6 +9,7 @@ public class GenericEnemy : MonoBehaviour {
 	public string name;
 	public bool Alive = true;
 	public bool Active = false;
+	public List<Item> Droppable = new List<Item>();
 	// Use this for initialization
 	void Start () {
 		master = GameObject.FindGameObjectWithTag ("GameMaster");
@@ -26,7 +27,7 @@ public class GenericEnemy : MonoBehaviour {
 	public void OnMouseOver()
 	{
 		if (Input.GetButton ("Fire1") && master.GetComponent<GameMaster_Control>().InBattle == false) {
-			Debug.Log("works" + gameObject.name);
+			//Debug.Log("works" + gameObject.name);
             if (gameObject.name == "Goblin2")
             {
                 master.GetComponent<GameMaster_Control>().questions = master.GetComponent<GameMaster_Control>().GenerateMediumQuestions();
