@@ -1,0 +1,18 @@
+{
+	var questions = {
+		qlist: [
+			{
+				qstring: "The prize competition was ____ as a showcase for new technology, but instead the competition was marred by disqualifications and disputes.",
+				correct: ["touted","heralded"],
+				wrong: ["disappointing","conceived","promising","required"]
+			},
+			{
+				qstring: "The new institute provides intensive postgraduate teaching to a wide range of students, in the hope that these students will use their knowledge to boost the country's ____ economy.",
+				correct: ["languishing","flagging"],
+				wrong: ["emerging","booming","domestic","bankrupt"]
+			}
+		],
+		qtype: "magic"
+	
+	}
+}
