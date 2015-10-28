@@ -1,0 +1,18 @@
+{
+	var questions = {
+		qlist: [
+			{
+				qstring: "With his sub-four minute mile Bannister broke a psychological barrier, and inspired thousands of others to attempt to overcome seemingly ____ hurdles.",
+				correct: "insurmountable",
+				wrong: ["inane","trivial","traumatic","ineffable"]
+			},
+			{
+				qstring: "All good comic writers use humor to ____, not to side-step the problems of human behavior.",
+				correct: "confront",
+				wrong: ["amuse","avert","juxtapose","solve"]
+			}
+		],
+		qtype: "standard"
+	
+	}
+}
