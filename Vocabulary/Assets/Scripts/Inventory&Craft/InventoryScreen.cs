@@ -8,41 +8,27 @@ public class InventoryScreen : MonoBehaviour {
 
 	#region Data
 	// Panel and canvas
-	public static Transform contentPanel;
-	private GameObject ItemListPanel;
-	private GameObject contentPanelObj;
 	private GameObject Canvas;
-	private Transform canvas;
+	private GameObject MainPanel;
+	private GameObject InventoryPanel;
+	private GameObject EquipPanel;
+	private GameObject RecipePanel;
+	private GameObject ItemListPanel;
 
-	// Main Screen Buttons
-	private GameObject InventoryButton;
-	private GameObject RecipeButton;
-	private GameObject BackButton;
-	private GameObject ArmorButton;
-	private GameObject WeaponButton;
-
-	// List item button
-	private GameObject ItemListButton;
-	private GameObject RecipeListButton;
-	private GameObject ArmorListButton;
-	private GameObject WeaponListButton;
-
-	// Reference
+	// list objects
+	public static GameObject contentPanel;
 	public static GameObject player;
-
+	
 	// Prefab
-	public GameObject InventoryButtonPf;
-	public GameObject RecipeButtonPf;
-	public GameObject BackButtonPf;
-	public GameObject ArmorButtonPf;
-	public GameObject WeaponButtonPf;
-
-	public GameObject ItemListPanelPf;
 	public GameObject CanvasPf;
+	public GameObject MainPanelPf;
+	public GameObject InventoryPanelPf;
+	public GameObject EquipPanelPf;
+	public GameObject RecipePanelPf;
+	public GameObject ItemListPanelPf;
 
 	public GameObject ItemListButtonPf;
 	public GameObject RecipeListButtonPf;
-	public GameObject RecipePanelPf;
 	public GameObject ArmorListButtonPf;
 	public GameObject WeaponListButtonPf;
 	#endregion
@@ -50,58 +36,55 @@ public class InventoryScreen : MonoBehaviour {
 	// Use this for initialization
 	public void StartInventory() {
 		Canvas = Instantiate (CanvasPf) as GameObject;
-		canvas = Canvas.transform;
 		player = GameObject.FindGameObjectWithTag("Player");
 		CreateMainScreen ();
 		JustDebug ();
 	}
 
-	#region functions
+	#region Main Screen
 	// Main screen with Inventory, Recipe, Armor, and Weapon Button
 	void CreateMainScreen(){
-		// Inventory button
-		InventoryButton = Instantiate (InventoryButtonPf) as GameObject;
-		InventoryButton.transform.SetParent (canvas, false);
-		UnityEngine.Events.UnityAction ClickInventory = () => {
-			this.InventoryButtonClick();};
-		InventoryButton.GetComponent<Button>().onClick.AddListener(ClickInventory);
-
-		// Recipe button
-		RecipeButton = Instantiate (RecipeButtonPf) as GameObject;
-		RecipeButton.transform.SetParent (canvas, false);
-		UnityEngine.Events.UnityAction ClickRecipe = () => {
-			this.RecipeButtonClick();};
-		RecipeButton.GetComponent<Button>().onClick.AddListener(ClickRecipe);
-
-		// Armor button
-		ArmorButton = Instantiate (ArmorButtonPf) as GameObject;
-		ArmorButton.transform.SetParent (canvas, false);
-		UnityEngine.Events.UnityAction ClickArmor = () => {
-			this.ArmorButtonClick();};
-		ArmorButton.GetComponent<Button> ().onClick.AddListener (ClickArmor);
-
-		// Weapon button
-		WeaponButton = Instantiate (WeaponButtonPf) as GameObject;
-		WeaponButton.transform.SetParent (canvas, false);
-		UnityEngine.Events.UnityAction ClickWeapon = () => {
-			this.WeaponButtonClick();};
-		WeaponButton.GetComponent<Button> ().onClick.AddListener (ClickWeapon);
+		MainPanel = Instantiate (MainPanelPf) as GameObject;
+		MainPanel.GetComponent<InventoryMainPanelScript> ()._IS = this;
+		MainPanel.transform.SetParent (Canvas.transform, false);
 	}
 
-	// Create Item List Panel
-	void CreateListPanel(){
-		ItemListPanel = Instantiate (ItemListPanelPf) as GameObject;
-		ItemListPanel.transform.SetParent (canvas, false);
-		contentPanelObj = GameObject.Find ("ContentPanel");
-		contentPanel = contentPanelObj.transform;
-
-		BackButton = Instantiate (BackButtonPf) as GameObject;
-		BackButton.transform.SetParent (canvas, false);
-		UnityEngine.Events.UnityAction ClickBackButton = () => {
-			this.BackButtonClick();};
-		BackButton.GetComponent<Button>().onClick.AddListener(ClickBackButton);
+	// onclick for goto Inventory
+	public void InventoryButtonClick(){
+		ClearCanvas ();
+		InventoryPanel = Instantiate (InventoryPanelPf) as GameObject;
+		InventoryPanel.GetComponent<InventoryListPanelScript> ()._IS = this;
+		contentPanel = InventoryPanel.GetComponent<InventoryListPanelScript> ().contentPanel;
+		InventoryPanel.transform.SetParent (Canvas.transform, false);
+		PopulateItemList ();
+	}
+	
+	// onclick for goto Equip
+	public void EquipButtonClick(){
+		ClearCanvas ();
+		EquipPanel = Instantiate (EquipPanelPf) as GameObject;
+		EquipPanel.GetComponent<EquipPanelScript> ()._IS = this;
+		EquipPanel.transform.SetParent (Canvas.transform, false);
+	}
+	
+	// onclick for goto Recipe
+	public void RecipeButtonClick(){
+		ClearCanvas ();
+		RecipePanel = Instantiate (RecipePanelPf) as GameObject;
+		RecipePanel.GetComponent<RecipePanelScript> ()._IS = this;
+		contentPanel = RecipePanel.GetComponent<RecipePanelScript> ().contentPanel;
+		RecipePanel.transform.SetParent (Canvas.transform, false);
+		PopulateRecipeList ();
 	}
 
+	// onclick for back to main
+	public void BackButtonClick(){
+		ClearCanvas ();
+		CreateMainScreen ();
+	}
+	#endregion
+
+	#region Inventory Screen
 	// Populate the item list
 	void PopulateItemList(){
 		foreach (Item ib in Inventory._Items) {
@@ -124,10 +107,12 @@ public class InventoryScreen : MonoBehaviour {
 			}
 			sib.amountLabel.text = ib.amount.ToString();
 			sib.icon.sprite = Resources.Load<Sprite>(ib.name);
-			newButton.transform.SetParent(contentPanel, false);
+			newButton.transform.SetParent(contentPanel.transform, false);
 		}
 	}
+	#endregion
 
+	#region Recipe
 	// Populate the recipe list
 	void PopulateRecipeList(){
 		int i = 0;
@@ -137,11 +122,49 @@ public class InventoryScreen : MonoBehaviour {
 			sib.nameLabel.text = re.name;
 			sib.index = i;
 			sib.canMake = Inventory.CanMake(re.name);
-			newButton.transform.SetParent(contentPanel, false);
+			newButton.transform.SetParent(contentPanel.transform, false);
 			i++;
 		}
 	}
 
+	// onclick for make in recipe menu
+	public static void MakeClick(string name){
+		Inventory.MakeProduct (name);
+		UpdateRecipeList(name);
+	}
+
+	// refresh the recipe list
+	public static void UpdateRecipeList(string name){
+		if (contentPanel != null) {
+			foreach(Transform child in contentPanel.transform){
+				Button bt = child.GetComponent<Button>();
+				if(bt){
+					if(!Inventory.CanMake(name)){
+						bt.interactable = false;
+					}
+				}
+			}
+		}
+	}
+	#endregion
+	
+	#region Equip
+	// create the list panel for armor
+	public void CreateListPanel(){
+		ItemListPanel = Instantiate (ItemListPanelPf) as GameObject;
+		ItemListPanel.GetComponent<ItemListPanelScript> ()._IS = this;
+		contentPanel = ItemListPanel.GetComponent<ItemListPanelScript> ().contentPanel;
+		ItemListPanel.transform.SetParent (Canvas.transform, false);
+	}
+
+	// onclick for goto armor menu 
+	public void ArmorButtonClick(){
+		ClearCanvas ();
+		CreateListPanel ();
+		Debug.Log ("Armors: " + Inventory._Armors.Count);
+		PopulateArmorList ();
+	}
+	
 	// Populate the armor list
 	void PopulateArmorList(){
 		foreach (GenericArmor ga in Inventory._Armors) {
@@ -156,10 +179,42 @@ public class InventoryScreen : MonoBehaviour {
 					sab.equipped = true;
 				}
 			}
-			newButton.transform.SetParent (contentPanel, false);
+			newButton.transform.SetParent (contentPanel.transform, false);
 		}
 	}
 
+	// onclick for change armor in armor
+	public static void ArmorChange(string name){
+		Inventory.ChangeArmor (name);
+		Debug.Log ("change armor to: " + name);
+		UpdateArmorList (name);
+	}
+	
+	// refresh the armor list
+	public static void UpdateArmorList(string name){
+		if (contentPanel != null) {
+			foreach(Transform child in contentPanel.transform){
+				SampleArmorButton sab = child.GetComponent<SampleArmorButton>();
+				if(sab){
+					if(sab.nameLable.text != name){
+						sab.button.interactable = true;
+						sab.equipped = false;
+					}else{
+						sab.button.interactable = false;
+						sab.equipped = true;
+					}
+				}
+			}
+		}
+	}
+
+	// onclick for goto weapon menu 
+	public void WeaponButtonClick(){
+		ClearCanvas ();
+		CreateListPanel ();
+		PopulateWeaponList ();
+	}
+	
 	// Populate the weapon list
 	void PopulateWeaponList(){
 		foreach (GenericWeapon gw in Inventory._Weapons) {
@@ -174,60 +229,10 @@ public class InventoryScreen : MonoBehaviour {
 					swb.equipped = true;
 				}
 			}
-			newButton.transform.SetParent (contentPanel, false);
+			newButton.transform.SetParent (contentPanel.transform, false);
 		}
 	}
-
-	#endregion
-
-	#region button clicked
-	// onclick for goto Recipe
-	public void RecipeButtonClick(){
-		ClearCanvas ();
-		CreateListPanel ();
-		PopulateRecipeList ();
-	}
-
-	// onclick for goto Inventory
-	public void InventoryButtonClick(){
-		ClearCanvas ();
-		CreateListPanel ();
-		PopulateItemList ();
-	}
-
-	// onclick for back to main
-	public void BackButtonClick(){
-		ClearCanvas ();
-		CreateMainScreen ();
-	}
-
-	// onclick for goto armor menu 
-	public void ArmorButtonClick(){
-		ClearCanvas ();
-		CreateListPanel ();
-		PopulateArmorList ();
-	}
-
-	// onclick for goto weapon menu 
-	public void WeaponButtonClick(){
-		ClearCanvas ();
-		CreateListPanel ();
-		PopulateWeaponList ();
-	}
-
-	// onclick for make in recipe menu
-	public static void MakeClick(string name){
-		Inventory.MakeProduct (name);
-		UpdateRecipeList(name);
-	}
-
-	// onclick for change armor in armor
-	public static void ArmorChange(string name){
-		Inventory.ChangeArmor (name);
-		Debug.Log ("change armor to: " + name);
-		UpdateArmorList (name);
-	}
-
+	
 	// onclick for change weapon in weapon
 	public static void WeaponChange(string name){
 		Inventory.ChangeWeapon (name);
@@ -235,6 +240,23 @@ public class InventoryScreen : MonoBehaviour {
 		UpdateWeaponList (name);
 	}
 
+	// refresh the weapon list
+	public static void UpdateWeaponList(string name){
+		if (contentPanel != null) {
+			foreach(Transform child in contentPanel.transform){
+				SampleWeaponButton swb = child.GetComponent<SampleWeaponButton>();
+				if(swb){
+					if(swb.nameLable.text != name){
+						swb.button.interactable = true;
+						swb.equipped = false;
+					}else{
+						swb.button.interactable = false;
+						swb.equipped = true;
+					}
+				}
+			}
+		}
+	}
 	#endregion
 
 	#region debug
@@ -268,66 +290,23 @@ public class InventoryScreen : MonoBehaviour {
 	#endregion
 
 	#region Utilities
+	// onclick for go back to main screen
+	public void BackMainClick(){
+		ClearCanvas ();
+		Destroy (Canvas);
+		transform.GetComponent<GameMaster_Control> ().LoadMenu ();
+	}
+
 	// Clear everything in Canvas
 	void ClearCanvas(){
 		var children = new List<GameObject> ();
-		foreach (Transform child in canvas) {
+		foreach (Transform child in Canvas.transform) {
 			if(child.name != "EventSystem"){
 				children.Add (child.gameObject);
 			}
 		}
 		children.ForEach (child => Destroy (child));
+		contentPanel = null;
 	}
-
-	// refresh the recipe list
-	public static void UpdateRecipeList(string name){
-		if (contentPanel != null) {
-			foreach(Transform child in contentPanel.transform){
-				Button bt = child.GetComponent<Button>();
-				if(bt){
-					if(!Inventory.CanMake(name)){
-						bt.interactable = false;
-					}
-				}
-			}
-		}
-	}
-
-	// refresh the armor list
-	public static void UpdateArmorList(string name){
-		if (contentPanel != null) {
-			foreach(Transform child in contentPanel.transform){
-				SampleArmorButton sab = child.GetComponent<SampleArmorButton>();
-				if(sab){
-					if(sab.nameLable.text != name){
-						sab.button.interactable = true;
-						sab.equipped = false;
-					}else{
-						sab.button.interactable = false;
-						sab.equipped = true;
-					}
-				}
-			}
-		}
-	}
-
-	// refresh the weapon list
-	public static void UpdateWeaponList(string name){
-		if (contentPanel != null) {
-			foreach(Transform child in contentPanel.transform){
-				SampleWeaponButton swb = child.GetComponent<SampleWeaponButton>();
-				if(swb){
-					if(swb.nameLable.text != name){
-						swb.button.interactable = true;
-						swb.equipped = false;
-					}else{
-						swb.button.interactable = false;
-						swb.equipped = true;
-					}
-				}
-			}
-		}
-	}
-
 	#endregion
 }
