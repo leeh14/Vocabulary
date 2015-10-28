@@ -54,9 +54,10 @@ public class InventoryScreen : MonoBehaviour {
 		ClearCanvas ();
 		InventoryPanel = Instantiate (InventoryPanelPf) as GameObject;
 		InventoryPanel.GetComponent<InventoryListPanelScript> ()._IS = this;
+		InventoryPanel.GetComponent<InventoryListPanelScript> ().ChangeBackground (3);
 		contentPanel = InventoryPanel.GetComponent<InventoryListPanelScript> ().contentPanel;
 		InventoryPanel.transform.SetParent (Canvas.transform, false);
-		PopulateItemList ();
+		PopulateItemList (3);
 	}
 	
 	// onclick for goto Equip
@@ -86,29 +87,43 @@ public class InventoryScreen : MonoBehaviour {
 
 	#region Inventory Screen
 	// Populate the item list
-	void PopulateItemList(){
+	public void PopulateItemList(int type){
+		ClearContentPanel ();
 		foreach (Item ib in Inventory._Items) {
-			GameObject newButton = Instantiate(ItemListButtonPf) as GameObject;
-			SampleItemButton sib = newButton.GetComponent<SampleItemButton>();
-			sib.nameLable.text = ib.name;
-			switch(ib.type){
-			case 0:
-				sib.typeLabel.text = "Armor";
-				break;
-			case 1: 
-				sib.typeLabel.text = "Weapon";
-				break;
-			case 2:
-				sib.typeLabel.text = "Material";
-				break;
-			case 3:
-				sib.typeLabel.text = "Potion";
-				break;
+			if (ib.type == type || (type == 1 && ib.type == 0)) {
+				GameObject newButton = Instantiate (ItemListButtonPf) as GameObject;
+				SampleItemButton sib = newButton.GetComponent<SampleItemButton> ();
+				sib.nameLable.text = ib.name;
+				switch (ib.type) {
+				case 0:
+					sib.typeLabel.text = "Armor";
+					break;
+				case 1: 
+					sib.typeLabel.text = "Weapon";
+					break;
+				case 2:
+					sib.typeLabel.text = "Material";
+					break;
+				case 3:
+					sib.typeLabel.text = "Potion";
+					break;
+				}
+				sib.amountLabel.text = ib.amount.ToString ();
+				sib.icon.sprite = Resources.Load<Sprite> (ib.name);
+				newButton.transform.SetParent (contentPanel.transform, false);
 			}
-			sib.amountLabel.text = ib.amount.ToString();
-			sib.icon.sprite = Resources.Load<Sprite>(ib.name);
-			newButton.transform.SetParent(contentPanel.transform, false);
 		}
+	}
+
+	// clear the content panel
+	void ClearContentPanel(){
+		var children = new List<GameObject> ();
+		foreach (Transform child in contentPanel.transform) {
+			if(child.name != "EventSystem"){
+				children.Add (child.gameObject);
+			}
+		}
+		children.ForEach (child => Destroy (child));
 	}
 	#endregion
 
