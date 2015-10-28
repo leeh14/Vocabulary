@@ -28,8 +28,9 @@ public class GameMaster_Control : MonoBehaviour{
         CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
 		//for now just set it to be the 1 answer questions
 		questions = GenerateEasyQuestions ();
-		DebugWeapon = new Axe();
+		DebugWeapon = new PatchworkScimitar();
 		player.GetComponent<Player>().SetWeapon(DebugWeapon);
+		Debug.Log("se");
 		GenericArmor DebugArmor = new WoodArmor();
 		player.GetComponent<Player>().SetArmor(DebugArmor);
 
@@ -45,17 +46,18 @@ public class GameMaster_Control : MonoBehaviour{
 
     // Update is called once per frame
     void Update() {
-//		if(Input.GetKey(KeyCode.A))
-//		{
-//			Debug.Log("switch to axe");
-//			DebugWeapon = new Axe();
-//			player.GetComponent<Player>().SetWeapon(DebugWeapon);
-//		}else if (Input.GetKey(KeyCode.S))
-//		{
-//			Debug.Log("switch tp spear");
-//			DebugWeapon = new Spear();
-//			player.GetComponent<Player>().SetWeapon(DebugWeapon);
-//		}
+		if(Input.GetKey(KeyCode.A))
+		{
+			Debug.Log("switch to schimat");
+			DebugWeapon = new PatchworkScimitar();
+			player.GetComponent<Player>().SetWeapon(DebugWeapon);
+		}else if (Input.GetKey(KeyCode.S))
+		{
+			Debug.Log("switch tp staff");
+			DebugWeapon = new StaffofVisions
+				();
+			player.GetComponent<Player>().SetWeapon(DebugWeapon);
+		}
 //		else if(Input.GetKey(KeyCode.W))
 //		{
 //			GenericArmor DebugArmor = new WoodArmor();
@@ -108,6 +110,7 @@ public class GameMaster_Control : MonoBehaviour{
 	//remove the current menu on the screen
 	public void ClearMenu()
 	{
+		InBattle = false;
 		Destroy(CurrentMenu);
 		Destroy (TextMenu);
 
@@ -187,7 +190,6 @@ public class GameMaster_Control : MonoBehaviour{
     }
 	public void CreateBattle(string name)
 	{
-		Debug.Log("create");
 		InBattle = true;
 		Background.GetComponent<Background>().LoadQuestionbg1();
 		foreach (GameObject ene in AvailableEnemies)
@@ -209,9 +211,13 @@ public class GameMaster_Control : MonoBehaviour{
     //the multiple choices for combat
     public void BeginCombat(string[] data)
     {
-		Debug.Log("combat");
 		Background.GetComponent<Background>().LoadQuestionbg1();
         ClearMenu();
+		//disable vision of enemies 
+		foreach (GameObject en in AvailableEnemies)
+		{
+			en.SetActive(false);
+		}
         CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/CombatQuestion"));
         //add the questions to the buttons
 		CurrentQuestion = new QuestionData(data);
@@ -229,15 +235,18 @@ public class GameMaster_Control : MonoBehaviour{
 		if (correct) {
 
 			StartCoroutine(WaitTurn(player.GetComponent<Player>().DealDamage()));
+			//determine type of weapon and then deal dmg accordinly
 
-			CurrentEnemy.GetComponent<GenericEnemy> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
-		
-			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
-
+//			CurrentEnemy.GetComponent<GenericEnemy> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
+//		
+//			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
+			if(player.GetComponent<Player>().CurrentWeapon.Special  == true && player.GetComponent<Player>().CurrentWeapon.Special  == true  )
+			{
+				CurrentMenu.GetComponent<CombatQuestion>().RemoveAnswer();
+			}
 			if (CurrentEnemy.GetComponent<GenericEnemy> ().Alive == false) {
 				//go through list and remove enemy
 				//StartCoroutine(DropItem("Apple"));
-				Debug.Log("dead");
 				//StartCoroutine(WaitItem());
 				AvailableEnemies.Remove(CurrentEnemy);
 
@@ -289,10 +298,39 @@ public class GameMaster_Control : MonoBehaviour{
 	public IEnumerator PlayerTurn(int damage, string enemyname)
 	{
 		TurnContinue = true;
+		bool dealt = false;
+		//deal damage to enemies
+		string combattext = "";
+		if(player.GetComponent<Player>().CurrentWeapon.Special == true)
+		{
+			player.GetComponent<Player>().CurrentWeapon.SpecialMove(damage, AvailableEnemies);
+			dealt = true;
+		}
+		else
+		{
+			List<GameObject> temp = new List<GameObject>();
+			temp.Add(CurrentEnemy);
+			player.GetComponent<Player>().CurrentWeapon.DealDamage(damage, temp);
+		}
+		//CurrentEnemy.GetComponent<GenericEnemy> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
+		if(dealt == true)
+		{
+			foreach(GameObject e in AvailableEnemies)
+			{
+				combattext += "You have dealt " + damage + " to " + e.GetComponent<GenericEnemy>().name + "\n";
+			}
+		}
+		else
+		{
+			combattext = "You have dealt " + damage + " to " + enemyname;
+		}
+		//animation here
+		CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
+		//combat text
 		TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
 		Text combat = TextMenu.GetComponentInChildren<Text>();
 		combat.verticalOverflow = VerticalWrapMode.Overflow;
-		combat.text = "You have dealt " + damage + " to " + enemyname;
+		combat.text = combattext;
 
 		yield return new WaitForSeconds(2f);
 		//TurnContinue = false;
@@ -319,6 +357,12 @@ public class GameMaster_Control : MonoBehaviour{
 
 			yield return new WaitForSeconds(2f);
 			InBattle = false;
+			//disable vision of enemies 
+			foreach (GameObject en in AvailableEnemies)
+			{
+				en.SetActive(true);
+			}
+
 			StopAllCoroutines ();
 			//reset 
 

@@ -38,7 +38,7 @@ public class GenericEnemy : MonoBehaviour {
 	{
 		damage -= Armor;
 		Health -= damage;
-		Debug.Log ("Enemy "+Health);
+		//Debug.Log ("Enemy "+Health);
 		if(Health <= 0)
 		{
 			Alive = false;
