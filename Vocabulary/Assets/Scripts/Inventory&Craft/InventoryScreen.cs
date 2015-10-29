@@ -14,6 +14,7 @@ public class InventoryScreen : MonoBehaviour {
 	private GameObject EquipPanel;
 	private GameObject RecipePanel;
 	private GameObject ItemListPanel;
+	private GameObject BattleInventoryPanel;
 
 	// list objects
 	public static GameObject contentPanel;
@@ -26,6 +27,7 @@ public class InventoryScreen : MonoBehaviour {
 	public GameObject EquipPanelPf;
 	public GameObject RecipePanelPf;
 	public GameObject ItemListPanelPf;
+	public GameObject BattleInventoryPanelPf;
 
 	public GameObject ItemListButtonPf;
 	public GameObject RecipeListButtonPf;
@@ -322,6 +324,17 @@ public class InventoryScreen : MonoBehaviour {
 		}
 		children.ForEach (child => Destroy (child));
 		contentPanel = null;
+	}
+	#endregion
+
+	#region BattleInventory
+	// Open the inventory in Battle
+	public void OpenBattleInventory(){
+		BattleInventoryPanel = Instantiate (BattleInventoryPanelPf) as GameObject;
+		BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ()._IS = this;
+		contentPanel = BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ().contentPanel;
+		BattleInventoryPanel.transform.SetParent (Canvas.transform, false);
+		BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ().PopulateBattleInventoryButton ();
 	}
 	#endregion
 }

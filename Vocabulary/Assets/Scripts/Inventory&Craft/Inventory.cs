@@ -99,6 +99,14 @@ public class Inventory : MonoBehaviour {
 		return 0;
 	}
 
+	// use item
+	public static void UseItem(string name){
+		switch(name){
+		default:
+			break;
+		}
+	}
+
 	#endregion
 
 	#region Armor and Weapon
