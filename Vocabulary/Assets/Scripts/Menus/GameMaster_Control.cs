@@ -14,7 +14,7 @@ public class GameMaster_Control : MonoBehaviour{
 	public GameObject player;
 	public Mesh livemesh;
 	public List<string[]> questions;
-	public QuestionData CurrentQuestion;
+	//public QuestionData CurrentQuestion;
 	public bool TurnContinue = false;
 	//public Inventory Inventory = new Inventory();
 	public bool HideAnswer = false;
@@ -477,7 +477,7 @@ public class GameMaster_Control : MonoBehaviour{
 			Inventory.AddItem(2,itemname, 1);
 			//Inventory.AddItem(2,"apples",1);
 			//adding the definition of the word into learned dictionary
-			player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
+			//player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
 			RoundOver = false;
 			loadback = true;
 		}
