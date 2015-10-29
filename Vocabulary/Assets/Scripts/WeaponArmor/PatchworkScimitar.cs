@@ -5,7 +5,7 @@ public class PatchworkScimitar : GenericWeapon {
 	public PatchworkScimitar()
 	{
 		Debug.Log("create damadge");
-		name = "PatchworkScimitar";
+		name = "Patchwork Scimitar";
 		Damage = 4;
 		Special = true;
 	}

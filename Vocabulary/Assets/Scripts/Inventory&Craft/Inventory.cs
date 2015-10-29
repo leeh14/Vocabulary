@@ -102,9 +102,15 @@ public class Inventory : MonoBehaviour {
 	// use item
 	public static void UseItem(string name){
 		switch(name){
+		case "Health Potion":
+			Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+			player.Health += 2;
+			break;
+
 		default:
 			break;
 		}
+		//RemoveItem (name, 1);
 	}
 
 	#endregion
@@ -116,6 +122,8 @@ public class Inventory : MonoBehaviour {
 		foreach(GenericWeapon weapon in _Weapons){
 			if(weapon.name == name){
 				currentWeapon = index;
+				Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+				player.SetWeapon(_Weapons[index]);
 				break;
 			}
 			index++;
@@ -125,11 +133,11 @@ public class Inventory : MonoBehaviour {
 	// add a weapon to weapon list
 	public static void AddWeapon(string name){
 		switch (name) {
-		case "Axe":
-			_Weapons.Add(new Axe());
+		case "Patchwork Scimitar":
+			_Weapons.Add(new PatchworkScimitar());
 			break;
-		case "Spear":
-			_Weapons.Add (new Spear());
+		case "Staff of Visions":
+			_Weapons.Add (new StaffofVisions());
 			break;
 		default:
 			Debug.Log ("No such Weapon");

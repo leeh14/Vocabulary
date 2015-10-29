@@ -28,6 +28,6 @@ public class BattleInventoryPanelScript : MonoBehaviour {
 
 	// back button clicked
 	public void BackClick(){
-		
+		_IS.CloseBattleInventory ();
 	}
 }

@@ -115,6 +115,9 @@ public class GameMaster_Control : MonoBehaviour{
 		{
 			g.SetActive(true);
 		}
+		if (CurrentMenu.GetComponent<BattleMenu> () != null) {
+			CurrentMenu.GetComponent<BattleMenu> ().UpdateButtons ();
+		}
 	}
 	public void Refresh()
 	{
