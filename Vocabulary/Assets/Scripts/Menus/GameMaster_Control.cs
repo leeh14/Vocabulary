@@ -100,6 +100,22 @@ public class GameMaster_Control : MonoBehaviour{
 		}
 		Refresh ();
 	}
+	public void Hide()
+	{
+		CurrentMenu.gameObject.SetActive(false);
+		foreach(GameObject g in AvailableEnemies)
+		{
+			g.SetActive(false);
+		}
+	}
+	public void Show()
+	{
+		CurrentMenu.gameObject.SetActive(true);
+		foreach(GameObject g in AvailableEnemies)
+		{
+			g.SetActive(true);
+		}
+	}
 	public void Refresh()
 	{
 		//resets player's and enemies health back to full etc..

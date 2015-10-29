@@ -52,6 +52,7 @@ public class BattleMenu : MonoBehaviour {
 			{
 				//open inventory and use an item
 				choice.onClick.AddListener(() =>master.GetComponent<InventoryScreen>().InventoryButtonClick());
+				choice.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().Hide());
 			}
 		}
 	}
