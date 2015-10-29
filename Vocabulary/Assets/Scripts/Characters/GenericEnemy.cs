@@ -9,7 +9,7 @@ public class GenericEnemy : MonoBehaviour {
 	public string name;
 	public bool Alive = true;
 	public bool Active = false;
-	public List<Item> Droppable = new List<Item>();
+	public List<string> Droppable = new List<string>();
 	// Use this for initialization
 	void Start () {
 		master = GameObject.FindGameObjectWithTag ("GameMaster");

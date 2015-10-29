@@ -9,6 +9,9 @@ public class Slime : GenericEnemy {
 		Armor = 0;
 		Damage = 1;
 		name = "Slime";
+		//creating item drop list
+		Droppable.Add("Congealed Plasma");
+		Droppable.Add("Resonant Ooze");
 	}
 	
 	// Update is called once per frame

@@ -23,6 +23,7 @@ public class GameMaster_Control : MonoBehaviour{
 	private string CurrentEnemyName = "";
 	private bool RoundOver = false;
 	private bool loadback = false;
+	private List<string> MultipleAnswers = new List<string>();
     // Use this for initialization
     void Start() {
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -260,13 +261,48 @@ public class GameMaster_Control : MonoBehaviour{
 //		CurrentQuestion = new QuestionData(data);
 
 		//change this to generateing questions
-		CurrentMenu.GetComponent<CombatQuestion>().CreateQuestions(data);
+		CurrentMenu.GetComponent<CombatQuestion>().CreateQuestions(data, type);
 	}
 	
 	//after determining answer do corresponding action
-	public void ChangeTurn(Question obj , string playerchoice)
+	public void ChangeTurn(Question obj , string playerchoice, int type)
 	{
 		bool correct = obj.CheckAnswer (playerchoice);
+		Debug.Log("play " + playerchoice + "type" + type);
+		if(type == 1)
+		{
+			foreach(string q in MultipleAnswers)
+			{
+				Debug.Log(q + "dsf" + playerchoice);
+				if (q == playerchoice)
+				{
+					return;
+				}
+			}
+			MultipleAnswers.Add(playerchoice);
+			if(MultipleAnswers.Count >= 2)
+			{
+				//go through each answer and make sure all is correct
+				foreach(string s in MultipleAnswers)
+				{
+
+					correct = obj.CheckAnswer(s);
+					//if not correct leace and continue function with wrong answer
+					if(!correct)
+					{
+						break;
+					}
+				}
+			}
+			//only have 1 or less
+			else
+			{
+				return;
+			}
+		
+		}
+		//resset the multiple answers
+		MultipleAnswers.Clear();
 		ClearMenu ();
 		//reenable vision of enemies 
 		foreach (GameObject en in AvailableEnemies)
@@ -400,7 +436,9 @@ public class GameMaster_Control : MonoBehaviour{
 			}
 			else
 			{
-				StartCoroutine(DropItem("apple"));
+				//determing the random item drop
+				int item = (int)Random.Range(0f,CurrentEnemy.GetComponent<GenericEnemy>().Droppable.Count);
+				StartCoroutine(DropItem(CurrentEnemy.GetComponent<GenericEnemy>().Droppable[item]));
 
 			}
 
@@ -432,14 +470,8 @@ public class GameMaster_Control : MonoBehaviour{
 		//Debug.Log("round" + RoundOver);
 		if(RoundOver == true)
 		{
-
-			//go back to main menu after killing enemies
-			//Debug.Log("inside");
-			//ClearMenu ();
-			//LoadMenu ();
-			//CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
 			//need to drop random item
-			Inventory.AddItem(2,"apples", 1);
+			Inventory.AddItem(2,itemname, 1);
 			//Inventory.AddItem(2,"apples",1);
 			//adding the definition of the word into learned dictionary
 			player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);

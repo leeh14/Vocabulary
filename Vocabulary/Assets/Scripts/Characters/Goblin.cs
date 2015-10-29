@@ -9,6 +9,8 @@ public class Goblin : GenericEnemy {
 		Armor = 0;
 		Damage = 1;
 		name = "Goblin";
+
+		Droppable.Add("Broken Spearhead");
 	}
 	
 	// Update is called once per frame
