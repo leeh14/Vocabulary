@@ -51,7 +51,7 @@ public class BattleMenu : MonoBehaviour {
 			else if (choice.name == "Items")
 			{
 				//open inventory and use an item
-
+				choice.onClick.AddListener(() =>master.GetComponent<InventoryScreen>().InventoryButtonClick());
 			}
 		}
 	}

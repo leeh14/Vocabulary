@@ -16,7 +16,7 @@ public class GameMaster_Control : MonoBehaviour{
 	public List<string[]> questions;
 	public QuestionData CurrentQuestion;
 	public bool TurnContinue = false;
-	public Inventory Inventory = new Inventory();
+	//public Inventory Inventory = new Inventory();
 	public bool HideAnswer = false;
 	public bool InBattle =false;
 	private GenericWeapon DebugWeapon;
@@ -145,6 +145,7 @@ public class GameMaster_Control : MonoBehaviour{
 		ClearMenu();
 		gameObject.GetComponent<MapScreen>().StartMap();
 	}
+
 	#endregion
 	#region Combat
 	//loads the enemies onto the screen
@@ -415,6 +416,7 @@ public class GameMaster_Control : MonoBehaviour{
 			//LoadMenu ();
 			//CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
 			//need to drop random item
+			Inventory.AddItem(2,"apples", 1);
 			//Inventory.AddItem(2,"apples",1);
 			//adding the definition of the word into learned dictionary
 			player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
