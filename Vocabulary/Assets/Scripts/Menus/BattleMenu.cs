@@ -6,6 +6,7 @@ public class BattleMenu : MonoBehaviour {
     private GameObject master;
     private Button[] options;
 	private GameObject player;
+	private string text;
     // Use this for initialization
     void Start() {
         master = GameObject.FindGameObjectWithTag("GameMaster");
@@ -21,10 +22,10 @@ public class BattleMenu : MonoBehaviour {
 
     }
 
-	void UpdateButtons()
+	public void UpdateButtons()
 	{
 		//updateing the  text
-		string text = player.GetComponent<Player>().Health + " / " + player.GetComponent<Player>().MaxHealth;
+		text = player.GetComponent<Player>().Health + " / " + player.GetComponent<Player>().MaxHealth;
 		Text[] combat = gameObject.GetComponentsInChildren<Text>();
 		foreach(Text c in combat)
 		{
@@ -51,7 +52,7 @@ public class BattleMenu : MonoBehaviour {
 			else if (choice.name == "Items")
 			{
 				//open inventory and use an item
-				choice.onClick.AddListener(() =>master.GetComponent<InventoryScreen>().InventoryButtonClick());
+				choice.onClick.AddListener(() => master.GetComponent<InventoryScreen>().OpenBattleInventory());
 				choice.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().Hide());
 			}
 		}
@@ -61,5 +62,7 @@ public class BattleMenu : MonoBehaviour {
 
 	}
 
-    
+	public void UpdateText(){
+		text = player.GetComponent<Player>().Health + " / " + player.GetComponent<Player>().MaxHealth;
+	}
 }

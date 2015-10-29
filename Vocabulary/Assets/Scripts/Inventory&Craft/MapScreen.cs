@@ -5,20 +5,16 @@ using System.Collections.Generic;
 
 public class MapScreen : MonoBehaviour {
 
-	public GameObject Canvas;
-	public Transform canvas;
-	public Transform contentPanel;
+	public GameObject canvas;
 	public GameObject MenuListPanel;
-	public GameObject contentPanelObj;
+	public GameObject ContentPanel;
 	public GameObject BackButton;
-
-
+	
 	// prefabs
 	public GameObject CanvasPf;
 	public GameObject MenuListPanelPf;
 	public GameObject SampleMapButtonPf;
 	public GameObject SampleMonsterButtonPf;
-	public GameObject BackButtonPf;
 
 	public LevelData lastLevelData;
 	public MapData lastMapData;
@@ -26,8 +22,7 @@ public class MapScreen : MonoBehaviour {
 
 	// Start up the map menu
 	public void StartMap(){
-		Canvas = Instantiate (CanvasPf) as GameObject;
-		canvas = Canvas.transform;
+		canvas = Instantiate (CanvasPf) as GameObject;
 		CreateListPanel ();
 		PopulateMapButtons ();
 	}
@@ -35,13 +30,14 @@ public class MapScreen : MonoBehaviour {
 	// Create Item List Panel
 	void CreateListPanel(){
 		MenuListPanel = Instantiate (MenuListPanelPf) as GameObject;
-		MenuListPanel.transform.SetParent (canvas, false);
-		contentPanelObj = GameObject.Find ("ContentPanel");
-		contentPanel = contentPanelObj.transform;
+		MenuListPanel.GetComponent<MapPanelScript> ()._MS = this;
+		ContentPanel = MenuListPanel.GetComponent<MapPanelScript> ().contentPanel;
+		MenuListPanel.transform.SetParent (canvas.transform, false);
 	}
 
 	// Populate Map buttons
 	void PopulateMapButtons(){
+		MenuListPanel.GetComponent<MapPanelScript> ().current = 0;
 		LevelData last = null;
 		foreach (LevelData ld in MapLevels._Levels) {
 			GameObject newButton = Instantiate(SampleMapButtonPf) as GameObject;
@@ -49,12 +45,12 @@ public class MapScreen : MonoBehaviour {
 			sb.nameLable.text = ld.name;
 			sb.CurrentLv.text = ld.currentLevel + "/" + ld.monsters.Count;
 			sb.levelData = ld;
-			newButton.transform.SetParent(contentPanel, false);
+			newButton.transform.SetParent(ContentPanel.transform, false);
 			UnityEngine.Events.UnityAction ClickMap = () => {
 				lastLevelData = sb.levelData;
 				this.MapClick(sb.levelData);};
 			newButton.GetComponent<Button>().onClick.AddListener(ClickMap);
-			newButton.transform.SetParent(contentPanel, false);
+			newButton.transform.SetParent(ContentPanel.transform, false);
 
 			if(last != null && !last.complete){
 				newButton.GetComponent<Button>().interactable = false;
@@ -66,6 +62,7 @@ public class MapScreen : MonoBehaviour {
 	// load the given name level
 	void PopulateLevelButtons(LevelData ld){
 		//Debug.Log("here");
+		MenuListPanel.GetComponent<MapPanelScript> ().current = 1;
 		int i = 0;
 		//create monster
 		foreach(string s in ld.monsters)
@@ -110,17 +107,23 @@ public class MapScreen : MonoBehaviour {
 	}
 
 	// move back to map option	
-	void BackToMap(){
+	public void BackToMap(){
 		ClearList ();
 		gameObject.GetComponent<GameMaster_Control>().ClearEnemies();
 		gameObject.GetComponent<GameMaster_Control>().ClearMenu();
 		PopulateMapButtons ();
 	}
 
+	// move back to main menu
+	public void BackToMain(){
+		Destroy (canvas);
+		GetComponent<GameMaster_Control> ().LoadMenu ();
+	}
+
 	// clear current list
 	void ClearList(){
 		var children = new List<GameObject> ();
-		foreach (Transform child in contentPanel) {
+		foreach (Transform child in ContentPanel.transform) {
 			children.Add (child.gameObject);
 		}
 		children.ForEach (child => Destroy (child));
@@ -129,7 +132,7 @@ public class MapScreen : MonoBehaviour {
 	// Clear everything in Canvas
 	void ClearCanvas(){
 		var children = new List<GameObject> ();
-		foreach (Transform child in canvas) {
+		foreach (Transform child in canvas.transform) {
 			if(child.name != "EventSystem"){
 				children.Add (child.gameObject);
 			}
@@ -156,18 +159,4 @@ public class MapScreen : MonoBehaviour {
 		CreateListPanel ();
 		PopulateLevelButtons (lastLevelData);
 	}
-
-	#region Debug
-	void OnGUI(){
-		if (battle) {
-			if (GUI.Button (new Rect (30, 10, 100, 100), "Win")){
-				BattleWin();
-			}
-
-			if (GUI.Button (new Rect (30, 120, 100, 100), "Lose")){
-				BattleLose();
-			}
-		}
-	}
-	#endregion
 }

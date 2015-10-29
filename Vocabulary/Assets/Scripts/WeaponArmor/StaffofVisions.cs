@@ -5,7 +5,7 @@ public class StaffofVisions : GenericWeapon {
 	public StaffofVisions()
 	{
 		Debug.Log("create damadge");
-		name = "StaffofVisions";
+		name = "Staff of Visions";
 		Damage = 3;
 		AffectAnswers = true;
 		Special = true;

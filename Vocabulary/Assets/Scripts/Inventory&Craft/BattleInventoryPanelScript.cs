@@ -20,7 +20,7 @@ public class BattleInventoryPanelScript : MonoBehaviour {
 				if(it.amount == 0){
 					bib.button.interactable = false;
 				}
-				bib.icon.sprite = Resources.Load<Sprite> (it.name);
+				bib.icon.sprite = Resources.Load<Sprite> ("Item Sprites/" + it.name);
 				newButton.transform.SetParent(contentPanel.transform, false);
 			}
 		}
@@ -28,6 +28,6 @@ public class BattleInventoryPanelScript : MonoBehaviour {
 
 	// back button clicked
 	public void BackClick(){
-		
+		_IS.CloseBattleInventory ();
 	}
 }

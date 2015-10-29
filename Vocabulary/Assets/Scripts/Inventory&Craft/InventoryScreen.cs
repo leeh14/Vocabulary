@@ -91,27 +91,49 @@ public class InventoryScreen : MonoBehaviour {
 	// Populate the item list
 	public void PopulateItemList(int type){
 		ClearContentPanel ();
-		foreach (Item ib in Inventory._Items) {
-			if (ib.type == type || (type == 1 && ib.type == 0)) {
+
+		if (type != 1) {
+			foreach (Item ib in Inventory._Items) {
+				if (ib.type == type) {
+					GameObject newButton = Instantiate (ItemListButtonPf) as GameObject;
+					SampleItemButton sib = newButton.GetComponent<SampleItemButton> ();
+					sib.nameLable.text = ib.name;
+					switch (ib.type) {
+					case 0:
+						sib.typeLabel.text = "Armor";
+						break;
+					case 1: 
+						sib.typeLabel.text = "Weapon";
+						break;
+					case 2:
+						sib.typeLabel.text = "Material";
+						break;
+					case 3:
+						sib.typeLabel.text = "Potion";
+						break;
+					}
+					sib.amountLabel.text = ib.amount.ToString ();
+					sib.icon.sprite = Resources.Load<Sprite> (ib.name);
+					newButton.transform.SetParent (contentPanel.transform, false);
+				}
+			}
+		}else if (type == 1){
+			foreach (GenericArmor ga in Inventory._Armors) {
 				GameObject newButton = Instantiate (ItemListButtonPf) as GameObject;
 				SampleItemButton sib = newButton.GetComponent<SampleItemButton> ();
-				sib.nameLable.text = ib.name;
-				switch (ib.type) {
-				case 0:
-					sib.typeLabel.text = "Armor";
-					break;
-				case 1: 
-					sib.typeLabel.text = "Weapon";
-					break;
-				case 2:
-					sib.typeLabel.text = "Material";
-					break;
-				case 3:
-					sib.typeLabel.text = "Potion";
-					break;
-				}
-				sib.amountLabel.text = ib.amount.ToString ();
-				sib.icon.sprite = Resources.Load<Sprite> (ib.name);
+				sib.nameLable.text = ga.name;
+				sib.typeLabel.text = "Armor";
+				sib.amountLabel.text = "1";
+				sib.icon.sprite = Resources.Load<Sprite> ("Item Sprites/" + ga.name);
+				newButton.transform.SetParent (contentPanel.transform, false);
+			}
+			foreach (GenericWeapon gw in Inventory._Weapons) {
+				GameObject newButton = Instantiate (ItemListButtonPf) as GameObject;
+				SampleItemButton sib = newButton.GetComponent<SampleItemButton> ();
+				sib.nameLable.text = gw.name;
+				sib.typeLabel.text = "Weapon";
+				sib.amountLabel.text = "1";
+				sib.icon.sprite = Resources.Load<Sprite> ("Item Sprites/" + gw.name);
 				newButton.transform.SetParent (contentPanel.transform, false);
 			}
 		}
@@ -188,7 +210,7 @@ public class InventoryScreen : MonoBehaviour {
 			GameObject newButton = Instantiate (ArmorListButtonPf) as GameObject;
 			SampleArmorButton sab = newButton.GetComponent<SampleArmorButton> ();
 			sab.nameLable.text = ga.name;
-			sab.icon.sprite = Resources.Load<Sprite> (ga.name);
+			sab.icon.sprite = Resources.Load<Sprite> ("Item Sprites/" + ga.name);
 			sab.equipped = false;
 			if(Inventory.currentArmor != null){
 				if(ga.name == Inventory._Armors[Inventory.currentArmor].name){
@@ -238,7 +260,7 @@ public class InventoryScreen : MonoBehaviour {
 			GameObject newButton = Instantiate (WeaponListButtonPf) as GameObject;
 			SampleWeaponButton swb = newButton.GetComponent<SampleWeaponButton> ();
 			swb.nameLable.text = gw.name;
-			swb.icon.sprite = Resources.Load<Sprite> (gw.name);
+			swb.icon.sprite = Resources.Load<Sprite> ("Item Sprite/" + gw.name);
 			swb.equipped = false;
 			if(Inventory.currentWeapon != null){
 				if(gw.name == Inventory._Weapons[Inventory.currentWeapon].name){
@@ -281,10 +303,7 @@ public class InventoryScreen : MonoBehaviour {
 	void JustDebug(){
 		Inventory.AddItem (2, "Apple", 5);
 		Inventory.AddItem (2, "Orange", 10);
-		Inventory.AddItem (1, "Axe", 1);
-		Inventory.AddItem (1, "Spear", 1);
-		Inventory.AddItem (0, "Wood Armor", 1);
-		Inventory.AddItem (0, "Crystal Armor", 1);
+		Inventory.AddItem (3, "Health Potion", 20);
 
 		List<Item> ltmp = new List<Item>();
 		ltmp.Add(new Item(2, "Apple", 2));
@@ -298,11 +317,11 @@ public class InventoryScreen : MonoBehaviour {
 		Item itmp2 = new Item(3, "Watermelon", 1);
 		Inventory.AddRecipe("Watermelon", ltmp2, itmp2); 
 
-		Inventory.AddArmor ("Wood Armor");
+		Inventory.AddArmor ("Wooden");
 		Inventory.AddArmor ("Crystal Armor");
 
-		Inventory.AddWeapon ("Axe");
-		Inventory.AddWeapon ("Spear");
+		Inventory.AddWeapon ("Patchwork Scimitar");
+		Inventory.AddWeapon ("Staff of Visions");
 	}
 	#endregion
 
@@ -330,11 +349,17 @@ public class InventoryScreen : MonoBehaviour {
 	#region BattleInventory
 	// Open the inventory in Battle
 	public void OpenBattleInventory(){
+		Canvas = Instantiate (CanvasPf) as GameObject;
 		BattleInventoryPanel = Instantiate (BattleInventoryPanelPf) as GameObject;
 		BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ()._IS = this;
 		contentPanel = BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ().contentPanel;
 		BattleInventoryPanel.transform.SetParent (Canvas.transform, false);
 		BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ().PopulateBattleInventoryButton ();
+	}
+
+	public void CloseBattleInventory(){
+		Destroy (Canvas);
+		GetComponent<GameMaster_Control> ().Show ();
 	}
 	#endregion
 }
