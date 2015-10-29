@@ -242,17 +242,24 @@ public class Inventory : MonoBehaviour {
 	// make the product
 	public static void MakeProduct(string name){
 		Recipe re = GetRecipe (name);
-			if(CanMake(name)){
-				foreach(Item ma in re.materials){
-					foreach(Item it in _Items){
-						if(ma.name == it.name){
-							RemoveItem(ma.name, ma.amount);
-						}
+		if(CanMake(name)){
+			foreach(Item ma in re.materials){
+				foreach(Item it in _Items){
+					if(ma.name == it.name){
+						RemoveItem(ma.name, ma.amount);
 					}
 				}
-				AddItem(re.product.type, re.product.name, re.product.amount);
-				Debug.Log ("Crafted: " + re.product.name);
 			}
+
+			if(re.product.type != 0 && re.product.type != 1){
+				AddItem(re.product.type, re.product.name, re.product.amount);
+			}else if (re.product.type == 0){
+				AddArmor(re.name);
+			}else if (re.product.type == 1){
+				AddWeapon(re.name);
+			}
+			Debug.Log ("Crafted: " + re.product.name);
+		}
 	}
 	#endregion
 

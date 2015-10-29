@@ -67,6 +67,7 @@ public class InventoryScreen : MonoBehaviour {
 		ClearCanvas ();
 		EquipPanel = Instantiate (EquipPanelPf) as GameObject;
 		EquipPanel.GetComponent<EquipPanelScript> ()._IS = this;
+		EquipPanel.GetComponent<EquipPanelScript> ().LoadSprites ();
 		EquipPanel.transform.SetParent (Canvas.transform, false);
 	}
 	
@@ -113,7 +114,7 @@ public class InventoryScreen : MonoBehaviour {
 						break;
 					}
 					sib.amountLabel.text = ib.amount.ToString ();
-					sib.icon.sprite = Resources.Load<Sprite> (ib.name);
+					sib.icon.sprite = Resources.Load<Sprite> ("Item Sprites/" + ib.name);
 					newButton.transform.SetParent (contentPanel.transform, false);
 				}
 			}
@@ -161,6 +162,7 @@ public class InventoryScreen : MonoBehaviour {
 			sib.nameLabel.text = re.name;
 			sib.index = i;
 			sib.canMake = Inventory.CanMake(re.name);
+
 			newButton.transform.SetParent(contentPanel.transform, false);
 			i++;
 		}
@@ -260,7 +262,7 @@ public class InventoryScreen : MonoBehaviour {
 			GameObject newButton = Instantiate (WeaponListButtonPf) as GameObject;
 			SampleWeaponButton swb = newButton.GetComponent<SampleWeaponButton> ();
 			swb.nameLable.text = gw.name;
-			swb.icon.sprite = Resources.Load<Sprite> ("Item Sprite/" + gw.name);
+			swb.icon.sprite = Resources.Load<Sprite> ("Item Sprites/" + gw.name);
 			swb.equipped = false;
 			if(Inventory.currentWeapon != null){
 				if(gw.name == Inventory._Weapons[Inventory.currentWeapon].name){
@@ -301,9 +303,11 @@ public class InventoryScreen : MonoBehaviour {
 	#region debug
 	// just for debug purpose
 	void JustDebug(){
-		Inventory.AddItem (2, "Apple", 5);
-		Inventory.AddItem (2, "Orange", 10);
-		Inventory.AddItem (3, "Health Potion", 20);
+		//Inventory.AddItem (2, "Apple", 5);
+		//Inventory.AddItem (2, "Orange", 10);
+		//Inventory.AddItem (3, "Health Potion", 20);
+		//Inventory.AddItem (2, "Broken Spearhead", 20);
+		//Inventory.AddItem (2, "Mummy Eye", 20);
 
 		List<Item> ltmp = new List<Item>();
 		ltmp.Add(new Item(2, "Apple", 2));
@@ -311,17 +315,28 @@ public class InventoryScreen : MonoBehaviour {
 		Item itmp = new Item(3, "Banana", 1);
 		Inventory.AddRecipe("Banana", ltmp, itmp); 
 
+		/*
 		List<Item> ltmp2 = new List<Item>();
 		ltmp2.Add(new Item(2, "Apple", 2));
 		ltmp2.Add(new Item(2, "Banana", 9));
 		Item itmp2 = new Item(3, "Watermelon", 1);
 		Inventory.AddRecipe("Watermelon", ltmp2, itmp2); 
+		*/
+
+		List<Item> ltmp3 = new List<Item> ();
+		ltmp3.Add (new Item(2, "Mummy Eye", 7));
+		Item itmp3 = new Item(1, "Staff of Visions", 1);
+		Inventory.AddRecipe ("Staff of Visions", ltmp3, itmp3);
+
+		List<Item> ltmp4 = new List<Item> ();
+		ltmp4.Add(new Item(2, "Broken Spearhead", 5));
+		Item itmp4 = new Item(1, "Patchwork Scimitar", 1);
+		Inventory.AddRecipe ("Patchwork Scimitar", ltmp4, itmp4);
 
 		Inventory.AddArmor ("Wooden");
 		Inventory.AddArmor ("Crystal Armor");
 
 		Inventory.AddWeapon ("Patchwork Scimitar");
-		Inventory.AddWeapon ("Staff of Visions");
 	}
 	#endregion
 

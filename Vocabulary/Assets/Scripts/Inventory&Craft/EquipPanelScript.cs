@@ -8,6 +8,13 @@ public class EquipPanelScript : MonoBehaviour {
 	public Button WeaponButton;
 	public Button BackButton;
 
+	public void LoadSprites(){
+		ArmorButton.GetComponent<Image>().sprite = 
+			Resources.Load<Sprite> ("Item Sprites/" + Inventory._Armors[Inventory.currentArmor].name);
+		WeaponButton.GetComponent<Image>().sprite =
+			Resources.Load<Sprite> ("Item Sprites/" + Inventory._Weapons[Inventory.currentWeapon].name);
+	}
+
 	public void ArmorClick(){
 		_IS.ArmorButtonClick ();
 	}

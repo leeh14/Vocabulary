@@ -48,7 +48,7 @@ public class SampleRecipeButton : MonoBehaviour {
 	public void CreatePanel(){
 		detailPanel = Instantiate (RecipeContentPanelPf) as GameObject;
 		RecipeContentPanelScript rs = detailPanel.GetComponent<RecipeContentPanelScript> ();
-		rs.icon.sprite = Resources.Load<Sprite> (nameLabel.text);
+		rs.icon.sprite = Resources.Load<Sprite> ("Item Sprites/" + nameLabel.text);
 		rs.recipeButton = this;
 		PopulateMaterialList (rs.materialContentPanel);
 		rs.craftButton.interactable = Inventory.CanMake (nameLabel.text);
