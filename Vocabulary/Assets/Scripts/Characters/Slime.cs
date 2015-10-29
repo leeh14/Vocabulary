@@ -10,6 +10,7 @@ public class Slime : GenericEnemy {
 		Damage = 1;
 		name = "Slime";
 		//creating item drop list
+		Droppable.Add("Broken Spearhead");
 		Droppable.Add("Congealed Plasma");
 		Droppable.Add("Resonant Ooze");
 	}

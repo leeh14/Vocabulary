@@ -22,8 +22,12 @@ public class MapScreen : MonoBehaviour {
 
 	// Start up the map menu
 	public void StartMap(){
-		canvas = Instantiate (CanvasPf) as GameObject;
-		CreateListPanel ();
+		if(canvas == null)
+		{
+			canvas = Instantiate (CanvasPf) as GameObject;
+			CreateListPanel ();
+		}
+
 		PopulateMapButtons ();
 	}
 
