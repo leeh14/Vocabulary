@@ -364,12 +364,15 @@ public class InventoryScreen : MonoBehaviour {
 	#region BattleInventory
 	// Open the inventory in Battle
 	public void OpenBattleInventory(){
-		Canvas = Instantiate (CanvasPf) as GameObject;
-		BattleInventoryPanel = Instantiate (BattleInventoryPanelPf) as GameObject;
-		BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ()._IS = this;
-		contentPanel = BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ().contentPanel;
-		BattleInventoryPanel.transform.SetParent (Canvas.transform, false);
-		BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ().PopulateBattleInventoryButton ();
+		if(Canvas == null)
+		{
+			Canvas = Instantiate (CanvasPf) as GameObject;
+			BattleInventoryPanel = Instantiate (BattleInventoryPanelPf) as GameObject;
+			BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ()._IS = this;
+			contentPanel = BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ().contentPanel;
+			BattleInventoryPanel.transform.SetParent (Canvas.transform, false);
+			BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ().PopulateBattleInventoryButton ();
+		}
 	}
 
 	public void CloseBattleInventory(){
