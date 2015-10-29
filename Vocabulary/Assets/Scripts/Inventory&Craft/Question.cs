@@ -38,18 +38,23 @@ public class Question : IComparable<Question>
 
 	// mix the questions
 	public List<string> GetOptions(){
+		List<string> options; 
 
-		List<string> options = wAnswers;
 		if (type == 0) {
-			options.Add (rAnswer);
-			for (int i = 0; i < options.Count; i++) {
-				string tmp = options [i];
-				int randomIndex = UnityEngine.Random.Range (i, options.Count);
-				options [i] = options [randomIndex];
-				options [randomIndex] = tmp;
-			}
+			options = wAnswers;
+			int ri = UnityEngine.Random.Range(i, options.Count);
+			options.Insert(ri, rAnswer);
 		} else {
+			options = wAnswers;
+			int r1 = UnityEngine.Random.Range(i, options.Count);
+			options.Insert(r1, rAnswer);
+		}
 
+		for (int i = 0; i < options.Count; i++) {
+			string tmp = options [i];
+			int randomIndex = UnityEngine.Random.Range (i, options.Count);
+			options [i] = options [randomIndex];
+			options [randomIndex] = tmp;
 		}
 		return options;
 	}
