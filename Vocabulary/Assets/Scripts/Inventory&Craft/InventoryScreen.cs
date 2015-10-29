@@ -285,6 +285,7 @@ public class InventoryScreen : MonoBehaviour {
 		Inventory.AddItem (1, "Spear", 1);
 		Inventory.AddItem (0, "Wood Armor", 1);
 		Inventory.AddItem (0, "Crystal Armor", 1);
+		Inventory.AddItem (3, "Health Potion", 1);
 
 		List<Item> ltmp = new List<Item>();
 		ltmp.Add(new Item(2, "Apple", 2));
@@ -330,11 +331,16 @@ public class InventoryScreen : MonoBehaviour {
 	#region BattleInventory
 	// Open the inventory in Battle
 	public void OpenBattleInventory(){
+		Canvas = Instantiate (CanvasPf) as GameObject;
 		BattleInventoryPanel = Instantiate (BattleInventoryPanelPf) as GameObject;
 		BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ()._IS = this;
 		contentPanel = BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ().contentPanel;
 		BattleInventoryPanel.transform.SetParent (Canvas.transform, false);
 		BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ().PopulateBattleInventoryButton ();
+	}
+
+	public void CloseBattleInventory(){
+		Destroy (Canvas);
 	}
 	#endregion
 }
