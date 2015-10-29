@@ -42,12 +42,12 @@ public class Question : IComparable<Question>
 
 		if (type == 0) {
 			options = wAnswers;
-			int ri = UnityEngine.Random.Range(i, options.Count);
+			int ri = UnityEngine.Random.Range(0, options.Count);
 			options.Insert(ri, rAnswer);
 		} else {
 			options = wAnswers;
-			int r1 = UnityEngine.Random.Range(i, options.Count);
-			options.Insert(r1, rAnswer);
+			options.Insert(0, rAnswers[0]);
+			options.Insert(1, rAnswers[1]);
 		}
 
 		for (int i = 0; i < options.Count; i++) {
