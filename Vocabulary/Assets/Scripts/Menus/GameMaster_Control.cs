@@ -24,6 +24,7 @@ public class GameMaster_Control : MonoBehaviour{
 	private bool RoundOver = false;
 	private bool loadback = false;
 	private List<string> MultipleAnswers = new List<string>();
+	private string droppeditemname;
     // Use this for initialization
     void Start() {
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -376,6 +377,9 @@ public class GameMaster_Control : MonoBehaviour{
 	public IEnumerator PlayerTurn(int damage, string enemyname)
 	{
 		CurrentEnemyName = enemyname;
+		//generate item drop
+		int itemdrop = (int)Random.Range(0f, CurrentEnemy.GetComponent<GenericEnemy>().Droppable.Count);
+		droppeditemname = CurrentEnemy.GetComponent<GenericEnemy>().Droppable[itemdrop];
 		TurnContinue = true;
 		bool dealt = false;
 		//deal damage to enemies
@@ -437,8 +441,7 @@ public class GameMaster_Control : MonoBehaviour{
 			else
 			{
 				//determing the random item drop
-				int item = (int)Random.Range(0f,CurrentEnemy.GetComponent<GenericEnemy>().Droppable.Count);
-				StartCoroutine(DropItem(CurrentEnemy.GetComponent<GenericEnemy>().Droppable[item]));
+				StartCoroutine(DropItem(droppeditemname));
 
 			}
 
