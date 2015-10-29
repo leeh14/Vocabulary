@@ -235,7 +235,7 @@ public class GameMaster_Control : MonoBehaviour{
 		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
 	}
     //the multiple choices for combat
-    public void BeginCombat(string[] data)
+    public void BeginCombat( int type)
     {
 		Background.GetComponent<Background>().LoadQuestionbg1();
         ClearMenu();
@@ -245,19 +245,23 @@ public class GameMaster_Control : MonoBehaviour{
 			en.SetActive(false);
 		}
         CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/CombatQuestion"));
-        //add the questions to the buttons
-		CurrentQuestion = new QuestionData(data);
+        
 		//Debug.Log (question);
 		if(HideAnswer == true)
 		{
 			CurrentMenu.GetComponent<CombatQuestion>().RemoveAnswer();
 			HideAnswer = false;
 		}
-		CurrentMenu.GetComponent<CombatQuestion>().CreateQuestions(CurrentQuestion);
+		Question data = gameObject.GetComponent<QuestionBank>().GetQuestion(type, 0);
+//		//add the questions to the buttons
+//		CurrentQuestion = new QuestionData(data);
+
+		//change this to generateing questions
+		CurrentMenu.GetComponent<CombatQuestion>().CreateQuestions(data);
 	}
 	
 	//after determining answer do corresponding action
-	public void ChangeTurn(QuestionData obj , string playerchoice)
+	public void ChangeTurn(Question obj , string playerchoice)
 	{
 		bool correct = obj.CheckAnswer (playerchoice);
 		ClearMenu ();

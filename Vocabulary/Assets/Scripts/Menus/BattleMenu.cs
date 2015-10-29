@@ -37,16 +37,16 @@ public class BattleMenu : MonoBehaviour {
 			if(choice.name == "Mattk"){
 
 				//choose random question
-				string[] question =  master.GetComponent<GameMaster_Control>().questions[Random.Range(0,  master.GetComponent<GameMaster_Control>().questions.Count)];
+				//string[] question =  master.GetComponent<GameMaster_Control>().questions[Random.Range(0,  master.GetComponent<GameMaster_Control>().questions.Count)];
 				//depending on enemy = differenet type of question
-				choice.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().BeginCombat(question));
+				choice.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().BeginCombat(0));
 			}
 			else if(choice.name == "PhyAttk")
 			{
 				//choose random question
-				string[] question =  master.GetComponent<GameMaster_Control>().questions[Random.Range(0,  master.GetComponent<GameMaster_Control>().questions.Count)];
+				//string[] question =  master.GetComponent<GameMaster_Control>().questions[Random.Range(0,  master.GetComponent<GameMaster_Control>().questions.Count)];
 				//depending on enemy = differenet type of question
-				choice.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().BeginCombat(question));
+				choice.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().BeginCombat( 1));
 			}
 			else if (choice.name == "Items")
 			{
