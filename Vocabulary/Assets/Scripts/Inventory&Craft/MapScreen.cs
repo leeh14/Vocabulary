@@ -145,7 +145,7 @@ public class MapScreen : MonoBehaviour {
 	}
 
 	// win the battle
-	void BattleWin(){
+	public void BattleWin(){
 		battle = false;
 		if(!lastLevelData.complete){
 			lastLevelData.currentLevel++;
@@ -153,7 +153,7 @@ public class MapScreen : MonoBehaviour {
 				lastLevelData.complete = true;
 			}
 		}
-		CreateListPanel ();
+		//CreateListPanel ();
 		PopulateLevelButtons (lastLevelData);
 	}
 

@@ -341,6 +341,8 @@ public class GameMaster_Control : MonoBehaviour{
 				}
 				if(AvailableEnemies.Count ==  0)
 				{
+					//set up to next level
+
 					RoundOver = true;
 					Debug.Log("end");
 					//ClearMenu ();
@@ -480,6 +482,7 @@ public class GameMaster_Control : MonoBehaviour{
 			//player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
 			RoundOver = false;
 			loadback = true;
+			gameObject.GetComponent<MapScreen>().BattleWin();
 		}
 	}
 	#endregion
