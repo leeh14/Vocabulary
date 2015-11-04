@@ -164,6 +164,7 @@ public class GameMaster_Control : MonoBehaviour{
 	public void LoadMap()
 	{
 		ClearMenu();
+		Debug.Log("again");
 		gameObject.GetComponent<MapScreen>().StartMap();
 	}
 
@@ -172,7 +173,7 @@ public class GameMaster_Control : MonoBehaviour{
 	//loads the enemies onto the screen
 	public void BeginBattle(List<string> Enemy)
     {
-		Debug.Log("yeah");
+		Debug.Log("yeah" + Enemy.Count);
 		//load the background image
 		Background.GetComponent<Background>().LoadCombatBG();
         ClearMenu();

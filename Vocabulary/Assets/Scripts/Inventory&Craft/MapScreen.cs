@@ -69,10 +69,10 @@ public class MapScreen : MonoBehaviour {
 		MenuListPanel.GetComponent<MapPanelScript> ().current = 1;
 		int i = 0;
 		//create monster
-		foreach(string s in ld.monsters)
-		{
-			Debug.Log("dsf" +s);
-		}
+//		foreach(string s in ld.monsters)
+//		{
+//			Debug.Log("dsf" +s);
+//		}
 		gameObject.GetComponent<GameMaster_Control>().BeginBattle(ld.monsters);
 //		foreach (string mon in ld.monsters) {
 //			GameObject newButton = Instantiate(SampleMonsterButtonPf) as GameObject;
@@ -154,11 +154,12 @@ public class MapScreen : MonoBehaviour {
 			}
 		}
 		//CreateListPanel ();
-		PopulateLevelButtons (lastLevelData);
+		//PopulateLevelButtons (lastLevelData);
+		//gameObject.GetComponent<GameMaster_Control>().LoadMap();
 	}
 
 	// lose the battle
-	void BattleLose(){
+	public void BattleLose(){
 		battle = false;
 		CreateListPanel ();
 		PopulateLevelButtons (lastLevelData);
