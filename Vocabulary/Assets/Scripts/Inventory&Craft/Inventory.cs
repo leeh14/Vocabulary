@@ -110,7 +110,7 @@ public class Inventory : MonoBehaviour {
 		default:
 			break;
 		}
-		//RemoveItem (name, 1);
+		RemoveItem (name, 1);
 	}
 
 	#endregion
@@ -209,6 +209,26 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 		return enough;
+	}
+
+	// check if have armor
+	public static bool canMakeArmor(string name){
+		foreach (GenericArmor ar in _Armors) {
+			if(ar.name == name){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	// check if have weapon
+	public static bool canMakeWeapon(string name){
+		foreach (GenericWeapon wp in _Weapons) {
+			if(wp.name == name){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	// check if a product can be make

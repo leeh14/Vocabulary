@@ -161,8 +161,13 @@ public class InventoryScreen : MonoBehaviour {
 			SampleRecipeButton sib = newButton.GetComponent<SampleRecipeButton>();
 			sib.nameLabel.text = re.name;
 			sib.index = i;
-			sib.canMake = Inventory.CanMake(re.name);
-
+			if(re.product.type == 0){
+				sib.canMake = Inventory.canMakeArmor(re.product.name);
+			}else if (re.product.type == 1){
+				sib.canMake = Inventory.canMakeWeapon(re.product.name);
+			}else if (re.product.type == 3){
+				sib.canMake = Inventory.CanMake(re.name);
+			}
 			newButton.transform.SetParent(contentPanel.transform, false);
 			i++;
 		}

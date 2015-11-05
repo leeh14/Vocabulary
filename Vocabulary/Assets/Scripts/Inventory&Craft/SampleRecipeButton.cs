@@ -51,7 +51,7 @@ public class SampleRecipeButton : MonoBehaviour {
 		rs.icon.sprite = Resources.Load<Sprite> ("Item Sprites/" + nameLabel.text);
 		rs.recipeButton = this;
 		PopulateMaterialList (rs.materialContentPanel);
-		rs.craftButton.interactable = Inventory.CanMake (nameLabel.text);
+		rs.craftButton.interactable = canMake;
 		detailPanel.transform.SetParent (this.transform.parent.transform, false);
 		detailPanel.transform.SetSiblingIndex (this.transform.GetSiblingIndex()+1);
 	}
