@@ -5,6 +5,7 @@ using System.Collections;
 public class BattleMenu : MonoBehaviour {
     private GameObject master;
     private Button[] options;
+	private GameObject[] Insignias;
 	private GameObject player;
 	private string text;
     // Use this for initialization
@@ -12,6 +13,20 @@ public class BattleMenu : MonoBehaviour {
         master = GameObject.FindGameObjectWithTag("GameMaster");
         options = gameObject.GetComponentsInChildren<Button>();
 		player = GameObject.FindGameObjectWithTag("Player");
+		Insignias = GameObject.FindGameObjectsWithTag("Insignia");
+
+		//int num = player.GetComponent<Player>().CurrentArmor.InsigniaNum;
+		int num = 2;
+		Sprite  temp;
+		//change insignia based on armor
+		foreach (GameObject img in Insignias)
+		{
+			temp = Resources.Load<Sprite>("UI Sprites/UI_Insigniaa" + num);
+			Debug.Log(temp.name);
+			img.GetComponent<Image>().sprite = temp;
+			//img.sprite = temp;
+			
+		}
 
 		//update the buttons onclick events
 		UpdateButtons ();

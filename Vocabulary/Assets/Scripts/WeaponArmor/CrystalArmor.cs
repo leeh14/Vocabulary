@@ -6,6 +6,7 @@ public class CrystalArmor : GenericArmor {
 	{
 		name = "Crystal Armor";
 		Armor = 10;
+		InsigniaNum = 1;
 	}
 	// Use this for initialization
 	void Start () {

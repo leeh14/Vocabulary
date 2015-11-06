@@ -30,7 +30,7 @@ public class GameMaster_Control : MonoBehaviour{
 		player = GameObject.FindGameObjectWithTag("Player");
         
         //debugging purposes in scene just auto generate the choice menu
-        CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
+        CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Title"));
 		//for now just set it to be the 1 answer questions
 		questions = GenerateEasyQuestions ();
 		DebugWeapon = new PatchworkScimitar();
