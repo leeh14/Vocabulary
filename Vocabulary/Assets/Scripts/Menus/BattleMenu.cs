@@ -15,8 +15,8 @@ public class BattleMenu : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag("Player");
 		Insignias = GameObject.FindGameObjectsWithTag("Insignia");
 
-		//int num = player.GetComponent<Player>().CurrentArmor.InsigniaNum;
-		int num = 2;
+		int num = player.GetComponent<Player>().CurrentArmor.InsigniaNum;
+		//int num = 2;
 		Sprite  temp;
 		//change insignia based on armor
 		foreach (GameObject img in Insignias)

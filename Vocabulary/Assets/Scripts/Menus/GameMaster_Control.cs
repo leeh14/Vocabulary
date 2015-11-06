@@ -36,7 +36,7 @@ public class GameMaster_Control : MonoBehaviour{
 		DebugWeapon = new PatchworkScimitar();
 		player.GetComponent<Player>().SetWeapon(DebugWeapon);
 		Debug.Log("se");
-		GenericArmor DebugArmor = new WoodArmor();
+		GenericArmor DebugArmor = new CrystalArmor();
 		player.GetComponent<Player>().SetArmor(DebugArmor);
 
 		Background = GameObject.FindGameObjectWithTag("bg");
