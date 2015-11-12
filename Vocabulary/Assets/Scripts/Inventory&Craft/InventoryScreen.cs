@@ -312,7 +312,7 @@ public class InventoryScreen : MonoBehaviour {
 		//Inventory.AddItem (2, "Orange", 10);
 		//Inventory.AddItem (3, "Health Potion", 20);
 		//Inventory.AddItem (2, "Broken Spearhead", 20);
-		Inventory.AddItem (2, "Mummy Eye", 20);
+		//Inventory.AddItem (2, "Mummy Eye", 20);
 
 		List<Item> ltmp = new List<Item>();
 		ltmp.Add(new Item(2, "Apple", 2));
