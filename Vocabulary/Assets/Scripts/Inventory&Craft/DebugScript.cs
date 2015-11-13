@@ -10,9 +10,9 @@ public class DebugScript : MonoBehaviour {
 	void Start () {
 			//Inventory.AddItem (2, "Apple", 5);
 			//Inventory.AddItem (2, "Orange", 10);
-			//Inventory.AddItem (3, "Health Potion", 20);
-			//Inventory.AddItem (2, "Broken Spearhead", 20);
-			//Inventory.AddItem (2, "Mummy Eye", 20);
+			Inventory.AddItem (3, "Health Potion", 20);
+			Inventory.AddItem (2, "Broken Spearhead", 20);
+			Inventory.AddItem (2, "Mummy Eye", 20);
 		
 			List<Item> ltmp3 = new List<Item> ();
 			ltmp3.Add (new Item (2, "Mummy Eye", 7));
