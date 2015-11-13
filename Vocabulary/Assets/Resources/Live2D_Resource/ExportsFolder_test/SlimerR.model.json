@@ -1,0 +1,8 @@
+{
+	"type": "Live2D Model Setting",
+	"name": "SlimerR",
+	"model": "SlimerR.moc",
+	"textures": [
+		"SlimerR.1024/texture_00.png"
+	]
+}

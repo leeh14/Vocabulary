@@ -28,9 +28,10 @@ public class GameMaster_Control : MonoBehaviour{
     // Use this for initialization
     void Start() {
 		player = GameObject.FindGameObjectWithTag("Player");
-        
+
         //debugging purposes in scene just auto generate the choice menu
         CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Title"));
+
 		//for now just set it to be the 1 answer questions
 		questions = GenerateEasyQuestions ();
 		DebugWeapon = new PatchworkScimitar();
@@ -206,7 +207,9 @@ public class GameMaster_Control : MonoBehaviour{
 				{
 					if(m ==  0)
 					{
-						Enemies.transform.position = new Vector3 (4.5f, 13f, 1f);
+						//float w = Background.GetComponent<Image>().rectTransform.rect.width;
+
+						Enemies.transform.position = new Vector3 ( .50f, 13f, 1f);
 						Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
 					}
 					else 
