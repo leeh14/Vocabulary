@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Collections.Generic;
 
-public class GenericArmor : MonoBehaviour {
+[Serializable]
+public class GenericArmor : IComparable<GenericArmor>{
 	public string name;
 	public int Armor;
 	public int InsigniaNum;
@@ -13,5 +18,17 @@ public class GenericArmor : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	// compareTo method
+	public int CompareTo(GenericArmor other){
+		if(other == null){
+			return 1;
+		}
+		if (this.name == other.name && this.Armor == other.Armor) {
+			return 0;
+		} else {
+			return 1;
+		}
 	}
 }

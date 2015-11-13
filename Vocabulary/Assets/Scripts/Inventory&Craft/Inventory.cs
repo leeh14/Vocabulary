@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour {
 	#endregion
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		if (_Inventory == null) {
 			DontDestroyOnLoad(gameObject);
 			_Inventory = this;
@@ -28,11 +28,19 @@ public class Inventory : MonoBehaviour {
 			Destroy(gameObject);
 		}
 
-		_Items = new List<Item>();
-		_Weapons = new List<GenericWeapon> ();
-		_Armors = new List<GenericArmor> ();
-		_Recipes = new List<Recipe>();
-		_RemoveIndex = new List<int>();
+		if (_Items == null) {
+			_Items = new List<Item> ();
+		}
+		if (_Weapons == null) {
+			_Weapons = new List<GenericWeapon> ();
+		}
+		if (_Armors == null) {
+			_Armors = new List<GenericArmor> ();
+		}
+		if (_Recipes == null) {
+			_Recipes = new List<Recipe> ();
+		}
+		_RemoveIndex = new List<int>();	
 	}
 
 	#region Item
@@ -74,18 +82,6 @@ public class Inventory : MonoBehaviour {
 		}
 	} 
 
-	// Remove stuff schedule to remove
-	public static void RemoveUpdate(){
-		if (_RemoveIndex.Count != 0) {
-			int j = 0;
-			for(int i = 0; i < _RemoveIndex.Count; i++){
-				_Items.RemoveAt(_RemoveIndex[i]-j);
-				j++;
-			}
-			_RemoveIndex.Clear();
-		}
-	}// end of RemoveUpdate
-
 	// check how much of this item the player have
 	public static int CheckItem(string name){
 	
@@ -116,6 +112,7 @@ public class Inventory : MonoBehaviour {
 	#endregion
 
 	#region Armor and Weapon
+
 	// change weapon
 	public static void ChangeWeapon(string name){
 		int index = 0;
@@ -174,6 +171,7 @@ public class Inventory : MonoBehaviour {
 	#endregion
 
 	#region Recipe
+
 	// Add a recipe
 	public static void AddRecipe(string name, List<Item> material, Item product){
 
@@ -347,7 +345,7 @@ public class Item : IComparable<Item>
 		if(other == null){
 			return 1;
 		}
-		if (type == type && name == name) {
+		if (this.type == other.type && this.name == other.name) {
 			return 0;
 		} else {
 			return 1;
@@ -356,8 +354,10 @@ public class Item : IComparable<Item>
 }
 
 [Serializable]
-class InventoryData
+public class InventoryData
 {
 	public List<Item> _Items;
 	public List<Recipe> _Recipes;
+	public List<GenericArmor> _Armors;
+	public List<GenericWeapon> _Weapons;
 }

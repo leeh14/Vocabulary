@@ -24,6 +24,8 @@ public class DataBase : MonoBehaviour {
 		InventoryData data = new InventoryData ();
 		data._Items = Inventory._Items;
 		data._Recipes = Inventory._Recipes;
+		data._Armors = Inventory._Armors;
+		data._Weapons = Inventory._Weapons;
 		
 		bf.Serialize (file, data);
 		file.Close ();
@@ -38,6 +40,8 @@ public class DataBase : MonoBehaviour {
 			
 			Inventory._Items = data._Items;
 			Inventory._Recipes = data._Recipes;
+			Inventory._Armors = data._Armors;
+			Inventory._Weapons = data._Weapons;
 		}
 	}
 	#endregion

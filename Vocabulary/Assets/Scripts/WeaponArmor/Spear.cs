@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Collections.Generic;
 
+[Serializable]
 public class Spear : GenericWeapon {
 	public Spear()
 	{

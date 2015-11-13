@@ -40,7 +40,6 @@ public class InventoryScreen : MonoBehaviour {
 		Canvas = Instantiate (CanvasPf) as GameObject;
 		player = GameObject.FindGameObjectWithTag("Player");
 		CreateMainScreen ();
-		JustDebug ();
 	}
 
 	#region Main Screen
@@ -302,46 +301,6 @@ public class InventoryScreen : MonoBehaviour {
 				}
 			}
 		}
-	}
-	#endregion
-
-	#region debug
-	// just for debug purpose
-	void JustDebug(){
-		//Inventory.AddItem (2, "Apple", 5);
-		//Inventory.AddItem (2, "Orange", 10);
-		//Inventory.AddItem (3, "Health Potion", 20);
-		//Inventory.AddItem (2, "Broken Spearhead", 20);
-		//Inventory.AddItem (2, "Mummy Eye", 20);
-
-		List<Item> ltmp = new List<Item>();
-		ltmp.Add(new Item(2, "Apple", 2));
-		ltmp.Add(new Item(2, "Orange", 3));
-		Item itmp = new Item(3, "Banana", 1);
-		Inventory.AddRecipe("Banana", ltmp, itmp); 
-
-		/*
-		List<Item> ltmp2 = new List<Item>();
-		ltmp2.Add(new Item(2, "Apple", 2));
-		ltmp2.Add(new Item(2, "Banana", 9));
-		Item itmp2 = new Item(3, "Watermelon", 1);
-		Inventory.AddRecipe("Watermelon", ltmp2, itmp2); 
-		*/
-
-		List<Item> ltmp3 = new List<Item> ();
-		ltmp3.Add (new Item(2, "Mummy Eye", 7));
-		Item itmp3 = new Item(1, "Staff of Visions", 1);
-		Inventory.AddRecipe ("Staff of Visions", ltmp3, itmp3);
-
-		List<Item> ltmp4 = new List<Item> ();
-		ltmp4.Add(new Item(2, "Broken Spearhead", 5));
-		Item itmp4 = new Item(1, "Patchwork Scimitar", 1);
-		Inventory.AddRecipe ("Patchwork Scimitar", ltmp4, itmp4);
-
-		Inventory.AddArmor ("Wooden");
-		Inventory.AddArmor ("Crystal Armor");
-
-		Inventory.AddWeapon ("Patchwork Scimitar");
 	}
 	#endregion
 

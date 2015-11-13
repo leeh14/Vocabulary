@@ -40,8 +40,6 @@ public class GameMaster_Control : MonoBehaviour{
 		player.GetComponent<Player>().SetArmor(DebugArmor);
 
 		Background = GameObject.FindGameObjectWithTag("bg");
-
-		this.transform.GetComponent<DataBase> ().Load ();
     }
 
 	// on game exit
@@ -81,6 +79,7 @@ public class GameMaster_Control : MonoBehaviour{
     //keep the data here
     void Awake() {
         DontDestroyOnLoad(transform.gameObject);
+		this.transform.GetComponent<DataBase> ().Load ();
     }
 	#region Helpers
 	//reload to main menu

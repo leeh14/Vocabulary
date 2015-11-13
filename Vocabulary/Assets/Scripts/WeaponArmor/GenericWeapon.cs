@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 using System.Collections.Generic;
-public class GenericWeapon : MonoBehaviour {
+
+[Serializable]
+public class GenericWeapon : IComparable<GenericWeapon> {
 	public string name;
 	public int Damage;
 	public string Attribute;
@@ -26,5 +31,17 @@ public class GenericWeapon : MonoBehaviour {
 	public virtual void SpecialMove(int dmg, List<GameObject> Enemies)
 	{
 	
+	}
+
+	// compareTo method
+	public int CompareTo(GenericWeapon other){
+		if(other == null){
+			return 1;
+		}
+		if (this.name == other.name) {
+			return 0;
+		} else {
+			return 1;
+		}
 	}
 }
