@@ -84,7 +84,51 @@ public class MapLevels : MonoBehaviour {
 			string mon = "Slime";
 			Monsters.Add(mon);
 		}
+		return Monsters;
+	}
+	public static List<string> GenerateEnemiesLvl2()
+	{
+		//GameObject master = GameObject.FindGameObjectWithTag("GameMaster");
+		List<string> Monsters = new List<string>();
+		float amount = UnityEngine.Random.Range(1.0f,2.0f);
 
+		for (int i = 0; i <= amount ; i++)
+		{
+			//randoomizze the different names of the enemies
+			float type = UnityEngine.Random.Range(0f,1f);
+			string mon;
+			if(type > .5f)
+			{
+				mon = "SlimeR";
+			}
+			else
+			{
+				mon = "SlimeB";
+			}
+			Monsters.Add(mon);
+		}
+		return Monsters;
+	}
+	public static List<string> GenerateEnemiesLvl3()
+	{
+		//GameObject master = GameObject.FindGameObjectWithTag("GameMaster");
+		List<string> Monsters = new List<string>();
+		float amount = UnityEngine.Random.Range(1.0f,2.0f);
+		for (int i = 0; i <= amount ; i++)
+		{
+			//randoomizze the different names of the enemies
+			float type = UnityEngine.Random.Range(0f,1f);
+			string mon;
+			if(type > .5f)
+			{
+				mon = "SlimeB";
+			}
+			else
+			{
+				mon = "SlimeP";
+			}
+			Monsters.Add(mon);
+		}
 		return Monsters;
 	}
 	// Debug upload data
@@ -109,7 +153,7 @@ public class MapLevels : MonoBehaviour {
 //		monsters_2.Add ("Monster_2_3");
 //		monsters_2.Add ("Monster_2_4");
 //		monsters_2.Add ("Monster_2_5");
-		monsters_2 = GenerateEnemies();
+		monsters_2 = GenerateEnemiesLvl2();
 		LevelData lv_2 = new LevelData ("Level_2", monsters_2);
 		_Levels.Add (lv_2);
 
@@ -120,7 +164,7 @@ public class MapLevels : MonoBehaviour {
 //		monsters_3.Add ("Monster_3_3");
 //		monsters_3.Add ("Monster_3_4");
 //		monsters_3.Add ("Monster_3_5");
-		monsters_3 = GenerateEnemies();
+		monsters_3 = GenerateEnemiesLvl3();
 		LevelData lv_3 = new LevelData ("Level_3", monsters_3);
 		_Levels.Add (lv_3);
 

@@ -53,7 +53,12 @@ public class Player : MonoBehaviour {
 	public void ReceiveDamage(int damage)
 	{
 		damage -= CurrentArmor.Armor;
-		Health -= damage;
+		//armor is greater than damage
+		if(damage > 0 )
+		{
+			Health -= damage;
+		}
+
 		if (Health <= 0) {
 			Alive = false;
 		}

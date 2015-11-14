@@ -200,23 +200,54 @@ public class GameMaster_Control : MonoBehaviour{
 		for (int m = 0 ; m < Enemy.Count; m ++)
 		{
 			Debug.Log(Enemy[m]);
+			bool shiftleft = false;
+			bool shiftup = false;
 			if (Enemy[m] == "Slime")
 			{
-				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Slime"));
-				if(Enemy.Count > 1)
-				{
-					if(m ==  0)
-					{
-						//float w = Background.GetComponent<Image>().rectTransform.rect.width;
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Slime"));
+			}
+			else if(Enemy[m] == "SlimeB")
+			{
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeB"));
+				shiftup = true;
+			}
+			else if(Enemy[m] == "SlimeR")
+			{
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeR"));
+				shiftleft = true;
+			}
+			else if(Enemy[m] == "SlimeP")
+			{
+				shiftup = true;
+				shiftleft = true;
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeP"));
+			}
+			float x = 4f;
+			float y = 13f;
+			float xl = -1.5f;
 
-						Enemies.transform.position = new Vector3 ( .50f, 13f, 1f);
-						Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
-					}
-					else 
-					{
-						Enemies.transform.position = new Vector3 (-1.5f, 13f, 1f);
-						Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
-					}
+			if(Enemy.Count > 1)
+			{
+				if(shiftleft == true)
+				{
+					x -= 3f;
+					xl -= 2f;
+				}
+				if(shiftup == true)
+				{
+					y +=2.45f;
+				}
+				if(m ==  0)
+				{
+
+
+					Enemies.transform.position = new Vector3 ( x,y, 1f);
+					Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
+				}
+				else 
+				{
+					Enemies.transform.position = new Vector3 (xl, y, 1f);
+					Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
 				}
 			}
 			Enemies.name = Enemies.name + m;
