@@ -272,6 +272,7 @@ public class GameMaster_Control : MonoBehaviour{
 		ClearMenu();
 
 		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
+		//CurrentMenu.GetComponent<BattleMenu>().UpdateButtons();
 	}
     //the multiple choices for combat
     public void BeginCombat( int type)
