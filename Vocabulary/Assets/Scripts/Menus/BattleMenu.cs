@@ -6,26 +6,26 @@ public class BattleMenu : MonoBehaviour {
     private GameObject master;
     private Button[] options;
 	private GameObject[] Insignias;
-	private GameObject HealthBar;
+	public GameObject HealthBar;
 	private GameObject player;
 	private string text;
-	public float ScaleHealth = 1.2f;
-    // Use this for initialization
+	public float ScaleHealth;
+    
+	// Use this for initialization
     void Start() {
         master = GameObject.FindGameObjectWithTag("GameMaster");
         options = gameObject.GetComponentsInChildren<Button>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		Insignias = GameObject.FindGameObjectsWithTag("Insignia");
-		HealthBar = GameObject.FindGameObjectWithTag("HealthBar");
-		//ScaleHealth = 1.2f;
+		
 		int num = player.GetComponent<Player>().CurrentArmor.InsigniaNum;
-		//int num = 2;
+
 		Sprite  temp;
 		//change insignia based on armor
 		foreach (GameObject img in Insignias)
 		{
 			temp = Resources.Load<Sprite>("UI Sprites/UI_Insigniaa" + num);
-			//Debug.Log(temp.name);
+			Debug.Log(temp.name);
 			img.GetComponent<Image>().sprite = temp;
 			//img.sprite = temp;
 			
@@ -47,10 +47,11 @@ public class BattleMenu : MonoBehaviour {
 		text = player.GetComponent<Player>().Health + " / " + player.GetComponent<Player>().MaxHealth;
 		float percentage = player.GetComponent<Player>().Health / (1.0f  * player.GetComponent<Player>().MaxHealth);
 		float healthpercentage = percentage * 1.2f;
-		Text[] combat = gameObject.GetComponentsInChildren<Text>();
+		
+		HealthBar.transform.localScale = new Vector3(0.18f,0.07f,1f);
+		Debug.Log ("The X:" + HealthBar.transform.localScale.x);
 
-		Vector2 temp = new Vector2(healthpercentage,.077f);
-		HealthBar.transform.localScale = temp;
+		Text[] combat = gameObject.GetComponentsInChildren<Text>();
 
 		foreach(Text c in combat)
 		{
