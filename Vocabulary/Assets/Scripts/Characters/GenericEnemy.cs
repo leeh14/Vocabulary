@@ -28,10 +28,10 @@ public class GenericEnemy : MonoBehaviour {
 	{
 		if (Input.GetButton ("Fire1") && master.GetComponent<GameMaster_Control>().InBattle == false) {
 			//Debug.Log("works" + gameObject.name);
-            if (gameObject.name == "Goblin2")
-            {
-                master.GetComponent<GameMaster_Control>().questions = master.GetComponent<GameMaster_Control>().GenerateMediumQuestions();
-            }
+//            if (gameObject.name == "Goblin2")
+//            {
+//                master.GetComponent<GameMaster_Control>().questions = master.GetComponent<GameMaster_Control>().GenerateMediumQuestions();
+//            }
 			master.GetComponent<GameMaster_Control>().CreateBattle(gameObject.name);
 		}
 	}

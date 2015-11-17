@@ -6,15 +6,18 @@ public class BattleMenu : MonoBehaviour {
     private GameObject master;
     private Button[] options;
 	private GameObject[] Insignias;
+	private GameObject HealthBar;
 	private GameObject player;
 	private string text;
+	public float ScaleHealth;
     // Use this for initialization
     void Start() {
         master = GameObject.FindGameObjectWithTag("GameMaster");
         options = gameObject.GetComponentsInChildren<Button>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		Insignias = GameObject.FindGameObjectsWithTag("Insignia");
-
+		HealthBar = GameObject.FindGameObjectWithTag("HealthBar");
+		ScaleHealth = 1.2f;
 		int num = player.GetComponent<Player>().CurrentArmor.InsigniaNum;
 		//int num = 2;
 		Sprite  temp;
@@ -40,8 +43,15 @@ public class BattleMenu : MonoBehaviour {
 	public void UpdateButtons()
 	{
 		//updateing the  text
+
 		text = player.GetComponent<Player>().Health + " / " + player.GetComponent<Player>().MaxHealth;
+		float percentage = player.GetComponent<Player>().Health / (1.0f  * player.GetComponent<Player>().MaxHealth);
+		float healthpercentage = percentage * 1.2f;
 		Text[] combat = gameObject.GetComponentsInChildren<Text>();
+
+		Vector3 temp = new Vector3(healthpercentage,.077f,1f);
+		HealthBar.transform.localScale = temp;
+
 		foreach(Text c in combat)
 		{
 			if(c.name == "Health")
@@ -75,9 +85,5 @@ public class BattleMenu : MonoBehaviour {
 	void UpdateMagic(Button magicattk)
 	{
 
-	}
-
-	public void UpdateText(){
-		text = player.GetComponent<Player>().Health + " / " + player.GetComponent<Player>().MaxHealth;
 	}
 }
