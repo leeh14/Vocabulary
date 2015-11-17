@@ -34,10 +34,10 @@ public class GameMaster_Control : MonoBehaviour{
 
 		//for now just set it to be the 1 answer questions
 		questions = GenerateEasyQuestions ();
-		DebugWeapon = new PatchworkScimitar();
+		DebugWeapon = new BasicSword();
 		player.GetComponent<Player>().SetWeapon(DebugWeapon);
-		Debug.Log("se");
-		GenericArmor DebugArmor = new CrystalArmor();
+		//Debug.Log("se");
+		GenericArmor DebugArmor = new BasicArmor();
 		player.GetComponent<Player>().SetArmor(DebugArmor);
 
 		Background = GameObject.FindGameObjectWithTag("bg");

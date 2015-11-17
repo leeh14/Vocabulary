@@ -48,7 +48,7 @@ public class BattleMenu : MonoBehaviour {
 		float percentage = player.GetComponent<Player>().Health / (1.0f  * player.GetComponent<Player>().MaxHealth);
 		float healthpercentage = percentage * 1.2f;
 		
-		HealthBar.transform.localScale = new Vector3(0.18f,0.07f,1f);
+		HealthBar.transform.localScale = new Vector3(healthpercentage,0.07f,1f);
 		Debug.Log ("The X:" + HealthBar.transform.localScale.x);
 
 		Text[] combat = gameObject.GetComponentsInChildren<Text>();
