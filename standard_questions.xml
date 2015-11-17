@@ -1,0 +1,19 @@
+<qlist>
+    <qtype>standard</qtype>
+    <question>
+        <qstring>All good comic writers use humor to ____, not to side-step the problems of human behavior.</qstring>
+        <correct>confront</correct>
+        <wrong>amuse</wrong>
+        <wrong>avert</wrong>
+        <wrong>juxtapose</wrong>
+        <wrong>solve</wrong>
+    </question>
+    <question>
+        <qstring>With his sub-four minute mile Bannister broke a psychological barrier, and inspired thousands of others to attempt to overcome seemingly ____ hurdles.</qstring>
+        <correct>insurmountable</correct>
+        <wrong>inane</wrong>
+        <wrong>trivial</wrong>
+        <wrong>traumatic</wrong>
+        <wrong>ineffable</wrong>
+    </question>
+</qlist>
