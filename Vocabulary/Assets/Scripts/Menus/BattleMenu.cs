@@ -9,7 +9,7 @@ public class BattleMenu : MonoBehaviour {
 	private GameObject HealthBar;
 	private GameObject player;
 	private string text;
-	public float ScaleHealth;
+	public float ScaleHealth = 1.2f;
     // Use this for initialization
     void Start() {
         master = GameObject.FindGameObjectWithTag("GameMaster");
@@ -17,7 +17,7 @@ public class BattleMenu : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag("Player");
 		Insignias = GameObject.FindGameObjectsWithTag("Insignia");
 		HealthBar = GameObject.FindGameObjectWithTag("HealthBar");
-		ScaleHealth = 1.2f;
+		//ScaleHealth = 1.2f;
 		int num = player.GetComponent<Player>().CurrentArmor.InsigniaNum;
 		//int num = 2;
 		Sprite  temp;
@@ -25,7 +25,7 @@ public class BattleMenu : MonoBehaviour {
 		foreach (GameObject img in Insignias)
 		{
 			temp = Resources.Load<Sprite>("UI Sprites/UI_Insigniaa" + num);
-			Debug.Log(temp.name);
+			//Debug.Log(temp.name);
 			img.GetComponent<Image>().sprite = temp;
 			//img.sprite = temp;
 			
@@ -49,7 +49,7 @@ public class BattleMenu : MonoBehaviour {
 		float healthpercentage = percentage * 1.2f;
 		Text[] combat = gameObject.GetComponentsInChildren<Text>();
 
-		Vector3 temp = new Vector3(healthpercentage,.077f,1f);
+		Vector2 temp = new Vector2(healthpercentage,.077f);
 		HealthBar.transform.localScale = temp;
 
 		foreach(Text c in combat)
