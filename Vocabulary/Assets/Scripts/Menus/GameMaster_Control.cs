@@ -34,12 +34,12 @@ public class GameMaster_Control : MonoBehaviour{
         CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Title"));
 
 		//for now just set it to be the 1 answer questions
-
 		DebugWeapon = new BasicSword();
 		player.GetComponent<Player>().SetWeapon(DebugWeapon);
-		//Debug.Log("se");
+		Inventory.ChangeWeapon ("Basic Weapon");
 		DebugArmor = new BasicArmor();
 		player.GetComponent<Player>().SetArmor(DebugArmor);
+		Inventory.ChangeArmor ("Basic Armor");
 
 		Background = GameObject.FindGameObjectWithTag("bg");
     }
@@ -88,7 +88,6 @@ public class GameMaster_Control : MonoBehaviour{
 	public void LoadMenu()
 	{
 		ClearMenu ();
-		Debug.Log("loading");
 		Background.GetComponent<Background>().LoadStart();
 		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
 	}
@@ -162,7 +161,6 @@ public class GameMaster_Control : MonoBehaviour{
 	public void LoadMap()
 	{
 		ClearMenu();
-		Debug.Log("again");
 		gameObject.GetComponent<MapScreen>().StartMap();
 	}
 
@@ -171,7 +169,6 @@ public class GameMaster_Control : MonoBehaviour{
 	//loads the enemies onto the screen
 	public void BeginBattle(List<string> Enemy)
     {
-		Debug.Log("yeah" + Enemy.Count);
 		//load the background image
 		Background.GetComponent<Background>().LoadCombatBG();
         ClearMenu();

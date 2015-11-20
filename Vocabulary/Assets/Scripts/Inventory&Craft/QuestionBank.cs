@@ -25,24 +25,6 @@ public class QuestionBank : MonoBehaviour {
 		M_NormalQuestionBank = new List<Question> ();
 		M_HardQuestionBank = new List<Question> ();
 
-		List<string> q1w = new List<string> ();
-		q1w.Add ("insane");
-		q1w.Add ("trivial");
-		q1w.Add ("traumatic");
-		q1w.Add ("ineffable");
-		Question q1 = new Question (0, "With his sub-four minute mile Bannister broke a psychological barrier, and inspired thousands of others to attempt to overcome seemingly ____ hurdles.",
-		                         	"insurmountable", q1w);
-		AddQuestion (q1);
-
-		List<string> q2w = new List<string> ();
-		q2w.Add ("amuse");
-		q2w.Add ("avert");
-		q2w.Add ("juxtapose");
-		q2w.Add ("solve");
-		Question q2 = new Question (0, "All good comic writers use humor to ____, not to side-step the problems of human behavior.",
-		                            "confront", q2w);
-		AddQuestion (q2);
-
 		List<string> q3w = new List<string> ();
 		q3w.Add ("disappointing");
 		q3w.Add ("conceived");
@@ -66,6 +48,8 @@ public class QuestionBank : MonoBehaviour {
 		Question q4 = new Question (0, "The new institute provides intensive postgraduate teaching to a wide range of students, in the hope that these students will use their knowledge to boost the country's ____ economy.",
 		                            q4r, q4w);
 		AddQuestion (q4);
+	
+		LoadQuestions ();
 	}
 
 	// add a question
@@ -145,28 +129,52 @@ public class QuestionBank : MonoBehaviour {
 		TextAsset textAsset = (TextAsset)Resources.Load ("Questions/standard_questions");
 		XmlDocument xmlDoc = new XmlDocument ();
 		xmlDoc.LoadXml (textAsset.text);
-		
+
 		// parse
+		int type = 0;
+
 		XmlNodeList qlist = xmlDoc.GetElementsByTagName ("qlist");
 		foreach (XmlNode qlistChild in qlist) {
-			if(qlistChild.Name == "qtype"){
-				switch(qlistChild.InnerText){
-				
-				case "standard":
-					break;
+			XmlNodeList qlistContent = qlistChild.ChildNodes;
+			foreach(XmlNode qContent in qlistChild){
+				if (qContent.Name == "question"){
+					int difficulty = 0;
+					string question = "";
+					string rAnswer = "";
+					List<string> rAnswers = new List<string>();
+					List<string> wAnswers = new List<string>();
+					XmlNodeList qs = qContent.ChildNodes;
+					foreach (XmlNode q in qs) {
+						switch(q.Name){
+						case "qstring" :
+							question = q.InnerText;
+							break;
+						case "correct":
+							rAnswer = q.InnerText;
+							rAnswers.Add(q.InnerText);
+							break;
+						case "wrong":
+							wAnswers.Add(q.InnerText);
+							break;
+						}
+					}
+
+					if(type == 0){
+						AddQuestion(new Question(difficulty, question, rAnswer, wAnswers));
+					}else if(type == 1){
+						AddQuestion(new Question(difficulty, question, rAnswers, wAnswers));
+					}
+				}else if (qContent.Name == "qtype") {
+					switch (qContent.InnerText) {
+					case "standard":
+						type = 0;
+						break;
+					case "magic":
+						type = 1;
+						break;
+					}
 				}
 			}
-
-
-			/*
-			//XmlNodeList qscontent = qsInfo.ChildNodes;
-			foreach(XmlNode qsitr in qscontent){
-				XmlNodeList qs = qsitr.ChildNodes;
-				foreach(XmlNode q in qs){
-					Debug.Log(q.Name);
-				}
-			}
-			*/
 		}
 	}
 }

@@ -206,7 +206,6 @@ public class InventoryScreen : MonoBehaviour {
 	public void ArmorButtonClick(){
 		ClearCanvas ();
 		CreateListPanel ();
-		Debug.Log ("Armors: " + Inventory._Armors.Count);
 		PopulateArmorList ();
 	}
 	

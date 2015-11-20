@@ -345,7 +345,7 @@ public class LAppModel :L2DBaseModel
     public void StartMotion(string group, int no, int priority)
     {
         string motionName = modelSetting.GetMotionFile(group, no);
-		Debug.Log("motion start" + motionName);
+		//Debug.Log("motion start" + motionName);
         if (motionName == null || motionName.Equals(""))
         {
             if (LAppDefine.DEBUG_LOG) Debug.Log("Motion name is invalid");

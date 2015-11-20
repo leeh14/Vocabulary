@@ -130,11 +130,20 @@ public class Inventory : MonoBehaviour {
 	// add a weapon to weapon list
 	public static void AddWeapon(string name){
 		switch (name) {
+		case "Basic Sword":
+			_Weapons.Add(new BasicSword());
+			break;
 		case "Patchwork Scimitar":
 			_Weapons.Add(new PatchworkScimitar());
 			break;
 		case "Staff of Visions":
 			_Weapons.Add (new StaffofVisions());
+			break;
+		case "Quoth Rapier":
+			_Weapons.Add (new QuothRapier());
+			break;
+		case "Dictionator":
+			_Weapons.Add (new Dictionator());
 			break;
 		default:
 			Debug.Log ("No such Weapon");
@@ -157,11 +166,11 @@ public class Inventory : MonoBehaviour {
 	// add an armor to armor list
 	public static void AddArmor(string name){
 		switch (name) {
-		case "Crystal Armor":
-			_Armors.Add (new CrystalArmor());
+		case "Basic Armor":
+			_Armors.Add (new BasicArmor());
 			break;
-		case "Wood Armor":
-			_Armors.Add(new WoodArmor());
+		case "Glowing Scales":
+			_Armors.Add(new GlowingScales());
 			break;
 		default:
 			Debug.Log ("No such Armor");

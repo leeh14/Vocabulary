@@ -35,7 +35,7 @@ public class LAppModelProxy : MonoBehaviour
         var filename = FileManager.getFilename(path);
         var dir = FileManager.getDirName(path);
 
-        Debug.Log("Load " + dir +"  filename:"+ filename);
+        //Debug.Log("Load " + dir +"  filename:"+ filename);
 		model.LoadFromStreamingAssets(dir, filename);
 
 		//settings intial expression

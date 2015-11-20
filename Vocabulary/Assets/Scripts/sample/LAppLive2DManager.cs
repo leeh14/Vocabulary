@@ -37,7 +37,7 @@ public class LAppLive2DManager
 
     public LAppLive2DManager()
     {
-        Live2D.init();
+        //Live2D.init();
         Live2DFramework.setPlatformManager(new PlatformManager());
         models = new List<LAppModelProxy>();
     }

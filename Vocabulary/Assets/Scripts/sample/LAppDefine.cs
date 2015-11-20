@@ -11,7 +11,7 @@ using System.Collections;
 public class LAppDefine
 {
 	
-    public static bool DEBUG_LOG = true;
+    public static bool DEBUG_LOG = false;
     public static bool DEBUG_TOUCH_LOG = false;
 	public static bool DEBUG_DRAW_HIT_AREA = false;
 	
