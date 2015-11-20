@@ -39,11 +39,13 @@ public class DebugScript : MonoBehaviour {
 		Item itmp6 = new Item (1, "Quoth Rapier", 1);
 		Inventory.AddRecipe ("Quoth Rapier", ltmp6, itmp6);
 
+		/*
 		List<Item> ltmp7 = new List<Item> ();
 		ltmp7.Add (new Item (2, "Sphinx Drop", 3));
 		ltmp7.Add (new Item (2, "Forgotten Drop", 1));
 		Item itmp7 = new Item (1, "Dictionator", 1);
 		Inventory.AddRecipe ("Dictionator", ltmp7, itmp7);
+		*/
 
 		Reset ();
 	}
@@ -56,6 +58,8 @@ public class DebugScript : MonoBehaviour {
 		Inventory.AddItem (3, "Health Potion", 20);
 		Inventory.AddItem (2, "Broken Spearhead", 20);
 		Inventory.AddItem (2, "Mummy Eye", 20);
+		Inventory.AddItem (2, "Congealed Plasma", 4);
+		Inventory.AddItem (2, "Weathered Hide", 4);
 		Inventory.AddArmor ("Basic Armor");
 		Inventory.AddWeapon ("Basic Sword");
 	}
