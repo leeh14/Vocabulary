@@ -136,7 +136,7 @@ public class MapScreen : MonoBehaviour {
 	}
 
 	// Clear everything in Canvas
-	void ClearCanvas(){
+	public void ClearCanvas(){
 		var children = new List<GameObject> ();
 		foreach (Transform child in canvas.transform) {
 			if(child.name != "EventSystem"){

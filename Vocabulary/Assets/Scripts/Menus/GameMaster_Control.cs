@@ -89,12 +89,16 @@ public class GameMaster_Control : MonoBehaviour{
 	public void LoadMenu()
 	{
 		ClearMenu ();
-		//clear the enemies
-		foreach (GameObject g in AvailableEnemies)
+		if (AvailableEnemies.Count > 0)
 		{
-			Destroy(g);
+			gameObject.GetComponent<MapScreen>().ClearCanvas();
+			//clear the enemies
+			foreach (GameObject g in AvailableEnemies)
+			{
+				Destroy(g);
+			}
+			AvailableEnemies.Clear();
 		}
-		AvailableEnemies.Clear();
 		Background.GetComponent<Background>().LoadStart();
 		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
 	}
