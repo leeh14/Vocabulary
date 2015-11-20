@@ -13,18 +13,19 @@ public class GameMaster_Control : MonoBehaviour{
 	private GameObject Background;
 	public GameObject player;
 	public Mesh livemesh;
-	public List<string[]> questions;
 	//public QuestionData CurrentQuestion;
 	public bool TurnContinue = false;
 	//public Inventory Inventory = new Inventory();
 	public bool HideAnswer = false;
 	public bool InBattle =false;
 	private GenericWeapon DebugWeapon;
+	private GenericArmor DebugArmor;
 	private string CurrentEnemyName = "";
 	private bool RoundOver = false;
 	private bool loadback = false;
 	private List<string> MultipleAnswers = new List<string>();
 	private string droppeditemname;
+	private int questiontype;
     // Use this for initialization
     void Start() {
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -33,11 +34,11 @@ public class GameMaster_Control : MonoBehaviour{
         CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Title"));
 
 		//for now just set it to be the 1 answer questions
-		questions = GenerateEasyQuestions ();
+
 		DebugWeapon = new BasicSword();
 		player.GetComponent<Player>().SetWeapon(DebugWeapon);
 		//Debug.Log("se");
-		GenericArmor DebugArmor = new BasicArmor();
+		DebugArmor = new BasicArmor();
 		player.GetComponent<Player>().SetArmor(DebugArmor);
 
 		Background = GameObject.FindGameObjectWithTag("bg");
@@ -58,8 +59,8 @@ public class GameMaster_Control : MonoBehaviour{
 		}else if (Input.GetKey(KeyCode.S))
 		{
 			Debug.Log("switch tp staff");
-			DebugWeapon = new StaffofVisions();
-			player.GetComponent<Player>().SetWeapon(DebugWeapon);
+			DebugArmor = new GlowingScales();
+			player.GetComponent<Player>().SetArmor(DebugArmor);
 		}
 		if(loadback == true)
 		{
@@ -129,13 +130,10 @@ public class GameMaster_Control : MonoBehaviour{
 	void OnLevelWasLoaded(int level)
 	{
 		//depending on the level load a different set of questions
-		if (level == 1) {
-			questions = GenerateEasyQuestions ();
-		} else if (level == 2) {
-			questions = GenerateMediumQuestions ();
-		} else if (level == 3) {
-			questions = GenerateHardQuestions();
-		}
+//		if (level == 1) {
+//		} else if (level == 2) {
+//		} else if (level == 3) {
+//		}
 	}
 	//remove the current menu on the screen
 	public void ClearMenu()
@@ -177,26 +175,7 @@ public class GameMaster_Control : MonoBehaviour{
 		//load the background image
 		Background.GetComponent<Background>().LoadCombatBG();
         ClearMenu();
-        //CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
-		//Iterate through list of enemies and generate corresponding prefabs
 
-		//generate the enemy canvas
-//		Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Testingshizuku"));
-//
-//		Enemies.transform.position = new Vector3 (4.3f, 16.71f, 1f);
-//		Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
-//		Enemies.name = "Goblin1";
-//		Enemies.GetComponent<Goblin>().SetMaster(gameObject);
-//
-//		//second enemy
-//		Enemies2 = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Testingshizuku"));
-//
-//		Enemies2.transform.position = new Vector3 (-3.5f, 16.71f, 1f);
-//		Enemies2.transform.localScale = new Vector3(.38f,1f,.33f);
-//		Enemies2.name = "Goblin2";
-//		Enemies2.GetComponent<Goblin>().SetMaster(gameObject);
-//		AvailableEnemies.Add (Enemies);
-//		AvailableEnemies.Add (Enemies2);
 		for (int m = 0 ; m < Enemy.Count; m ++)
 		{
 			Debug.Log(Enemy[m]);
@@ -277,6 +256,7 @@ public class GameMaster_Control : MonoBehaviour{
     //the multiple choices for combat
     public void BeginCombat( int type)
     {
+		questiontype = type;
 		Background.GetComponent<Background>().LoadQuestionbg1();
         ClearMenu();
 		//disable vision of enemies 
@@ -304,12 +284,12 @@ public class GameMaster_Control : MonoBehaviour{
 	public void ChangeTurn(Question obj , string playerchoice, int type)
 	{
 		bool correct = obj.CheckAnswer (playerchoice);
-		Debug.Log("play " + playerchoice + "type" + type);
+		//Debug.Log("play " + playerchoice + "type" + type);
 		if(type == 1)
 		{
 			foreach(string q in MultipleAnswers)
 			{
-				Debug.Log(q + "dsf" + playerchoice);
+				//Debug.Log(q + "dsf" + playerchoice);
 				if (q == playerchoice)
 				{
 					return;
@@ -395,6 +375,7 @@ public class GameMaster_Control : MonoBehaviour{
 			if (player.GetComponent<Player> ().Alive == false) {
 				//player is dead
 				ClearMenu ();
+				player.GetComponent<Player>().Health = player.GetComponent<Player>().MaxHealth;
 				CurrentMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/BattleLost"));
 				return;
 			}
@@ -407,12 +388,13 @@ public class GameMaster_Control : MonoBehaviour{
 
 	}
 	#region coroutines
-	public IEnumerator WaitTurn(int dmg)
+	public IEnumerator WaitTurn(float dmg)
 	{
 		yield return StartCoroutine (PlayerTurn (dmg, CurrentEnemy.GetComponent<GenericEnemy>().name));
 	}
-	public IEnumerator PlayerTurn(int damage, string enemyname)
+	public IEnumerator PlayerTurn(float damage, string enemyname)
 	{
+
 		CurrentEnemyName = enemyname;
 		//generate item drop
 		int itemdrop = (int)Random.Range(0f, CurrentEnemy.GetComponent<GenericEnemy>().Droppable.Count);
@@ -423,26 +405,29 @@ public class GameMaster_Control : MonoBehaviour{
 		string combattext = "";
 		if(player.GetComponent<Player>().CurrentWeapon.Special == true && player.GetComponent<Player>().CurrentWeapon.AffectAnswers == false)
 		{
-			player.GetComponent<Player>().CurrentWeapon.SpecialMove(damage, AvailableEnemies);
+			player.GetComponent<Player>().CurrentWeapon.SpecialMove(damage, AvailableEnemies, questiontype);
 			dealt = true;
 		}
 		else
 		{
 			List<GameObject> temp = new List<GameObject>();
 			temp.Add(CurrentEnemy);
-			player.GetComponent<Player>().CurrentWeapon.DealDamage(damage, temp);
+			player.GetComponent<Player>().CurrentWeapon.DealDamage(damage, temp, questiontype);
 		}
+		//attack damge
+
+		float dmgdealt = player.GetComponent<Player>().CurrentWeapon.dmgdealt;
 		if(dealt == true)
 		{
 			foreach(GameObject e in AvailableEnemies)
 			{
-				combattext += "You have dealt " + damage + " to " + e.GetComponent<GenericEnemy>().name + "\n";
+				combattext += "You have dealt " + dmgdealt + " to " + e.GetComponent<GenericEnemy>().name + "\n";
 				e.GetComponent<LAppModelProxy>().model.GetDamaged();
 			}
 		}
 		else
 		{
-			combattext = "You have dealt " + damage + " to " + enemyname;
+			combattext = "You have dealt " + dmgdealt + " to " + enemyname;
 			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
 		}
 
@@ -522,41 +507,5 @@ public class GameMaster_Control : MonoBehaviour{
 	}
 	#endregion
 	#endregion
-	#region GenerateQuestions
-	//Generating the questions 
-	public List<string[]> GenerateEasyQuestions()
-	{
-		List<string[]> temp = new List<string[]>();
 
-		string[] question = {"Best Onesie?" , "Charmander", "Greninja", "Magikarp", "Suicune"};
-		temp.Add (question);
-		question = new string[]{"Greatest onsie created?", "Charmander", "Greninja", "Magikarp", "Suicune"};
-		temp.Add (question);
-		question = new string[]{"Greatest pokemon onsie created?", "Charmander", "Greninja", "Magikarp", "Suicune"};
-		temp.Add (question);
-		return temp;
-	}
-	public List<string[]> GenerateMediumQuestions()
-	{
-		List<string[]> temp = new List<string[]>();
-		string[] question = {"Best Pokemon?" , "Charmander + Pikachu", "Greninja", "Magikarp", "Suicune"};
-		temp.Add (question);
-		return temp;
-	}
-	public List<string[]> GenerateHardQuestions()
-	{
-		List<string[]> temp = new List<string[]>();
-		string[] question = {"Best Starter?" , "Charmander", "Greninja", "Magikarp", "Marshtomp"};
-		temp.Add (question);
-		return temp;
-	}
-	public List<string[]> Generate2AnsEasyQ()
-	{
-		//placeholder
-		List<string[]> temp = new List<string[]>();
-		string[] question = {"Best Starter?" , "Charmander", "Greninja", "Magikarp", "Marshtomp"};
-		temp.Add (question);
-		return temp;
-	}
-	#endregion
 }

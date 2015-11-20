@@ -8,10 +8,12 @@ using System.Collections.Generic;
 [Serializable]
 public class GenericWeapon : IComparable<GenericWeapon> {
 	public string name;
-	public int Damage;
+	public float Damage;
 	public string Attribute;
 	public bool Special = false;
 	public bool AffectAnswers = false;
+	public float AttackModifier = 1f;
+	public float dmgdealt = 0f;
 	// Use this for initialization
 	void Start () {
 	
@@ -21,14 +23,14 @@ public class GenericWeapon : IComparable<GenericWeapon> {
 	void Update () {
 	
 	}
-	public void DealDamage(int dmg, List<GameObject> Enemies)
+	public virtual void DealDamage(float dmg, List<GameObject> Enemies, int questiontype)
 	{
 		foreach(GameObject enemy in Enemies)
 		{
 			enemy.GetComponent<GenericEnemy>().ReceiveDamage(dmg);
 		}
 	}
-	public virtual void SpecialMove(int dmg, List<GameObject> Enemies)
+	public virtual void SpecialMove(float dmg, List<GameObject> Enemies, int questiontype)
 	{
 	
 	}

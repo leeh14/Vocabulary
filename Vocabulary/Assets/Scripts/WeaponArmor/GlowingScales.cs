@@ -12,6 +12,7 @@ public class GlowingScales : GenericArmor {
 		name = "Glowing Scales Armor";
 		Armor = 10;
 		InsigniaNum = 2;
+		healthmodifier = 10f;
 	}
 	// Use this for initialization
 	void Start () {

@@ -5,9 +5,9 @@ public class Slime : GenericEnemy {
 
 	// Use this for initialization
 	void Start () {
-		Health = 10;
-		Armor = 0;
-		Damage = 2;
+		Health = 10f;
+		Armor = 0f;
+		Damage = 2f;
 		name = "Slime";
 		//creating item drop list
 		Droppable.Add("Broken Spearhead");

@@ -8,7 +8,7 @@ public class QuothRapier : GenericWeapon {
 	public QuothRapier()
 	{
 		name = "Quoth Rapier";
-		Damage = 4;
+		Damage = 4f;
 	}
 	// Use this for initialization
 	void Start () {
