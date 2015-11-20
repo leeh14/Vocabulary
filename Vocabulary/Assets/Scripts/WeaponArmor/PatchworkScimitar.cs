@@ -7,7 +7,6 @@ using System;
 public class PatchworkScimitar : GenericWeapon {
 	public PatchworkScimitar()
 	{
-		Debug.Log("create damadge");
 		name = "Patchwork Scimitar";
 		Damage = 4;
 		Special = true;

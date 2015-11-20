@@ -36,6 +36,13 @@ public class CombatQuestion : MonoBehaviour {
 		ButtonCounter = 0;
 		//change the text of all the buttons
 		for(int i = 0 ; i < options.Length ; i++){
+
+			if(ButtonCounter >= data.wAnswers.Count)
+			{
+				//Debug.Log("sadlkfj");
+				Destroy(options[i].gameObject);
+				break;
+			}
 			//do this portion for the incorrect answer for attacks
 			if(i == correct)
 			{

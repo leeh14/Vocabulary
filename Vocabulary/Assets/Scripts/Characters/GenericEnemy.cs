@@ -18,7 +18,6 @@ public class GenericEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		master = GameObject.FindGameObjectWithTag ("GameMaster");
-		Debug.Log("update");
 	}
 	public void SetMaster(GameObject mas)
 	{
