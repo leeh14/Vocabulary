@@ -1,7 +1,9 @@
 <qlist>
     <qtype>standard</qtype>
     <question>
-        <qstring>All good comic writers use humor to ____, not to side-step the problems of human behavior.</qstring>
+        <qstring>
+All good comic writers use humor to ____, not to side-step the problems of human behavior.
+</qstring>
         <correct>confront</correct>
         <wrong>amuse</wrong>
         <wrong>avert</wrong>
@@ -9,7 +11,9 @@
         <wrong>solve</wrong>
     </question>
     <question>
-        <qstring>With his sub-four minute mile Bannister broke a psychological barrier, and inspired thousands of others to attempt to overcome seemingly ____ hurdles.</qstring>
+        <qstring>
+With his sub-four minute mile Bannister broke a psychological barrier, and inspired thousands of others to attempt to overcome seemingly ____ hurdles.
+</qstring>
         <correct>insurmountable</correct>
         <wrong>inane</wrong>
         <wrong>trivial</wrong>
@@ -17,11 +21,69 @@
         <wrong>ineffable</wrong>
     </question>
     <question>
-        <qstring>There are some people who think that only the poor and less educated people use slang, but this idea is _________.</qstring>
-        <correct>erroneous</correct>
-        <wrong>accurate</wrong>
-        <wrong>popular</wrong>
-        <wrong>widespread</wrong>
-        <wrong>ineffectual</wrong>
+        <qstring>
+            The revolution in art has not lost its steam; it ____ on as fiercely as ever.
+        </qstring>
+        <correct>rages</correct>
+        <wrong>trudges</wrong>
+        <wrong>meanders</wrong>
+        <wrong>edges</wrong>
+        <wrong>ambles</wrong>
+    </question>
+    <question>
+        <qstring>Each occupation has its own ____ ; bankers, lawyers and computer professionals, for example, all use among themselves language which outsiders have difficulty following.</qstring>
+        <correct>jargon</correct>
+        <wrong>merits</wrong>
+        <wrong>disadvantages</wrong>
+        <wrong>rewards</wrong>
+        <wrong>problems</wrong>
+    </question>
+    <question>
+        <qstring>____ by nature, Jones spoke very little even to his own family members.</qstring>
+        <correct>taciturn</correct>
+        <wrong>gregarious</wrong>
+        <wrong>garrulous</wrong>
+        <wrong>equivocal</wrong>
+        <wrong>arrogant</wrong>
+    </question>
+    <question>
+        <qstring>Many people at that time believed that spices help preserve food; however, Hall found that many marketed spices were ____ bacteria, moulds and yeasts.</qstring>
+        <correct>teeming with</correct>
+        <wrong>devoid of</wrong>
+        <wrong>destroyed by</wrong>
+        <wrong>improved by</wrong>
+        <wrong>active against</wrong>
+    </question>
+    <question>
+        <qstring>Unwilling to admit that they had been in error, the researchers tried to ____ their case with more data obtained from dubious sources.</qstring>
+        <correct>buttress</correct>
+        <wrong>ascertain</wrong>
+        <wrong>dispute</wrong>
+        <wrong>refute</wrong>
+        <wrong>absolve</wrong>
+    </question>
+    <question>
+        <qstring>The student was extremely foolhardy; he had the ____ to question the senior professor's judgment.</qstring>
+        <correct>temerity</correct>
+        <wrong>wisdom</wrong>
+        <wrong>interest</wrong>
+        <wrong>trepidation</wrong>
+        <wrong>condescension</wrong>
+    </question>
+    <question>
+        <qstring>After the accident, the nerves to her arm were damaged and so the muscles ____ through disuse.</qstring>
+        <correct>atrophied</correct>
+        <wrong>contracted</wrong>
+        <wrong>elongated</wrong>
+        <wrong>invigorated</wrong>
+        <wrong>dwindled</wrong>
+    </question>
+    <question>
+        <qstring>He was treated like a ____ and cast out from his community.</qstring>
+        <correct>pariah</correct>
+        <wrong>ascetic</wrong>
+        <wrong>tyro</wrong>
+        <wrong>prodigy</wrong>
+        <wrong>prodigal</wrong>
     </question>
 </qlist>

@@ -1,0 +1,93 @@
+<qlist>
+    <qtype>magic</qtype>
+    <question>
+        <qstring>After hours of acrimonious arguments the negotiations reached a(n) _____ ; neither side was willing to compromise.</qstring>
+        <correct>impasse</correct>
+        <correct>deadlock</correct>
+        <wrong>solution</wrong>
+        <wrong>end</wrong>
+        <wrong>resolution</wrong>
+        <wrong>conclusion</wrong>
+    </question>
+    <question>
+        <qstring>The book is an attempt on the part of the eminent scholar to reconcile the ____ experience and theoretical underpinnings of certain everyday phenomena.</qstring>
+        <correct>practical</correct>
+        <correct>empirical</correct>
+        <wrong>philosophical</wrong>
+        <wrong>arcane</wrong>
+        <wrong>superficial</wrong>
+        <wrong>obtuse</wrong>
+    </question>
+    <question>
+        <qstring>The Countess dressed with a(n) ____ elegance which seemed to proclaim to the world just how distinguished she was.</qstring>
+        <correct>studied</correct>
+        <correct>rococo</correct>
+        <wrong>mannered</wrong>
+        <wrong>pronounced</wrong>
+        <wrong>ingenuous</wrong>
+        <wrong>understated</wrong>
+    </question>
+    <question>
+        <qstring>It is a waste of time to ____ someone so dimwitted; he is too dull to recognize your barbs.</qstring>
+        <correct>ridicule</correct>
+        <correct>lampoon</correct>
+        <wrong>disparage</wrong>
+        <wrong>laud</wrong>
+        <wrong>enlighten</wrong>
+        <wrong>train</wrong>
+    </question>
+    <question>
+        <qstring>The teacher was so abstracted that she gave a ____ evaluation of what was really an interesting solution to the problem she had set.</qstring>
+        <correct>cursory</correct>
+        <correct>perfunctory</correct>
+        <wrong>philosophical</wrong>
+        <wrong>detailed</wrong>
+        <wrong>considered</wrong>
+        <wrong>tangential</wrong>
+    </question>
+    <question>
+        <qstring>Punishment for transgressions of the law ceases to have a deterrent effect if the punishment is frequently ____ .</qstring>
+        <correct>waived</correct>
+        <correct>commuted</correct>
+        <wrong>arbitrary</wrong>
+        <wrong>changed</wrong>
+        <wrong>lenient</wrong>
+        <wrong>applied</wrong>
+    </question>
+    <question>
+        <qstring>Not only love affects the eye of the beholder; other emotions also ____ the interpretation of the events that we witness.</qstring>
+        <correct>color</correct>
+        <correct>impact</correct>
+        <wrong>cloud</wrong>
+        <wrong>trigger</wrong>
+        <wrong>devalue</wrong>
+        <wrong>objectify</wrong>
+    </question>
+    <question>
+        <qstring>The human mind can often reject the most ____ data in favor of something that, though valueless, at least sounds familiar.</qstring>
+        <correct>pertinent</correct>
+        <correct>germane</correct>
+        <wrong>anomalous</wrong>
+        <wrong>inconsequential</wrong>
+        <wrong>peripheral</wrong>
+        <wrong>visible</wrong>
+    </question>
+    <question>
+        <qstring>____ behavior never has the effect its practitioners hope for; the attempt to hide only draws attention to what is hidden.</qstring>
+        <correct>Puritanical</correct>
+        <correct>Prudish</correct>
+        <wrong>Covert</wrong>
+        <wrong>Camouflaging</wrong>
+        <wrong>Misogynistic</wrong>
+        <wrong>Miserly</wrong>
+    </question>
+    <question>
+        <qstring>He completed the work with unusual ____ ; his need to get out of the office overcame his habitual torpor.</qstring>
+        <correct>dispatch</correct>
+        <correct>celerity</correct>
+        <wrong>grace</wrong>
+        <wrong>effectiveness</wrong>
+        <wrong>slovenliness</wrong>
+        <wrong>carelessness</wrong>
+    </question>
+</qlist>
