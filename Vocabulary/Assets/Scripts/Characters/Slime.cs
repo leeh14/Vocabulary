@@ -13,6 +13,10 @@ public class Slime : GenericEnemy {
 		Droppable.Add("Broken Spearhead");
 		Droppable.Add("Congealed Plasma");
 		Droppable.Add("Resonant Ooze");
+		Droppable.Add("Shorn Pages");
+		Droppable.Add("Dark Wisps");
+		Droppable.Add("Sphinx Drop");
+		Droppable.Add("Forgotten Drop");
 	}
 	
 	// Update is called once per frame

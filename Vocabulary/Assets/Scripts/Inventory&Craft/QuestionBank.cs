@@ -50,6 +50,7 @@ public class QuestionBank : MonoBehaviour {
 		AddQuestion (q4);
 	
 		LoadQuestions ();
+		Debug.Log (S_EasyQuestionBank.Count + " " + M_EasyQuestionBank.Count);
 	}
 
 	// add a question

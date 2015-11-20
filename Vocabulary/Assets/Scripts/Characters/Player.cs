@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-		Health = 3f;
+		Health = 20f;
 		MaxHealth = 20f;
 		//CurrentArmor = 1;
     }
