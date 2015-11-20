@@ -22,8 +22,8 @@ With his sub-four minute mile Bannister broke a psychological barrier, and inspi
     </question>
     <question>
         <qstring>
-            The revolution in art has not lost its steam; it ____ on as fiercely as ever.
-        </qstring>
+The revolution in art has not lost its steam; it ____ on as fiercely as ever.
+</qstring>
         <correct>rages</correct>
         <wrong>trudges</wrong>
         <wrong>meanders</wrong>
@@ -85,5 +85,85 @@ With his sub-four minute mile Bannister broke a psychological barrier, and inspi
         <wrong>tyro</wrong>
         <wrong>prodigy</wrong>
         <wrong>prodigal</wrong>
+    </question>
+    <question>
+        <qstring>The success of the business venture ____ his expectations; he never thought that the firm would prosper.</qstring>
+        <correct>belied</correct>
+        <wrong>confirmed</wrong>
+        <wrong>nullified</wrong>
+        <wrong>fulfilled</wrong>
+        <wrong>ratified</wrong>
+    </question>
+    <question>
+        <qstring>The professor became increasingly ____ in later years, flying into a rage whenever he was opposed.</qstring>
+        <correct>irascible</correct>
+        <wrong>taciturn</wrong>
+        <wrong>voluble</wrong>
+        <wrong>subdued</wrong>
+        <wrong>contrite</wrong>
+    </question>
+    <question>
+        <qstring>Many so-called social playwrights are distinctly ____ ; rather than allowing the members of the audience to form their own opinions, these writers force a viewpoint on the viewer.</qstring>
+        <correct>didactic</correct>
+        <wrong>concillatory</wrong>
+        <wrong>prolific</wrong>
+        <wrong>iconoclastic</wrong>
+        <wrong>contumacious</wrong>
+    </question>
+    <question>
+        <qstring>In a fit of ____ she threw out the valuable statue simply because it had belonged to her ex-husband.</qstring>
+        <correct>pique</correct>
+        <wrong>contrition</wrong>
+        <wrong>goodwill</wrong>
+        <wrong>pedantry</wrong>
+        <wrong>prudence</wrong>
+    </question>
+    <question>
+        <qstring>I cannot conclude this preface without ____ that an early and untimely death should have prevented Persius from giving a more finished appearance to his works.</qstring>
+        <correct>lamenting</correct>
+        <wrong>rejoicing</wrong>
+        <wrong>affirming</wrong>
+        <wrong>commenting</wrong>
+        <wrong>mentioning</wrong>
+    </question>
+    <question>
+        <qstring>The quantum theory was initially regarded as absurd, unnatural and ____ with common sense.</qstring>
+        <correct>incompatible</correct>
+        <wrong>consanguineous</wrong>
+        <wrong>discernable</wrong>
+        <wrong>decipherable</wrong>
+        <wrong>consistent</wrong>
+    </question>
+    <question>
+        <qstring>The crew of the air balloon ____ the sand bags to help the balloon rise over the hill.</qstring>
+        <correct>jettisoned</correct>
+        <wrong>capsized</wrong>
+        <wrong>salvaged</wrong>
+        <wrong>augmented</wrong>
+        <wrong>enumerated</wrong>
+    </question>
+    <question>
+        <qstring>Hawkins is ____ in his field; no other contemporary scientist commands the same respect.</qstring>
+        <correct>preeminent</correct>
+        <wrong>disparaged</wrong>
+        <wrong>ignominious</wrong>
+        <wrong>obsolete</wrong>
+        <wrong>anachronistic</wrong>
+    </question>
+    <question>
+        <qstring>She was roundly condemned for her ____ ; she betrayed the woman to whom she owed her success.</qstring>
+        <correct>perfidy</correct>
+        <wrong>truculence</wrong>
+        <wrong>serendipity</wrong>
+        <wrong>pragmatism</wrong>
+        <wrong>discernment</wrong>
+    </question>
+    <question>
+        <qstring>The cricket match seemed ____ to our guests; they were used to watching sports in which the action is over in a couple of hours at the most.</qstring>
+        <correct>interminable</correct>
+        <wrong>unintelligible</wrong>
+        <wrong>inconsequential</wrong>
+        <wrong>implausible</wrong>
+        <wrong>evanescent</wrong>
     </question>
 </qlist>
