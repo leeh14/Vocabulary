@@ -24,33 +24,9 @@ public class QuestionBank : MonoBehaviour {
 		M_EasyQuestionBank = new List<Question> ();
 		M_NormalQuestionBank = new List<Question> ();
 		M_HardQuestionBank = new List<Question> ();
-
-		List<string> q3w = new List<string> ();
-		q3w.Add ("disappointing");
-		q3w.Add ("conceived");
-		q3w.Add ("promising");
-		q3w.Add ("required");
-		List<string> q3r = new List<string> ();
-		q3r.Add ("touted");
-		q3r.Add ("heralded");
-		Question q3 = new Question (0, "The prize competition was ____ as a showcase for new technology, but instead the competition was marred by disqualifications and disputes.",
-		                            q3r, q3w);
-		AddQuestion (q3);
-
-		List<string> q4w = new List<string> ();
-		q4w.Add ("emerging");
-		q4w.Add ("booming");
-		q4w.Add ("domestic");
-		q4w.Add ("bankrupt");
-		List<string> q4r = new List<string> ();
-		q4r.Add ("languishing");
-		q4r.Add ("flagging");
-		Question q4 = new Question (0, "The new institute provides intensive postgraduate teaching to a wide range of students, in the hope that these students will use their knowledge to boost the country's ____ economy.",
-		                            q4r, q4w);
-		AddQuestion (q4);
 	
-		LoadQuestions ();
-		Debug.Log (S_EasyQuestionBank.Count + " " + M_EasyQuestionBank.Count);
+		LoadQuestions ("Questions/standard_questions");
+		LoadQuestions ("QUestions/magic_questions");
 	}
 
 	// add a question
@@ -125,9 +101,9 @@ public class QuestionBank : MonoBehaviour {
 	}
 
 	// load the questions from xml
-	public void LoadQuestions(){
+	public void LoadQuestions(string fileName){
 		// load text
-		TextAsset textAsset = (TextAsset)Resources.Load ("Questions/standard_questions");
+		TextAsset textAsset = (TextAsset)Resources.Load (fileName);
 		XmlDocument xmlDoc = new XmlDocument ();
 		xmlDoc.LoadXml (textAsset.text);
 
