@@ -4,6 +4,7 @@ using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Collections.Generic;
+using System.Xml;
 
 public class QuestionBank : MonoBehaviour {
 	public List<Question> S_EasyQuestionBank;
@@ -23,7 +24,7 @@ public class QuestionBank : MonoBehaviour {
 		M_EasyQuestionBank = new List<Question> ();
 		M_NormalQuestionBank = new List<Question> ();
 		M_HardQuestionBank = new List<Question> ();
-		
+
 		List<string> q1w = new List<string> ();
 		q1w.Add ("insane");
 		q1w.Add ("trivial");
@@ -136,6 +137,37 @@ public class QuestionBank : MonoBehaviour {
 			return qBank [index];
 		}
 		return null;
+	}
+
+	// load the questions from xml
+	public void LoadQuestions(){
+		// load text
+		TextAsset textAsset = (TextAsset)Resources.Load ("Questions/standard_questions");
+		XmlDocument xmlDoc = new XmlDocument ();
+		xmlDoc.LoadXml (textAsset.text);
+		
+		// parse
+		XmlNodeList qlist = xmlDoc.GetElementsByTagName ("qlist");
+		foreach (XmlNode qlistChild in qlist) {
+			if(qlistChild.Name == "qtype"){
+				switch(qlistChild.InnerText){
+				
+				case "standard":
+					break;
+				}
+			}
+
+
+			/*
+			//XmlNodeList qscontent = qsInfo.ChildNodes;
+			foreach(XmlNode qsitr in qscontent){
+				XmlNodeList qs = qsitr.ChildNodes;
+				foreach(XmlNode q in qs){
+					Debug.Log(q.Name);
+				}
+			}
+			*/
+		}
 	}
 }
 
