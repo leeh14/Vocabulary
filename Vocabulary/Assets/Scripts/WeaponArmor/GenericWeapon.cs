@@ -29,6 +29,7 @@ public class GenericWeapon : IComparable<GenericWeapon> {
 		{
 			enemy.GetComponent<GenericEnemy>().ReceiveDamage(dmg);
 		}
+		dmgdealt = dmg;
 	}
 	public virtual void SpecialMove(float dmg, List<GameObject> Enemies, int questiontype)
 	{

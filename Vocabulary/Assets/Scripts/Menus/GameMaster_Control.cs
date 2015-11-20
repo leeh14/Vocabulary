@@ -51,17 +51,17 @@ public class GameMaster_Control : MonoBehaviour{
 
     // Update is called once per frame
     void Update() {
-		if(Input.GetKey(KeyCode.A))
-		{
-			Debug.Log("switch to schimat");
-			DebugWeapon = new PatchworkScimitar();
-			player.GetComponent<Player>().SetWeapon(DebugWeapon);
-		}else if (Input.GetKey(KeyCode.S))
-		{
-			Debug.Log("switch tp staff");
-			DebugArmor = new GlowingScales();
-			player.GetComponent<Player>().SetArmor(DebugArmor);
-		}
+//		if(Input.GetKey(KeyCode.A))
+//		{
+//			Debug.Log("switch to schimat");
+//			DebugWeapon = new PatchworkScimitar();
+//			player.GetComponent<Player>().SetWeapon(DebugWeapon);
+//		}else if (Input.GetKey(KeyCode.S))
+//		{
+//			Debug.Log("switch tp staff");
+//			DebugArmor = new GlowingScales();
+//			player.GetComponent<Player>().SetArmor(DebugArmor);
+//		}
 		if(loadback == true)
 		{
 			LoadMap();
@@ -77,6 +77,7 @@ public class GameMaster_Control : MonoBehaviour{
 //			GenericArmor DebugArmor = new CrystalArmor();
 //			player.GetComponent<Player>().SetArmor(DebugArmor);
 //		}
+
     }
     //keep the data here
     void Awake() {
@@ -88,6 +89,12 @@ public class GameMaster_Control : MonoBehaviour{
 	public void LoadMenu()
 	{
 		ClearMenu ();
+		//clear the enemies
+		foreach (GameObject g in AvailableEnemies)
+		{
+			Destroy(g);
+		}
+		AvailableEnemies.Clear();
 		Background.GetComponent<Background>().LoadStart();
 		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
 	}
@@ -455,6 +462,14 @@ public class GameMaster_Control : MonoBehaviour{
 				combat.verticalOverflow = VerticalWrapMode.Overflow;
 				combat.text = CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.";
 				player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
+				if (player.GetComponent<Player> ().Alive == false) {
+					//player is dead
+					ClearMenu ();
+					player.GetComponent<Player>().Health = player.GetComponent<Player>().MaxHealth;
+					CurrentMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/BattleLost"));
+					StopAllCoroutines ();
+					//return;
+				}
 
 			}
 			else
