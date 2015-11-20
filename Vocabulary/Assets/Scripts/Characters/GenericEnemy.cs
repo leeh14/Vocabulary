@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 public class GenericEnemy : MonoBehaviour {
 	public GameObject master;
-    public int Health;
-    public int Armor;
-    public int Damage;
+    public float Health;
+    public float Armor;
+    public float Damage;
 	public string name;
 	public bool Alive = true;
 	public bool Active = false;
@@ -34,7 +34,7 @@ public class GenericEnemy : MonoBehaviour {
 			master.GetComponent<GameMaster_Control>().CreateBattle(gameObject.name);
 		}
 	}
-	public void ReceiveDamage(int damage)
+	public void ReceiveDamage(float damage)
 	{
 		damage -= Armor;
 		Health -= damage;

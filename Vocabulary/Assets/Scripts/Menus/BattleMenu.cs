@@ -43,9 +43,9 @@ public class BattleMenu : MonoBehaviour {
 	public void UpdateButtons()
 	{
 		//updateing the  text
-
-		text = player.GetComponent<Player>().Health + " / " + player.GetComponent<Player>().MaxHealth;
-		float percentage = player.GetComponent<Player>().Health / (1.0f  * player.GetComponent<Player>().MaxHealth);
+		float currentMaxHealth =  (float)player.GetComponent<Player>().MaxHealth +  player.GetComponent<Player>().healthModifier;
+		text = player.GetComponent<Player>().Health + " / " + currentMaxHealth;
+		float percentage = player.GetComponent<Player>().Health / (1.0f  * (player.GetComponent<Player>().MaxHealth + player.GetComponent<Player>().healthModifier));
 		float healthpercentage = percentage * 1.2f;
 		
 		HealthBar.transform.localScale = new Vector3(healthpercentage,0.07f,1f);

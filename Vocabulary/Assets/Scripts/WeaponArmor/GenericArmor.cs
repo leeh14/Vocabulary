@@ -10,6 +10,7 @@ public class GenericArmor : IComparable<GenericArmor>{
 	public string name;
 	public int Armor;
 	public int InsigniaNum;
+	public float healthmodifier = 0f;
 	// Use this for initialization
 	void Start () {
 	

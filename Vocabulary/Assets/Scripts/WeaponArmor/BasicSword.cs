@@ -8,7 +8,7 @@ public class BasicSword : GenericWeapon {
 	public BasicSword()
 	{
 		name = "Basic Sword";
-		Damage = 1;
+		Damage = 1f;
 	}
 	// Use this for initialization
 	void Start () {
