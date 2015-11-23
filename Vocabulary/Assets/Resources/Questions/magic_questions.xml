@@ -90,4 +90,94 @@
         <wrong>slovenliness</wrong>
         <wrong>carelessness</wrong>
     </question>
+    <question>
+        <qstring>When faced with an urgent problem for which there is no immediately obvious solution, we tend to welcome any suggestion, however ____ , that might throw light on the dilemma.</qstring>
+        <correct>tentative</correct>
+        <correct>flimsy</correct>
+        <wrong>unusual</wrong>
+        <wrong>hackneyed</wrong>
+        <wrong>outrageous</wrong>
+        <wrong>illuminating</wrong>
+    </question>
+    <question>
+        <qstring>Mannering's personal diary, a record of ____ preoccupations and domestic details, belies the depth of thought for which he was renowned in the academic world.</qstring>
+        <correct>mundane</correct>
+        <correct>petty</correct>
+        <wrong>philosophical</wrong>
+        <wrong>weighty</wrong>
+        <wrong>erudite</wrong>
+        <wrong>untoward</wrong>
+    </question>
+    <question>
+        <qstring>The devotion to the syllabus and testing regime has become so extreme that most school students close their minds to anything ____ to the needs of the examination.</qstring>
+        <correct>extraneous</correct>
+        <correct>peripheral</correct>
+        <wrong>related</wrong>
+        <wrong>catering</wrong>
+        <wrong>similar</wrong>
+        <wrong>helpful</wrong>
+    </question>
+    <question>
+        <qstring>The ____ tone of the biography is entirely unexpected since both the biographer in her previous works and her subject in all that he has written have valued levity over solemnity.</qstring>
+        <correct>lugubrious</correct>
+        <correct>melancholy</correct>
+        <wrong>jaunty</wrong>
+        <wrong>jocose</wrong>
+        <wrong>frivolous</wrong>
+        <wrong>ironic</wrong>
+    </question>
+    <question>
+        <qstring>The teacher’s mercurial mood changes and ____ approach to grading made the students uneasy; they never knew what would please him or what would earn good marks.</qstring>
+        <correct>ambivalent</correct>
+        <correct>whimsical</correct>
+        <wrong>tardy</wrong>
+        <wrong>authoritarian</wrong>
+        <wrong>strict</wrong>
+        <wrong>hidebound</wrong>
+    </question>
+    <question>
+        <qstring>Like other metaphors, the "book of Nature" has two facets: it is ____ but if taken literally, it may mislead.</qstring>
+        <correct>perceptive</correct>
+        <correct>insightful</correct>
+        <wrong>heuristic</wrong>
+        <wrong>poetic</wrong>
+        <wrong>prosaic</wrong>
+        <wrong>iconoclastic</wrong>
+    </question>
+    <question>
+        <qstring>The increasing interactivity emerging in the latest computer systems means that the traditional view of the computer as a ____ of information now unduly limiting.</qstring>
+        <correct>repository</correct>
+        <correct>cache</correct>
+        <wrong>gleaner</wrong>
+        <wrong>transformer</wrong>
+        <wrong>processor</wrong>
+        <wrong>producer</wrong>
+    </question>
+    <question>
+        <qstring>Turing’s life exerts a powerful and ____ effect on writers – the combination of the highly intellectual and the personally dramatic is hard to resist.</qstring>
+        <correct>abiding</correct>
+        <correct>perennial</correct>
+        <wrong>pervasive</wrong>
+        <wrong>irresistible</wrong>
+        <wrong>unmitigated</wrong>
+        <wrong>multifaceted</wrong>
+    </question>
+    <question>
+        <qstring>As a result of his regimented upbringing, that left him unable to see the nuances of complex situations, he was often accused of being ____ .</qstring>
+        <correct>obtuse</correct>
+        <correct>imperceptive</correct>
+        <wrong>tyrannical</wrong>
+        <wrong>indecisive</wrong>
+        <wrong>xenophobic</wrong>
+        <wrong>boorish</wrong>
+    </question>
+    <question>
+        <qstring>It is paradoxical that String Theory inspires such widespread respect when it is so ____ that few could ever hope to master its claims.</qstring>
+        <correct>arcane</correct>
+        <correct>obscure</correct>
+        <wrong>intractable</wrong>
+        <wrong>confusing</wrong>
+        <wrong>elevated</wrong>
+        <wrong>rigorous</wrong>
+    </question>
 </qlist>
