@@ -217,8 +217,8 @@ public class GameMaster_Control : MonoBehaviour{
 			{
 				if(shiftleft == true)
 				{
-					x -= 3f;
-					xl -= 2f;
+					x -= 4f;
+					xl -= 5f;
 				}
 				if(shiftup == true)
 				{
