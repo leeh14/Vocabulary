@@ -35,14 +35,14 @@ public class GenericEnemy : MonoBehaviour {
 		if(gameObject.transform.position.x < -.30f)
 		{
 			//Enemey is on the left 
-			healthtxt.transform.localPosition = new Vector3(90f, 940f,  -1);
-			healthbar.transform.localPosition = new Vector3(15f, 950f, gameObject.transform.position.z);
+			healthtxt.transform.localPosition = new Vector3(90f, 770f,  -1);
+			healthbar.transform.localPosition = new Vector3(15f, 780f, gameObject.transform.position.z);
 		}
 		else 
 		{
 			//enemy is on the right
-			healthtxt.transform.localPosition = new Vector3(315f, 940f, gameObject.transform.position.z);
-			healthbar.transform.localPosition = new Vector3(240f, 950f, gameObject.transform.position.z);
+			healthtxt.transform.localPosition = new Vector3(315f, 770f, gameObject.transform.position.z);
+			healthbar.transform.localPosition = new Vector3(240f, 780f, gameObject.transform.position.z);
 		}
 		healthbar.transform.localScale = new Vector3(1f, .5f,1f);
 		healthtxt.text =  Health + " / " + MaxHealth; 

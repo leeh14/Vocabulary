@@ -210,7 +210,7 @@ public class GameMaster_Control : MonoBehaviour{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeP"));
 			}
 			float x = 6f;
-			float y = 13f;
+			float y = 9f;
 			float xl = -.31f;
 
 			if(Enemy.Count > 1)
@@ -247,7 +247,8 @@ public class GameMaster_Control : MonoBehaviour{
 	public void CreateBattle(string name)
 	{
 		InBattle = true;
-		Background.GetComponent<Background>().LoadQuestionbg1();
+		//determine background
+		Background.GetComponent<Background>().LoadCombatBG();
 		foreach (GameObject ene in AvailableEnemies)
 		{
 			if(ene.name == name)

@@ -82,8 +82,4 @@ public class BattleMenu : MonoBehaviour {
 			}
 		}
 	}
-	void UpdateMagic(Button magicattk)
-	{
-
-	}
 }
