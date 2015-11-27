@@ -9,7 +9,7 @@ using System.Collections.Generic;
 public class GlowingScales : GenericArmor {
 	public GlowingScales()
 	{
-		name = "Glowing Scales Armor";
+		name = "Glowing Scales";
 		Armor = 10;
 		InsigniaNum = 2;
 		healthmodifier = 10f;
