@@ -209,16 +209,16 @@ public class GameMaster_Control : MonoBehaviour{
 				shiftleft = true;
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeP"));
 			}
-			float x = 4f;
-			float y = 13f;
-			float xl = -1.5f;
+			float x = 6f;
+			float y = 9f;
+			float xl = -.31f;
 
 			if(Enemy.Count > 1)
 			{
 				if(shiftleft == true)
 				{
-					x -= 3f;
-					xl -= 2f;
+					x -= 4f;
+					xl -= 5f;
 				}
 				if(shiftup == true)
 				{
@@ -227,14 +227,13 @@ public class GameMaster_Control : MonoBehaviour{
 				if(m ==  0)
 				{
 
-
 					Enemies.transform.position = new Vector3 ( x,y, 1f);
-					Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
+					Enemies.transform.localScale = new Vector3(.7f,1f,.57f);
 				}
 				else 
 				{
 					Enemies.transform.position = new Vector3 (xl, y, 1f);
-					Enemies.transform.localScale = new Vector3(.38f,1f,.33f);
+					Enemies.transform.localScale = new Vector3(.7f,1f,.57f);
 				}
 			}
 			Enemies.name = Enemies.name + m;
@@ -248,7 +247,8 @@ public class GameMaster_Control : MonoBehaviour{
 	public void CreateBattle(string name)
 	{
 		InBattle = true;
-		Background.GetComponent<Background>().LoadQuestionbg1();
+		//determine background
+		Background.GetComponent<Background>().LoadCombatBG();
 		foreach (GameObject ene in AvailableEnemies)
 		{
 			if(ene.name == name)

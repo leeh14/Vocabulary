@@ -35,4 +35,9 @@ public class Background : MonoBehaviour {
 		temp = Resources.Load<Sprite>("Backgrounds/UI_StartScreen_Background") ;
 		gameObject.GetComponent<Image>().sprite = temp;
 	}
+	public void LoadLibrary()
+	{
+		temp = Resources.Load<Sprite>("Backgrounds/UI_BattleScreen_Library") ;
+		gameObject.GetComponent<Image>().sprite = temp;
+	}
 }

@@ -7,15 +7,18 @@ public class CombatQuestion : MonoBehaviour {
 	private GameObject master;
 	private Button[] options;
 	private int ButtonCounter;
+	public Text Question;
 	// Use this for initialization
 	void Start() {
 		master = GameObject.FindGameObjectWithTag("GameMaster");
-
-
 	}
 	public void RemoveAnswer()
 	{
 		ShowAll = true;
+	}
+	public void Disable(Button but)
+	{
+		but.interactable = false;
 	}
 	public void CreateQuestions(Question data, int type)
 	{
@@ -30,10 +33,11 @@ public class CombatQuestion : MonoBehaviour {
 			}
 		}
 		options = gameObject.GetComponentsInChildren<Button>();
-		Text question = gameObject.GetComponentInChildren<Text>();
-		question.text = data.question;
-		question.verticalOverflow = VerticalWrapMode.Overflow;
+		//Text question = gameObject.GetComponentInChildren<Text>();
+		Question.text = data.question;
+		Question.verticalOverflow = VerticalWrapMode.Overflow;
 		ButtonCounter = 0;
+		//135 pass the boundary
 		//change the text of all the buttons
 		for(int i = 0 ; i < options.Length ; i++){
 
@@ -43,6 +47,8 @@ public class CombatQuestion : MonoBehaviour {
 				Destroy(options[i].gameObject);
 				break;
 			}
+			//addin gthe disable option to tell user already clicked on it
+			//options[i].onClick.AddListener(()=> Disable(options[i]));
 			//do this portion for the incorrect answer for attacks
 			if(i == correct)
 			{

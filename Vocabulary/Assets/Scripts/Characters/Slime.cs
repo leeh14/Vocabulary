@@ -6,6 +6,7 @@ public class Slime : GenericEnemy {
 	// Use this for initialization
 	void Start () {
 		Health = 10f;
+		MaxHealth = 10f;
 		Armor = 0f;
 		Damage = 2f;
 		name = "Slime";
@@ -19,7 +20,5 @@ public class Slime : GenericEnemy {
 		Droppable.Add("Forgotten Drop");
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	}
+
 }
