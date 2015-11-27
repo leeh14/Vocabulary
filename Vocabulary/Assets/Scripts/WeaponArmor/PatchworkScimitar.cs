@@ -8,7 +8,7 @@ public class PatchworkScimitar : GenericWeapon {
 	public PatchworkScimitar()
 	{
 		name = "Patchwork Scimitar";
-		Damage = 2f;
+		Damage = 5f;
 		AttackModifier = 1.25f;
 		Special = true;
 	}
