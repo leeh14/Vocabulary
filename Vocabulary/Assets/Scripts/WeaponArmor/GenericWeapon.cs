@@ -14,6 +14,7 @@ public class GenericWeapon : IComparable<GenericWeapon> {
 	public bool AffectAnswers = false;
 	public float AttackModifier = 1f;
 	public float dmgdealt = 0f;
+	public string description = "";
 	// Use this for initialization
 	void Start () {
 	

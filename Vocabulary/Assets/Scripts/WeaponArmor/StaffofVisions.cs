@@ -12,6 +12,7 @@ public class StaffofVisions : GenericWeapon {
 		Damage = 3f;
 		AffectAnswers = true;
 		Special = true;
+		description = "After a successful hit, the next question will have one wrong answer crossed out.";
 	}
 	public override void SpecialMove(float dmg, List<GameObject> Enemies, int questiontype)
 	{

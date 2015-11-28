@@ -11,6 +11,7 @@ public class PatchworkScimitar : GenericWeapon {
 		Damage = 5f;
 		AttackModifier = 1.25f;
 		Special = true;
+		description = "On a successful hit, deals bonus damage to other enemies.";
 	}
 	// Use this for initialization
 	void Start () {

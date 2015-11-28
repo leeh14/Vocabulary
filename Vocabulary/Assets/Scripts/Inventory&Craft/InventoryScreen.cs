@@ -93,18 +93,13 @@ public class InventoryScreen : MonoBehaviour {
 		ClearContentPanel ();
 
 		if (type != 1) {
+			int index = 0;
 			foreach (Item ib in Inventory._Items) {
 				if (ib.type == type) {
 					GameObject newButton = Instantiate (ItemListButtonPf) as GameObject;
 					SampleItemButton sib = newButton.GetComponent<SampleItemButton> ();
 					sib.nameLable.text = ib.name;
 					switch (ib.type) {
-					case 0:
-						sib.typeLabel.text = "Armor";
-						break;
-					case 1: 
-						sib.typeLabel.text = "Weapon";
-						break;
 					case 2:
 						sib.typeLabel.text = "Material";
 						break;
@@ -114,10 +109,14 @@ public class InventoryScreen : MonoBehaviour {
 					}
 					sib.amountLabel.text = ib.amount.ToString ();
 					sib.icon.sprite = Resources.Load<Sprite> ("Item Sprites/" + ib.name);
+					sib.index = index;
 					newButton.transform.SetParent (contentPanel.transform, false);
 				}
+				index++;
 			}
 		}else if (type == 1){
+			int armorIndex = 0;
+			int weaponIndex = 0;
 			foreach (GenericArmor ga in Inventory._Armors) {
 				GameObject newButton = Instantiate (ItemListButtonPf) as GameObject;
 				SampleItemButton sib = newButton.GetComponent<SampleItemButton> ();
@@ -125,7 +124,9 @@ public class InventoryScreen : MonoBehaviour {
 				sib.typeLabel.text = "Armor";
 				sib.amountLabel.text = "1";
 				sib.icon.sprite = Resources.Load<Sprite> ("Item Sprites/" + ga.name);
+				sib.index = armorIndex;
 				newButton.transform.SetParent (contentPanel.transform, false);
+				armorIndex++;
 			}
 			foreach (GenericWeapon gw in Inventory._Weapons) {
 				GameObject newButton = Instantiate (ItemListButtonPf) as GameObject;
@@ -134,7 +135,9 @@ public class InventoryScreen : MonoBehaviour {
 				sib.typeLabel.text = "Weapon";
 				sib.amountLabel.text = "1";
 				sib.icon.sprite = Resources.Load<Sprite> ("Item Sprites/" + gw.name);
+				sib.index = weaponIndex;
 				newButton.transform.SetParent (contentPanel.transform, false);
+				weaponIndex++;
 			}
 		}
 	}

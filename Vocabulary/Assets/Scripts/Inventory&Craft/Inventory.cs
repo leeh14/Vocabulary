@@ -47,7 +47,6 @@ public class Inventory : MonoBehaviour {
 	// type: 0 - armor, 1 - weapons, 2 - material, 3 - potion
 	// Add / find a item and throw into items 
 	public static void AddItem(int type, string name, int addAmount){
-
 		// increase exisitng item amount
 		bool found = false;
 		foreach(Item it in _Items){
@@ -61,6 +60,83 @@ public class Inventory : MonoBehaviour {
 		// add a new item
 		if (found == false) {
 			_Items.Add(new Item(type, name, addAmount));
+		}
+	}
+
+	public static void AddItem(string name, int amount){
+		// increase exisitng item amount
+		bool found = false;
+		foreach(Item it in _Items){
+			if(it.name == name){
+				it.AddMore(1);
+				found = true;
+				break;
+			}
+		}
+		
+		// add a new item
+		if (found == false) {
+			switch (name) {
+
+			// ============= material ================= - 2
+			case "Broken Spearhead":
+				_Items.Add (new Item(2, name, amount, 
+				                     "Barely effective in the hands of a Goblin. " +
+				                     "Getting broken off might just have improved " +
+				                     "its lethality."));	
+			break;
+			case "Congealed Plasma":
+				_Items.Add (new Item(2, name, amount, 
+				                     "Slime plasma that dried into a tough plastic. " +
+				                     "Layer it enough and it might block a sword hit."));	
+			break;
+			case "Resonant Ooze":
+				_Items.Add (new Item(2, name, amount, 
+				                     "Some distilled knowledge that was once part of a slime. " +
+				                     "It smells vaguely of citrus."));	
+				break;
+			case "Tightened Wrap":
+				_Items.Add (new Item(2, name, amount, 
+				                     "No wonder the mummies are so angry! " +
+				                     "This must have been squeezing them too hard."));	
+				break;
+			case "Mummy Eye":
+				_Items.Add (new Item(2, name, amount, 
+				                     "For something that's typically under wraps, " +
+				                     "it's surprisingly observant."));	
+				break;
+			case "Weathered Hide":
+				_Items.Add (new Item(2, name, amount, 
+				                     "The inscription reads \"bound to H. Jekyll.\" " +
+				                     "Shouldn't that be \"bound by?\" Perhaps not."));	
+				break;
+			case "Shorn Pages":
+				_Items.Add (new Item(2, name, amount, 
+				                     "Despite being well over a few centuries old, " +
+				                     "these things can still give a wicked papercut."));	
+				break;
+			case "Utter Ink":
+				_Items.Add (new Item(2, name, amount, 
+				                     "The longer you stare at it, the more it stares into you. " +
+				                     "Better drink it just to get rid of it."));	
+				break;
+			case "Dark Wisps":
+				_Items.Add (new Item(2, name, amount, 
+				                     "These gaseous shadows whisper rude secrets to you. " +
+				                     "Nobody should know what they tell you."));	
+				break;
+			case "Unhallowed Skull":
+				_Items.Add (new Item(2, name, amount, 
+				                     "It smells of hubris, dark magic, and mildew. " +
+				                     "Turns out living forever isn't all it's cracked up to be."));	
+				break;
+			
+			// ============= potion ================= - 3
+			case "Health Potion":
+				_Items.Add (new Item(3, name, amount, 
+				                     "Heals the player for 2 health."));	
+				break;
+			}
 		}
 	}
 
@@ -84,7 +160,6 @@ public class Inventory : MonoBehaviour {
 
 	// check how much of this item the player have
 	public static int CheckItem(string name){
-	
 		// find the item
 		foreach(Item it in _Items){
 			if(it.name == name){
@@ -108,7 +183,6 @@ public class Inventory : MonoBehaviour {
 		}
 		RemoveItem (name, 1);
 	}
-
 	#endregion
 
 	#region Armor and Weapon
@@ -279,7 +353,7 @@ public class Inventory : MonoBehaviour {
 			}
 
 			if(re.product.type != 0 && re.product.type != 1){
-				AddItem(re.product.type, re.product.name, re.product.amount);
+				AddItem(re.product.name, re.product.amount);
 			}else if (re.product.type == 0){
 				AddArmor(re.name);
 			}else if (re.product.type == 1){
@@ -288,6 +362,25 @@ public class Inventory : MonoBehaviour {
 			Debug.Log ("Crafted: " + re.product.name);
 		}
 	}
+
+	public static string getDescription(int index, string type){
+		switch(type){
+		case "Potion":
+			return _Items[index].description;
+			break;
+		case "Material":
+			return _Items[index].description;
+			break;
+		case "Armor":
+			return _Armors[index].description;
+			break;
+		case "Weapon":
+			return _Weapons[index].description;
+			break;
+		}
+		return "";
+	}
+
 	#endregion
 
 }// end of Inventory
@@ -321,9 +414,10 @@ public class Recipe : IComparable<Recipe>
 [Serializable]
 public class Item : IComparable<Item>
 {
-	public int type; 			// 0 - armor, 1 - weapons, 2 - material, 3 - potion
-	public string name;			// name of the item
-	public int amount = 0;		// amount the player owns
+	public int type; 				// 0 - armor, 1 - weapons, 2 - material, 3 - potion
+	public string name;				// name of the item
+	public int amount = 0;			// amount the player owns
+	public string description = "";	// the item description
 
 	// constructor
 	public Item(int type, string name){
@@ -337,6 +431,13 @@ public class Item : IComparable<Item>
 		this.type = type;
 		this.name = name;
 		this.amount = amount;
+	}
+	
+	public Item(int type, string name, int amount, string description){
+		this.type = type;
+		this.name = name;
+		this.amount = amount;
+		this.description = description;
 	}
 
 	// increaseAmount

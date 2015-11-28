@@ -512,7 +512,7 @@ public class GameMaster_Control : MonoBehaviour{
 		if(RoundOver == true)
 		{
 			//need to drop random item
-			Inventory.AddItem(2,itemname, 1);
+			Inventory.AddItem(itemname, 1);
 			//Inventory.AddItem(2,"apples",1);
 			//adding the definition of the word into learned dictionary
 			//player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);

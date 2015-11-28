@@ -25,8 +25,10 @@ public class SampleRecipeButton : MonoBehaviour {
 
 	// craft button clicked
 	public void CraftButtonClicked(){
+
 		if(Inventory.CanMake(nameLabel.text)){
 			Inventory.MakeProduct(nameLabel.text);
+			this.canMake = Inventory.CanMake(nameLabel.text);
 		}
 		UpdateDisplay ();
 	}
@@ -39,6 +41,9 @@ public class SampleRecipeButton : MonoBehaviour {
 				if(srb.panelOpen){
 					Destroy(srb.detailPanel);
 					srb.CreatePanel();
+				}
+				if(srb.detailPanel != null && srb.canMake == false){
+					srb.detailPanel.GetComponent<RecipeContentPanelScript>().craftButton.interactable = false;
 				}
 			}
 		}

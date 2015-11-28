@@ -15,6 +15,8 @@ public class QuestionBank : MonoBehaviour {
 	public List<Question> M_NormalQuestionBank;
 	public List<Question> M_HardQuestionBank;
 
+	public string lastId = "";
+
 	// for debug purpose only
 	void Start(){
 		S_EasyQuestionBank = new List<Question> ();
@@ -27,6 +29,8 @@ public class QuestionBank : MonoBehaviour {
 	
 		LoadQuestions ("Questions/standard_questions");
 		LoadQuestions ("QUestions/magic_questions");
+
+		lastId = "";
 	}
 
 	// add a question
@@ -36,12 +40,15 @@ public class QuestionBank : MonoBehaviour {
 			switch(q.difficulty){
 			case 0:
 				S_EasyQuestionBank.Add(q);
+				q.id = "SE" + (S_EasyQuestionBank.Count - 1).ToString();
 				break;
 			case 1:
 				S_NormalQuestionBank.Add(q);
+				q.id = "SN" + (S_NormalQuestionBank.Count - 1).ToString();
 				break;
 			case 2:
 				S_HardQuestionBank.Add(q);
+				q.id = "SH" + (S_HardQuestionBank.Count - 1).ToString();
 				break;
 			}
 			break;
@@ -49,12 +56,15 @@ public class QuestionBank : MonoBehaviour {
 			switch(q.difficulty){
 			case 0:
 				M_EasyQuestionBank.Add(q);
+				q.id = "ME" + (M_EasyQuestionBank.Count - 1).ToString();
 				break;
 			case 1:
 				M_NormalQuestionBank.Add(q);
+				q.id = "MN" + (M_NormalQuestionBank.Count - 1).ToString();
 				break;
 			case 2:
 				M_HardQuestionBank.Add(q);
+				q.id = "MH" + (M_HardQuestionBank.Count - 1).ToString();
 				break;
 			}
 			break;
@@ -93,10 +103,17 @@ public class QuestionBank : MonoBehaviour {
 
 	// get a random question
 	public Question GetRandomQuestion(List<Question> qBank){
+		int index = 0;
 		if (qBank.Count > 0) {
-			int index = UnityEngine.Random.Range (0, qBank.Count);
+			while (true) {
+				index = UnityEngine.Random.Range (0, qBank.Count);
+				if (qBank [index].id != lastId) {
+					lastId = qBank [index].id;
+					break;
+				}
+			}
 			return qBank [index];
-		}
+		} 
 		return null;
 	}
 
