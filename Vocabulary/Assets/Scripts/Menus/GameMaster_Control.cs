@@ -172,6 +172,12 @@ public class GameMaster_Control : MonoBehaviour{
         ClearMenu();
         gameObject.GetComponent<InventoryScreen>().StartInventory();
     }
+	public void BackToLvlMenu()
+	{
+		Background.GetComponent<Background>().LoadStart();
+		InBattle = false;
+
+	}
 	//goes to map menu
 	public void LoadMap()
 	{

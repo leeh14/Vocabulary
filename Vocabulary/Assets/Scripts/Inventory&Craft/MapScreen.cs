@@ -116,6 +116,7 @@ public class MapScreen : MonoBehaviour {
 		ClearList ();
 		gameObject.GetComponent<GameMaster_Control>().ClearEnemies();
 		gameObject.GetComponent<GameMaster_Control>().ClearMenu();
+		gameObject.GetComponent<GameMaster_Control>().BackToLvlMenu();
 		MenuListPanel.GetComponent<MapPanelScript> ().TurnOnHeader ();
 		PopulateMapButtons ();
 	}

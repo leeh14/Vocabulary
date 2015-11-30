@@ -38,16 +38,16 @@ public class GenericEnemy : MonoBehaviour {
 		
 			//healthtxt.transform.localPosition = new Vector3(90f, 770f,  -1);
 			//healthbar.transform.localPosition = new Vector3(15f, 780f, gameObject.transform.position.z);
-			healthtxt.transform.position = new Vector3(70f, 265f, -1f);
-			healthbar.transform.position = new Vector3(40f,265f,-1f);
+			healthtxt.transform.position = new Vector3(70f, 270f, -1f);
+			healthbar.transform.position = new Vector3(40f,270f,-1f);
 		}
 		else 
 		{
 			//enemy is on the right
 			//healthtxt.transform.localPosition = new Vector3(315f, 770f, gameObject.transform.position.z);
 			//healthbar.transform.localPosition = new Vector3(240f, 780f, gameObject.transform.position.z);
-			healthtxt.transform.position = new Vector3(155f, 265f, -1f);
-			healthbar.transform.position = new Vector3(125f,265f,-1f);
+			healthtxt.transform.position = new Vector3(155f, 270f, -1f);
+			healthbar.transform.position = new Vector3(125f,270f,-1f);
 		}
 		healthbar.transform.localScale = new Vector3(1f, .5f,1f);
 		healthtxt.text =  Health + " / " + MaxHealth; 
