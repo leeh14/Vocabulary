@@ -11,7 +11,7 @@ public class Background : MonoBehaviour {
 	}
 	public void LoadCombatBG()
 	{
-		temp = Resources.Load<Sprite>("Backgrounds/UI_BattleScreen_dungeon1") ;
+		temp = Resources.Load<Sprite>("Backgrounds/UI_BattleScreen_Dungeon") ;
 		gameObject.GetComponent<Image>().sprite = temp;
 
 	}
@@ -38,6 +38,16 @@ public class Background : MonoBehaviour {
 	public void LoadLibrary()
 	{
 		temp = Resources.Load<Sprite>("Backgrounds/UI_BattleScreen_Library") ;
+		gameObject.GetComponent<Image>().sprite = temp;
+	}
+	public void LoadSpire()
+	{
+		temp = Resources.Load<Sprite>("Backgrounds/UI_BattleScreen_Spire") ;
+		gameObject.GetComponent<Image>().sprite = temp;
+	}
+	public void LoadTower()
+	{
+		temp = Resources.Load<Sprite>("Backgrounds/UI_BattleScreen_Tower") ;
 		gameObject.GetComponent<Image>().sprite = temp;
 	}
 }

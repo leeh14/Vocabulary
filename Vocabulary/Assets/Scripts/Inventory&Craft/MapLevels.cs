@@ -99,7 +99,7 @@ public class MapLevels : MonoBehaviour {
 			string mon;
 			if(type > .5f)
 			{
-				mon = "SlimeR";
+				mon = "Ghost";
 			}
 			else
 			{

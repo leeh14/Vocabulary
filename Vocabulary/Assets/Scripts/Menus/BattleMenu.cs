@@ -25,7 +25,7 @@ public class BattleMenu : MonoBehaviour {
 		foreach (GameObject img in Insignias)
 		{
 			temp = Resources.Load<Sprite>("UI Sprites/UI_Insigniaa" + num);
-			Debug.Log(temp.name);
+			//Debug.Log(temp.name);
 			img.GetComponent<Image>().sprite = temp;
 			//img.sprite = temp;
 			

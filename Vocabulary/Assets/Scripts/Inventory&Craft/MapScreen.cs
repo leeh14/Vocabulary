@@ -74,7 +74,7 @@ public class MapScreen : MonoBehaviour {
 //			Debug.Log("dsf" +s);
 //		}
 		MenuListPanel.GetComponent<MapPanelScript> ().TurnOffHeader ();
-		gameObject.GetComponent<GameMaster_Control>().BeginBattle(ld.monsters);
+		gameObject.GetComponent<GameMaster_Control>().BeginBattle(ld.monsters, ld.name);
 //		foreach (string mon in ld.monsters) {
 //			GameObject newButton = Instantiate(SampleMonsterButtonPf) as GameObject;
 //			SampleMonsterButton mb = newButton.GetComponent<SampleMonsterButton>();
@@ -125,7 +125,10 @@ public class MapScreen : MonoBehaviour {
 		Destroy (canvas);
 		GetComponent<GameMaster_Control> ().LoadMenu ();
 	}
-
+	public void DestroyCanvas()
+	{
+		Destroy (canvas);
+	}
 	// clear current list
 	void ClearList(){
 		var children = new List<GameObject> ();

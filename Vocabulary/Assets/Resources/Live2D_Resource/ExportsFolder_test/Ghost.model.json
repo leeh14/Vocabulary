@@ -4,5 +4,21 @@
 	"model": "Ghost.moc",
 	"textures": [
 		"Ghost.1024/texture_00.png"
-	]
+	],
+	"motions":
+	{
+		"idle":
+		[
+			{"file":"motions/Ghost_Idle1.mtn" },
+			{"file":"motions/Ghost_Idle2.mtn"}
+		],
+		"attack":
+		[
+			{"file":"motions/Ghost_Attack.mtn"}
+		],
+		"damaged":
+		[
+			{"file":"motions/Ghost_Hurt.mtn"}
+		]
+	}
 }

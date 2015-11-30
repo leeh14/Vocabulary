@@ -55,7 +55,10 @@ public class Player : MonoBehaviour {
 		{
 			Health -= damage;
 		}
-
+		if(Health > MaxHealth)
+		{
+			Health = MaxHealth;
+		}
 		if (Health <= 0) {
 			Alive = false;
 		}

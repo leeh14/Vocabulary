@@ -26,6 +26,7 @@ public class GameMaster_Control : MonoBehaviour{
 	private List<string> MultipleAnswers = new List<string>();
 	private string droppeditemname;
 	private int questiontype;
+	private string CurrentLevel;
     // Use this for initialization
     void Start() {
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -91,7 +92,8 @@ public class GameMaster_Control : MonoBehaviour{
 		ClearMenu ();
 		if (AvailableEnemies.Count > 0)
 		{
-			gameObject.GetComponent<MapScreen>().ClearCanvas();
+			//can't make it all the way back to start screen
+			gameObject.GetComponent<MapScreen>().DestroyCanvas();
 			//clear the enemies
 			foreach (GameObject g in AvailableEnemies)
 			{
@@ -110,8 +112,10 @@ public class GameMaster_Control : MonoBehaviour{
 		if(CurrentEnemy != null)
 		{
 			CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
+			InBattle = false;
 		}
-		Refresh ();
+		//Refresh ();
+		//InBattle = false;
 	}
 	public void Hide()
 	{
@@ -148,7 +152,7 @@ public class GameMaster_Control : MonoBehaviour{
 	//remove the current menu on the screen
 	public void ClearMenu()
 	{
-		InBattle = false;
+		//InBattle = false;
 		Destroy(CurrentMenu);
 		Destroy (TextMenu);
 
@@ -174,14 +178,30 @@ public class GameMaster_Control : MonoBehaviour{
 		ClearMenu();
 		gameObject.GetComponent<MapScreen>().StartMap();
 	}
-
+	public void LoadLvlBackground()
+	{
+		if(CurrentLevel == "Level_1")
+		{
+			Background.GetComponent<Background>().LoadCombatBG();
+		}
+		else if(CurrentLevel == "Level_2")
+		{
+			Background.GetComponent<Background>().LoadLibrary();
+		}
+		else if(CurrentLevel == "Level_3")
+		{
+			Background.GetComponent<Background>().LoadSpire();
+		}
+	}
 	#endregion
 	#region Combat
 	//loads the enemies onto the screen
-	public void BeginBattle(List<string> Enemy)
+	public void BeginBattle(List<string> Enemy, string level)
     {
+		CurrentLevel = level;
 		//load the background image
-		Background.GetComponent<Background>().LoadCombatBG();
+		LoadLvlBackground();
+		//Background.GetComponent<Background>().LoadCombatBG();
         ClearMenu();
 
 		for (int m = 0 ; m < Enemy.Count; m ++)
@@ -209,6 +229,10 @@ public class GameMaster_Control : MonoBehaviour{
 				shiftleft = true;
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeP"));
 			}
+			else if (Enemy[m] == "Ghost")
+			{
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Ghost"));
+			}
 			float x = 6f;
 			float y = 9f;
 			float xl = -.31f;
@@ -224,20 +248,30 @@ public class GameMaster_Control : MonoBehaviour{
 				{
 					y +=2.45f;
 				}
+				if(Enemy[m] == "Ghost")
+				{
+					Enemies.transform.localScale = new Vector3(.5f,1f,.57f);
+					x -=2f;
+					xl -=2f;
+				}
+				else
+				{
+					Enemies.transform.localScale = new Vector3(.7f,1f,.57f);
+				}
 				if(m ==  0)
 				{
 
 					Enemies.transform.position = new Vector3 ( x,y, 1f);
-					Enemies.transform.localScale = new Vector3(.7f,1f,.57f);
+
 				}
 				else 
 				{
 					Enemies.transform.position = new Vector3 (xl, y, 1f);
-					Enemies.transform.localScale = new Vector3(.7f,1f,.57f);
 				}
+
 			}
 			Enemies.name = Enemies.name + m;
-			Enemies.GetComponent<Slime>().SetMaster(gameObject);
+			Enemies.GetComponent<GenericEnemy>().SetMaster(gameObject);
 			AvailableEnemies.Add(Enemies);
 		}
 
@@ -248,7 +282,8 @@ public class GameMaster_Control : MonoBehaviour{
 	{
 		InBattle = true;
 		//determine background
-		Background.GetComponent<Background>().LoadCombatBG();
+		LoadLvlBackground();
+		//Background.GetComponent<Background>().LoadCombatBG();
 		foreach (GameObject ene in AvailableEnemies)
 		{
 			if(ene.name == name)
@@ -259,7 +294,6 @@ public class GameMaster_Control : MonoBehaviour{
 		ClearMenu();
 
 		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleMenu"));
-		//CurrentMenu.GetComponent<BattleMenu>().UpdateButtons();
 	}
     //the multiple choices for combat
     public void BeginCombat( int type)
@@ -328,6 +362,9 @@ public class GameMaster_Control : MonoBehaviour{
 		//resset the multiple answers
 		MultipleAnswers.Clear();
 		ClearMenu ();
+		//reload tge battle screen
+		LoadLvlBackground();
+		//Background.GetComponent<Background>().LoadCombatBG();
 		//reenable vision of enemies 
 		foreach (GameObject en in AvailableEnemies)
 		{
@@ -351,7 +388,7 @@ public class GameMaster_Control : MonoBehaviour{
 				//StartCoroutine(DropItem("Apple"));
 				//StartCoroutine(WaitItem());
 
-				RoundOver = true;
+				//RoundOver = true;
 
 				AvailableEnemies.Remove(CurrentEnemy);
 				//iterate thorught the rest of enemies in case of cleave damage
@@ -367,7 +404,7 @@ public class GameMaster_Control : MonoBehaviour{
 					//set up to next level
 
 					RoundOver = true;
-					Debug.Log("end");
+					//Debug.Log("end");
 					//ClearMenu ();
 					//LoadMenu ();
 					return;
@@ -389,7 +426,7 @@ public class GameMaster_Control : MonoBehaviour{
 			}
 			//show enemy dealing damage
 			TurnContinue = false;
-			StartCoroutine(EnemyTurn());
+			StartCoroutine(EnemyTurn(false));
 
 		}
 
@@ -449,9 +486,9 @@ public class GameMaster_Control : MonoBehaviour{
 		//TurnContinue = false;
 		TurnContinue = false;
 		Destroy (TextMenu);
-		StartCoroutine (EnemyTurn ());
+		StartCoroutine (EnemyTurn (true));
 	}
-	public IEnumerator EnemyTurn()
+	public IEnumerator EnemyTurn(bool playerattacked)
 	{
 		if(TurnContinue == false)
 		{
@@ -464,7 +501,13 @@ public class GameMaster_Control : MonoBehaviour{
 				TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
 				Text combat = TextMenu.GetComponentInChildren<Text>();
 				combat.verticalOverflow = VerticalWrapMode.Overflow;
-				combat.text = CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.";
+				combat.text = "";
+				if(playerattacked == false)
+				{
+					//feedback for player missed
+					combat.text += "Incorrect answer you missed \n";
+				}
+				combat.text += CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.";
 				player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
 				if (player.GetComponent<Player> ().Alive == false) {
 					//player is dead
@@ -482,10 +525,9 @@ public class GameMaster_Control : MonoBehaviour{
 				StartCoroutine(DropItem(droppeditemname));
 
 			}
-
 			yield return new WaitForSeconds(2f);
-			InBattle = false;
-			//disable vision of enemies 
+			//InBattle = false;
+			//enable vision of enemies 
 			foreach (GameObject en in AvailableEnemies)
 			{
 				if(en != null)
@@ -518,6 +560,7 @@ public class GameMaster_Control : MonoBehaviour{
 			//player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
 			RoundOver = false;
 			loadback = true;
+			Background.GetComponent<Background>().LoadStart();
 			gameObject.GetComponent<MapScreen>().BattleWin();
 		}
 	}
