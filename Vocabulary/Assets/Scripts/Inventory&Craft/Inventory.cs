@@ -176,6 +176,9 @@ public class Inventory : MonoBehaviour {
 		case "Health Potion":
 			Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 			player.Health += 2;
+			if(player.Health > player.MaxHealth){
+				player.Health = player.MaxHealth;
+			}
 			break;
 
 		default:
@@ -231,6 +234,8 @@ public class Inventory : MonoBehaviour {
 		foreach (GenericArmor armor in _Armors) {
 			if(armor.name == name){
 				currentArmor = index;
+				Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+				player.SetArmor(_Armors[index]);
 				break;
 			}
 			index++;
@@ -318,6 +323,10 @@ public class Inventory : MonoBehaviour {
 		if (re == null) {
 			Debug.LogError ("Method MakeRecipe: " + name + " No Such Recipe.");
 			return false;
+		} else if (re.product.type == 0) {
+			return canMakeArmor(re.name);
+		} else if (re.product.type == 1) {
+			return canMakeWeapon(re.name);
 		} else {
 			bool makeAble = true;
 			foreach (Item ma in re.materials) {

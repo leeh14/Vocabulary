@@ -335,6 +335,8 @@ public class InventoryScreen : MonoBehaviour {
 			Canvas = Instantiate (CanvasPf) as GameObject;
 			BattleInventoryPanel = Instantiate (BattleInventoryPanelPf) as GameObject;
 			BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ()._IS = this;
+			BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ()._GameMaster 
+				= this.GetComponent<GameMaster_Control>();
 			contentPanel = BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ().contentPanel;
 			BattleInventoryPanel.transform.SetParent (Canvas.transform, false);
 			BattleInventoryPanel.GetComponent<BattleInventoryPanelScript> ().PopulateBattleInventoryButton ();

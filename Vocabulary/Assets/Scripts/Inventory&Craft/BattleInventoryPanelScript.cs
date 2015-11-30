@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class BattleInventoryPanelScript : MonoBehaviour {
 
 	public InventoryScreen _IS;
+	public GameMaster_Control _GameMaster;
 	public List<GameObject> itemList;
 	public GameObject contentPanel;
 	public GameObject confirmPanel;
@@ -24,12 +25,11 @@ public class BattleInventoryPanelScript : MonoBehaviour {
 				bib.nameLabel.text = it.name;
 				bib.amountLabel.text = it.amount.ToString();
 				bib.amount = it.amount;
-				if(it.amount == 0){
-					bib.button.interactable = false;
-				}
 				bib.icon.sprite = Resources.Load<Sprite> ("Item Sprites/" + it.name);
 				bib._BPS = this;
 				bib.index = index;
+				bib._GameMaster = this._GameMaster;
+				bib.VisualUpdate();
 				newButton.transform.SetParent(contentPanel.transform, false);
 				itemList.Add(newButton);
 				index++;

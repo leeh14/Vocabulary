@@ -4,6 +4,7 @@ using System.Collections;
 
 public class BattleInventoryButtonScript : MonoBehaviour {
 	public BattleInventoryPanelScript _BPS;
+	public GameMaster_Control _GameMaster;
 	public Button button;
 	public Text nameLabel;
 	public Text amountLabel;
@@ -18,8 +19,18 @@ public class BattleInventoryButtonScript : MonoBehaviour {
 	public void VisualUpdate(){
 		amount--;
 		amountLabel.text = amount.ToString ();
-		if(amount == 0){
+		if(amount == 0 || checkUseCondition(nameLabel.text)){
 			button.interactable = false;
 		}
+	}
+
+	public bool checkUseCondition(string name){
+		switch(name){
+		case "Health Potion":
+			Player player = _GameMaster.player.GetComponent<Player>();
+			return player.Health >= player.MaxHealth;
+			break;
+		}
+		return true;
 	}
 }
