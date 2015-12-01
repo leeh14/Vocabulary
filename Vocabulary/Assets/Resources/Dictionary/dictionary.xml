@@ -3,11 +3,13 @@
         <word-base>confront</word-base>
         <pos>verb</pos>
         <definition>face up to and deal with (a problem or difficult situation).</definition>
+        <example>He confronted his fears by trapping the spider under a bowl.</example>
     </word>
     <word>
         <word-base>rage</word-base>
         <pos>verb</pos>
         <definition>to move, rush, dash, or surge furiously.</definition>
         <word-variant>rages</word-variant>
+        <example>The river raged down the slope at a blistering pace.</example>
     </word>
 </dictionary>
