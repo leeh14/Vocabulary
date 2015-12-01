@@ -21,6 +21,9 @@ public class ChoiceMenu : MonoBehaviour {
 
 				b.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().LoadInventory());
 			}
+			else if (b.name == "Dictionary"){
+				b.onClick.AddListener(() => master.GetComponent<GameMaster_Control>().LoadDictionary());
+			}
 		}
         
 		//begin battle takes in a list of enemiers

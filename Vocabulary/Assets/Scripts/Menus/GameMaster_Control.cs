@@ -202,7 +202,13 @@ public class GameMaster_Control : MonoBehaviour{
 			Background.GetComponent<Background>().LoadSpire();
 		}
 	}
+
+	public void LoadDictionary(){
+		ClearMenu ();
+		gameObject.GetComponent<Dictionary> ().OpenDictionary ();
+	}
 	#endregion
+
 	#region Combat
 	//loads the enemies onto the screen
 	public void BeginBattle(List<string> Enemy, string level)
