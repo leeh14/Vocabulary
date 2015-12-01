@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 public class Background : MonoBehaviour {
 	private Sprite  temp;
+	public GameObject overlay;
 	void Awake() {
 		DontDestroyOnLoad(transform.gameObject);
 	}

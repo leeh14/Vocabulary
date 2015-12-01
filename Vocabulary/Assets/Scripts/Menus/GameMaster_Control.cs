@@ -102,6 +102,7 @@ public class GameMaster_Control : MonoBehaviour{
 			AvailableEnemies.Clear();
 		}
 		Background.GetComponent<Background>().LoadStart();
+		Background.GetComponent<Background>().overlay.SetActive(false);
 		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
 	}
 	public void RedoBattle()
@@ -175,6 +176,7 @@ public class GameMaster_Control : MonoBehaviour{
 	public void BackToLvlMenu()
 	{
 		Background.GetComponent<Background>().LoadStart();
+		Background.GetComponent<Background>().overlay.SetActive(false);
 		InBattle = false;
 
 	}
@@ -186,6 +188,7 @@ public class GameMaster_Control : MonoBehaviour{
 	}
 	public void LoadLvlBackground()
 	{
+		Background.GetComponent<Background>().overlay.SetActive(true);
 		if(CurrentLevel == "Level_1")
 		{
 			Background.GetComponent<Background>().LoadCombatBG();
@@ -240,7 +243,7 @@ public class GameMaster_Control : MonoBehaviour{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Ghost"));
 			}
 			float x = 6f;
-			float y = 9f;
+			float y = 4f;
 			float xl = -.31f;
 
 			if(Enemy.Count > 1)
@@ -567,6 +570,7 @@ public class GameMaster_Control : MonoBehaviour{
 			RoundOver = false;
 			loadback = true;
 			Background.GetComponent<Background>().LoadStart();
+			Background.GetComponent<Background>().overlay.SetActive(false);
 			gameObject.GetComponent<MapScreen>().BattleWin();
 		}
 	}
