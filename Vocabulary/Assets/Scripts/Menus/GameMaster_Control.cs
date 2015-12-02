@@ -108,7 +108,7 @@ public class GameMaster_Control : MonoBehaviour{
 	public void RedoBattle()
 	{
 		ClearMenu();
-
+		Background.GetComponent<Background>().overlay.SetActive(true);
 		//reset everything
 		if(CurrentEnemy != null)
 		{
@@ -123,7 +123,9 @@ public class GameMaster_Control : MonoBehaviour{
 		CurrentMenu.gameObject.SetActive(false);
 		foreach(GameObject g in AvailableEnemies)
 		{
+			g.GetComponent<GenericEnemy>().hide();
 			g.SetActive(false);
+
 		}
 	}
 	public void Show()
@@ -131,7 +133,9 @@ public class GameMaster_Control : MonoBehaviour{
 		CurrentMenu.gameObject.SetActive(true);
 		foreach(GameObject g in AvailableEnemies)
 		{
+
 			g.SetActive(true);
+			g.GetComponent<GenericEnemy>().Show();
 		}
 		if (CurrentMenu.GetComponent<BattleMenu> () != null) {
 			CurrentMenu.GetComponent<BattleMenu> ().UpdateButtons ();
@@ -275,7 +279,7 @@ public class GameMaster_Control : MonoBehaviour{
 				}
 				if(m ==  0)
 				{
-
+					//Enemies.GetComponent<GenericEnemy>().healthbar.transform.position = new Vector3(2 ,12 ,1f);
 					Enemies.transform.position = new Vector3 ( x,y, 1f);
 
 				}
@@ -285,8 +289,9 @@ public class GameMaster_Control : MonoBehaviour{
 				}
 
 			}
+
 			Enemies.name = Enemies.name + m;
-			Enemies.GetComponent<GenericEnemy>().SetMaster(gameObject);
+			Enemies.GetComponentInChildren<GenericEnemy>().SetMaster(gameObject);
 			AvailableEnemies.Add(Enemies);
 		}
 
@@ -319,10 +324,11 @@ public class GameMaster_Control : MonoBehaviour{
 		//disable vision of enemies 
 		foreach (GameObject en in AvailableEnemies)
 		{
+			en.GetComponent<GenericEnemy>().hide();
 			en.SetActive(false);
 		}
         CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/CombatQuestion"));
-        
+		Background.GetComponent<Background>().overlay.SetActive(false);
 		//Debug.Log (question);
 		if(HideAnswer == true)
 		{
@@ -383,7 +389,9 @@ public class GameMaster_Control : MonoBehaviour{
 		//reenable vision of enemies 
 		foreach (GameObject en in AvailableEnemies)
 		{
+
 			en.SetActive(true);
+			en.GetComponent<GenericEnemy>().Show();
 		}
 
 		if (correct) {
@@ -548,7 +556,7 @@ public class GameMaster_Control : MonoBehaviour{
 				if(en != null)
 				{
 					en.SetActive(true);
-			
+					en.GetComponent<GenericEnemy>().Show();
 				}
 			}
 			StopAllCoroutines ();

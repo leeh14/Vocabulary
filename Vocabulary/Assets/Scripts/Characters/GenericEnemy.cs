@@ -13,11 +13,10 @@ public class GenericEnemy : MonoBehaviour {
 	public bool Alive = true;
 	public bool Active = false;
 	public List<string> Droppable = new List<string>();
-
+	public GameObject healthGUI;
 	//health bars of the enemies
 	public Text healthtxt;
 	public Image healthbar;
-	public Canvas HealthGui;
 	// Use this for initialization
 	void Start () {
 		master = GameObject.FindGameObjectWithTag ("GameMaster");
@@ -27,41 +26,92 @@ public class GenericEnemy : MonoBehaviour {
 
 
 	}
-	
+	void OnDestroy()
+	{
+		Destroy(healthtxt);
+		Destroy (healthbar);
+		Destroy(healthGUI);
+	}
+	public void Show()
+	{
+		healthGUI.SetActive(true);
+	}
+	public void hide()
+	{
+		healthGUI.SetActive(false);
+	}
 	// Update is called once per frame
 	void Update () {
 		master = GameObject.FindGameObjectWithTag ("GameMaster");
-		//Debug.Log("aa");
-		if(gameObject.transform.position.x < -.30f)
-		{
-			//Enemey is on the left 
-		
-			//healthtxt.transform.localPosition = new Vector3(90f, 770f,  -1);
-			//healthbar.transform.localPosition = new Vector3(15f, 780f, gameObject.transform.position.z);
-			healthtxt.transform.position = new Vector3(70f, 270f, -1f);
-			healthbar.transform.position = new Vector3(40f,270f,-1f);
-		}
-		else 
-		{
-			//enemy is on the right
-			//healthtxt.transform.localPosition = new Vector3(315f, 770f, gameObject.transform.position.z);
-			//healthbar.transform.localPosition = new Vector3(240f, 780f, gameObject.transform.position.z);
-			healthtxt.transform.position = new Vector3(155f, 270f, -1f);
-			healthbar.transform.position = new Vector3(125f,270f,-1f);
-		}
-		healthbar.transform.localScale = new Vector3(1f, .5f,1f);
+//		//Debug.Log("aa");
+//		if(gameObject.transform.position.x < -.30f)
+//		{
+//			//Enemey is on the left 
+//		
+//			//healthtxt.transform.localPosition = new Vector3(-20f, 320f,  -1);
+//			//healthbar.transform.localPosition = new Vector3(-20f, 325f, gameObject.transform.position.z);
+//			//healthtxt.transform.position = new Vector3(70f, 270f, -1f);
+//			//healthbar.transform.position = new Vector3(40f,270f,-1f);
+//		}
+//		else 
+//		{
+//			//enemy is on the right
+//			//healthtxt.transform.localPosition = new Vector3(315f, 770f, gameObject.transform.position.z);
+//			//healthbar.transform.localPosition = new Vector3(240f, 780f, gameObject.transform.position.z);
+//			//healthtxt.transform.position = new Vector3(155f, 270f, -1f);
+//			//healthbar.transform.position = new Vector3(125f,270f,-1f);
+//		}
+//		healthbar.transform.localScale = new Vector3(.45f, .08f,1f);
 		healthtxt.text =  Health + " / " + MaxHealth; 
-		healthtxt.transform.localScale = new Vector3(1.5f, 1.5f,1f);
-		if(HealthGui == null)
-		{
-			//HealthGui = gameObject.GetComponentInChildren<Canvas>();
-			//healthtxt = gameObject.GetComponentInChildren<Text>();
-		}
+		//healthtxt.transform.localScale = new Vector3(1.5f, 1.5f,1f);
+
 		//display current health
 	}
 	public void SetMaster(GameObject mas)
 	{
 		master = mas;
+		healthGUI = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/healthObj"));
+		Image[] health = healthGUI.GetComponentsInChildren<Image>();
+		Text[] healthtext = healthGUI.GetComponentsInChildren<Text>();
+		foreach(Text i in healthtext)
+		{
+			
+			if(gameObject.transform.position.x < -.30f)
+			{
+				//Enemey is on the left 
+				i.transform.position = new Vector3(66.5f,261f,-1f);
+
+			}
+			else 
+			{
+				//enemy is on the right
+				i.transform.position = new Vector3(152.5f,261f,-1f);
+			}
+			healthtxt = i;
+		}
+		foreach(Image i in health)
+		{
+
+			if(gameObject.transform.position.x < -.30f)
+			{
+				//Enemey is on the left 
+				
+				//healthtxt.transform.localPosition = new Vector3(-20f, 320f,  -1);
+				//healthbar.transform.localPosition = new Vector3(-20f, 325f, gameObject.transform.position.z);
+				//i.transform.position = new Vector3(70f, 270f, -1f);
+				i.transform.position = new Vector3(53.5f,270f,-1f);
+			}
+			else 
+			{
+				//enemy is on the right
+				//healthtxt.transform.localPosition = new Vector3(315f, 770f, gameObject.transform.position.z);
+				//healthbar.transform.localPosition = new Vector3(240f, 780f, gameObject.transform.position.z);
+				//healthtxt.transform.position = new Vector3(155f, 270f, -1f);
+				i.transform.position = new Vector3(138.5f,270f,-1f);
+			}
+			healthbar = i;
+		}
+		//healthGUI.transform.position =
 	}
 	public void OnMouseOver()
 	{
