@@ -5,6 +5,10 @@ using System.Collections.Generic;
 
 public class GameMaster_Control : MonoBehaviour{
     public GameObject CurrentMenu;
+	public AudioClip inventorymusic;
+	public AudioClip spiremusic;
+	public AudioClip Dungeon;
+	public AudioSource Music;
 	public GameObject TextMenu;
 	public GameObject Enemies;
 	//public GameObject Enemies2;
@@ -52,33 +56,11 @@ public class GameMaster_Control : MonoBehaviour{
 
     // Update is called once per frame
     void Update() {
-//		if(Input.GetKey(KeyCode.A))
-//		{
-//			Debug.Log("switch to schimat");
-//			DebugWeapon = new PatchworkScimitar();
-//			player.GetComponent<Player>().SetWeapon(DebugWeapon);
-//		}else if (Input.GetKey(KeyCode.S))
-//		{
-//			Debug.Log("switch tp staff");
-//			DebugArmor = new GlowingScales();
-//			player.GetComponent<Player>().SetArmor(DebugArmor);
-//		}
 		if(loadback == true)
 		{
 			LoadMap();
 			loadback = false;
 		}
-//		else if(Input.GetKey(KeyCode.W))
-//		{
-//			GenericArmor DebugArmor = new WoodArmor();
-//			player.GetComponent<Player>().SetArmor(DebugArmor);
-//		}
-//		else if(Input.GetKey(KeyCode.C))
-//		{
-//			GenericArmor DebugArmor = new CrystalArmor();
-//			player.GetComponent<Player>().SetArmor(DebugArmor);
-//		}
-
     }
     //keep the data here
     void Awake() {
@@ -102,6 +84,8 @@ public class GameMaster_Control : MonoBehaviour{
 			AvailableEnemies.Clear();
 		}
 		Background.GetComponent<Background>().LoadStart();
+//		Music.clip = inventorymusic;
+//		Music.Play();
 		Background.GetComponent<Background>().overlay.SetActive(false);
 		CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/ChoiceMenu"));
 	}
@@ -141,19 +125,6 @@ public class GameMaster_Control : MonoBehaviour{
 			CurrentMenu.GetComponent<BattleMenu> ().UpdateButtons ();
 		}
 	}
-	public void Refresh()
-	{
-		//resets player's and enemies health back to full etc..
-	}
-	//call a different set of questions
-	void OnLevelWasLoaded(int level)
-	{
-		//depending on the level load a different set of questions
-//		if (level == 1) {
-//		} else if (level == 2) {
-//		} else if (level == 3) {
-//		}
-	}
 	//remove the current menu on the screen
 	public void ClearMenu()
 	{
@@ -180,6 +151,8 @@ public class GameMaster_Control : MonoBehaviour{
 	public void BackToLvlMenu()
 	{
 		Background.GetComponent<Background>().LoadStart();
+		Music.clip = inventorymusic;
+		Music.Play();
 		Background.GetComponent<Background>().overlay.SetActive(false);
 		InBattle = false;
 
@@ -195,14 +168,23 @@ public class GameMaster_Control : MonoBehaviour{
 		Background.GetComponent<Background>().overlay.SetActive(true);
 		if(CurrentLevel == "Level_1")
 		{
+			//dungeon
+			Music.clip = Dungeon;
+			Music.Play();
 			Background.GetComponent<Background>().LoadCombatBG();
 		}
 		else if(CurrentLevel == "Level_2")
 		{
+			//library
+			Music.clip = Dungeon;
+			Music.Play();
 			Background.GetComponent<Background>().LoadLibrary();
 		}
 		else if(CurrentLevel == "Level_3")
 		{
+			//spire
+			Music.clip = spiremusic;
+			Music.Play();
 			Background.GetComponent<Background>().LoadSpire();
 		}
 	}
@@ -584,6 +566,8 @@ public class GameMaster_Control : MonoBehaviour{
 			RoundOver = false;
 			loadback = true;
 			Background.GetComponent<Background>().LoadStart();
+			Music.clip = inventorymusic;
+			Music.Play();
 			Background.GetComponent<Background>().overlay.SetActive(false);
 			gameObject.GetComponent<MapScreen>().BattleWin();
 		}
