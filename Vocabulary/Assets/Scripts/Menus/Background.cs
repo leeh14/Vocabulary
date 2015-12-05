@@ -35,6 +35,7 @@ public class Background : MonoBehaviour {
 	{
 		temp = Resources.Load<Sprite>("Backgrounds/UI_StartScreen_Background") ;
 		gameObject.GetComponent<Image>().sprite = temp;
+		overlay.SetActive(false);
 	}
 	public void LoadLibrary()
 	{

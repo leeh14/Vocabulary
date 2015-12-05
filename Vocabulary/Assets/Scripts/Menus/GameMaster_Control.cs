@@ -58,6 +58,9 @@ public class GameMaster_Control : MonoBehaviour{
     void Update() {
 		if(loadback == true)
 		{
+			ClearMenu();
+			//Load game over game and can reset
+			//CurrentMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/Winning"));
 			LoadMap();
 			loadback = false;
 		}
@@ -160,6 +163,7 @@ public class GameMaster_Control : MonoBehaviour{
 	//goes to map menu
 	public void LoadMap()
 	{
+		Background.GetComponent<Background>().overlay.SetActive(false);
 		ClearMenu();
 		gameObject.GetComponent<MapScreen>().StartMap();
 	}
@@ -169,22 +173,31 @@ public class GameMaster_Control : MonoBehaviour{
 		if(CurrentLevel == "Level_1")
 		{
 			//dungeon
-			Music.clip = Dungeon;
-			Music.Play();
+			if(Music.clip != Dungeon)
+			{
+				Music.clip = Dungeon;
+				Music.Play();
+			}
 			Background.GetComponent<Background>().LoadCombatBG();
 		}
 		else if(CurrentLevel == "Level_2")
 		{
 			//library
-			Music.clip = Dungeon;
-			Music.Play();
+			if(Music.clip != Dungeon)
+			{
+				Music.clip = Dungeon;
+				Music.Play();
+			}
 			Background.GetComponent<Background>().LoadLibrary();
 		}
 		else if(CurrentLevel == "Level_3")
 		{
 			//spire
-			Music.clip = spiremusic;
-			Music.Play();
+			if(Music.clip != spiremusic)
+			{
+				Music.clip = spiremusic;
+				Music.Play();
+			}
 			Background.GetComponent<Background>().LoadSpire();
 		}
 	}
@@ -432,10 +445,7 @@ public class GameMaster_Control : MonoBehaviour{
 			//show enemy dealing damage
 			TurnContinue = false;
 			StartCoroutine(EnemyTurn(false));
-
 		}
-
-
 	}
 	#region coroutines
 	public IEnumerator WaitTurn(float dmg)
@@ -452,6 +462,16 @@ public class GameMaster_Control : MonoBehaviour{
 		TurnContinue = true;
 		bool dealt = false;
 		//deal damage to enemies
+		//Attack boost and question type attack
+		if(player.GetComponent<Player>().attkboost == true && questiontype == 0)
+		{
+			player.GetComponent<Player>().CurrentWeapon.AttackModifier = 1.25f;
+		}
+		//magic attack with boost potion
+		else if(player.GetComponent<Player>().mgattkboost == true && questiontype == 1)
+		{
+			player.GetComponent<Player>().CurrentWeapon.AttackModifier = 1.25f;
+		}
 		string combattext = "";
 		if(player.GetComponent<Player>().CurrentWeapon.Special == true && player.GetComponent<Player>().CurrentWeapon.AffectAnswers == false)
 		{
@@ -479,6 +499,12 @@ public class GameMaster_Control : MonoBehaviour{
 		{
 			combattext = "You have dealt " + dmgdealt + " to " + enemyname;
 			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
+		}
+		//disable potion effect 
+		if(player.GetComponent<Player>().attkboost == true || player.GetComponent<Player>().mgattkboost == true)
+		{
+			player.GetComponent<Player>().CurrentWeapon.AttackModifier = 1f;
+			player.GetComponent<Player>().PotionCD();
 		}
 
 		//combat text
@@ -512,8 +538,30 @@ public class GameMaster_Control : MonoBehaviour{
 					//feedback for player missed
 					combat.text += "Incorrect answer you missed \n";
 				}
-				combat.text += CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.";
-				player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
+				//run chance on armor to miss an attack
+				if(player.GetComponent<Player>().CurrentArmor.Miss)
+				{
+					float ran = Random.Range(0f,1f);
+					if(ran < player.GetComponent<Player>().CurrentArmor.misschance)
+					{
+						//missed the chance
+						combat.text += CurrentEnemy.GetComponent<GenericEnemy>().name + " misses";
+					}
+					else
+					{
+						combat.text += CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.";
+						player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
+					}
+				}
+				else
+				{
+					combat.text += CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.";
+					player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
+				}
+
+
+
+
 				if (player.GetComponent<Player> ().Alive == false) {
 					//player is dead
 					ClearMenu ();
@@ -564,11 +612,12 @@ public class GameMaster_Control : MonoBehaviour{
 			//adding the definition of the word into learned dictionary
 			//player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
 			RoundOver = false;
+
 			loadback = true;
 			Background.GetComponent<Background>().LoadStart();
 			Music.clip = inventorymusic;
 			Music.Play();
-			Background.GetComponent<Background>().overlay.SetActive(false);
+
 			gameObject.GetComponent<MapScreen>().BattleWin();
 		}
 	}

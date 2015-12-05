@@ -10,7 +10,8 @@ public class Player : MonoBehaviour {
 	public bool Alive = true;
 	public float healthModifier =0f;
 	public Dictionary<string, string> WordDict = new Dictionary<string, string>();
-
+	public bool attkboost = false;
+	public bool mgattkboost = false;
     // Use this for initialization
     void Start() {
 		Health = 20f;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour {
 	void Awake() {
 		DontDestroyOnLoad(transform.gameObject);
 	}
+
  	public void IncreaseMaxHealth(float max)
 	{
 		healthModifier = max;
@@ -29,6 +31,19 @@ public class Player : MonoBehaviour {
 
 		CurrentWeapon = weapon;
 		//Debug.Log("seweapon" + CurrentWeapon.Damage);
+	}
+	public void AttackBoost()
+	{
+		attkboost = true;
+	}
+	public void MgattkBoost()
+	{
+		mgattkboost = true;
+	}
+	public void PotionCD()
+	{
+		attkboost = false;
+		mgattkboost = false;
 	}
 	void Update()
 	{
