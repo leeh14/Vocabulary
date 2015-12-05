@@ -198,7 +198,7 @@ public class GameMaster_Control : MonoBehaviour{
 				Music.clip = spiremusic;
 				Music.Play();
 			}
-			Background.GetComponent<Background>().LoadSpire();
+			Background.GetComponent<Background>().LoadTower();
 		}
 	}
 
@@ -223,6 +223,10 @@ public class GameMaster_Control : MonoBehaviour{
 			Debug.Log(Enemy[m]);
 			bool shiftleft = false;
 			bool shiftup = false;
+			//positions
+			float x = 6f;
+			float y = 4f;
+			float xl = -.31f;
 			if (Enemy[m] == "Slime")
 			{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Slime"));
@@ -246,10 +250,21 @@ public class GameMaster_Control : MonoBehaviour{
 			else if (Enemy[m] == "Ghost")
 			{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Ghost"));
+				y +=4;
 			}
-			float x = 6f;
-			float y = 4f;
-			float xl = -.31f;
+			else if (Enemy[m] == "Shade")
+			{
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Shade"));
+				xl -=3;
+				x -=3;
+				y +=4;
+			}
+			else if (Enemy[m] == "Forgotten")
+			{
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Forgotten"));
+				y+=6;
+			}
+
 
 			if(Enemy.Count > 1)
 			{
@@ -264,7 +279,7 @@ public class GameMaster_Control : MonoBehaviour{
 				}
 				if(Enemy[m] == "Ghost")
 				{
-					Enemies.transform.localScale = new Vector3(.5f,1f,.57f);
+					Enemies.transform.localScale = new Vector3(.36f,1f,.53f);
 					x -=2f;
 					xl -=2f;
 				}
@@ -276,7 +291,6 @@ public class GameMaster_Control : MonoBehaviour{
 				{
 					//Enemies.GetComponent<GenericEnemy>().healthbar.transform.position = new Vector3(2 ,12 ,1f);
 					Enemies.transform.position = new Vector3 ( x,y, 1f);
-
 				}
 				else 
 				{

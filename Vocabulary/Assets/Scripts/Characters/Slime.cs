@@ -11,13 +11,13 @@ public class Slime : GenericEnemy {
 		Damage = 2f;
 		name = "Slime";
 		//creating item drop list
-		Droppable.Add("Broken Spearhead");
+		//Droppable.Add("Broken Spearhead");
 		Droppable.Add("Congealed Plasma");
 		Droppable.Add("Resonant Ooze");
-		Droppable.Add("Shorn Pages");
-		Droppable.Add("Dark Wisps");
-		Droppable.Add("Sphinx Drop");
-		Droppable.Add("Forgotten Drop");
+//		Droppable.Add("Shorn Pages");
+//		Droppable.Add("Dark Wisps");
+//		Droppable.Add("Sphinx Drop");
+//		Droppable.Add("Forgotten Drop");
 	}
 	
 

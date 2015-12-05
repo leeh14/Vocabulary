@@ -4,5 +4,21 @@
 	"model": "Shade.moc",
 	"textures": [
 		"Shade.1024/texture_00.png"
-	]
+	],
+	"motions":
+	{
+		"idle":
+		[
+			{"file":"motions/Shade_Idle.mtn" },
+			{"file":"motions/Shade_Idle2.mtn"}
+		],
+		"attack":
+		[
+			{"file":"motions/Shade_Attack.mtn"}
+		],
+		"damaged":
+		[
+			{"file":"motions/Shade_Hurt.mtn"}
+		]
+	}
 }

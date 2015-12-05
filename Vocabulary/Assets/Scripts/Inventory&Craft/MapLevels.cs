@@ -121,7 +121,7 @@ public class MapLevels : MonoBehaviour {
 			string mon;
 			if(type > .5f)
 			{
-				mon = "SlimeB";
+				mon = "Shade";
 			}
 			else
 			{
