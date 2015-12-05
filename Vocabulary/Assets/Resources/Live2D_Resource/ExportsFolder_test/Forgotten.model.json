@@ -1,0 +1,8 @@
+{
+	"type": "Live2D Model Setting",
+	"name": "Forgotten",
+	"model": "Forgotten.moc",
+	"textures": [
+		"Forgotten.1024/texture_00.png"
+	]
+}
