@@ -319,6 +319,11 @@ public class GameMaster_Control : MonoBehaviour{
 			{
 				CurrentEnemy = ene;
 			}
+			else
+			{
+				//disable the shader
+				ene.GetComponent<GenericEnemy>().RevertMaterial();
+			}
 		}
 		ClearMenu();
 

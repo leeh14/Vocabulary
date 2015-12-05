@@ -14,6 +14,8 @@ public class GenericEnemy : MonoBehaviour {
 	public bool Active = false;
 	public List<string> Droppable = new List<string>();
 	public GameObject healthGUI;
+	public Material highlighting;
+	public Material NonHighlighting;
 	//health bars of the enemies
 	public Text healthtxt;
 	public Image healthbar;
@@ -121,8 +123,17 @@ public class GenericEnemy : MonoBehaviour {
 //            {
 //                master.GetComponent<GameMaster_Control>().questions = master.GetComponent<GameMaster_Control>().GenerateMediumQuestions();
 //            }
+			MeshRenderer currentren = gameObject.GetComponent<MeshRenderer>();
+			//change on selection
+			currentren.material= highlighting;
 			master.GetComponent<GameMaster_Control>().CreateBattle(gameObject.name);
 		}
+	}
+	public void RevertMaterial()
+	{
+		MeshRenderer currentren = gameObject.GetComponent<MeshRenderer>();
+		//change on selection
+		currentren.material= NonHighlighting;
 	}
 	public void ReceiveDamage(float damage)
 	{
