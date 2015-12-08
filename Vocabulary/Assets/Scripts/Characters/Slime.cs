@@ -5,7 +5,7 @@ public class Slime : GenericEnemy {
 
 	// Use this for initialization
 	void Start () {
-		Health = 10f;
+		Health = 5f;
 		MaxHealth = 10f;
 		Armor = 0f;
 		Damage = 2f;

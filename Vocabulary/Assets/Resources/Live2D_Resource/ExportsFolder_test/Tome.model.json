@@ -4,5 +4,20 @@
 	"model": "Tome.moc",
 	"textures": [
 		"Tome.1024/texture_00.png"
-	]
+	],
+	"motions":
+	{
+		"idle":
+		[
+			{"file":"motions/Tome_Idle.mtn" }
+		],
+		"attack":
+		[
+			{"file":"motions/Tome_Attack.mtn"}
+		],
+		"damaged":
+		[
+			{"file":"motions/Tome_Hurt.mtn"}
+		]
+	}
 }

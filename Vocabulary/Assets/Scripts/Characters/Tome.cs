@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Goblin : GenericEnemy {
+public class Tome : GenericEnemy {
 
 	// Use this for initialization
 	void Start () {
@@ -9,14 +9,12 @@ public class Goblin : GenericEnemy {
 		MaxHealth = 10f;
 		Armor = 0f;
 		Damage = 2f;
-		name = "Goblin";
+		name = "Tome";
 
-		Droppable.Add("Broken Spearhead");
+		//dop items
+		Droppable.Add("Weathered Hide");
+		Droppable.Add("Shorn Pages");
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 }

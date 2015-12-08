@@ -264,7 +264,20 @@ public class GameMaster_Control : MonoBehaviour{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Forgotten"));
 				y+=6;
 			}
-
+			else if (Enemy[m] == "Tome")
+			{
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Tome"));
+				xl -=3;
+				x -=3;
+				y +=1.5f;
+			}
+			else if (Enemy[m] == "Goblin")
+			{
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Goblin"));
+				x-=2;
+				xl-=2;
+				y+=3;
+			}
 
 			if(Enemy.Count > 1)
 			{
@@ -282,6 +295,10 @@ public class GameMaster_Control : MonoBehaviour{
 					Enemies.transform.localScale = new Vector3(.36f,1f,.53f);
 					x -=2f;
 					xl -=2f;
+				}
+				else if(Enemy[m] == "Goblin")
+				{
+					Enemies.transform.localScale = new Vector3(.42f,1f,.49f);
 				}
 				else
 				{

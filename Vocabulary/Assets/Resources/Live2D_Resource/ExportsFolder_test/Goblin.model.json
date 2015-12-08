@@ -4,5 +4,21 @@
 	"model": "Goblin.moc",
 	"textures": [
 		"Goblin.1024/texture_00.png"
-	]
+	],
+	"motions":
+	{
+		"idle":
+		[
+			{"file":"motions/Goblin_Idle.mtn" },
+			{"file":"motions/Goblin_Idle2.mtn"}
+		],
+		"attack":
+		[
+			{"file":"motions/Goblin_Attack.mtn"}
+		],
+		"damaged":
+		[
+			{"file":"motions/Goblin_Hurt.mtn"}
+		]
+	}
 }
