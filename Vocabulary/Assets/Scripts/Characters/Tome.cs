@@ -6,7 +6,7 @@ public class Tome : GenericEnemy {
 	// Use this for initialization
 	void Start () {
 		Health = 5f;
-		MaxHealth = 10f;
+		MaxHealth = 5f;
 		Armor = 0f;
 		Damage = 2f;
 		name = "Tome";
