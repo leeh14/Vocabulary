@@ -1,0 +1,8 @@
+{
+	"type": "Live2D Model Setting",
+	"name": "Goblin",
+	"model": "Goblin.moc",
+	"textures": [
+		"Goblin.1024/texture_00.png"
+	]
+}
