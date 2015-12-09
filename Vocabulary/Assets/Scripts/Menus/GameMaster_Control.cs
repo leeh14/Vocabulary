@@ -170,7 +170,7 @@ public class GameMaster_Control : MonoBehaviour{
 	public void LoadLvlBackground()
 	{
 		Background.GetComponent<Background>().overlay.SetActive(true);
-		if(CurrentLevel == "Level_1")
+		if(CurrentLevel == "Dungeons")
 		{
 			//dungeon
 			if(Music.clip != Dungeon)
@@ -180,7 +180,7 @@ public class GameMaster_Control : MonoBehaviour{
 			}
 			Background.GetComponent<Background>().LoadCombatBG();
 		}
-		else if(CurrentLevel == "Level_2")
+		else if(CurrentLevel == "Library")
 		{
 			//library
 			if(Music.clip != Dungeon)
@@ -190,7 +190,7 @@ public class GameMaster_Control : MonoBehaviour{
 			}
 			Background.GetComponent<Background>().LoadLibrary();
 		}
-		else if(CurrentLevel == "Level_3")
+		else if(CurrentLevel == "Tower")
 		{
 			//spire
 			if(Music.clip != spiremusic)
@@ -232,9 +232,9 @@ public class GameMaster_Control : MonoBehaviour{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Slime"));
 				//might change on build
 				//for android
-				xl-=1.3f;
-				y+=1.1f;
-				x-=1.3f;
+				//xl-=1.3f;
+				//y+=1.1f;
+				//x-=1.3f;
 			}
 			else if(Enemy[m] == "SlimeB")
 			{
@@ -286,6 +286,13 @@ public class GameMaster_Control : MonoBehaviour{
 				xl-=2;
 				y+=3;
 			}
+			else if (Enemy[m] == "Sphinx")
+			{
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Sphinx"));
+				y+= 3.1f;
+				xl-= 2f;
+				x-=2f;
+			}
 
 			if(Enemy.Count > 1)
 			{
@@ -308,10 +315,10 @@ public class GameMaster_Control : MonoBehaviour{
 				{
 					Enemies.transform.localScale = new Vector3(.42f,1f,.49f);
 				}
-				else if(Enemy[m] == "Slime" || Enemy[m] == "SlimeR" )
-				{
-					Enemies.transform.localScale = new Vector3(.4f,1f,.4f);
-				}
+//				else if(Enemy[m] == "Slime" || Enemy[m] == "SlimeR" )
+//				{
+//					Enemies.transform.localScale = new Vector3(.4f,1f,.4f);
+//				}
 				else
 				{
 					Enemies.transform.localScale = new Vector3(.7f,1f,.57f);

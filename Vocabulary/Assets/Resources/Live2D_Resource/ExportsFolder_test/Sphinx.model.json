@@ -4,5 +4,21 @@
 	"model": "Sphinx.moc",
 	"textures": [
 		"Sphinx.1024/texture_00.png"
-	]
+	],
+	"motions":
+	{
+		"idle":
+		[
+			{"file":"motions/Sphinx_Idle.mtn" },
+			{"file":"motions/Sphinx_Idle2.mtn"}
+		],
+		"attack":
+		[
+			{"file":"motions/Sphinx_Attack.mtn"}
+		],
+		"damaged":
+		[
+			{"file":"motions/Sphinx_Hurt.mtn"}
+		]
+	}
 }

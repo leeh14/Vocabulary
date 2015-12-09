@@ -83,7 +83,7 @@ public class GenericEnemy : MonoBehaviour {
 //		}
 //		healthbar.transform.localScale = new Vector3(.45f, .08f,1f);
 		healthtxt.text =  Health + " / " + MaxHealth; 
-
+		//positions
 		//healthtxt.transform.localScale = new Vector3(1.5f, 1.5f,1f);
 
 		//display current health
@@ -97,39 +97,39 @@ public class GenericEnemy : MonoBehaviour {
 		foreach(Text i in healthtext)
 		{
 			
-			if(gameObject.transform.position.x < -.30f)
+			if(gameObject.transform.position.x > -.30f)
 			{
 				//Enemey is on the left 
-				i.transform.position = new Vector3(66.5f,261f,-1f);
+				i.transform.position = new Vector3(i.transform.position.x +100,i.transform.position.y,-1f);
 
 			}
-			else 
-			{
-				//enemy is on the right
-				i.transform.position = new Vector3(152.5f,261f,-1f);
-			}
+//			else 
+//			{
+//				//enemy is on the right
+//				i.transform.position = new Vector3(152.5f,261f,-1f);
+//			}
 			healthtxt = i;
 		}
 		foreach(Image i in health)
 		{
 
-			if(gameObject.transform.position.x < -.30f)
+			if(gameObject.transform.position.x > -.30f)
 			{
 				//Enemey is on the left 
 				
 				//healthtxt.transform.localPosition = new Vector3(-20f, 320f,  -1);
 				//healthbar.transform.localPosition = new Vector3(-20f, 325f, gameObject.transform.position.z);
 				//i.transform.position = new Vector3(70f, 270f, -1f);
-				i.transform.position = new Vector3(53.5f,270f,-1f);
+				i.transform.position = new Vector3(i.transform.position.x + 100,i.transform.position.y,-1f);
 			}
-			else 
-			{
-				//enemy is on the right
-				//healthtxt.transform.localPosition = new Vector3(315f, 770f, gameObject.transform.position.z);
-				//healthbar.transform.localPosition = new Vector3(240f, 780f, gameObject.transform.position.z);
-				//healthtxt.transform.position = new Vector3(155f, 270f, -1f);
-				i.transform.position = new Vector3(138.5f,270f,-1f);
-			}
+//			else 
+//			{
+//				//enemy is on the right
+//				//healthtxt.transform.localPosition = new Vector3(315f, 770f, gameObject.transform.position.z);
+//				//healthbar.transform.localPosition = new Vector3(240f, 780f, gameObject.transform.position.z);
+//				//healthtxt.transform.position = new Vector3(155f, 270f, -1f);
+//				i.transform.position = new Vector3(138.5f,270f,-1f);
+//			}
 			healthbar = i;
 		}
 		//if the forgottone

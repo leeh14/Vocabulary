@@ -81,7 +81,33 @@ public class MapLevels : MonoBehaviour {
 		for (int i = 0; i <= amount ; i++)
 		{
 			//randoomizze the different names of the enemies
-			string mon = "Slime";
+			string mon;
+			if(type > .5f)
+			{
+				mon = "Goblin";
+			}
+			else
+			{
+				float color = UnityEngine.Random.Range(0f,1.0f);
+				//different colors of the slime
+				if(color < 2.5)
+				{
+					mon = "Slime";
+				}
+				else if(color >= 2.5 && color < 5)
+				{
+					mon = "SlimeB";
+				}
+				else if(color >= 5 && color < 8.5)
+				{
+					mon = "SlimeR";
+				}
+				else
+				{
+					mon = "SlimeP";
+				}
+				mon = "Tome";
+			}
 			Monsters.Add(mon);
 		}
 		return Monsters;
@@ -103,7 +129,7 @@ public class MapLevels : MonoBehaviour {
 			}
 			else
 			{
-				mon = "SlimeB";
+				mon = "Tome";
 			}
 			Monsters.Add(mon);
 		}
@@ -119,13 +145,17 @@ public class MapLevels : MonoBehaviour {
 			//randoomizze the different names of the enemies
 			float type = UnityEngine.Random.Range(0f,1f);
 			string mon;
-			if(type > .5f)
+			if(type > .3f)
 			{
 				mon = "Shade";
 			}
+			else if(type >= .3f && type < 6f)
+			{
+				mon = "Ghost";
+			}
 			else
 			{
-				mon = "SlimeP";
+				mon = "Sphinx";
 			}
 			Monsters.Add(mon);
 		}
@@ -143,7 +173,7 @@ public class MapLevels : MonoBehaviour {
 //		monsters_1.Add ("Monster_1_3");
 //		monsters_1.Add ("Monster_1_4");
 //		monsters_1.Add ("Monster_1_5");
-		LevelData lv_1 = new LevelData ("Level_1", monsters_1);
+		LevelData lv_1 = new LevelData ("Dungeons", monsters_1);
 		_Levels.Add (lv_1);
 
 		// Level 2:
@@ -154,7 +184,7 @@ public class MapLevels : MonoBehaviour {
 //		monsters_2.Add ("Monster_2_4");
 //		monsters_2.Add ("Monster_2_5");
 		monsters_2 = GenerateEnemiesLvl2();
-		LevelData lv_2 = new LevelData ("Level_2", monsters_2);
+		LevelData lv_2 = new LevelData ("Library", monsters_2);
 		_Levels.Add (lv_2);
 
 		// Level 2:
@@ -165,7 +195,7 @@ public class MapLevels : MonoBehaviour {
 //		monsters_3.Add ("Monster_3_4");
 //		monsters_3.Add ("Monster_3_5");
 		monsters_3 = GenerateEnemiesLvl3();
-		LevelData lv_3 = new LevelData ("Level_3", monsters_3);
+		LevelData lv_3 = new LevelData ("Tower", monsters_3);
 		_Levels.Add (lv_3);
 
 
