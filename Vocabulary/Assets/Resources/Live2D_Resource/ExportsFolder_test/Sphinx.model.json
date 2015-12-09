@@ -1,0 +1,8 @@
+{
+	"type": "Live2D Model Setting",
+	"name": "Sphinx",
+	"model": "Sphinx.moc",
+	"textures": [
+		"Sphinx.1024/texture_00.png"
+	]
+}
