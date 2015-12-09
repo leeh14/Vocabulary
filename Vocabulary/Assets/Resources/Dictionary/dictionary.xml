@@ -606,4 +606,815 @@
         <definition>vanishing;fading away;fleeting</definition>
         <example> The moon's phases were a slow evanescent of sunlight.</example>
     </word>
+     <word>
+        <word-base>cache
+    </word-base>
+        <pos>noun</pos>
+        <definition>a hiding place, especially one in the ground, for ammunition, food, treasures, etc.</definition>
+        <example>There was always candy in the cache in the hidden drawer.</example>
+    </word>
+    <word>
+        <word-base>glean</word-base>
+        <pos>verb</pos>
+        <definition>to gather slowly and laboriously, bit by bit.</definition>
+        <word-varient>gleaner</word-varient>
+        <example>The farmer needed to glean every last piece of rice.</example>
+    </word>
+    <word>
+        <word-base>transformer</word-base>
+        <pos>noun</pos>
+        <definition>a person or thing that transforms.</definition>
+        <example>Everyone loved the show where the transformer became a robot.</example>
+    </word>
+    <word>
+        <word-base>processor</word-base>
+        <pos>noun</pos>
+        <definition>a person or thing that processes.</definition>
+        <example>The human calculater was a processor.</example>
+    </word>
+    <word>
+        <word-base>producer</word-base>
+        <pos>noun</pos>
+        <definition>a person who produces.</definition>
+        <example>A producer made the new film.</example>
+    </word>
+    <word>
+        <word-base>abiding</word-base>
+        <pos>adjective</pos>
+        <definition>continuing without change; enduring; steadfast</definition>
+        <example>The muslims have an abiding faith.</example>
+    </word>
+    <word>
+        <word-base>perennial</word-base>
+        <pos>adjective</pos>
+        <definition>lasting for an indefinitely long time; enduring</definition>
+        <example>Her perennial beauty will be perserved in pictures.</example>
+    </word>
+    <word>
+        <word-base>persuasive</word-base>
+        <pos>adjective</pos>
+        <definition>able, fitted, or intended to persuade</definition>
+        <example>The lawyer had a very persuasive argument.</example>
+    </word>
+    <word>
+        <word-base>irresistible</word-base>
+        <pos>adjective</pos>
+        <definition>not resistible; incapable of being resisted or withstood</definition>
+        <example>Romeo's irresistible love for Juliet killed them.</example>
+    </word>
+    <word>
+        <word-base>unmitigated</word-base>
+        <pos>adjective</pos>
+        <definition>not mitigated; not softened or lessened</definition>
+        <example>She experienced unmitigated suffering.</example>
+    </word>
+    <word>
+        <word-base>multifaceted</word-base>
+        <pos>adjective</pos>
+        <definition>having many aspects or phases</definition>
+        <example>The multifaceted problem was becoming too hard to solve.</example>
+    </word>
+    <word>
+        <word-base>imperceptive</word-base>
+        <pos>adjective</pos>
+        <definition>not perceptive; lacking perception.</definition>
+        <example>The imperceptive giant left his shoe in the firepit.</example>
+    </word>
+    <word>
+        <word-base>tryannical</word-base>
+        <pos>adjective</pos>
+        <definition>unjustly cruel, harsh, or severe; arbitrary or oppressive; despotic</definition>
+        <example>The tyrannical ruler liked to skin people alive for looking at him weirdly.</example>
+    </word>
+    <word>
+        <word-base>indecisive</word-base>
+        <pos>adjective</pos>
+        <definition>characterized by indecision, as persons; irresolute; undecided.</definition>
+        <example>Jacky took 20 mintues to order food because she was indecisive.</example>
+    </word>
+    <word>
+        <word-base>xenophobic</word-base>
+        <pos>adjective</pos>
+        <definition>unreasonably fearful of or hating anyone or anything foreign or strange.</definition>
+        <example>John was had a xenophobic fear of everything.</example>
+    </word>
+    <word>
+        <word-base>boorish</word-base>
+        <pos>adjective</pos>
+        <definition>of or like a boor; unmannered; crude; insensitive.</definition>
+        <example>The begger had a boorish attitude when facing the rich.</example>
+    </word>
+    <word>
+        <word-base>obscure</word-base>
+        <pos>adjective</pos>
+        <definition>not clear to the understanding; hard to perceive</definition>
+        <example>The unknown jester had obsure motivations.</example>
+    </word>
+    <word>
+        <word-base>intractable</word-base>
+        <pos>adjective</pos>
+        <definition>not easily controlled or directed; not docile or manageable; stubborn; obstinate</definition>
+        <example>The old man had an intractable disposition.</example>
+    </word>
+    <word>
+        <word-base>confusing</word-base>
+        <pos>adjective</pos>
+        <definition>causing or tending to cause confusion</definition>
+        <example>The spy gave a confusing attempt at explaining the mission.</example>
+    </word>
+    <word>
+        <word-base>elevated</word-base>
+        <pos>adjective</pos>
+        <definition>exalted or noble; lofty</definition>
+        <example>The young boy had elevated thoughts.</example>
+    </word>
+    <word>
+        <word-base>rigorous</word-base>
+        <pos>adjective</pos>
+        <definition>characterized by rigor; rigidly severe or harsh, as people, rules, or discipline</definition>
+        <example>The Mayans upheld rigorous laws.</example>
+    </word>
+    <word>
+        <word-base>impasse</word-base>
+        <pos>noun</pos>
+        <definition> position or situation from which there is no escape; deadlock.</definition>
+        <example>With the rain in the sky both armies stood at a impasse.</example>
+    </word>
+    <word>
+        <word-base>deadlock</word-base>
+        <pos>noun</pos>
+        <definition>a state in which progress is impossible, as in a dispute, produced by the counteraction of opposing forces; standstill; stalemate:</definition>
+        <example>The union and management reached a deadlock over fringe benefits.</example>
+    </word>
+    <word>
+        <word-base>solution</word-base>
+        <pos>noun</pos>
+        <definition>the act of solving a proble,, question,etc.</definition>
+        <example>The situation is approaching solution.</example>
+    </word>
+    <word>
+        <word-base>end</word-base>
+        <pos>noun</pos>
+        <definition>a point, line, or limitation that indicates the full extent, degree, etc., of something; limit; bounds:</definition>
+        <example>Jack's kindness was without end.</example>
+    </word>
+    <word>
+        <word-base>resolution</word-base>
+        <pos>noun</pos>
+        <definition>the act of resolving or determining upon an action, course of action, method, procedure, etc.</definition>
+        <example>After coming to a resolution the two armies signed the peace treaty.</example>
+    </word>
+    <word>
+        <word-base>conclusion</word-base>
+        <pos>noun</pos>
+        <definition>a result, issue, or outcome; settlement or arrangement:</definition>
+        <example>The restitution payment was one of the conclusions of the negotiations.</example>
+    </word>
+    <word>
+        <word-base>practical</word-base>
+        <pos>adjective</pos>
+        <definition>consisting of, involving, or resulting from practice or action:</definition>
+        <example>Jumping on the trampoline was a practical solution</example>
+    </word>
+    <word>
+        <word-base>empirical</word-base>
+        <pos>adjective</pos>
+        <definition>derived from or guided by experience or experiment.</definition>
+        <example>We decided to jump off the cliff based on John's empricial decision.</example>
+    </word>
+    <word>
+        <word-base>philosophical</word-base>
+        <pos>adjective</pos>
+        <definition>of or relating to philosophy :</definition>
+        <example>Bulbasaur enjoyed his philosophical studies.</example>
+    </word>
+    <word>
+        <word-base>arcane</word-base>
+        <pos>adjective</pos>
+        <definition>known or understood by very few; mysterious; secret; obscure; esoteric:</definition>
+        <example>She knew a lot about Sanskrit grammar and other arcane matters.</example>
+    </word>
+    <word>
+        <word-base>superficial</word-base>
+        <pos>adjective</pos>
+        <definition>shallow; not profound or thorough:</definition>
+        <example>J.K Rowling was not asuperficial writer.</example>
+    </word>
+    <word>
+        <word-base>obtuse</word-base>
+        <pos>adjective</pos>
+        <definition>not quick or alert in perception, feeling, or intellect; not sensitive or observant; dull.</definition>
+        <example>Hodor had a rather obtuse personality.</example>
+    </word>
+    <word>
+        <word-base>studied</word-base>
+        <pos>adjective</pos>
+        <definition>marked by or suggestive of conscious effort; not spontaneous or natural; affected:</definition>
+        <example>After long deliberation Jack gave his studied approval.</example>
+    </word>
+    <word>
+        <word-base>rococo</word-base>
+        <pos>adjective</pos>
+        <definition>of, pertaining to, in the manner of, or suggested by rococo architecture, decoration, or music or the general atmosphere and spirit of the rococo:</definition>
+        <example>The lady in France had a rather rococo charm to her.</example>
+    </word>
+    <word>
+        <word-base>mannered</word-base>
+        <pos>adjective</pos>
+        <definition>having distinctive mannerisms; affected:</definition>
+        <example>The lady had a mannered walk.</example>
+    </word>
+    <word>
+        <word-base>pronounced</word-base>
+        <pos>adjective</pos>
+        <definition>strongly marked:</definition>
+        <example>The fish dish hass a pronounced fishy taste.</example>
+    </word>
+    <word>
+        <word-base>ingenuous</word-base>
+        <pos>adjective</pos>
+        <definition>free from reserve, restraint, or dissimulation; candid; sincere.</definition>
+        <example>The African tribe dresed in an ingenuous manner.</example>
+    </word>
+    <word>
+        <word-base>understated</word-base>
+        <pos>adjective</pos>
+        <definition>restrained in design, presentation, etc.; low-key:</definition>
+        <example>The understated elegance of the dress did not escape the fasionista gaze.</example>
+    </word>
+    <word>
+        <word-base>ridcule</word-base>
+        <pos>verb</pos>
+        <definition>to deride; make fun of.</definition>
+        <example>The spolied boy like to ridcule the beggers on the street.</example>
+    </word>
+    <word>
+        <word-base>lampoon</word-base>
+        <pos>verb</pos>
+        <definition>to mock or ridicule in a lampoon:</definition>
+        <example>The politician loved to lampoon important leaders in the government.</example>
+    </word>
+    <word>
+        <word-base>disparage</word-base>
+        <pos>verb</pos>
+        <definition>to bring reproach or discredit upon; lower the estimation of:</definition>
+        <example>Your behavior will disparage the whole family.</example>
+    </word>
+    <word>
+        <word-base>laud</word-base>
+        <pos>verb</pos>
+        <definition>to praise; extol.</definition>
+        <example>Homer loved to laud the old heros.</example>
+    </word>
+    <word>
+        <word-base>enlighten</word-base>
+        <pos>verb</pos>
+        <definition>to give intellectual or spiritual light to; instruct; impart knowledge to:</definition>
+        <example>We hope the results of our cancer research will enlighten our colleagues.</example>
+    </word>
+    <word>
+        <word-base>train</word-base>
+        <pos>verb</pos>
+        <definition>to make proficient by instruction and practice, as in some art, profession, or work:</definition>
+        <example>The trainer could not wait to train his Charizard to level 100.</example>
+    </word>
+    <word>
+        <word-base>cursory</word-base>
+        <pos>adjective</pos>
+        <definition>going rapidly over something, without noticing details; hasty; superficial:</definition>
+        <example>The student did a rather cursory glance at his notes before the test.</example>
+    </word>
+    <word>
+        <word-base>perfunctory</word-base>
+        <pos>adjective</pos>
+        <definition>lacking interest, care, or enthusiasm; indifferent or apathetic:</definition>
+        <example>In Jack's lectures he reveals himself to be merely a perfunctory speaker.</example>
+    </word>
+    <word>
+        <word-base>detailed</word-base>
+        <pos>adjective</pos>
+        <definition>having many details </definition>
+        <example>To the physic student's delight the detailed probelm wasn't that hard.</example>
+    </word>
+    <word>
+        <word-base>considered</word-base>
+        <pos>adjective</pos>
+        <definition>thought about or decided upon with care </definition>
+        <example>To expert camper gave a considered opinion about the sleeping bag.</example>
+    </word>
+    <word>
+        <word-base>tangential</word-base>
+        <pos>adjective</pos>
+        <definition>merely touching; slightly connected</definition>
+        <example>The instructor only gave tangential instructions on how to build the fire.</example>
+    </word>
+    <word>
+        <word-base>waive</word-base>
+        <pos>verb</pos>
+        <definition>to refrain from claiming or insisting on; give up; forgo</definition>
+        <word-varient>waived</word-varient>
+        <example>The slave ownered waived the human rights of his slaves.</example>
+    </word>
+    <word>
+        <word-base>commuted</word-base>
+        <pos>verb</pos>
+        <definition>to change (a prison sentence or other penalty) to a less severe one</definition>
+        <example>The death sentence of the Texan was commuted to life imprisonment.</example>
+    </word>
+    <word>
+        <word-base>arbitrary</word-base>
+        <pos>adjective</pos>
+        <definition>subject to individual will or judgment without restriction; contingent solely upon one's discretion</definition>
+        <example>The friends made an arbitrary decision about dinner.</example>
+    </word>
+    <word>
+        <word-base>change</word-base>
+        <pos>verb</pos>
+        <definition>to make the form, nature, content, future course, etc., of (something) different from what it is or from what it would be if left alone: to change one's name; to change one's opinion;</definition>
+        <word-varient>changed</word-varient>
+        <example>If Hitler had won it could have very well changed the course of history.</example>
+    </word>
+    <word>
+        <word-base>lenient</word-base>
+        <pos>adjective</pos>
+        <definition>agreeably tolerant; permissive; indulgent:</definition>
+        <example>The babysitter tended to be lenient toward the children.</example>
+    </word>
+    <word>
+        <word-base>applied</word-base>
+        <pos>adjective</pos>
+        <definition>having a practical purpose or use; derived from or involved with actual phenomena</definition>
+        <example>The student loved applied mathematics.</example>
+    </word>
+    <word>
+        <word-base>color</word-base>
+        <pos>verb</pos>
+        <definition>to cause to appear different from the reality</definition>
+        <example>The witness decided that it was too dangerous to tell the truth and decided to color his testimony.</example>
+    </word>
+    <word>
+        <word-base>impact</word-base>
+        <pos>verb</pos>
+        <definition>to have an impact or effect on; influence; alter</definition>
+        <example>To become a pro video game player it will impact the rest of your life kid.</example>
+    </word>
+    <word>
+        <word-base>cloud</word-base>
+        <pos>verb</pos>
+        <definition>to make obscure or indistinct; confuse</definition>
+        <example>Don't cloud the issue with unnecessary details.</example>
+    </word>
+    <word>
+        <word-base>trigger</word-base>
+        <pos>verb</pos>
+        <definition>to initiate or precipitate (a chain of events, scientific reaction, psychological process, etc.)</definition>
+        <example>The erosion triggered a mudslide.</example>
+    </word>
+    <word>
+        <word-base>devalue</word-base>
+        <pos>verb</pos>
+        <definition>to deprive of value; reduce the value of.</definition>
+        <example>Mark's grand plan was to devalue the cost of turkey.</example>
+    </word>
+    <word>
+        <word-base>objectify</word-base>
+        <pos>verb</pos>
+        <definition>to present as an object, especially of sight, touch, or other physical sense; make objective; externalize.</definition>
+        <example>Men should not objectify women in any way.</example>
+    </word>
+    <word>
+        <word-base>pertinent</word-base>
+        <pos>adjective</pos>
+        <definition>pertaining or relating directly and significantly to the matter at hand; relevant</definition>
+        <example>Say only the pertinent details soldier.</example>
+    </word>
+    <word>
+        <word-base>germane</word-base>
+        <pos>adjective</pos>
+        <definition>closely or significantly related; relevant; pertinent</definition>
+        <example>Please keep your statements germane to the issue.</example>
+    </word>
+    <word>
+        <word-base>anomalous</word-base>
+        <pos>adjective</pos>
+        <definition>deviating from or inconsistent with the common order, form, or rule; irregular; abnormal</definition>
+        <example>Humans might actually be the anomalous in the universe.</example>
+    </word>
+    <word>
+        <word-base>peripheral</word-base>
+        <pos>adjective</pos>
+        <definition>pertaining to, situated in, or constituting the periphery</definition>
+        <example>There still was some peripheral resistance on the outskirts of the town.</example>
+    </word>
+    <word>
+        <word-base>visible</word-base>
+        <pos>adjective</pos>
+        <definition>apparent; manifest; obvious</definition>
+        <example>We were surrounded with no visible means of support.</example>
+    </word>
+    <word>
+        <word-base>puritanical</word-base>
+        <pos>adjective</pos>
+        <definition>very strict in moral or religious matters, often excessively so; rigidly austere.</definition>
+        <example>My parents were always puritanical in educating us.</example>
+    </word>
+    <word>
+        <word-base>prudish</word-base>
+        <pos>adjective</pos>
+        <definition>excessively proper or modest in speech, conduct, dress, etc.</definition>
+        <example>My parents made us dress ina prudish manner when we went to church.</example>
+    </word>
+    <word>
+        <word-base>covert</word-base>
+        <pos>adjective</pos>
+        <definition>covered; sheltered.</definition>
+        <example>My parents gave us a rather covert education.</example>
+    </word>
+    <word>
+        <word-base>camouflage</word-base>
+        <pos>verb</pos>
+        <definition>to disguise by means of camouflage:</definition>
+        <word-varient>camouflaging</word-varient>
+        <example>We wanted to camouflage our town from the foreigners.</example>
+    </word>
+    <word>
+        <word-base>misogynistic</word-base>
+        <pos>adjective</pos>
+        <definition>reflecting or exhibiting hatred, dislike, mistrust, or mistreatment of women.</definition>
+        <example>The rednecks had a rather misogynistic view of women.</example>
+    </word>
+    <word>
+        <word-base>miserly</word-base>
+        <pos>adjective</pos>
+        <definition>of, like, or befitting a miser; penurious; stingy; niggardly.</definition>
+        <example>The old name had a miserly nature can kept hoarding all his cash.</example>
+    </word>
+    <word>
+        <word-base>dispatch</word-base>
+        <pos>noun</pos>
+        <definition>prompt or speedy transaction, as of business.</definition>
+        <example>With great dispatch the mail was delivered.</example>
+    </word>
+    <word>
+        <word-base>celerity</word-base>
+        <pos>noun</pos>
+        <definition>swiftness; speed.</definition>
+        <example>With great celerity the wall was built.</example>
+    </word>
+    <word>
+        <word-base>grace</word-base>
+        <pos>noun</pos>
+        <definition>elegance or beauty of form, manner, motion, or action</definition>
+        <example>We watched her skate with effortless grace across the ice.</example>
+    </word>
+    <word>
+        <word-base>effectiveness</word-base>
+        <pos>adjective</pos>
+        <definition>adequate to accomplish a purpose; producing the intended or expected result</definition>
+        <example>The teacher had effective teaching methods.</example>
+    </word>
+    <word>
+        <word-base>slovenly</word-base>
+        <pos>adjective</pos>
+        <definition>untidy or unclean in appearance or habits.</definition>
+        <word-varient>slovenliness</word-varient>
+        <example>Much to the CEO's dismay the janitors did slovenly work.</example>
+    </word>
+    <word>
+        <word-base>carelessness</word-base>
+        <pos>adjective</pos>
+        <definition>not caring or troubling; having no care or concern; unconcerned (usually followed by of, about, or in)</definition>
+        <example>The queen was disappointed with the prince's carelessness in speech.</example>
+    </word>
+    <word>
+        <word-base>tentative</word-base>
+        <pos>adjective</pos>
+        <definition>unsure; uncertain; not definite or positive; hesitant</definition>
+        <example>The student gave a tentative smile on his face when asked about his homework.</example>
+    </word>
+    <word>
+        <word-base>flimsy</word-base>
+        <pos>adjective</pos>
+        <definition>weak; inadequate; not effective or convincing</definition>
+        <example>My dog ate my homework is now a flimsy excuse.</example>
+    </word>
+    <word>
+        <word-base>unusual</word-base>
+        <pos>adjective</pos>
+        <definition>not usual, common, or ordinary; uncommon in amount or degree; exceptional</definition>
+        <example>In the haunted house there was unusal sounds everywhere.</example>
+    </word>
+    <word>
+        <word-base>hackneyed</word-base>
+        <pos>adjective</pos>
+        <definition>made commonplace or trite; stale; banal</definition>
+        <example>The hackneyed images of his poetry.</example>
+    </word>
+    <word>
+        <word-base>outrageous</word-base>
+        <pos>adjective</pos>
+        <definition>passing reasonable bounds; intolerable or shocking</definition>
+        <example>Paying $100 for a bananna is an outrageous price.</example>
+    </word>
+    <word>
+        <word-base>illuminating</word-base>
+        <pos>adjective</pos>
+        <definition>informative; enlightening.</definition>
+        <example>The new evidence casts a new light on the cast illuminating many other inconsistencies.</example>
+    </word>
+    <word>
+        <word-base>mundane</word-base>
+        <pos>adjective</pos>
+        <definition>common; ordinary; banal; unimaginative.</definition>
+        <example>She was wearing such a mundane dress at the ball.</example>
+    </word>
+    <word>
+        <word-base>petty</word-base>
+        <pos>adjective</pos>
+        <definition>of little or no importance or consequence</definition>
+        <example>She did not want to hear any petty grievances</example>
+    </word>
+    <word>
+        <word-base>weighty</word-base>
+        <pos>adjective</pos>
+        <definition>important or momentous</definition>
+        <example>The weighty negotiations decided the future of the land.</example>
+    </word>
+    <word>
+        <word-base>erudite</word-base>
+        <pos>adjective</pos>
+        <definition>characterized by great knowledge; learned or scholarly</definition>
+        <example>MIT was well known for its erudite community.</example>
+    </word>
+    <word>
+        <word-base>untoward</word-base>
+        <pos>adjective</pos>
+        <definition>unfavorable or unfortunate</definition>
+        <example>Untoward circumstances forced him into bankruptcy.</example>
+    </word>
+    <word>
+        <word-base>extraneous</word-base>
+        <pos>adjective</pos>
+        <definition>not pertinent; irrelevant</definition>
+        <example>Anything extraneous to the case throw it away.</example>
+    </word>
+    <word>
+        <word-base>related</word-base>
+        <pos>adjective</pos>
+        <definition>associated; connected.</definition>
+        <example>Anything related to the case give it to the judge.</example>
+    </word>
+    <word>
+        <word-base>catering</word-base>
+        <pos>verb</pos>
+        <definition>to provide or supply what amuses, is desired, or gives pleasure, comfort, etc.</definition>
+        <example>The clown did not want to cater to popular demand.</example>
+    </word>
+    <word>
+        <word-base>similar</word-base>
+        <pos>adjective</pos>
+        <definition>having a likeness or resemblance, especially in a general way</definition>
+        <example>The twins realized that they looked too similar.</example>
+    </word>
+    <word>
+        <word-base>helpful</word-base>
+        <pos>adjective</pos>
+        <definition>giving or rendering aid or assistance; of service</definition>
+        <example>The comments about the raid were very helpful.</example>
+    </word>
+    <word>
+        <word-base>lugubrious</word-base>
+        <pos>adjective</pos>
+        <definition>mournful, dismal, or gloomy, especially in an affected, exaggerated, or unrelieved manner</definition>
+        <example>Ballads were always lugubrious songs.</example>
+    </word>
+    <word>
+        <word-base>melancholy</word-base>
+        <pos>adjective</pos>
+        <definition>affected with, characterized by, or showing melancholy; mournful; depressed</definition>
+        <example>With no parents Batman was always in a melancholy mood.</example>
+    </word>
+    <word>
+        <word-base>jaunty</word-base>
+        <pos>adjective</pos>
+        <definition>easy and sprightly in manner or bearing</definition>
+        <example>The joker was happy and walked with a jaunty step.</example>
+    </word>
+    <word>
+        <word-base>jocose</word-base>
+        <pos>adjective</pos>
+        <definition>given to or characterized by joking; jesting; humorous; playful</definition>
+        <example>The jester had a jocose and amusing personality.</example>
+    </word>
+    <word>
+        <word-base>frivolous</word-base>
+        <pos>adjective</pos>
+        <definition>characterized by lack of seriousness or sense</definition>
+        <example>The jester almost died because of his frivolous conduct.</example>
+    </word>
+    <word>
+        <word-base>ironic</word-base>
+        <pos>adjective</pos>
+        <definition>using words to convey a meaning that is the opposite of its literal meaning; containing or exemplifying irony </definition>
+        <example>The DMZ ironically means demilitarized zone.</example>
+    </word>
+    <word>
+        <word-base>ambivalent</word-base>
+        <pos>adjective</pos>
+        <definition>having mixed feelings about someone or something; being unable to choose between two (usually opposing) courses of action </definition>
+        <example>She is regarded as a morally ambivalent character in the play.</example>
+    </word>
+    <word>
+        <word-base>whimsical</word-base>
+        <pos>adjective</pos>
+        <definition>given to whimsy or fanciful notions; capricious</definition>
+        <example>The fairy was a pixyish, whimsical fairy.</example>
+    </word>
+    <word>
+        <word-base>tardy</word-base>
+        <pos>adjective</pos>
+        <definition>moving or acting slowly; slow; sluggish.</definition>
+        <example>The student was punished because he was tardy.</example>
+    </word>
+    <word>
+        <word-base>authoritatian</word-base>
+        <pos>adjective</pos>
+        <definition>favoring complete obedience or subjection to authority as opposed to individual freedom</definition>
+        <example>Donald Trump's had authoritarian principles.</example>
+    </word>
+    <word>
+        <word-base>strict</word-base>
+        <pos>adjective</pos>
+        <definition>characterized by or acting in close conformity to requirements or principles</definition>
+        <example>When wishing for a wish one must always be strict when saying exactly what they want.</example>
+    </word>
+    <word>
+        <word-base>hidebound</word-base>
+        <pos>adjective</pos>
+        <definition>narrow and rigid in opinion; inflexible</definition>
+        <example>The priest had hidebound beliefs about god.</example>
+    </word>
+    <word>
+        <word-base>perceptive</word-base>
+        <pos>adjective</pos>
+        <definition>having or showing keenness of insight, understanding, or intuition</definition>
+        <example>The detective always gave a a perceptive analysis of the case.</example>
+    </word>
+    <word>
+        <word-base>insightful</word-base>
+        <pos>adjective</pos>
+        <definition>characterized by or displaying insight; perceptive.</definition>
+        <example>The detective always had insightful comments about the case.</example>
+    </word>
+    <word>
+        <word-base>heuristic</word-base>
+        <pos>adjective</pos>
+        <definition>serving to indicate or point out; stimulating interest as a means of furthering investigation.</definition>
+        <example>The heuristic teaching method was slowly working.</example>
+    </word>
+    <word>
+        <word-base>poetics</word-base>
+        <pos>noun</pos>
+        <definition>literary criticism treating of the nature and laws of poetry.</definition>
+        <example>The english teacher loved to do do studies on poetics.</example>
+    </word>
+    <word>
+        <word-base>prosaic</word-base>
+        <pos>adjective</pos>
+        <definition>commonplace or dull; matter-of-fact or unimaginative</definition>
+        <example>The plebian had a rather prosaic mind.</example>
+    </word>
+    <word>
+        <word-base>repository</word-base>
+        <pos>noun</pos>
+        <definition>a receptacle or place where things are deposited, stored, or offered for sale</definition>
+        <example>The salvation army wants to be a repository of unneeded clothes.</example>
+    </word>
+    <word>
+        <word-base>cache</word-base>
+        <pos>noun</pos>
+        <definition>a hiding place, especially one in the ground, for ammunition, food, treasures, etc.</definition>
+        <example>There was always candy in the cache in the hidden drawer.</example>
+    </word>
+    <word>
+        <word-base>glean</word-base>
+        <pos>verb</pos>
+        <definition>to gather slowly and laboriously, bit by bit.</definition>
+        <word-varient>gleaner</word-varient>
+        <example>The farmer needed to glean every last piece of rice.</example>
+    </word>
+    <word>
+        <word-base>transformer</word-base>
+        <pos>noun</pos>
+        <definition>a person or thing that transforms.</definition>
+        <example>Everyone loved the show where the transformer became a robot.</example>
+    </word>
+    <word>
+        <word-base>processor</word-base>
+        <pos>noun</pos>
+        <definition>a person or thing that processes.</definition>
+        <example>The human calculater was a processor.</example>
+    </word>
+    <word>
+        <word-base>producer</word-base>
+        <pos>noun</pos>
+        <definition>a person who produces.</definition>
+        <example>A producer made the new film.</example>
+    </word>
+    <word>
+        <word-base>abiding</word-base>
+        <pos>adjective</pos>
+        <definition>continuing without change; enduring; steadfast</definition>
+        <example>The muslims have an abiding faith.</example>
+    </word>
+    <word>
+        <word-base>perennial</word-base>
+        <pos>adjective</pos>
+        <definition>lasting for an indefinitely long time; enduring</definition>
+        <example>Her perennial beauty will be perserved in pictures.</example>
+    </word>
+    <word>
+        <word-base>persuasive</word-base>
+        <pos>adjective</pos>
+        <definition>able, fitted, or intended to persuade</definition>
+        <example>The lawyer had a very persuasive argument.</example>
+    </word>
+    <word>
+        <word-base>irresistible</word-base>
+        <pos>adjective</pos>
+        <definition>not resistible; incapable of being resisted or withstood</definition>
+        <example>Romeo's irresistible love for Juliet killed them.</example>
+    </word>
+    <word>
+        <word-base>unmitigated</word-base>
+        <pos>adjective</pos>
+        <definition>not mitigated; not softened or lessened</definition>
+        <example>She experienced unmitigated suffering.</example>
+    </word>
+    <word>
+        <word-base>multifaceted</word-base>
+        <pos>adjective</pos>
+        <definition>having many aspects or phases</definition>
+        <example>The multifaceted problem was becoming too hard to solve.</example>
+    </word>
+    <word>
+        <word-base>imperceptive</word-base>
+        <pos>adjective</pos>
+        <definition>not perceptive; lacking perception.</definition>
+        <example>The imperceptive giant left his shoe in the firepit.</example>
+    </word>
+    <word>
+        <word-base>tryannical</word-base>
+        <pos>adjective</pos>
+        <definition>unjustly cruel, harsh, or severe; arbitrary or oppressive; despotic</definition>
+        <example>The tyrannical ruler liked to skin people alive for looking at him weirdly.</example>
+    </word>
+    <word>
+        <word-base>indecisive</word-base>
+        <pos>adjective</pos>
+        <definition>characterized by indecision, as persons; irresolute; undecided.</definition>
+        <example>Jacky took 20 mintues to order food because she was indecisive.</example>
+    </word>
+    <word>
+        <word-base>xenophobic</word-base>
+        <pos>adjective</pos>
+        <definition>unreasonably fearful of or hating anyone or anything foreign or strange.</definition>
+        <example>John was had a xenophobic fear of everything.</example>
+    </word>
+    <word>
+        <word-base>boorish</word-base>
+        <pos>adjective</pos>
+        <definition>of or like a boor; unmannered; crude; insensitive.</definition>
+        <example>The begger had a boorish attitude when facing the rich.</example>
+    </word>
+    <word>
+        <word-base>obscure</word-base>
+        <pos>adjective</pos>
+        <definition>not clear to the understanding; hard to perceive</definition>
+        <example>The unknown jester had obsure motivations.</example>
+    </word>
+    <word>
+        <word-base>intractable</word-base>
+        <pos>adjective</pos>
+        <definition>not easily controlled or directed; not docile or manageable; stubborn; obstinate</definition>
+        <example>The old man had an intractable disposition.</example>
+    </word>
+    <word>
+        <word-base>confusing</word-base>
+        <pos>adjective</pos>
+        <definition>causing or tending to cause confusion</definition>
+        <example>The spy gave a confusing attempt at explaining the mission.</example>
+    </word>
+    <word>
+        <word-base>elevated</word-base>
+        <pos>adjective</pos>
+        <definition>exalted or noble; lofty</definition>
+        <example>The young boy had elevated thoughts.</example>
+    </word>
+    <word>
+        <word-base>rigorous</word-base>
+        <pos>adjective</pos>
+        <definition>characterized by rigor; rigidly severe or harsh, as people, rules, or discipline</definition>
+        <example>The Mayans upheld rigorous laws.</example>
+    </word>
 </dictionary>
