@@ -16,6 +16,9 @@ public class GenericEnemy : MonoBehaviour {
 	public GameObject healthGUI;
 	public Material highlighting;
 	public Material NonHighlighting;
+	//for the forggoten
+	public GameObject spinner1;
+	public GameObject spinner2;
 	//health bars of the enemies
 	public Text healthtxt;
 	public Image healthbar;
@@ -33,14 +36,29 @@ public class GenericEnemy : MonoBehaviour {
 		Destroy(healthtxt);
 		Destroy (healthbar);
 		Destroy(healthGUI);
+		if(spinner1 != null)
+		{
+			Destroy(spinner1);
+			Destroy(spinner2);
+		}
 	}
 	public void Show()
 	{
 		healthGUI.SetActive(true);
+		if(spinner1 != null)
+		{
+			spinner1.SetActive(true);
+			spinner2.SetActive(true);
+		}
 	}
 	public void hide()
 	{
 		healthGUI.SetActive(false);
+		if(spinner1 != null)
+		{
+			spinner1.SetActive(false);
+			spinner2.SetActive(false);
+		}
 	}
 	// Update is called once per frame
 	void Update () {
@@ -65,6 +83,7 @@ public class GenericEnemy : MonoBehaviour {
 //		}
 //		healthbar.transform.localScale = new Vector3(.45f, .08f,1f);
 		healthtxt.text =  Health + " / " + MaxHealth; 
+
 		//healthtxt.transform.localScale = new Vector3(1.5f, 1.5f,1f);
 
 		//display current health
@@ -112,6 +131,14 @@ public class GenericEnemy : MonoBehaviour {
 				i.transform.position = new Vector3(138.5f,270f,-1f);
 			}
 			healthbar = i;
+		}
+		//if the forgottone
+		if(gameObject.name== "Forgotten(Clone)0")
+		{
+			spinner1 = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Forgottonspinner1"));
+			spinner2 = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/ForgottonSpinner2"));
+			spinner1.transform.localScale = new Vector3 (1.4f,1.3f,1);
+			spinner2.transform.localScale = new Vector3 (1.4f,1.3f,1);
 		}
 		//healthGUI.transform.position =
 	}

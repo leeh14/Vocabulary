@@ -230,6 +230,11 @@ public class GameMaster_Control : MonoBehaviour{
 			if (Enemy[m] == "Slime")
 			{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Slime"));
+				//might change on build
+				//for android
+				xl-=1.3f;
+				y+=1.1f;
+				x-=1.3f;
 			}
 			else if(Enemy[m] == "SlimeB")
 			{
@@ -240,6 +245,9 @@ public class GameMaster_Control : MonoBehaviour{
 			{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeR"));
 				shiftleft = true;
+				xl-=1f;
+				y+=.9f;
+				x-=1.3f;
 			}
 			else if(Enemy[m] == "SlimeP")
 			{
@@ -300,10 +308,15 @@ public class GameMaster_Control : MonoBehaviour{
 				{
 					Enemies.transform.localScale = new Vector3(.42f,1f,.49f);
 				}
+				else if(Enemy[m] == "Slime" || Enemy[m] == "SlimeR" )
+				{
+					Enemies.transform.localScale = new Vector3(.4f,1f,.4f);
+				}
 				else
 				{
 					Enemies.transform.localScale = new Vector3(.7f,1f,.57f);
 				}
+
 				if(m ==  0)
 				{
 					//Enemies.GetComponent<GenericEnemy>().healthbar.transform.position = new Vector3(2 ,12 ,1f);
@@ -326,7 +339,7 @@ public class GameMaster_Control : MonoBehaviour{
 	//loading the battle menu
 	public void CreateBattle(string name)
 	{
-		InBattle = true;
+		//InBattle = true;
 		//determine background
 		LoadLvlBackground();
 		//Background.GetComponent<Background>().LoadCombatBG();
@@ -349,6 +362,7 @@ public class GameMaster_Control : MonoBehaviour{
     //the multiple choices for combat
     public void BeginCombat( int type)
     {
+		InBattle = true;
 		questiontype = type;
 		Background.GetComponent<Background>().LoadQuestionbg1();
         ClearMenu();

@@ -12,4 +12,598 @@
         <word-variant>rages</word-variant>
         <example>The river raged down the slope at a blistering pace.</example>
     </word>
+    <word>
+        <word-base>amuse</word-base>
+        <pos>verb</pos>
+        <definition>to cause mirth, laughter, or the like</definition>
+        <example>The comedian amused the audience with a steady stream of jokes.</example>
+    </word>
+    <word>
+        <word-base>avert</word-base>
+        <pos>verb</pos>
+        <definition>to turn away or aside</definition>
+        <example>Feeling guilty the lawyer decided to avert his gaze from the judge.</example>
+    </word>
+    <word>
+        <word-base>juxtapose</word-base>
+        <pos>verb</pos>
+        <definition>to place close together or side by side, especially for comparison or contrast</definition>
+        <example>The artist decided to juxtapose his newest creations to compare them.</example>
+    </word>
+    <word>
+        <word-base>solve</word-base>
+        <pos>verb</pos>
+        <definition>to find the answer or explanation for; clear up;explain</definition>
+        <example>The student asked the professor for some help to solve the homework problem</example>
+    </word>
+    <word>
+        <word-base>Insurmountable</word-base>
+        <pos>adjective</pos>
+        <definition>incapable of being surmounted, passed over, or overcome, insuperable</definition>
+        <example>The hiker always thought that Mount Everest was an insurmountable mountain.</example>
+    </word>
+    <word>
+        <word-base>inane</word-base>
+        <pos>adjective</pos>
+        <definition>lacking sense, significance, or ideas;silly</definition>
+        <example>The father was slowly growing tired of all the inane questions his child kept asking him.</example>
+    </word>
+    <word>
+        <word-base>trivial</word-base>
+        <pos>adjective</pos>
+        <definition>of very little importance or value; insignificant</definition>
+        <example>The politician told his aide not to bother him with any more trivial matters.</example>
+    </word>
+    <word>
+        <word-base>traumatic</word-base>
+        <pos>adjective</pos>
+        <definition>of, relating to , or produced by a trauma or wound</definition>
+        <example>The lone soldier didn't want to talk about his traumatic experiences in the war, becuase it pained him too much.</example>
+    </word>
+    <word>
+        <word-base>ineffable</word-base>
+        <pos>adjective</pos>
+        <definition>incapable of being expressed or described in words; inexpressible</definition>
+        <example>After getting into her dream college she was unable to contain her ineffiable joy.</example>
+    </word>
+    <word>
+        <word-base>trudge</word-base>
+        <pos>verb</pos>
+        <definition>to walk, especially laboriously or wearily</definition>
+        <word-varient>trudges</word-varient>
+        <example>The rather chubby man while working out decided to trudge up the long flight of steps for more exercise.</example>
+    </word>
+    <word>
+        <word-base>meander</word-base>
+        <pos>verb</pos>
+        <definition>to proceed by or take a winding or indirect course</definition>
+        <word-varient>meanders</word-varient>
+        <example>The stream meandered through the valley</example>
+    </word>
+    <word>
+        <word-base>edge</word-base>
+        <pos>verb</pos>
+        <definition>to make or force(one's way) gradually by moving sideways</definition>
+        <word-varient>edges</word-varient>
+        <example>The shopper decided to edge her way through the shopping crowd.</example>
+    </word>
+    <word>
+        <word-base>amble</word-base>
+        <pos>verb</pos>
+        <definition>to go at a slow, easy pace; stroll;saunter</definition>
+        <word-varient>ambles</word-varient>
+        <example>He ambled around the town</example>
+    </word>
+    <word>
+        <word-base>jargon</word-base>
+        <pos>noun</pos>
+        <definition>the language, especially the vocabulary peculiar to a particular trade, profession, or group.</definition>
+        <example>The scientist decided that he couldn't understand all the medical jargon the doctors were using.</example>
+    </word>
+    <word>
+        <word-base>merit</word-base>
+        <pos>noun</pos>
+        <definition>something that deserves or justices a reward or commendation ; a commendable quality, act,etc..</definition>
+        <word-varient>merits</word-varient>
+        <example>The book's only merit is its sincerity.</example>
+    </word>
+    <word>
+        <word-base>disadvantage</word-base>
+        <pos>noun</pos>
+        <definition>absence or deprivation of advantage or equality</definition>
+        <word-varient>disadvantage</word-varient>
+        <example>With blood all over his face the boxer was at a disadvantage.</example>
+    </word>
+    <word>
+        <word-base>reward</word-base>
+        <pos>noun</pos>
+        <definition>something given or received in return or recompensation for service, merit, hardship, etc.</definition>
+        <word-varient>rewards</word-varient>
+        <example>The king bestowed the reward of knighthood upon his trusted general.</example>
+    </word>
+    <word>
+        <word-base>problem</word-base>
+        <pos>noun</pos>
+        <definition>any question or matter involving doubt, uncertainty, or difficulty</definition>
+        <word-varient>problems</word-varient>
+        <example>The problem of the riots was troubling the president greatly.</example>
+    </word>
+    <word>
+        <word-base>taciturn</word-base>
+        <pos>adjective</pos>
+        <definition>inclined to silence; reserved in speech; reluctant to join in conversation</definition>
+        <example>Everyone didn't like Jack's taciturn nature, because it made it hard to keep up a conversation with him.</example>
+    </word>
+    <word>
+        <word-base>gregarious</word-base>
+        <pos>adjective</pos>
+        <definition>fond of the company of others; sociable</definition>
+        <example>Jacky was a very gregarious person. She kept hosting parties every weekend and invited everyone.</example>
+    </word>
+    <word>
+        <word-base>garrulous</word-base>
+        <pos>adjective</pos>
+        <definition>excessively talkative in a rambling, roundabout manner, epecially about trivial matters</definition>
+        <example>Rachel always thought that Mindy's garruolous talk about her dog was boring.</example>
+    </word>
+    <word>
+        <word-base>equivocal</word-base>
+        <pos>adjective</pos>
+        <definition>allowing the possibilty of several different meanings, as a word or phrase, especially with intent to deceive or misguide; susceptible of double interpretation; deliberately ambiguous</definition>
+        <example>Jack's equivocal answer to the confession made Emily so confused.</example>
+    </word>
+    <word>
+        <word-base>arrogant</word-base>
+        <pos>adjective</pos>
+        <definition>making claims or pretensions of superior importance or rights ; overbearingly assuming; insolently proud</definition>
+        <example>The arrogant public official wouldn't stop claiming how he was the only one fit to lead the people.</example>
+    </word>
+    <word>
+        <word-base>teeming</word-base>
+        <pos>adjective</pos>
+        <definition>abounding or swarming with something, as with people</definition>
+        <word-varient>teeming with</word-varient>
+        <example>The house was teeming with hornets.</example>
+    </word>
+    <word>
+        <word-base>devoid</word-base>
+        <pos>adjective</pos>
+        <definition>not possessing , untouched by, void, or destitute</definition>
+        <word-varient>devoid of</word-varient>
+        <example>Detroit after being filled with people for so many years is now devoid of people.</example>
+    </word>
+    <word>
+        <word-base>destroy</word-base>
+        <pos>verb</pos>
+        <definition>to reduce(an object) to useless fragments, a useless form , or remains, as by rending, burning, or dissolving;  injure beyond repair or renewal; demolish; ruin; annihilate.</definition>
+        <word-varient>destroyed by</word-varient>
+        <example>The city Detroit was destroyed by the local gangs residing there.</example>
+    </word>
+    <word>
+        <word-base>improve</word-base>
+        <pos>verb</pos>
+        <definition>to bring into a more desirable or excellent condition</definition>
+        <word-varient>improved by</word-varient>
+        <example>The office atmosphere was improved by the flowers.</example>
+    </word>
+    <word>
+        <word-base>active</word-base>
+        <pos>adjective</pos>
+        <definition>causing activity or change; capable of exerting influence</definition>
+        <word-varient>active against</word-varient>
+        <example>Unable to withstand the unjust government Jacob decided to commit active treason.</example>
+    </word>
+    <word>
+        <word-base>buttress</word-base>
+        <pos>verb</pos>
+        <definition>to give encouragement or support to (a person, plan, etc..)</definition>
+        <example>Jack decided to buttress the plan about world domination.</example>
+    </word>
+    <word>
+        <word-base>ascertain</word-base>
+        <pos>verb</pos>
+        <definition>to find out definitely; learn with certainty or assurance ; determine:</definition>
+        <example>The judge needed to ascertain the facts before making his judgement</example>
+    </word>
+    <word>
+        <word-base>dispute</word-base>
+        <pos>verb</pos>
+        <definition>to engage in argument or debate</definition>
+        <example>Johnny decided to dispute with his friend about whether it was pronounced katsup or ketchup.</example>
+    </word>
+    <word>
+        <word-base>refute</word-base>
+        <pos>verb</pos>
+        <definition>to prove false or erroneous, as an opinion or change</definition>
+        <example>Sami began to refute Donald Trump's proposition about creating a wall against Mexico.</example>
+    </word>
+    <word>
+        <word-base>absolve</word-base>
+        <pos>verb</pos>
+        <definition>to free from guilt or blame or their consequences</definition>
+        <example>The court absolved her of guilt in his death</example>
+    </word>
+    <word>
+        <word-base>temerity</word-base>
+        <pos>noun</pos>
+        <definition>reckless boldness; rashness</definition>
+        <example>In a fit of temerity Leroy charged into the enemies.</example>
+    </word>
+    <word>
+        <word-base>wisdom</word-base>
+        <pos>noun</pos>
+        <definition>quality or state of being wise; knowledge of what is true or right coupled with just judgement as to action; sagacity, discernment, or insight</definition>
+        <example> Wisdom is the knowledge that tomato doesn't belong in a fruit salad.</example>
+    </word>
+    <word>
+        <word-base>interest</word-base>
+        <pos>noun</pos>
+        <definition>the feeling of a person whose attention , concern, or curiosity is particularly engaged by something</definition>
+        <example>She has a great interest in the poetry of Donne.</example>
+    </word>
+    <word>
+        <word-base>trepidation</word-base>
+        <pos>noun</pos>
+        <definition>tremulous fear, alarm, or agitation; perturbation</definition>
+        <example>Jacky was in a constant state of trepidation after killing her father.</example>
+    </word>
+    <word>
+        <word-base>condescension</word-base>
+        <pos>noun</pos>
+        <definition>an act or instance of condescending</definition>
+        <example>On succeeding to the throne in September 1824 the dignity of his address and his affable condescension won him a passing popularity.</example>
+    </word>
+    <word>
+        <word-base>wisdom</word-base>
+        <pos>noun</pos>
+        <definition>quality or state of being wise; knowledge of what is true or right coupled with just judgement as to action; sagacity, discernment, or insight</definition>
+        <example> Wisdom is the knowledge that tomato doesn't belong in a fruit salad.</example>
+    </word>
+    <word>
+        <word-base>atrophied</word-base>
+        <pos>adjective</pos>
+        <definition>exhibiting or affected with atrophy; wasted; withered; shriveled</definition>
+        <example> After starving for a month the begger has an atrophied body.</example>
+    </word>
+    <word>
+        <word-base>contracted</word-base>
+        <pos>adjective</pos>
+        <definition>drawn together; reduced in compass or size; made smaller ; shrunken</definition>
+        <example> The redneck had a rather contracted view about gay marriage.</example>
+    </word>
+    <word>
+        <word-base>elongate</word-base>
+        <pos>adjective</pos>
+        <definition>extended ; lengthened</definition>
+        <word-varient>elongated</word-varient>
+        <example> The giraffe had a rather elongated neck</example>
+    </word>
+    <word>
+        <word-base>invigorate</word-base>
+        <pos>verb</pos>
+        <definition>to give vigor to; fill with life and energy; energize</definition>
+        <word-varient>invigorated</word-varient>
+        <example> Giving pikachu the battery invigorated pikachu and let pikachu have an extra attack.</example>
+    </word>
+    <word>
+        <word-base>dwindle</word-base>
+        <pos>verb</pos>
+        <definition>to become smaller and smaller;shrink ; waste away</definition>
+        <word-varient>dwindled</word-varient>
+        <example> His vast fortune has dwindled away</example>
+    </word>
+    <word>
+        <word-base>pariah</word-base>
+        <pos>noun</pos>
+        <definition>any person or animal that is generally despised or avoided</definition>
+        <example> The ugly duckingling didn't like his peers treating him like a pariah.</example>
+    </word>
+    <word>
+        <word-base>ascetic</word-base>
+        <pos>noun</pos>
+        <definition>person who leads an austerely simple life, especially one who abstains from the normal pleasures of life or denies himself or herself material satisfaction</definition>
+        <example> Living like an ascetic in the woods the lumberjack was happy.</example>
+    </word>
+    <word>
+        <word-base>tyro</word-base>
+        <pos>noun</pos>
+        <definition>a beginner in learning anything; novice</definition>
+        <example> A tyro at swimming Jacky almost drowned numerous times.</example>
+    </word>
+    <word>
+        <word-base>prodigy</word-base>
+        <pos>noun</pos>
+        <definition>a person , especially a child or a young person, having extraordinary talent or ability.</definition>
+        <example> Since he was a child Kevin was a prodigy at the piano.</example>
+    </word>
+    <word>
+        <word-base>prodigal</word-base>
+        <pos>noun</pos>
+        <definition>a person who spends, or has spent , his or her money or substance with wasteful extravagance ; spendthrift</definition>
+        <example> Everyone knew Paris Hilton was a rather prodigal person.</example>
+    </word>
+    <word>
+        <word-base>belie</word-base>
+        <pos>verb</pos>
+        <definition>to misrepresent</definition>
+        <word-varient>belied</word-varient>
+        <example> The newspaper belied the facts.</example>
+    </word>
+    <word>
+        <word-base>confirmed</word-base>
+        <pos>adjective</pos>
+        <definition>made certain as to truth , accuracy , validity, availability, etc..</definition>
+        <example> Confirmed reports of new fighting at the front.</example>
+    </word>
+    <word>
+        <word-base>nullify</word-base>
+        <pos>verb</pos>
+        <definition>to render or declare legally void or inoperative</definition>
+        <word-varient>nulified</word-varient>
+        <example> The lawyer wanted to nullify the contract.</example>
+    </word>
+    <word>
+        <word-base>fulfill</word-base>
+        <pos>verb</pos>
+        <definition>to carry out, or bring to realization, as a prophecy or promise</definition>
+        <word-varient>fulfilled</word-varient>
+        <example> To fulfill the prophecy Hecules lead his army to win the battle.</example>
+    </word>
+    <word>
+        <word-base>ratify</word-base>
+        <pos>verb</pos>
+        <definition>to confirm by expressing consent , approval , or formal sanction</definition>
+        <word-varient>ratified</word-varient>
+        <example> George wanted to ratify a new constitutional ammendment.</example>
+    </word>
+    <word>
+        <word-base>irascible</word-base>
+        <pos>adjective</pos>
+        <definition>easily provoked to anger; very irritable</definition>
+        <example> The irascible old man threw chairs at people who walked on his lawn.</example>
+    </word>
+    <word>
+        <word-base>voluble</word-base>
+        <pos>adjective</pos>
+        <definition>characterized by a ready and continuous flow of words;fluent;glib;talkative;</definition>
+        <example> Mark was a voluble spokesman for the cause.</example>
+    </word>
+    <word>
+        <word-base>subdued</word-base>
+        <pos>adjective</pos>
+        <definition>quiet; inhibited; repressed; controlled:</definition>
+        <example> After the argument he was much more subdued.</example>
+    </word>
+    <word>
+        <word-base>contrite</word-base>
+        <pos>adjective</pos>
+        <definition>filled with a sense of guilt and the desire for atonement; penitent:</definition>
+        <example> Jimmy jones was not an acontrite sinner.</example>
+    </word>
+    <word>
+        <word-base>didactic</word-base>
+        <pos>adjective</pos>
+        <definition>teaching or intending to teach a moral lesson.</definition>
+        <example> The english teacher has made the students read a didactic poem about love.</example>
+    </word>
+    <word>
+        <word-base>conciliatory</word-base>
+        <pos>adjective</pos>
+        <definition>tending to conciliate</definition>
+        <example> Jacky was talking in a rather conciliatory manner.</example>
+    </word>
+    <word>
+        <word-base>prolific</word-base>
+        <pos>adjective</pos>
+        <definition>producing in large quantities or with great frequencies; highly productive</definition>
+        <example> James Patterson was a rather prolific writer.</example>
+    </word>
+    <word>
+        <word-base>iconoclastic</word-base>
+        <pos>adjective</pos>
+        <definition>attacking or ignoring cherished beliefs and long-held traditions, etc., as being based on error , superstition , or lack of creativity.</definition>
+        <example> An iconoclastic architect whose buildings are like monumental sculptures.</example>
+    </word>
+    <word>
+        <word-base>contumacious</word-base>
+        <pos>adjective</pos>
+        <definition>stubbornly perverse or rebellious; willfully and obstinately disobedient</definition>
+        <example> Romeo had a rather contumacious personality being rebellious at any given moment.</example>
+    </word>
+    <word>
+        <word-base>pique</word-base>
+        <pos>noun</pos>
+        <definition>a feeling of irritation or resentment, as from a wound to pride or self-esteem</definition>
+        <example> After losing his tail the dog was in a pique.</example>
+    </word>
+    <word>
+        <word-base>contrition</word-base>
+        <pos>noun</pos>
+        <definition>sincere penitence or remorse</definition>
+        <example> After his parents died Batman was in a contrition state.</example>
+    </word>
+    <word>
+        <word-base>goodwill</word-base>
+        <pos>noun</pos>
+        <definition>cheerful acquiescence or consent</definition>
+        <example> Marky Mark was always in a state of goodwill.</example>
+    </word>
+    <word>
+        <word-base>pedantry</word-base>
+        <pos>noun</pos>
+        <definition>the character ,qualities, practices, etc. , of a pedant, especially undue display of learning</definition>
+        <example> As a man thirsting for knowledge finding another man who was also a pedantry was exciting.</example>
+    </word>
+    <word>
+        <word-base>pudence</word-base>
+        <pos>noun</pos>
+        <definition>caution with regard to practical matters</definition>
+        <example> The spy was approaching the base with great prudence</example>
+    </word>
+    <word>
+        <word-base>lament</word-base>
+        <pos>verb</pos>
+        <definition>to feel or express sorrow or regret for</definition>
+        <word-varient>lamenting</word-varient>
+        <example>Charizard was lamenting over the loss of his trainer.</example>
+    </word>
+    <word>
+        <word-base>rejoicing</word-base>
+        <pos>noun</pos>
+        <definition>the act of a person who rejoices</definition>
+        <example> Charmander had a rejoicing after he won the battle.</example>
+    </word>
+    <word>
+        <word-base>affirm</word-base>
+        <pos>verb</pos>
+        <definition>To state or assert positively; maintain as true</definition>
+        <word-varient>affirming</word-varient>
+        <example> The soldier had to affirm his loyalty to the crown.</example>
+    </word>
+    <word>
+        <word-base>comment</word-base>
+        <pos>verb</pos>
+        <definition>to make remarks, observations, or criticisms</definition>
+        <word-varient>commenting</word-varient>
+        <example> He refused to comment on the decision of the court.</example>
+    </word>
+    <word>
+        <word-base>mention</word-base>
+        <pos>verb</pos>
+        <definition> to refer briefly to; name, specify, or speak of;</definition>
+        <word-varient>mentioning</word-varient>
+        <example> Don't forget to mention her contributions to the project.</example>
+    </word>
+    <word>
+        <word-base>incompatible</word-base>
+        <pos>adjective</pos>
+        <definition>contrary or opposed in character; discordant</definition>
+        <example> The artist realized he was using incompatible colors.</example>
+    </word>
+    <word>
+        <word-base>consanguineous</word-base>
+        <pos>adjective</pos>
+        <definition>having the same ancestry or descent</definition>
+        <example> Mark realize his friend and him were connected by a consanguineous family treeline.</example>
+    </word>
+    <word>
+        <word-base>discernible</word-base>
+        <pos>adjective</pos>
+        <definition>capable of being discerned; distinguisable</definition>
+        <example> After ten minutes the man realize the discernible differences between the twins.</example>
+    </word>
+    <word>
+        <word-base>decipher</word-base>
+        <pos>verb</pos>
+        <definition>to discover the meaning of(anything obscure or difficult to trace or understand)</definition>
+        <word-varient>decipherable</word-varient>
+        <example> The archaeologist tried to decipher the hieroglyphics.</example>
+    </word>
+    <word>
+        <word-base>consistent</word-base>
+        <pos>adjective</pos>
+        <definition>agreeing or accordant;compatible; not self-contradictory</definition>
+        <example> The trainer's views and actions are consistent.</example>
+    </word>
+    <word>
+        <word-base>Jettison</word-base>
+        <pos>verb</pos>
+        <definition>to throw off(something) as an obstacle or burden; discard</definition>
+        <word-varient>jettisoned</word-varient>
+        <example> The captain decided to jettison the lifeboats off the ship.</example>
+    </word>
+    <word>
+        <word-base>capsized</word-base>
+        <pos>verb</pos>
+        <definition>to turn bottom up;overturn</definition>
+        <example> Millhouse capsized the boat.</example>
+    </word>
+    <word>
+        <word-base>salvage</word-base>
+        <pos>verb</pos>
+        <definition>to save from shipwreck,fire , etc</definition>
+        <word-varient>salvaged</word-varient>
+        <example> The camper salvaged the remains of his book from the fire.</example>
+    </word>
+    <word>
+        <word-base>augment</word-base>
+        <pos>verb</pos>
+        <definition>to make larger;enlarge in size, number , strength , or extent ; increase;</definition>
+        <word-varient>augmented</word-varient>
+        <example> His salary is augmented by a small inheritance.</example>
+    </word>
+    <word>
+        <word-base>enumerate</word-base>
+        <pos>verb</pos>
+        <definition>to mention separately as if in counting; name one by one;specify, as in a list</definition>
+        <word-varient>enumerated</word-varient>
+        <example> Let me enumerate the many flaws in your hypothesis</example>
+    </word>
+    <word>
+        <word-base>anachronistic</word-base>
+        <pos>adjective</pos>
+        <definition>pertaining to or containing an anachronism</definition>
+        <example> The trainer had such an anachronistic view about swords in modern warfare.</example>
+    </word>
+    <word>
+        <word-base>perfidy</word-base>
+        <pos>noun</pos>
+        <definition>deliberate breach of faith or trust; faithless;treachery</definition>
+        <example> Italy's perfidy will not go unpunished.</example>
+    </word>
+    <word>
+        <word-base>truculent</word-base>
+        <pos>adjective</pos>
+        <definition>brutally harsh; vitriolic ;scathing</definition>
+        <word-varient>truculence</word-varient>
+        <example> His truculent criticism of her work made her cry.</example>
+    </word>
+    <word>
+        <word-base>serendipity</word-base>
+        <pos>noun</pos>
+        <definition>an aptitude for making desirable discoveries by accident</definition>
+        <example>The serendipity of getting the first job she applied for.</example>
+    </word>
+    <word>
+        <word-base>pragmatism</word-base>
+        <pos>noun</pos>
+        <definition>character or conduct that emphasizes practicality</definition>
+        <example>The pragmatism of the instructor saved the group from dying  in the wild multiple times.</example>
+    </word>
+    <word>
+        <word-base>discernment</word-base>
+        <pos>noun</pos>
+        <definition>the faculty of discerning;discrimination;acuteness of judgement and understanding</definition>
+        <example> Her ability of discernment let the detective solve many cases.</example>
+    </word>
+    <word>
+        <word-base>interminable</word-base>
+        <pos>adjective</pos>
+        <definition>monotonously or annoying protracted or continued; unceasing;incessant</definition>
+        <example> I can't stand that interminable chatter</example>
+    </word>
+    <word>
+        <word-base>unintelligible</word-base>
+        <pos>adjective</pos>
+        <definition>not intelligible; not capable of being understood</definition>
+        <example> The baby talking was unintelligble.</example>
+    </word>
+    <word>
+        <word-base>inconsequential</word-base>
+        <pos>adjective</pos>
+        <definition>of little or no importance; insignificant;trivial</definition>
+        <example> The opponents arguments were inconsequential to the crime at hand.</example>
+    </word>
+    <word>
+        <word-base>implausible</word-base>
+        <pos>adjective</pos>
+        <definition>not plausible; not having the appearance of truth or credibility</definition>
+        <example> The butler's alibi of picking up the mail on Sunday was implausible.</example>
+    </word>
+    <word>
+        <word-base>evanescent</word-base>
+        <pos>adjective</pos>
+        <definition>vanishing;fading away;fleeting</definition>
+        <example> The moon's phases were a slow evanescent of sunlight.</example>
+    </word>
 </dictionary>
