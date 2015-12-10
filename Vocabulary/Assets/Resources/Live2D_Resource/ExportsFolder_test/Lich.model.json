@@ -1,0 +1,8 @@
+{
+	"type": "Live2D Model Setting",
+	"name": "Lich",
+	"model": "Lich.moc",
+	"textures": [
+		"Lich.1024/texture_00.png"
+	]
+}
