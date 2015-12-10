@@ -4,5 +4,20 @@
 	"model": "Mummy.moc",
 	"textures": [
 		"Mummy.1024/texture_00.png"
-	]
+	],
+	"motions":
+	{
+		"idle":
+		[
+			{"file":"motions/Mummy_Idle.mtn" }
+		],
+		"attack":
+		[
+			{"file":"motions/Mummy_Attack.mtn"}
+		],
+		"damaged":
+		[
+			{"file":"motions/Mummy_Hurt.mtn"}
+		]
+	}
 }

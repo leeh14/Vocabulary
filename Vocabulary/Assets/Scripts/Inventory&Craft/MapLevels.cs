@@ -80,6 +80,7 @@ public class MapLevels : MonoBehaviour {
 		float amount = UnityEngine.Random.Range(1.0f,2.0f);
 		for (int i = 0; i <= amount ; i++)
 		{
+			float type = UnityEngine.Random.Range(0f,1f);
 			//randoomizze the different names of the enemies
 			string mon;
 			if(type > .5f)
@@ -106,7 +107,6 @@ public class MapLevels : MonoBehaviour {
 				{
 					mon = "SlimeP";
 				}
-				mon = "Tome";
 			}
 			Monsters.Add(mon);
 		}

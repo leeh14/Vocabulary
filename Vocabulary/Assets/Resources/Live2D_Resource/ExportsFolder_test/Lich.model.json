@@ -4,5 +4,20 @@
 	"model": "Lich.moc",
 	"textures": [
 		"Lich.1024/texture_00.png"
-	]
+	],
+	"motions":
+	{
+		"idle":
+		[
+			{"file":"motions/Lich_Idle.mtn" }
+		],
+		"attack":
+		[
+			{"file":"motions/Lich_Attack.mtn"}
+		],
+		"damaged":
+		[
+			{"file":"motions/Lich_Hurt.mtn"}
+		]
+	}
 }

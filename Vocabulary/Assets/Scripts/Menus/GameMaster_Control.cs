@@ -293,7 +293,20 @@ public class GameMaster_Control : MonoBehaviour{
 				xl-= 2f;
 				x-=2f;
 			}
-
+			else if (Enemy[m] == "Lich")
+			{
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Lich"));
+				xl -=2;
+				x-=2;
+				y+=4;
+			}
+			else if (Enemy[m] == "Mummy")
+			{
+				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Mummy"));
+				xl -=2;
+				x-=2;
+				y+=4;
+			}
 			if(Enemy.Count > 1)
 			{
 				if(shiftleft == true)
