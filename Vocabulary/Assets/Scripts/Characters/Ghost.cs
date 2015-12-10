@@ -11,10 +11,8 @@ public class Ghost : GenericEnemy {
 		Damage = 4f;
 		name = "Ghost";
 		//creating item drop list
-		Droppable.Add("Shorn Pages");
+		Droppable.Add("Utter Ink");
 		Droppable.Add("Dark Wisps");
-		Droppable.Add("Sphinx Drop");
-		Droppable.Add("Forgotten Drop");
 	}
 	
 

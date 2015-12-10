@@ -200,6 +200,16 @@ public class GameMaster_Control : MonoBehaviour{
 			}
 			Background.GetComponent<Background>().LoadTower();
 		}
+		else if(CurrentLevel == "Spire")
+		{
+			//spire
+			if(Music.clip != spiremusic)
+			{
+				Music.clip = spiremusic;
+				Music.Play();
+			}
+			Background.GetComponent<Background>().LoadSpire();
+		}
 	}
 
 	public void LoadDictionary(){

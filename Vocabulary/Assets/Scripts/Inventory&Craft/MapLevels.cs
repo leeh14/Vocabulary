@@ -33,7 +33,7 @@ public class MapLevels : MonoBehaviour {
 	public static MapLevels _MapLevels;
 	public static List<LevelData> _Levels;
 	public static int currentMap;
-
+	public static bool final = false;
 
 	void Awake(){
 		if (_MapLevels == null) {
@@ -125,11 +125,11 @@ public class MapLevels : MonoBehaviour {
 			string mon;
 			if(type > .5f)
 			{
-				mon = "Ghost";
+				mon = "Tome";
 			}
 			else
 			{
-				mon = "Tome";
+				mon = "Mummy";
 			}
 			Monsters.Add(mon);
 		}
@@ -158,6 +158,28 @@ public class MapLevels : MonoBehaviour {
 				mon = "Sphinx";
 			}
 			Monsters.Add(mon);
+		}
+		return Monsters;
+	}
+	public static List<string> GenerateEnemiesLvl4()
+	{
+		//GameObject master = GameObject.FindGameObjectWithTag("GameMaster");
+		List<string> Monsters = new List<string>();
+		if(final == false)
+		{
+			float amount = UnityEngine.Random.Range(1.0f,2.0f);
+			for (int i = 0; i <= amount ; i++)
+			{
+
+				string mon = "Lich";
+				Monsters.Add(mon);
+			}
+			final = true;
+		}
+		else
+		{
+			Monsters.Add("Forgotten");
+			final = false;
 		}
 		return Monsters;
 	}
@@ -197,6 +219,17 @@ public class MapLevels : MonoBehaviour {
 		monsters_3 = GenerateEnemiesLvl3();
 		LevelData lv_3 = new LevelData ("Tower", monsters_3);
 		_Levels.Add (lv_3);
+
+		// Level 4:
+		List<string> monsters_4;
+		//		monsters_3.Add ("Monster_3_1");
+		//		monsters_3.Add ("Monster_3_2");
+		//		monsters_3.Add ("Monster_3_3");
+		//		monsters_3.Add ("Monster_3_4");
+		//		monsters_3.Add ("Monster_3_5");
+		monsters_4 = GenerateEnemiesLvl4();
+		LevelData lv_4 = new LevelData ("Spire", monsters_3);
+		_Levels.Add (lv_4);
 
 
 		Save ();
