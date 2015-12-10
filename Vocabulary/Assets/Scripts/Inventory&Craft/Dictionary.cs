@@ -29,6 +29,7 @@ public class Dictionary : MonoBehaviour {
 			}
 		}
 		if (w != null) {
+			Debug.Log(w.wordBase);
 			dictionary [w] = true;
 		} else {
 			Debug.LogError(word + " not found in dictionary");
@@ -83,7 +84,7 @@ public class Dictionary : MonoBehaviour {
 							break;
 						}
 					}
-					dictionary.Add(new Word(wordBase, pos, definition,wordVariant, example), false);
+					dictionary.Add(new Word(wordBase, pos, definition, wordVariant, example), false);
 				}
 			}
 		}

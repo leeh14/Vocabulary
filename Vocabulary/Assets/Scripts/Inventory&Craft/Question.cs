@@ -62,6 +62,7 @@ public class Question : IComparable<Question>
 
 	// check if get the correct answer
 	public bool CheckAnswer(string option){
+		_dictionary.AddWord (option);
 		if (this.type == 0) {
 			if (option == rAnswer) {
 				return true;
@@ -73,7 +74,6 @@ public class Question : IComparable<Question>
 				}
 			}
 		}
-		_dictionary.AddWord (option);
 		return false;
 	}
 

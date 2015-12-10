@@ -19,7 +19,7 @@ public class Word : IComparable<Word>{
 	}
 
 	public int CompareTo(Word other){
-		if (wordBase == other.wordBase) {
+		if (wordBase == other.wordBase && wordVariant == other.wordVariant) {
 			return 0;
 		} else {
 			return 1;

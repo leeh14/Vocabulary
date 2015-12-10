@@ -70,28 +70,28 @@
         <word-base>trudge</word-base>
         <pos>verb</pos>
         <definition>to walk, especially laboriously or wearily</definition>
-        <word-varient>trudges</word-varient>
+        <word-variant>trudges</word-variant>
         <example>The rather chubby man while working out decided to trudge up the long flight of steps for more exercise.</example>
     </word>
     <word>
         <word-base>meander</word-base>
         <pos>verb</pos>
         <definition>to proceed by or take a winding or indirect course</definition>
-        <word-varient>meanders</word-varient>
+        <word-variant>meanders</word-variant>
         <example>The stream meandered through the valley</example>
     </word>
     <word>
         <word-base>edge</word-base>
         <pos>verb</pos>
         <definition>to make or force(one's way) gradually by moving sideways</definition>
-        <word-varient>edges</word-varient>
+        <word-variant>edges</word-variant>
         <example>The shopper decided to edge her way through the shopping crowd.</example>
     </word>
     <word>
         <word-base>amble</word-base>
         <pos>verb</pos>
         <definition>to go at a slow, easy pace; stroll;saunter</definition>
-        <word-varient>ambles</word-varient>
+        <word-variant>ambles</word-variant>
         <example>He ambled around the town</example>
     </word>
     <word>
@@ -104,28 +104,28 @@
         <word-base>merit</word-base>
         <pos>noun</pos>
         <definition>something that deserves or justices a reward or commendation ; a commendable quality, act,etc..</definition>
-        <word-varient>merits</word-varient>
+        <word-variant>merits</word-variant>
         <example>The book's only merit is its sincerity.</example>
     </word>
     <word>
         <word-base>disadvantage</word-base>
         <pos>noun</pos>
         <definition>absence or deprivation of advantage or equality</definition>
-        <word-varient>disadvantage</word-varient>
+        <word-variant>disadvantage</word-variant>
         <example>With blood all over his face the boxer was at a disadvantage.</example>
     </word>
     <word>
         <word-base>reward</word-base>
         <pos>noun</pos>
         <definition>something given or received in return or recompensation for service, merit, hardship, etc.</definition>
-        <word-varient>rewards</word-varient>
+        <word-variant>rewards</word-variant>
         <example>The king bestowed the reward of knighthood upon his trusted general.</example>
     </word>
     <word>
         <word-base>problem</word-base>
         <pos>noun</pos>
         <definition>any question or matter involving doubt, uncertainty, or difficulty</definition>
-        <word-varient>problems</word-varient>
+        <word-variant>problems</word-variant>
         <example>The problem of the riots was troubling the president greatly.</example>
     </word>
     <word>
@@ -162,35 +162,35 @@
         <word-base>teeming</word-base>
         <pos>adjective</pos>
         <definition>abounding or swarming with something, as with people</definition>
-        <word-varient>teeming with</word-varient>
+        <word-variant>teeming with</word-variant>
         <example>The house was teeming with hornets.</example>
     </word>
     <word>
-        <word-base>devoid</word-base>
+        <word-base>devoid</word-base>i
         <pos>adjective</pos>
         <definition>not possessing , untouched by, void, or destitute</definition>
-        <word-varient>devoid of</word-varient>
+        <word-variant>devoid of</word-variant>
         <example>Detroit after being filled with people for so many years is now devoid of people.</example>
     </word>
     <word>
         <word-base>destroy</word-base>
         <pos>verb</pos>
         <definition>to reduce(an object) to useless fragments, a useless form , or remains, as by rending, burning, or dissolving;  injure beyond repair or renewal; demolish; ruin; annihilate.</definition>
-        <word-varient>destroyed by</word-varient>
+        <word-variant>destroyed by</word-variant>
         <example>The city Detroit was destroyed by the local gangs residing there.</example>
     </word>
     <word>
         <word-base>improve</word-base>
         <pos>verb</pos>
         <definition>to bring into a more desirable or excellent condition</definition>
-        <word-varient>improved by</word-varient>
+        <word-variant>improved by</word-variant>
         <example>The office atmosphere was improved by the flowers.</example>
     </word>
     <word>
         <word-base>active</word-base>
         <pos>adjective</pos>
         <definition>causing activity or change; capable of exerting influence</definition>
-        <word-varient>active against</word-varient>
+        <word-variant>active against</word-variant>
         <example>Unable to withstand the unjust government Jacob decided to commit active treason.</example>
     </word>
     <word>
@@ -275,21 +275,21 @@
         <word-base>elongate</word-base>
         <pos>adjective</pos>
         <definition>extended ; lengthened</definition>
-        <word-varient>elongated</word-varient>
+        <word-variant>elongated</word-variant>
         <example> The giraffe had a rather elongated neck</example>
     </word>
     <word>
         <word-base>invigorate</word-base>
         <pos>verb</pos>
         <definition>to give vigor to; fill with life and energy; energize</definition>
-        <word-varient>invigorated</word-varient>
+        <word-variant>invigorated</word-variant>
         <example> Giving pikachu the battery invigorated pikachu and let pikachu have an extra attack.</example>
     </word>
     <word>
         <word-base>dwindle</word-base>
         <pos>verb</pos>
         <definition>to become smaller and smaller;shrink ; waste away</definition>
-        <word-varient>dwindled</word-varient>
+        <word-variant>dwindled</word-variant>
         <example> His vast fortune has dwindled away</example>
     </word>
     <word>
@@ -326,7 +326,7 @@
         <word-base>belie</word-base>
         <pos>verb</pos>
         <definition>to misrepresent</definition>
-        <word-varient>belied</word-varient>
+        <word-variant>belied</word-variant>
         <example> The newspaper belied the facts.</example>
     </word>
     <word>
@@ -339,21 +339,21 @@
         <word-base>nullify</word-base>
         <pos>verb</pos>
         <definition>to render or declare legally void or inoperative</definition>
-        <word-varient>nulified</word-varient>
+        <word-variant>nulified</word-variant>
         <example> The lawyer wanted to nullify the contract.</example>
     </word>
     <word>
         <word-base>fulfill</word-base>
         <pos>verb</pos>
         <definition>to carry out, or bring to realization, as a prophecy or promise</definition>
-        <word-varient>fulfilled</word-varient>
+        <word-variant>fulfilled</word-variant>
         <example> To fulfill the prophecy Hecules lead his army to win the battle.</example>
     </word>
     <word>
         <word-base>ratify</word-base>
         <pos>verb</pos>
         <definition>to confirm by expressing consent , approval , or formal sanction</definition>
-        <word-varient>ratified</word-varient>
+        <word-variant>ratified</word-variant>
         <example> George wanted to ratify a new constitutional ammendment.</example>
     </word>
     <word>
@@ -444,7 +444,7 @@
         <word-base>lament</word-base>
         <pos>verb</pos>
         <definition>to feel or express sorrow or regret for</definition>
-        <word-varient>lamenting</word-varient>
+        <word-variant>lamenting</word-variant>
         <example>Charizard was lamenting over the loss of his trainer.</example>
     </word>
     <word>
@@ -457,21 +457,21 @@
         <word-base>affirm</word-base>
         <pos>verb</pos>
         <definition>To state or assert positively; maintain as true</definition>
-        <word-varient>affirming</word-varient>
+        <word-variant>affirming</word-variant>
         <example> The soldier had to affirm his loyalty to the crown.</example>
     </word>
     <word>
         <word-base>comment</word-base>
         <pos>verb</pos>
         <definition>to make remarks, observations, or criticisms</definition>
-        <word-varient>commenting</word-varient>
+        <word-variant>commenting</word-variant>
         <example> He refused to comment on the decision of the court.</example>
     </word>
     <word>
         <word-base>mention</word-base>
         <pos>verb</pos>
         <definition> to refer briefly to; name, specify, or speak of;</definition>
-        <word-varient>mentioning</word-varient>
+        <word-variant>mentioning</word-variant>
         <example> Don't forget to mention her contributions to the project.</example>
     </word>
     <word>
@@ -496,7 +496,7 @@
         <word-base>decipher</word-base>
         <pos>verb</pos>
         <definition>to discover the meaning of(anything obscure or difficult to trace or understand)</definition>
-        <word-varient>decipherable</word-varient>
+        <word-variant>decipherable</word-variant>
         <example> The archaeologist tried to decipher the hieroglyphics.</example>
     </word>
     <word>
@@ -509,7 +509,7 @@
         <word-base>Jettison</word-base>
         <pos>verb</pos>
         <definition>to throw off(something) as an obstacle or burden; discard</definition>
-        <word-varient>jettisoned</word-varient>
+        <word-variant>jettisoned</word-variant>
         <example> The captain decided to jettison the lifeboats off the ship.</example>
     </word>
     <word>
@@ -522,21 +522,21 @@
         <word-base>salvage</word-base>
         <pos>verb</pos>
         <definition>to save from shipwreck,fire , etc</definition>
-        <word-varient>salvaged</word-varient>
+        <word-variant>salvaged</word-variant>
         <example> The camper salvaged the remains of his book from the fire.</example>
     </word>
     <word>
         <word-base>augment</word-base>
         <pos>verb</pos>
         <definition>to make larger;enlarge in size, number , strength , or extent ; increase;</definition>
-        <word-varient>augmented</word-varient>
+        <word-variant>augmented</word-variant>
         <example> His salary is augmented by a small inheritance.</example>
     </word>
     <word>
         <word-base>enumerate</word-base>
         <pos>verb</pos>
         <definition>to mention separately as if in counting; name one by one;specify, as in a list</definition>
-        <word-varient>enumerated</word-varient>
+        <word-variant>enumerated</word-variant>
         <example> Let me enumerate the many flaws in your hypothesis</example>
     </word>
     <word>
@@ -555,7 +555,7 @@
         <word-base>truculent</word-base>
         <pos>adjective</pos>
         <definition>brutally harsh; vitriolic ;scathing</definition>
-        <word-varient>truculence</word-varient>
+        <word-variant>truculence</word-variant>
         <example> His truculent criticism of her work made her cry.</example>
     </word>
     <word>
@@ -617,7 +617,7 @@
         <word-base>glean</word-base>
         <pos>verb</pos>
         <definition>to gather slowly and laboriously, bit by bit.</definition>
-        <word-varient>gleaner</word-varient>
+        <word-variant>gleaner</word-variant>
         <example>The farmer needed to glean every last piece of rice.</example>
     </word>
     <word>
@@ -912,7 +912,7 @@
         <word-base>waive</word-base>
         <pos>verb</pos>
         <definition>to refrain from claiming or insisting on; give up; forgo</definition>
-        <word-varient>waived</word-varient>
+        <word-variant>waived</word-variant>
         <example>The slave ownered waived the human rights of his slaves.</example>
     </word>
     <word>
@@ -931,7 +931,7 @@
         <word-base>change</word-base>
         <pos>verb</pos>
         <definition>to make the form, nature, content, future course, etc., of (something) different from what it is or from what it would be if left alone: to change one's name; to change one's opinion;</definition>
-        <word-varient>changed</word-varient>
+        <word-variant>changed</word-variant>
         <example>If Hitler had won it could have very well changed the course of history.</example>
     </word>
     <word>
@@ -1034,7 +1034,7 @@
         <word-base>camouflage</word-base>
         <pos>verb</pos>
         <definition>to disguise by means of camouflage:</definition>
-        <word-varient>camouflaging</word-varient>
+        <word-variant>camouflaging</word-variant>
         <example>We wanted to camouflage our town from the foreigners.</example>
     </word>
     <word>
@@ -1077,7 +1077,7 @@
         <word-base>slovenly</word-base>
         <pos>adjective</pos>
         <definition>untidy or unclean in appearance or habits.</definition>
-        <word-varient>slovenliness</word-varient>
+        <word-variant>slovenliness</word-variant>
         <example>Much to the CEO's dismay the janitors did slovenly work.</example>
     </word>
     <word>
@@ -1300,7 +1300,7 @@
         <word-base>glean</word-base>
         <pos>verb</pos>
         <definition>to gather slowly and laboriously, bit by bit.</definition>
-        <word-varient>gleaner</word-varient>
+        <word-variant>gleaner</word-variant>
         <example>The farmer needed to glean every last piece of rice.</example>
     </word>
     <word>
