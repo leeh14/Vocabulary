@@ -112,7 +112,9 @@ public class QuestionBank : MonoBehaviour {
 					break;
 				}
 			}
-			return qBank [index];
+			Question q = qBank[index];
+			q._dictionary = this.GetComponent<Dictionary>();
+			return q;
 		} 
 		return null;
 	}

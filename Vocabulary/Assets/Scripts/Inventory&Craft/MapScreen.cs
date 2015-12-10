@@ -27,7 +27,6 @@ public class MapScreen : MonoBehaviour {
 			canvas = Instantiate (CanvasPf) as GameObject;
 			CreateListPanel ();
 		}
-
 		PopulateMapButtons ();
 	}
 
@@ -43,23 +42,24 @@ public class MapScreen : MonoBehaviour {
 	void PopulateMapButtons(){
 		MenuListPanel.GetComponent<MapPanelScript> ().current = 0;
 		LevelData last = null;
+		GameObject newMap = Instantiate (SampleMapButtonPf) as GameObject;
+		newMap.transform.SetParent(ContentPanel.transform, false);
+		int index = 0;
 		foreach (LevelData ld in MapLevels._Levels) {
-			GameObject newButton = Instantiate(SampleMapButtonPf) as GameObject;
+			Button newButton = newMap.GetComponent<SampleMapButton>().mapList[index];
 			SampleMapButton sb = newButton.GetComponent<SampleMapButton>();
-			sb.nameLable.text = ld.name;
-			sb.CurrentLv.text = ld.currentLevel + "/" + ld.monsters.Count;
 			sb.levelData = ld;
-			newButton.transform.SetParent(ContentPanel.transform, false);
 			UnityEngine.Events.UnityAction ClickMap = () => {
 				lastLevelData = sb.levelData;
 				this.MapClick(sb.levelData);};
 			newButton.GetComponent<Button>().onClick.AddListener(ClickMap);
-			newButton.transform.SetParent(ContentPanel.transform, false);
+
 
 			if(last != null && !last.complete){
 				newButton.GetComponent<Button>().interactable = false;
 			}
 			last = ld;
+			index++;
 		}
 	}
 

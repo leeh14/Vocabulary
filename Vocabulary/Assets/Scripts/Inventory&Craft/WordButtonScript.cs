@@ -21,6 +21,7 @@ public class WordButtonScript : MonoBehaviour {
 		WordDetailPanelScript wdps = wordDetailPanel.GetComponent<WordDetailPanelScript> ();
 		wdps.PosLabel.text = word.pos;
 		wdps.DefinitionLabel.text = word.definition;
+		wdps.ExampleLabel.text = "\"" + word.example + "\"";
 		wordDetailPanel.transform.SetParent (this.transform.parent.transform, false);
 		wordDetailPanel.transform.SetSiblingIndex (this.transform.GetSiblingIndex()+1);
 	}

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 [Serializable]
 public class Question : IComparable<Question> 
 {
+	public Dictionary _dictionary;  // the dictionary reference
 	public string id;				// the id of the question
 	public int type;				// 0 - standard, 1 - magic
 	public int difficulty;			// 0 - easy, 1 - normal, 2 - difficult
@@ -72,6 +73,7 @@ public class Question : IComparable<Question>
 				}
 			}
 		}
+		_dictionary.AddWord (option);
 		return false;
 	}
 

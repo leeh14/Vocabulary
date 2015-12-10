@@ -9,17 +9,32 @@ using System.Xml;
 public class Dictionary : MonoBehaviour {
 	// load text
 
-	public List<Word> dictionary;
+	public Dictionary<Word, bool> dictionary;
 	public GameObject canvas;
 	public GameObject canvasPf;
 	public GameObject dictionaryPanel;
 	public GameObject dictionaryPanelPf;
 
 	void Start(){
-		dictionary = new List<Word> ();
+		dictionary = new Dictionary<Word, bool> ();
 		LoadDictionary ("Dictionary/dictionary");
 	}
-	
+
+	public void AddWord(string word){
+		Word w = null;
+		foreach (KeyValuePair<Word, bool> str in dictionary) {
+			if(str.Key.wordBase == word || str.Key.wordVariant == word){
+				w = str.Key;
+				break;
+			}
+		}
+		if (w != null) {
+			dictionary [w] = true;
+		} else {
+			Debug.LogError(word + " not found in dictionary");
+		}
+	}
+
 	public void OpenDictionary(){
 		canvas = Instantiate (canvasPf) as GameObject;
 		dictionaryPanel = Instantiate (dictionaryPanelPf) as GameObject;
@@ -48,6 +63,7 @@ public class Dictionary : MonoBehaviour {
 					string pos = "";
 					string definition = "";
 					string wordVariant = "";
+					string example = "";
 					foreach (XmlNode w in ws) {
 						switch(w.Name){
 						case "word-base" :
@@ -62,9 +78,12 @@ public class Dictionary : MonoBehaviour {
 						case "word-variant":
 							wordVariant = w.InnerText;
 							break;
+						case "example":
+							example = w.InnerText;
+							break;
 						}
 					}
-					dictionary.Add(new Word(wordBase, pos, definition,wordVariant));
+					dictionary.Add(new Word(wordBase, pos, definition,wordVariant, example), false);
 				}
 			}
 		}

@@ -10,4 +10,9 @@ public class SampleMapButton : MonoBehaviour {
 	public Image icon;
 	public Text CurrentLv;
 	public LevelData levelData;
+	public List<Button> mapList;
+
+	void Start(){
+		mapList = new List<Button> ();
+	}
 }
