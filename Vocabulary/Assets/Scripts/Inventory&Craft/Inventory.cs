@@ -125,16 +125,38 @@ public class Inventory : MonoBehaviour {
 				                     "These gaseous shadows whisper rude secrets to you. " +
 				                     "Nobody should know what they tell you."));	
 				break;
+			case "Luscious Mane":
+				_Items.Add (new Item(2, name, amount, 
+				                     "Smooth as silk, tough as nails. And well-conditioned, too."));	
+				break;
+			case "Bloodied Broach":
+				_Items.Add (new Item(2, name, amount, 
+				                     "Wearing it just makes you feel guilty. It's weighted" +
+				                     "with the sins of a dozen lifetimes."));	
+				break;
 			case "Unhallowed Skull":
 				_Items.Add (new Item(2, name, amount, 
 				                     "It smells of hubris, dark magic, and mildew. " +
 				                     "Turns out living forever isn't all it's cracked up to be."));	
+				break;
+			case "Hollow of the Forgotten":
+				_Items.Add (new Item(2, name, amount, 
+				                     "The empty shell of a once powerful danger. There's nothing " +
+				                     "like it, and never will be again."));	
 				break;
 			
 			// ============= potion ================= - 3
 			case "Health Potion":
 				_Items.Add (new Item(3, name, amount, 
 				                     "Heals the player for 2 health."));	
+				break;
+			case "Attack Boost Potion":
+				_Items.Add (new Item(3, name, amount, 
+				                     "Increase normal attack damage."));	
+				break;
+			case "Magic Boost Potion":
+				_Items.Add (new Item(3, name, amount, 
+				                     "Increase magic attack damage."));	
 				break;
 			}
 		}
@@ -172,15 +194,20 @@ public class Inventory : MonoBehaviour {
 
 	// use item
 	public static void UseItem(string name){
+		Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 		switch(name){
 		case "Health Potion":
-			Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 			player.Health += 2;
 			if(player.Health > player.MaxHealth){
 				player.Health = player.MaxHealth;
 			}
 			break;
-
+		case "Attack Boost Potion":
+			player.AttackBoost();
+			break;
+		case "Magic Boost Potion":
+			player.MgattkBoost();
+			break;
 		default:
 			break;
 		}
@@ -323,30 +350,24 @@ public class Inventory : MonoBehaviour {
 		if (re == null) {
 			Debug.LogError ("Method MakeRecipe: " + name + " No Such Recipe.");
 			return false;
-		} else if (re.product.type == 0) {
-			return canMakeArmor(re.name);
-		} else if (re.product.type == 1) {
-			return canMakeWeapon(re.name);
-		} else {
-			bool makeAble = true;
-			foreach (Item ma in re.materials) {
-				bool found = false;
-				foreach(Item it in Inventory._Items){
-					if(ma.name == it.name){
-						found = true;
-						if(ma.amount > it.amount){
-							makeAble = false;
-						}
+		} 
+		bool makeAble = true;
+		foreach (Item ma in re.materials) {
+			bool found = false;
+			foreach(Item it in Inventory._Items){
+				if(ma.name == it.name){
+					found = true;
+					if(ma.amount > it.amount){
+						makeAble = false;
 					}
 				}
-				if(!makeAble || !found){
-					makeAble = false;
-					break;
-				}
 			}
-			return makeAble;
+			if(!makeAble || !found){
+				makeAble = false;
+				break;
+			}
 		}
-		return false;
+		return makeAble;
 	}
 
 	// make the product

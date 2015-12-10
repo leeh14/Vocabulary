@@ -25,10 +25,16 @@ public class BattleInventoryButtonScript : MonoBehaviour {
 	}
 
 	public bool checkUseCondition(string name){
+		Player player = _GameMaster.player.GetComponent<Player>();
 		switch(name){
 		case "Health Potion":
-			Player player = _GameMaster.player.GetComponent<Player>();
 			return player.Health >= player.MaxHealth;
+			break;
+		case "Attack Boost Potion":
+			return player.attkboost;
+			break;
+		case "Magic Boost Potion":
+			return player.mgattkboost;
 			break;
 		}
 		return true;

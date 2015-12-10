@@ -33,6 +33,12 @@ public class DebugScript : MonoBehaviour {
 		Item itmp5 = new Item (0, "Glowing Scales", 1);
 		Inventory.AddRecipe ("Glowing Scales", ltmp5, itmp5);
 
+		List<Item> ltmp10 = new List<Item> ();
+		ltmp10.Add (new Item (2, "Shattered Headdress", 5));
+		ltmp10.Add (new Item (2, "Deep Cloak", 5));
+		Item itmp10 = new Item (0, "Shadowy Sneak", 1);
+		Inventory.AddRecipe ("Shadowy Sneak", ltmp10, itmp10);
+
 		List<Item> ltmp6 = new List<Item> ();
 		ltmp6.Add (new Item (2, "Shorn Pages", 4));
 		ltmp6.Add (new Item (2, "Dark Wisps", 4));
@@ -43,6 +49,18 @@ public class DebugScript : MonoBehaviour {
 		ltmp7.Add (new Item (2, "Resonant Ooze", 3));
 		Item itmp7 = new Item (3, "Health Potion", 1);
 		Inventory.AddRecipe ("Health Potion", ltmp7, itmp7);
+
+		List<Item> ltmp8 = new List<Item> ();
+		ltmp8.Add (new Item (2, "Tightened Wrap", 3));
+		Item itmp8 = new Item (3, "Attack Boost Potion", 1);
+		Inventory.AddRecipe ("Attack Boost Potion", ltmp8, itmp8);
+
+		List<Item> ltmp9 = new List<Item> ();
+		ltmp9.Add (new Item (2, "Utter Ink", 3));
+		Item itmp9 = new Item (3, "Magic Boost Potion", 1);
+		Inventory.AddRecipe ("Magic Boost Potion", ltmp9, itmp9);
+
+
 
 		/*
 		List<Item> ltmp7 = new List<Item> ();

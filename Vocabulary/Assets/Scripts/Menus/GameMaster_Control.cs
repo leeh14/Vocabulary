@@ -687,8 +687,11 @@ public class GameMaster_Control : MonoBehaviour{
 			Background.GetComponent<Background>().LoadStart();
 			Music.clip = inventorymusic;
 			Music.Play();
-
-			gameObject.GetComponent<MapScreen>().BattleWin();
+			if(itemname == "Hollow of the Forgotten"){
+				CurrentMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/Winning"));
+			}else{
+				gameObject.GetComponent<MapScreen>().BattleWin();
+			}
 		}
 	}
 	#endregion
