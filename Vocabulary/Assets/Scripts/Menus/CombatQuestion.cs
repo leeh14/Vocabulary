@@ -20,6 +20,7 @@ public class CombatQuestion : MonoBehaviour {
 	{
 		but.interactable = false;
 	}
+
 	public void CreateQuestions(Question data, int type)
 	{
 		int correct = (int)Random.Range(0f,3f);

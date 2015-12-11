@@ -242,9 +242,9 @@ public class GameMaster_Control : MonoBehaviour{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Slime"));
 				//might change on build
 				//for android
-				//xl-=1.3f;
-				//y+=1.1f;
-				//x-=1.3f;
+				xl-=1.3f;
+				y+=1.1f;
+				x-=1.3f;
 			}
 			else if(Enemy[m] == "SlimeB")
 			{
@@ -338,10 +338,10 @@ public class GameMaster_Control : MonoBehaviour{
 				{
 					Enemies.transform.localScale = new Vector3(.42f,1f,.49f);
 				}
-//				else if(Enemy[m] == "Slime" || Enemy[m] == "SlimeR" )
-//				{
-//					Enemies.transform.localScale = new Vector3(.4f,1f,.4f);
-//				}
+				else if(Enemy[m] == "Slime" || Enemy[m] == "SlimeR" )
+				{
+					Enemies.transform.localScale = new Vector3(.4f,1f,.4f);
+				}
 				else
 				{
 					Enemies.transform.localScale = new Vector3(.7f,1f,.57f);
@@ -417,114 +417,124 @@ public class GameMaster_Control : MonoBehaviour{
 		//change this to generateing questions
 		CurrentMenu.GetComponent<CombatQuestion>().CreateQuestions(data, type);
 	}
-	
+	public IEnumerator Hold()
+	{
+		yield return new WaitForSeconds(3f);
+
+	}
 	//after determining answer do corresponding action
 	public void ChangeTurn(Question obj , string playerchoice, int type)
 	{
-		bool correct = obj.CheckAnswer (playerchoice);
-		//Debug.Log("play " + playerchoice + "type" + type);
-		if(type == 1)
+		//StartCoroutine(Hold());
+		int temptime = 0;
+		while(temptime < 50)
 		{
-			foreach(string q in MultipleAnswers)
+			bool correct = obj.CheckAnswer (playerchoice);
+			//Debug.Log("play " + playerchoice + "type" + type);
+			if(type == 1)
 			{
-				//Debug.Log(q + "dsf" + playerchoice);
-				if (q == playerchoice)
+				foreach(string q in MultipleAnswers)
+				{
+					//Debug.Log(q + "dsf" + playerchoice);
+					if (q == playerchoice)
+					{
+						return;
+					}
+				}
+				MultipleAnswers.Add(playerchoice);
+				if(MultipleAnswers.Count >= 2)
+				{
+					//go through each answer and make sure all is correct
+					foreach(string s in MultipleAnswers)
+					{
+
+						correct = obj.CheckAnswer(s);
+						//if not correct leace and continue function with wrong answer
+						if(!correct)
+						{
+							break;
+						}
+					}
+				}
+				//only have 1 or less
+				else
 				{
 					return;
 				}
+			
 			}
-			MultipleAnswers.Add(playerchoice);
-			if(MultipleAnswers.Count >= 2)
+			//resset the multiple answers
+			MultipleAnswers.Clear();
+			ClearMenu ();
+			//reload tge battle screen
+			LoadLvlBackground();
+			//Background.GetComponent<Background>().LoadCombatBG();
+			//reenable vision of enemies 
+			foreach (GameObject en in AvailableEnemies)
 			{
-				//go through each answer and make sure all is correct
-				foreach(string s in MultipleAnswers)
-				{
 
-					correct = obj.CheckAnswer(s);
-					//if not correct leace and continue function with wrong answer
-					if(!correct)
-					{
-						break;
-					}
+				en.SetActive(true);
+				en.GetComponent<GenericEnemy>().Show();
+			}
+
+			if (correct) {
+
+				StartCoroutine(WaitTurn(player.GetComponent<Player>().DealDamage()));
+				//determine type of weapon and then deal dmg accordinly
+
+	//			CurrentEnemy.GetComponent<GenericEnemy> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
+	//		
+	//			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
+				if(player.GetComponent<Player>().CurrentWeapon.Special  == true && player.GetComponent<Player>().CurrentWeapon.AffectAnswers == true )
+				{
+					HideAnswer = true;
 				}
-			}
-			//only have 1 or less
-			else
-			{
-				return;
-			}
-		
-		}
-		//resset the multiple answers
-		MultipleAnswers.Clear();
-		ClearMenu ();
-		//reload tge battle screen
-		LoadLvlBackground();
-		//Background.GetComponent<Background>().LoadCombatBG();
-		//reenable vision of enemies 
-		foreach (GameObject en in AvailableEnemies)
-		{
+				if (CurrentEnemy.GetComponent<GenericEnemy> ().Alive == false) {
+					//go through list and remove enemy
+					//StartCoroutine(DropItem("Apple"));
+					//StartCoroutine(WaitItem());
 
-			en.SetActive(true);
-			en.GetComponent<GenericEnemy>().Show();
-		}
+					//RoundOver = true;
 
-		if (correct) {
-
-			StartCoroutine(WaitTurn(player.GetComponent<Player>().DealDamage()));
-			//determine type of weapon and then deal dmg accordinly
-
-//			CurrentEnemy.GetComponent<GenericEnemy> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
-//		
-//			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
-			if(player.GetComponent<Player>().CurrentWeapon.Special  == true && player.GetComponent<Player>().CurrentWeapon.AffectAnswers == true )
-			{
-				HideAnswer = true;
-			}
-			if (CurrentEnemy.GetComponent<GenericEnemy> ().Alive == false) {
-				//go through list and remove enemy
-				//StartCoroutine(DropItem("Apple"));
-				//StartCoroutine(WaitItem());
-
-				//RoundOver = true;
-
-				AvailableEnemies.Remove(CurrentEnemy);
-				//iterate thorught the rest of enemies in case of cleave damage
-				for(int i = 0; i < AvailableEnemies.Count; i ++)
-				{
-					if(AvailableEnemies[i].GetComponent<GenericEnemy>().Alive == false)
+					AvailableEnemies.Remove(CurrentEnemy);
+					//iterate thorught the rest of enemies in case of cleave damage
+					for(int i = 0; i < AvailableEnemies.Count; i ++)
 					{
-						AvailableEnemies.RemoveAt(i);
+						if(AvailableEnemies[i].GetComponent<GenericEnemy>().Alive == false)
+						{
+							AvailableEnemies.RemoveAt(i);
+						}
 					}
-				}
-				if(AvailableEnemies.Count ==  0)
-				{
-					//set up to next level
+					if(AvailableEnemies.Count ==  0)
+					{
+						//set up to next level
 
-					RoundOver = true;
-					//Debug.Log("end");
-					//ClearMenu ();
-					//LoadMenu ();
+						RoundOver = true;
+						//Debug.Log("end");
+						//ClearMenu ();
+						//LoadMenu ();
+						return;
+					}
+					//ClearMenu();
+
+				}
+
+
+			} else {
+				player.GetComponent<Player> ().ReceiveDamage (CurrentEnemy.GetComponent<GenericEnemy>().Damage);
+				//determine if player is alive
+				if (player.GetComponent<Player> ().Alive == false) {
+					//player is dead
+					ClearMenu ();
+					player.GetComponent<Player>().Health = player.GetComponent<Player>().MaxHealth;
+					CurrentMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/BattleLost"));
 					return;
 				}
-				//ClearMenu();
-
+				//show enemy dealing damage
+				TurnContinue = false;
+				StartCoroutine(EnemyTurn(false));
 			}
-
-
-		} else {
-			player.GetComponent<Player> ().ReceiveDamage (CurrentEnemy.GetComponent<GenericEnemy>().Damage);
-			//determine if player is alive
-			if (player.GetComponent<Player> ().Alive == false) {
-				//player is dead
-				ClearMenu ();
-				player.GetComponent<Player>().Health = player.GetComponent<Player>().MaxHealth;
-				CurrentMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/BattleLost"));
-				return;
-			}
-			//show enemy dealing damage
-			TurnContinue = false;
-			StartCoroutine(EnemyTurn(false));
+			temptime ++;
 		}
 	}
 	#region coroutines
@@ -593,7 +603,7 @@ public class GameMaster_Control : MonoBehaviour{
 		combat.verticalOverflow = VerticalWrapMode.Overflow;
 		combat.text = combattext;
 
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(4f);
 		//TurnContinue = false;
 		TurnContinue = false;
 		Destroy (TextMenu);
@@ -658,7 +668,7 @@ public class GameMaster_Control : MonoBehaviour{
 				StartCoroutine(DropItem(droppeditemname));
 
 			}
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(4f);
 			//InBattle = false;
 			//enable vision of enemies 
 			foreach (GameObject en in AvailableEnemies)
@@ -682,7 +692,7 @@ public class GameMaster_Control : MonoBehaviour{
 		Text combat = TextMenu.GetComponentInChildren<Text>();
 		combat.verticalOverflow = VerticalWrapMode.Overflow;
 		combat.text = CurrentEnemyName +" drops " + itemname;
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(4f);
 		//Debug.Log("round" + RoundOver);
 		if(RoundOver == true)
 		{
