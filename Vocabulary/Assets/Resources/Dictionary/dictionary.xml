@@ -37,7 +37,7 @@
         <example>The student asked the professor for some help to solve the homework problem</example>
     </word>
     <word>
-        <word-base>Insurmountable</word-base>
+        <word-base>insurmountable</word-base>
         <pos>adjective</pos>
         <definition>incapable of being surmounted, passed over, or overcome, insuperable</definition>
         <example>The hiker always thought that Mount Everest was an insurmountable mountain.</example>
@@ -405,6 +405,12 @@
         <example> Romeo had a rather contumacious personality being rebellious at any given moment.</example>
     </word>
     <word>
+        <word-base>pervasive</word-base>
+        <pos>adjective</pos>
+        <definition>spread throughout</definition>
+        <example>The corruption is so pervasive that it is accepted as the way to do business.</example>
+    </word>
+    <word>
         <word-base>pique</word-base>
         <pos>noun</pos>
         <definition>a feeling of irritation or resentment, as from a wound to pride or self-esteem</definition>
@@ -692,7 +698,7 @@
         <example>The imperceptive giant left his shoe in the firepit.</example>
     </word>
     <word>
-        <word-base>tryannical</word-base>
+        <word-base>tyrannical</word-base>
         <pos>adjective</pos>
         <definition>unjustly cruel, harsh, or severe; arbitrary or oppressive; despotic</definition>
         <example>The tyrannical ruler liked to skin people alive for looking at him weirdly.</example>
@@ -854,10 +860,10 @@
         <example>The understated elegance of the dress did not escape the fasionista gaze.</example>
     </word>
     <word>
-        <word-base>ridcule</word-base>
+        <word-base>ridicule</word-base>
         <pos>verb</pos>
         <definition>to deride; make fun of.</definition>
-        <example>The spolied boy like to ridcule the beggers on the street.</example>
+        <example>The spolied boy like to ridicule the beggers on the street.</example>
     </word>
     <word>
         <word-base>lampoon</word-base>
@@ -869,7 +875,7 @@
         <word-base>disparage</word-base>
         <pos>verb</pos>
         <definition>to bring reproach or discredit upon; lower the estimation of:</definition>
-         <word-variant>disparaged</word-variant>
+        <word-variant>disparaged</word-variant>
         <example>Your behavior will disparage the whole family.</example>
     </word>
     <word>
@@ -1249,7 +1255,7 @@
         <example>The student was punished because he was tardy.</example>
     </word>
     <word>
-        <word-base>authoritatian</word-base>
+        <word-base>authoritarian</word-base>
         <pos>adjective</pos>
         <definition>favoring complete obedience or subjection to authority as opposed to individual freedom</definition>
         <example>Donald Trump's had authoritarian principles.</example>

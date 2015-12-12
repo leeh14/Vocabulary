@@ -20,6 +20,26 @@ public class Dictionary : MonoBehaviour {
 		LoadDictionary ("Dictionary/dictionary");
 	}
 
+	public void CheckWord(){
+		List<Question> list = this.GetComponent<QuestionBank> ().S_EasyQuestionBank;
+		foreach (Question qs in list) {
+			AddWord(qs.rAnswer);
+			foreach(string s in qs.wAnswers){
+				AddWord(s);
+			}
+		}
+		
+		list = this.GetComponent<QuestionBank> ().M_EasyQuestionBank;
+		foreach (Question qs in list) {
+			foreach(string rs in qs.rAnswers){
+				AddWord(rs);
+			}
+			foreach(string s in qs.wAnswers){
+				AddWord(s);
+			}
+		}
+	}
+
 	public void AddWord(string word){
 		Word w = null;
 		foreach (KeyValuePair<Word, bool> str in dictionary) {
@@ -29,10 +49,9 @@ public class Dictionary : MonoBehaviour {
 			}
 		}
 		if (w != null) {
-			Debug.Log(w.wordBase);
 			dictionary [w] = true;
 		} else {
-			Debug.LogError(word + " not found in dictionary");
+			Debug.Log(word + " not found in dictionary");
 		}
 	}
 
