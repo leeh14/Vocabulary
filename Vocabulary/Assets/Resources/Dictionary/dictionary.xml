@@ -111,7 +111,7 @@
         <word-base>disadvantage</word-base>
         <pos>noun</pos>
         <definition>absence or deprivation of advantage or equality</definition>
-        <word-variant>disadvantage</word-variant>
+        <word-variant>disadvantages</word-variant>
         <example>With blood all over his face the boxer was at a disadvantage.</example>
     </word>
     <word>
@@ -254,12 +254,6 @@
         <example>On succeeding to the throne in September 1824 the dignity of his address and his affable condescension won him a passing popularity.</example>
     </word>
     <word>
-        <word-base>wisdom</word-base>
-        <pos>noun</pos>
-        <definition>quality or state of being wise; knowledge of what is true or right coupled with just judgement as to action; sagacity, discernment, or insight</definition>
-        <example> Wisdom is the knowledge that tomato doesn't belong in a fruit salad.</example>
-    </word>
-    <word>
         <word-base>atrophied</word-base>
         <pos>adjective</pos>
         <definition>exhibiting or affected with atrophy; wasted; withered; shriveled</definition>
@@ -339,7 +333,7 @@
         <word-base>nullify</word-base>
         <pos>verb</pos>
         <definition>to render or declare legally void or inoperative</definition>
-        <word-variant>nulified</word-variant>
+        <word-variant>nullified</word-variant>
         <example> The lawyer wanted to nullify the contract.</example>
     </word>
     <word>
@@ -435,7 +429,7 @@
         <example> As a man thirsting for knowledge finding another man who was also a pedantry was exciting.</example>
     </word>
     <word>
-        <word-base>pudence</word-base>
+        <word-base>prudence</word-base>
         <pos>noun</pos>
         <definition>caution with regard to practical matters</definition>
         <example> The spy was approaching the base with great prudence</example>
@@ -487,7 +481,7 @@
         <example> Mark realize his friend and him were connected by a consanguineous family treeline.</example>
     </word>
     <word>
-        <word-base>discernible</word-base>
+        <word-base>discernable</word-base>
         <pos>adjective</pos>
         <definition>capable of being discerned; distinguisable</definition>
         <example> After ten minutes the man realize the discernible differences between the twins.</example>
@@ -506,7 +500,7 @@
         <example> The trainer's views and actions are consistent.</example>
     </word>
     <word>
-        <word-base>Jettison</word-base>
+        <word-base>jettison</word-base>
         <pos>verb</pos>
         <definition>to throw off(something) as an obstacle or burden; discard</definition>
         <word-variant>jettisoned</word-variant>
@@ -538,6 +532,24 @@
         <definition>to mention separately as if in counting; name one by one;specify, as in a list</definition>
         <word-variant>enumerated</word-variant>
         <example> Let me enumerate the many flaws in your hypothesis</example>
+    </word>
+    <word>
+        <word-base>preeminent</word-base>
+        <pos>adjective</pos>
+        <definition>eminent above or before others; superior; surpassing</definition>
+        <example> He is preeminent in his profession.</example>
+    </word>
+    <word>
+        <word-base>ignominious</word-base>
+        <pos>adjective</pos>
+        <definition>marked by or attended with ignominy; discreditable; humiliating</definition>
+        <example>The general was forced to take an ignominious retreat.</example>
+    </word>
+    <word>
+        <word-base>obsolete</word-base>
+        <pos>adjective</pos>
+        <definition>no longer in general use; fallen into disuse</definition>
+        <example>The cassette is an obsolete object now.</example>
     </word>
     <word>
         <word-base>anachronistic</word-base>
@@ -607,8 +619,7 @@
         <example> The moon's phases were a slow evanescent of sunlight.</example>
     </word>
      <word>
-        <word-base>cache
-    </word-base>
+        <word-base>cache</word-base>
         <pos>noun</pos>
         <definition>a hiding place, especially one in the ground, for ammunition, food, treasures, etc.</definition>
         <example>There was always candy in the cache in the hidden drawer.</example>
@@ -858,6 +869,7 @@
         <word-base>disparage</word-base>
         <pos>verb</pos>
         <definition>to bring reproach or discredit upon; lower the estimation of:</definition>
+         <word-variant>disparaged</word-variant>
         <example>Your behavior will disparage the whole family.</example>
     </word>
     <word>
@@ -1273,7 +1285,7 @@
         <example>The heuristic teaching method was slowly working.</example>
     </word>
     <word>
-        <word-base>poetics</word-base>
+        <word-base>poetic</word-base>
         <pos>noun</pos>
         <definition>literary criticism treating of the nature and laws of poetry.</definition>
         <example>The english teacher loved to do do studies on poetics.</example>

@@ -74,12 +74,12 @@
     </question>
     <question>
         <qstring>____ behavior never has the effect its practitioners hope for; the attempt to hide only draws attention to what is hidden.</qstring>
-        <correct>Puritanical</correct>
-        <correct>Prudish</correct>
-        <wrong>Covert</wrong>
-        <wrong>Camouflaging</wrong>
-        <wrong>Misogynistic</wrong>
-        <wrong>Miserly</wrong>
+        <correct>puritanical</correct>
+        <correct>prudish</correct>
+        <wrong>covert</wrong>
+        <wrong>camouflaging</wrong>
+        <wrong>misogynistic</wrong>
+        <wrong>miserly</wrong>
     </question>
     <question>
         <qstring>He completed the work with unusual ____ ; his need to get out of the office overcame his habitual torpor.</qstring>
