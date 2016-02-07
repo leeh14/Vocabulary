@@ -1,9 +1,7 @@
 <qlist>
     <qtype>standard</qtype>
     <question>
-        <qstring>
-All good comic writers use humor to ____, not to side-step the problems of human behavior.
-</qstring>
+        <qstring>All good comic writers use humor to ____, not to side-step the problems of human behavior.</qstring>
         <correct>confront</correct>
         <wrong>amuse</wrong>
         <wrong>avert</wrong>
@@ -11,9 +9,7 @@ All good comic writers use humor to ____, not to side-step the problems of human
         <wrong>solve</wrong>
     </question>
     <question>
-        <qstring>
-With his sub-four minute mile Bannister broke a psychological barrier, and inspired thousands of others to attempt to overcome seemingly ____ hurdles.
-</qstring>
+        <qstring>With his sub-four minute mile Bannister broke a psychological barrier, and inspired thousands of others to attempt to overcome seemingly ____ hurdles.</qstring>
         <correct>insurmountable</correct>
         <wrong>inane</wrong>
         <wrong>trivial</wrong>
@@ -21,9 +17,7 @@ With his sub-four minute mile Bannister broke a psychological barrier, and inspi
         <wrong>ineffable</wrong>
     </question>
     <question>
-        <qstring>
-The revolution in art has not lost its steam; it ____ on as fiercely as ever.
-</qstring>
+        <qstring>The revolution in art has not lost its steam; it ____ on as fiercely as ever.</qstring>
         <correct>rages</correct>
         <wrong>trudges</wrong>
         <wrong>meanders</wrong>

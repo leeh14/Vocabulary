@@ -92,47 +92,15 @@ public class GenericEnemy : MonoBehaviour {
 	{
 		master = mas;
 		healthGUI = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/healthObj"));
-		Image[] health = healthGUI.GetComponentsInChildren<Image>();
-		Text[] healthtext = healthGUI.GetComponentsInChildren<Text>();
-		foreach(Text i in healthtext)
-		{
-			
-			if(gameObject.transform.position.x > -.30f)
-			{
-				//Enemey is on the left 
-				i.transform.position = new Vector3(i.transform.position.x +100,i.transform.position.y +30,-1f);
+		Image health = healthGUI.GetComponentInChildren<Image>();
+		Text healthtext = healthGUI.GetComponentInChildren<Text>();
 
-			}
-			else 
-			{
-				//enemy is on the right
-				//i.transform.position = new Vector3(152.5f,261f,-1f);
-				i.transform.position = new Vector3(i.transform.position.x ,i.transform.position.y +30,-1f);
-			}
-			healthtxt = i;
-		}
-		foreach(Image i in health)
-		{
+        health.transform.localPosition = new Vector3(gameObject.transform.localPosition.x * 15, Screen.height - 230, gameObject.transform.localPosition.z);
+        healthtext.transform.localPosition = new Vector3(gameObject.transform.localPosition.x *15 + 15, Screen.height - 235, gameObject.transform.localPosition.z);
 
-			if(gameObject.transform.position.x > -.30f)
-			{
-				//Enemey is on the left 
-				
-				//healthtxt.transform.localPosition = new Vector3(-20f, 320f,  -1);
-				//healthbar.transform.localPosition = new Vector3(-20f, 325f, gameObject.transform.position.z);
-				//i.transform.position = new Vector3(70f, 270f, -1f);
-				i.transform.position = new Vector3(i.transform.position.x + 100,i.transform.position.y +30,-1f);
-			}
-			else 
-			{
-				//enemy is on the right
-				//healthtxt.transform.localPosition = new Vector3(315f, 770f, gameObject.transform.position.z);
-				//healthbar.transform.localPosition = new Vector3(240f, 780f, gameObject.transform.position.z);
-				//healthtxt.transform.position = new Vector3(155f, 270f, -1f);
-				i.transform.position = new Vector3(i.transform.position.x,i.transform.position.y +30,-1f);
-			}
-			healthbar = i;
-		}
+        healthtxt = healthtext;
+        healthbar = health;
+		
 		//if the forgottone
 		if(gameObject.name== "Forgotten(Clone)0")
 		{
@@ -141,7 +109,6 @@ public class GenericEnemy : MonoBehaviour {
 			spinner1.transform.localScale = new Vector3 (1.4f,1.3f,1);
 			spinner2.transform.localScale = new Vector3 (1.4f,1.3f,1);
 		}
-		//healthGUI.transform.position =
 	}
 	public void OnMouseOver()
 	{

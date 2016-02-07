@@ -36,6 +36,7 @@ public class CombatQuestion : MonoBehaviour {
 		options = gameObject.GetComponentsInChildren<Button>();
 		//Text question = gameObject.GetComponentInChildren<Text>();
 		Question.text = data.question;
+        //resize content
 		Question.verticalOverflow = VerticalWrapMode.Overflow;
 		ButtonCounter = 0;
 		//135 pass the boundary
