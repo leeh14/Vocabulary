@@ -1,24 +1,8 @@
 {
 	"type": "Live2D Model Setting",
 	"name": "SlimerG",
-	"model": "slimerg.moc",
+	"model": "SlimerG.moc",
 	"textures": [
-		"slimerg.1024/texture_00.png"
-	],
-	"motions":
-	{
-		"idle":
-		[
-			{"file":"motions/SlimerG Idle.mtn" },
-			{"file":"motions/SlimerG Idle2.mtn"}
-		],
-		"attack":
-		[
-			{"file":"motions/SlimerGAttack.mtn"}
-		],
-		"damaged":
-		[
-			{"file":"motions/SlimerGHurt.mtn"}
-		]
-	}
+		"SlimerG.1024/texture_00.png"
+	]
 }
