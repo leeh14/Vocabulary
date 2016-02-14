@@ -8,9 +8,11 @@ public class CombatQuestion : MonoBehaviour {
 	private Button[] options;
 	private int ButtonCounter;
 	public Text Question;
+    public Scrollbar Scroll;
 	// Use this for initialization
 	void Start() {
 		master = GameObject.FindGameObjectWithTag("GameMaster");
+        Scroll.value = 1f;
 	}
 	public void RemoveAnswer()
 	{

@@ -83,7 +83,7 @@ public class MapLevels : MonoBehaviour {
 			float type = UnityEngine.Random.Range(0f,1f);
 			//randoomizze the different names of the enemies
 			string mon;
-			if(type < 0f)
+			if(type < .5f)
 			{
 				mon = "Goblin";
 			}
