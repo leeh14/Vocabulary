@@ -4,5 +4,21 @@
 	"model": "SlimerG.moc",
 	"textures": [
 		"SlimerG.1024/texture_00.png"
-	]
+	],
+	"motions":
+	{
+		"idle":
+		[
+			{"file":"motions/SlimerGIdle.mtn" },
+			{"file":"motions/SlimerGIdle2.mtn"}
+		],
+		"attack":
+		[
+			{"file":"motions/SlimerGAttack.mtn"}
+		],
+		"damaged":
+		[
+			{"file":"motions/SlimerGHurt.mtn"}
+		]
+	}
 }
