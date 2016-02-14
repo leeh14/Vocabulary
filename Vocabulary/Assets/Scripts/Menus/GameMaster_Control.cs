@@ -31,6 +31,7 @@ public class GameMaster_Control : MonoBehaviour{
 	private string droppeditemname;
 	private int questiontype;
 	private string CurrentLevel;
+    
     // Use this for initialization
     void Start() {
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -591,7 +592,11 @@ public class GameMaster_Control : MonoBehaviour{
 		Text combat = TextMenu.GetComponentInChildren<Text>();
 		combat.verticalOverflow = VerticalWrapMode.Overflow;
 		combat.text = combattext;
-
+        if (Input.GetButton("Fire1"))
+        {
+            Debug.Log("stop");
+            yield break;
+        }
 		yield return new WaitForSeconds(4f);
 		//TurnContinue = false;
 		TurnContinue = false;

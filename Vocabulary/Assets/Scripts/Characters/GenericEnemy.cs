@@ -95,8 +95,8 @@ public class GenericEnemy : MonoBehaviour {
 		Image health = healthGUI.GetComponentInChildren<Image>();
 		Text healthtext = healthGUI.GetComponentInChildren<Text>();
 
-        health.transform.localPosition = new Vector3(gameObject.transform.localPosition.x * 15, Screen.height - 200, gameObject.transform.localPosition.z);
-        healthtext.transform.localPosition = new Vector3(gameObject.transform.localPosition.x *15 + 15, Screen.height - 205, gameObject.transform.localPosition.z);
+        health.transform.localPosition = new Vector3(gameObject.transform.localPosition.x * 12 - 7, Screen.height - 200, gameObject.transform.localPosition.z);
+        healthtext.transform.localPosition = new Vector3(gameObject.transform.localPosition.x *12 + 10, Screen.height - 205, gameObject.transform.localPosition.z);
 
         healthtxt = healthtext;
         healthbar = health;
