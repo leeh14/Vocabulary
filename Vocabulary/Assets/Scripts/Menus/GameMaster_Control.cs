@@ -231,8 +231,6 @@ public class GameMaster_Control : MonoBehaviour{
 		for (int m = 0 ; m < Enemy.Count; m ++)
 		{
 			Debug.Log(Enemy[m]);
-			bool shiftleft = false;
-			bool shiftup = false;
 			//positions
 			float x = 6f;
 			float y = 4f;
@@ -242,28 +240,31 @@ public class GameMaster_Control : MonoBehaviour{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Slime"));
 				//might change on build
 				//for android
-				xl-=1.3f;
-				y+=1.1f;
-				x-=1.3f;
+				xl-=3.3f;
+				y+=2.4f;
+				x-=2.3f;
 			}
 			else if(Enemy[m] == "SlimeB")
 			{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeB"));
-				shiftup = true;
+                xl -= 3.3f;
+                y += 2.4f;
+                x -= 2.3f;
 			}
 			else if(Enemy[m] == "SlimeR")
 			{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeR"));
-				shiftleft = true;
-				xl-=1f;
-				y+=.9f;
-				x-=1.3f;
-			}
+                xl -= 3.3f;
+                y += 2.4f;
+                x -= 2.3f;
+ 
+            }
 			else if(Enemy[m] == "SlimeP")
 			{
-				shiftup = true;
-				shiftleft = true;
-				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeP"));
+                xl -= 3.3f;
+                y += 2.4f;
+                x -= 2.3f;
+                Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeP"));
 			}
 			else if (Enemy[m] == "Ghost")
 			{
@@ -319,15 +320,6 @@ public class GameMaster_Control : MonoBehaviour{
 			}
 			if(Enemy.Count > 1)
 			{
-				if(shiftleft == true)
-				{
-					x -= 4f;
-					xl -= 5f;
-				}
-				if(shiftup == true)
-				{
-					y +=2.45f;
-				}
 				if(Enemy[m] == "Ghost")
 				{
 					Enemies.transform.localScale = new Vector3(.36f,1f,.53f);
@@ -338,16 +330,12 @@ public class GameMaster_Control : MonoBehaviour{
 				{
 					Enemies.transform.localScale = new Vector3(.42f,1f,.49f);
 				}
-				else if(Enemy[m] == "Slime" || Enemy[m] == "SlimeR" )
-				{
-					Enemies.transform.localScale = new Vector3(.4f,1f,.4f);
-				}
-				else
-				{
-					Enemies.transform.localScale = new Vector3(.7f,1f,.57f);
-				}
+                else
+                {
+                    Enemies.transform.localScale = new Vector3(.7f, 1f, .57f);
+                }
 
-				if(m ==  0)
+                if (m ==  0)
 				{
 					//Enemies.GetComponent<GenericEnemy>().healthbar.transform.position = new Vector3(2 ,12 ,1f);
 					Enemies.transform.position = new Vector3 ( x,y, 1f);

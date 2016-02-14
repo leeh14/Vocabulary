@@ -83,7 +83,7 @@ public class MapLevels : MonoBehaviour {
 			float type = UnityEngine.Random.Range(0f,1f);
 			//randoomizze the different names of the enemies
 			string mon;
-			if(type > .5f)
+			if(type < 0f)
 			{
 				mon = "Goblin";
 			}
@@ -91,15 +91,15 @@ public class MapLevels : MonoBehaviour {
 			{
 				float color = UnityEngine.Random.Range(0f,1.0f);
 				//different colors of the slime
-				if(color < 2.5)
+				if(color < .25)
 				{
 					mon = "Slime";
 				}
-				else if(color >= 2.5 && color < 5)
+				else if(color >= .25 && color < .5)
 				{
 					mon = "SlimeB";
 				}
-				else if(color >= 5 && color < 8.5)
+				else if(color >= .5 && color < .85)
 				{
 					mon = "SlimeR";
 				}
