@@ -406,11 +406,7 @@ public class GameMaster_Control : MonoBehaviour{
 		//change this to generateing questions
 		CurrentMenu.GetComponent<CombatQuestion>().CreateQuestions(data, type);
 	}
-	public IEnumerator Hold()
-	{
-		yield return new WaitForSeconds(3f);
 
-	}
 	//after determining answer do corresponding action
 	public void ChangeTurn(Question obj , string playerchoice, int type)
 	{
@@ -469,14 +465,14 @@ public class GameMaster_Control : MonoBehaviour{
 		}
 
 		if (correct) {
+            PlayerTurn(player.GetComponent<Player>().DealDamage(), CurrentEnemy.GetComponent<GenericEnemy>().name);
+            //StartCoroutine(WaitTurn(player.GetComponent<Player>().DealDamage()));
+            //determine type of weapon and then deal dmg accordinly
 
-			StartCoroutine(WaitTurn(player.GetComponent<Player>().DealDamage()));
-			//determine type of weapon and then deal dmg accordinly
-
-//			CurrentEnemy.GetComponent<GenericEnemy> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
-//		
-//			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
-			if(player.GetComponent<Player>().CurrentWeapon.Special  == true && player.GetComponent<Player>().CurrentWeapon.AffectAnswers == true )
+            //			CurrentEnemy.GetComponent<GenericEnemy> ().ReceiveDamage (player.GetComponent<Player>().DealDamage());
+            //		
+            //			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
+            if (player.GetComponent<Player>().CurrentWeapon.Special  == true && player.GetComponent<Player>().CurrentWeapon.AffectAnswers == true )
 			{
 				HideAnswer = true;
 			}
@@ -496,16 +492,17 @@ public class GameMaster_Control : MonoBehaviour{
 						AvailableEnemies.RemoveAt(i);
 					}
 				}
-				if(AvailableEnemies.Count ==  0)
-				{
-					//set up to next level
+				//if(AvailableEnemies.Count ==  0)
+				//{
+				//	//set up to next level
 
-					RoundOver = true;
-					//Debug.Log("end");
-					//ClearMenu ();
-					//LoadMenu ();
-					return;
-				}
+				//	RoundOver = true;
+				//	//Debug.Log("end");
+				//	//ClearMenu ();
+				//	//LoadMenu ();
+
+				//	return;
+				//}
 				//ClearMenu();
 
 			}
@@ -523,16 +520,13 @@ public class GameMaster_Control : MonoBehaviour{
 			}
 			//show enemy dealing damage
 			TurnContinue = false;
-			StartCoroutine(EnemyTurn(false));
+            TextMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/CombatText"));
+            EnemyTurn(false, TextMenu);
 		}
-		
+        //StartCoroutine(Hold());
 	}
-	#region coroutines
-	public IEnumerator WaitTurn(float dmg)
-	{
-		yield return StartCoroutine (PlayerTurn (dmg, CurrentEnemy.GetComponent<GenericEnemy>().name));
-	}
-	public IEnumerator PlayerTurn(float damage, string enemyname)
+	#region CombatText
+	public void PlayerTurn(float damage, string enemyname)
 	{
 
 		CurrentEnemyName = enemyname;
@@ -589,21 +583,16 @@ public class GameMaster_Control : MonoBehaviour{
 
 		//combat text
 		TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
-		Text combat = TextMenu.GetComponentInChildren<Text>();
-		combat.verticalOverflow = VerticalWrapMode.Overflow;
-		combat.text = combattext;
-        if (Input.GetButton("Fire1"))
-        {
-            Debug.Log("stop");
-            yield break;
-        }
-		yield return new WaitForSeconds(4f);
+        TextMenu.GetComponent<CombatText>().combattxt.Add(combattext);
+		//combat.verticalOverflow = VerticalWrapMode.Overflow;
+		//combat.text = combattext;
+		//yield return new WaitForSeconds(4f);
 		//TurnContinue = false;
 		TurnContinue = false;
-		Destroy (TextMenu);
-		StartCoroutine (EnemyTurn (true));
+		//Destroy (TextMenu);
+		EnemyTurn (true,TextMenu);
 	}
-	public IEnumerator EnemyTurn(bool playerattacked)
+	public void EnemyTurn(bool playerattacked, GameObject curmenu)
 	{
 		if(TurnContinue == false)
 		{
@@ -612,15 +601,15 @@ public class GameMaster_Control : MonoBehaviour{
 				//attack animation
 				CurrentEnemy.GetComponent<LAppModelProxy>().model.AttackAnimation();
 
-				//combat text
-				TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
-				Text combat = TextMenu.GetComponentInChildren<Text>();
-				combat.verticalOverflow = VerticalWrapMode.Overflow;
-				combat.text = "";
+                //combat text
+                //TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
+                //Text combat = TextMenu.GetComponentInChildren<Text>();
+                //combat.verticalOverflow = VerticalWrapMode.Overflow;
+                
 				if(playerattacked == false)
-				{
+                {
 					//feedback for player missed
-					combat.text += "Incorrect answer you missed \n";
+					curmenu.GetComponent<CombatText>().combattxt.Add("Incorrect answer you missed \n");
 				}
 				//run chance on armor to miss an attack
 				if(player.GetComponent<Player>().CurrentArmor.Miss)
@@ -628,86 +617,138 @@ public class GameMaster_Control : MonoBehaviour{
 					float ran = Random.Range(0f,1f);
 					if(ran < player.GetComponent<Player>().CurrentArmor.misschance)
 					{
-						//missed the chance
-						combat.text += CurrentEnemy.GetComponent<GenericEnemy>().name + " misses";
+                        //missed the chance
+                        curmenu.GetComponent<CombatText>().combattxt.Add(CurrentEnemy.GetComponent<GenericEnemy>().name + " misses");
 					}
 					else
 					{
-						combat.text += CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.";
+                        curmenu.GetComponent<CombatText>().combattxt.Add(CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.");
 						player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
 					}
 				}
 				else
 				{
-					combat.text += CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.";
+                    curmenu.GetComponent<CombatText>().combattxt.Add(CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.");
 					player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
 				}
 
 
 
-
-				if (player.GetComponent<Player> ().Alive == false) {
-					//player is dead
-					ClearMenu ();
-					player.GetComponent<Player>().Health = player.GetComponent<Player>().MaxHealth;
-					CurrentMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/BattleLost"));
-					StopAllCoroutines ();
-					//return;
-				}
+                if(CurrentEnemy.GetComponent<GenericEnemy>().Alive == false)
+                {
+                    DropItem(droppeditemname, curmenu);
+                }
+				//if (player.GetComponent<Player> ().Alive == false) {
+				//	//player is dead
+				//	ClearMenu ();
+				//	player.GetComponent<Player>().Health = player.GetComponent<Player>().MaxHealth;
+				//	CurrentMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/BattleLost"));
+				//	StopAllCoroutines ();
+				//	//return;
+				//}
 
 			}
 			else
 			{
 				//determing the random item drop
-				StartCoroutine(DropItem(droppeditemname));
+				DropItem(droppeditemname, curmenu);
 
 			}
-			yield return new WaitForSeconds(4f);
+			//yield return new WaitForSeconds(4f);
 			//InBattle = false;
 			//enable vision of enemies 
-			foreach (GameObject en in AvailableEnemies)
-			{
-				if(en != null)
-				{
-					en.SetActive(true);
-					en.GetComponent<GenericEnemy>().Show();
-				}
-			}
-			StopAllCoroutines ();
+			//foreach (GameObject en in AvailableEnemies)
+			//{
+			//	if(en != null)
+			//	{
+			//		en.SetActive(true);
+			//		en.GetComponent<GenericEnemy>().Show();
+			//	}
+			//}
+			//StopAllCoroutines ();
 			//reset 
 
-			RedoBattle ();
+			//RedoBattle ();
 		}
 	}
-	public IEnumerator DropItem(string itemname)
+    public void CombatTextOver()
+    {
+        if (player.GetComponent<Player>().Alive == false)
+        {
+            //player is dead
+            ClearMenu();
+            player.GetComponent<Player>().Health = player.GetComponent<Player>().MaxHealth;
+            CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/BattleLost"));
+            //StopAllCoroutines();
+            //return;
+        }
+        InBattle = false;
+        //enable vision of enemies 
+        foreach (GameObject en in AvailableEnemies)
+        {
+            if (en != null)
+            {
+                en.SetActive(true);
+                en.GetComponent<GenericEnemy>().Show();
+            }
+        }
+        //check if there are still enemies
+        if (AvailableEnemies.Count > 0)
+        {
+            RedoBattle();
+        }
+        else
+        {
+            loadback = true;
+            Background.GetComponent<Background>().LoadStart();
+            Music.clip = inventorymusic;
+            Music.Play();
+            if (RoundOver == true)
+            {
+                RoundOver = false;
+                CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Winning"));
+            }
+            
+            gameObject.GetComponent<MapScreen>().BattleWin();
+            
+        }
+    }
+	public void DropItem(string itemname, GameObject curmenu)
 	{
-
-		TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
-		Text combat = TextMenu.GetComponentInChildren<Text>();
-		combat.verticalOverflow = VerticalWrapMode.Overflow;
-		combat.text = CurrentEnemyName +" drops " + itemname;
-		yield return new WaitForSeconds(4f);
-		//Debug.Log("round" + RoundOver);
-		if(RoundOver == true)
-		{
-			//need to drop random item
-			Inventory.AddItem(itemname, 1);
-			//Inventory.AddItem(2,"apples",1);
-			//adding the definition of the word into learned dictionary
-			//player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
-			RoundOver = false;
-
-			loadback = true;
-			Background.GetComponent<Background>().LoadStart();
-			Music.clip = inventorymusic;
-			Music.Play();
-			if(itemname == "Hollow of the Forgotten"){
-				CurrentMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/Winning"));
-			}else{
-				gameObject.GetComponent<MapScreen>().BattleWin();
-			}
-		}
-	}
+        //TextMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/CombatText"));
+        //Text combat = TextMenu.GetComponentInChildren<Text>();
+        //combat.verticalOverflow = VerticalWrapMode.Overflow;
+        curmenu.GetComponent<CombatText>().combattxt.Add( CurrentEnemyName +" drops " + itemname);
+        Inventory.AddItem(itemname, 1);
+        //yield return new WaitForSeconds(4f);
+        //Debug.Log("round" + RoundOver);
+  //      if (RoundOver == true)
+		//{
+		//	//need to drop random item
+			
+		//	//Inventory.AddItem(2,"apples",1);
+		//	//adding the definition of the word into learned dictionary
+		//	//player.GetComponent<Player> ().WordDict.Add (CurrentQuestion.Answer, CurrentQuestion.definition);
+		//	RoundOver = false;
+		//	loadback = true;
+		//	Background.GetComponent<Background>().LoadStart();
+		//	Music.clip = inventorymusic;
+		//	Music.Play();
+		//	if(itemname == "Hollow of the Forgotten"){
+		//		CurrentMenu = (GameObject)GameObject.Instantiate (Resources.Load ("Prefabs/Winning"));
+		//	}else{
+		//		gameObject.GetComponent<MapScreen>().BattleWin();
+		//	}
+		//}
+        if (itemname == "Hollow of the Forgotten")
+        {
+            RoundOver = true;
+            //CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Winning"));
+        }
+        //else {
+        //    gameObject.GetComponent<MapScreen>().BattleWin();
+        //}
+    }
 	#endregion
 	#endregion
 

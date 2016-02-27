@@ -29,13 +29,13 @@ public class BattleInventoryButtonScript : MonoBehaviour {
 		switch(name){
 		case "Health Potion":
 			return player.Health >= player.MaxHealth;
-			break;
+			//break;
 		case "Attack Boost Potion":
 			return player.attkboost;
-			break;
+			//break;
 		case "Magic Boost Potion":
 			return player.mgattkboost;
-			break;
+			//break;
 		}
 		return true;
 	}
