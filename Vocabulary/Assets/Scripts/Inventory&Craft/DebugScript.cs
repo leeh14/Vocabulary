@@ -69,8 +69,6 @@ public class DebugScript : MonoBehaviour {
 		Item itmp7 = new Item (1, "Dictionator", 1);
 		Inventory.AddRecipe ("Dictionator", ltmp7, itmp7);
 		*/
-
-		Reset ();
 	}
 
 	public void Reset(){

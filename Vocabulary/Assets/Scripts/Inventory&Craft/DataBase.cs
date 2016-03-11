@@ -15,10 +15,30 @@ public class DataBase : MonoBehaviour {
 	
 	// Load Data
 	public void Load(){
-		LoadInventory ();
+		if (!LoadInventory ()) {
+			CreateInventory ();
+			this.GetComponent<DebugScript>().Reset();
+		}
 	}
 
 	#region Inventory
+
+	public void CreateInventory(){
+		
+		if (Inventory._Items == null) {
+			Inventory._Items = new List<Item> ();
+		}
+		if (Inventory._Weapons == null) {
+			Inventory._Weapons = new List<GenericWeapon> ();
+		}
+		if (Inventory._Armors == null) {
+			Inventory._Armors = new List<GenericArmor> ();
+		}
+		if (Inventory._Recipes == null) {
+			Inventory._Recipes = new List<Recipe> ();
+		}
+	}
+
 	public void SaveInventory(){
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream file = File.Create(Application.persistentDataPath + "/InventoryData.dat");
@@ -32,7 +52,7 @@ public class DataBase : MonoBehaviour {
 		file.Close ();
 	}
 
-	public void LoadInventory(){
+	public bool LoadInventory(){
 		if (File.Exists (Application.persistentDataPath + "/InventoryData.dat")) {
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file = File.Open(Application.persistentDataPath + "/InventoryData.dat", FileMode.Open);
@@ -43,7 +63,9 @@ public class DataBase : MonoBehaviour {
 			Inventory._Recipes = data._Recipes;
 			Inventory._Armors = data._Armors;
 			Inventory._Weapons = data._Weapons;
+			return true;
 		}
+		return false;
 	}
 	#endregion
 
