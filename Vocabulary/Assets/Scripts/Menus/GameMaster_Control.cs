@@ -296,7 +296,7 @@ public class GameMaster_Control : MonoBehaviour{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Goblin"));
 				x-=2;
 				xl-=2;
-				y+=3;
+				y+=4;
 			}
 			else if (Enemy[m] == "Sphinx")
 			{
