@@ -241,28 +241,28 @@ public class GameMaster_Control : MonoBehaviour{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Slime"));
 				//might change on build
 				//for android
-				xl-=3.3f;
+				xl-=2.8f;
 				y+=2.4f;
 				x-=2.3f;
 			}
 			else if(Enemy[m] == "SlimeB")
 			{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeB"));
-                xl -= 3.3f;
+                xl -= 2.8f;
                 y += 2.4f;
                 x -= 2.3f;
 			}
 			else if(Enemy[m] == "SlimeR")
 			{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeR"));
-                xl -= 3.3f;
+                xl -= 2.8f;
                 y += 2.4f;
                 x -= 2.3f;
  
             }
 			else if(Enemy[m] == "SlimeP")
 			{
-                xl -= 3.3f;
+                xl -= 2.8f;
                 y += 2.4f;
                 x -= 2.3f;
                 Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/SlimeP"));
