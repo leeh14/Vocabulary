@@ -19,7 +19,10 @@ public class InventoryScreen : MonoBehaviour {
 	// list objects
 	public static GameObject contentPanel;
 	public static GameObject player;
-	
+
+	// the background
+	public GameObject bg;
+
 	// Prefab
 	public GameObject CanvasPf;
 	public GameObject MainPanelPf;
@@ -58,6 +61,7 @@ public class InventoryScreen : MonoBehaviour {
 		InventoryPanel.GetComponent<InventoryListPanelScript> ().ChangeBackground (3);
 		contentPanel = InventoryPanel.GetComponent<InventoryListPanelScript> ().contentPanel;
 		InventoryPanel.transform.SetParent (Canvas.transform, false);
+		bg.SetActive (false);
 		PopulateItemList (3);
 	}
 	
@@ -83,6 +87,7 @@ public class InventoryScreen : MonoBehaviour {
 	// onclick for back to main
 	public void BackButtonClick(){
 		ClearCanvas ();
+		bg.SetActive (true);
 		CreateMainScreen ();
 	}
 	#endregion
