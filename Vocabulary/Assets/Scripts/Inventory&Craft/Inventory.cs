@@ -41,6 +41,10 @@ public class Inventory : MonoBehaviour {
 			_Recipes = new List<Recipe> ();
 		}
 		_RemoveIndex = new List<int>();	
+
+		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		Inventory.ChangeWeapon (_Weapons[currentWeapon].name);
+		Inventory.ChangeArmor (_Armors[currentArmor].name);
 	}
 
 	#region Item
@@ -500,4 +504,6 @@ public class InventoryData
 	public List<Recipe> _Recipes;
 	public List<GenericArmor> _Armors;
 	public List<GenericWeapon> _Weapons;
+	public int currentArmor;
+	public int currentWeapon;
 }

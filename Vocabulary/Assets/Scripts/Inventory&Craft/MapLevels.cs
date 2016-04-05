@@ -44,8 +44,9 @@ public class MapLevels : MonoBehaviour {
 		}
 
 		_Levels = new List<LevelData> ();
-		//Load ();
-		UploadData ();
+		if (!Load()) {
+			UploadData ();
+		}
 	}
 
 	// Save Data
@@ -61,7 +62,7 @@ public class MapLevels : MonoBehaviour {
 	}// end of Save
 	
 	// Load Data
-	public static void Load(){
+	public static bool Load(){
 		if (File.Exists (Application.persistentDataPath + "/MapData.dat")) {
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file = File.Open(Application.persistentDataPath + "/MapData.dat", FileMode.Open);
@@ -70,7 +71,9 @@ public class MapLevels : MonoBehaviour {
 			
 			_Levels = data._Levels;
 			currentMap = data.currentMap;
+			return true;
 		}
+		return false;
 	}// end of Load
 
 	public static List<string> GenerateEnemies()

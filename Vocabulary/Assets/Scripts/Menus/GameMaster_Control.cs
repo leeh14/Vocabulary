@@ -39,20 +39,12 @@ public class GameMaster_Control : MonoBehaviour{
         //debugging purposes in scene just auto generate the choice menu
         CurrentMenu = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Title"));
 
-		//for now just set it to be the 1 answer questions
-		DebugWeapon = new BasicSword();
-		player.GetComponent<Player>().SetWeapon(DebugWeapon);
-		Inventory.ChangeWeapon ("Basic Weapon");
-		DebugArmor = new BasicArmor();
-		player.GetComponent<Player>().SetArmor(DebugArmor);
-		Inventory.ChangeArmor ("Basic Armor");
-
 		Background = GameObject.FindGameObjectWithTag("bg");
     }
 
 	// on game exit
 	void OnApplicationQuit(){
-		this.transform.GetComponent<DataBase> ().Save ();
+		this.transform.GetComponent<DataBase> ().Save();
 	}
 
     // Update is called once per frame

@@ -84,5 +84,7 @@ public class DebugScript : MonoBehaviour {
 		Inventory.AddItem ("Resonant Ooze", 20);
 		Inventory.AddArmor ("Basic Armor");
 		Inventory.AddWeapon ("Basic Sword");
+		Inventory.currentArmor = 0;
+		Inventory.currentWeapon = 0;
 	}
 }

@@ -11,6 +11,7 @@ public class DataBase : MonoBehaviour {
 	// Save Data
 	public void Save(){
 		SaveInventory ();
+		MapLevels.Save ();
 	}
 	
 	// Load Data
@@ -47,7 +48,9 @@ public class DataBase : MonoBehaviour {
 		data._Recipes = Inventory._Recipes;
 		data._Armors = Inventory._Armors;
 		data._Weapons = Inventory._Weapons;
-		
+		data.currentWeapon = Inventory.currentWeapon;
+		data.currentArmor = Inventory.currentArmor;
+	
 		bf.Serialize (file, data);
 		file.Close ();
 	}
@@ -63,6 +66,9 @@ public class DataBase : MonoBehaviour {
 			Inventory._Recipes = data._Recipes;
 			Inventory._Armors = data._Armors;
 			Inventory._Weapons = data._Weapons;
+			Inventory.currentWeapon = data.currentWeapon;
+			Inventory.currentArmor = data.currentArmor;
+
 			return true;
 		}
 		return false;
