@@ -94,9 +94,19 @@ public class GenericEnemy : MonoBehaviour {
 		healthGUI = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/healthObj"));
 		Image health = healthGUI.GetComponentInChildren<Image>();
 		Text healthtext = healthGUI.GetComponentInChildren<Text>();
+        if (gameObject.transform.position.x < 0)
+        {
+            health.transform.localPosition = new Vector3(-40, (Screen.height / Screen.dpi) + 80, gameObject.transform.localPosition.z);
+            healthtext.transform.localPosition = new Vector3(-25, (Screen.height / Screen.dpi) + 75, gameObject.transform.localPosition.z);
+        }
+        else
+        {
+            health.transform.localPosition = new Vector3(45, (Screen.height / Screen.dpi) + 80, gameObject.transform.localPosition.z);
+            healthtext.transform.localPosition = new Vector3(66, (Screen.height / Screen.dpi) + 75, gameObject.transform.localPosition.z);
+        }
 
-        health.transform.localPosition = new Vector3(gameObject.transform.localPosition.x * 12 - 5.8f, (Screen.height/Screen.dpi) +80, gameObject.transform.localPosition.z);
-        healthtext.transform.localPosition = new Vector3(gameObject.transform.localPosition.x *12 + 10, (Screen.height / Screen.dpi) + 75, gameObject.transform.localPosition.z);
+        //health.transform.localPosition = new Vector3(gameObject.transform.localPosition.x * 13 + 11f, (Screen.height/Screen.dpi) +80, gameObject.transform.localPosition.z);
+        //healthtext.transform.localPosition = new Vector3(gameObject.transform.localPosition.x *12 + 14, (Screen.height / Screen.dpi) + 75, gameObject.transform.localPosition.z);
 
         healthtxt = healthtext;
         healthbar = health;

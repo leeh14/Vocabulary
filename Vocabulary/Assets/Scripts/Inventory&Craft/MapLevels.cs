@@ -44,10 +44,11 @@ public class MapLevels : MonoBehaviour {
 		}
 
 		_Levels = new List<LevelData> ();
-		if (!Load()) {
-			UploadData ();
-		}
-	}
+        if (!Load())
+        {
+            UploadData();
+        }
+    }
 
 	// Save Data
 	public static void Save(){
@@ -88,28 +89,28 @@ public class MapLevels : MonoBehaviour {
 			string mon;
 			if(type < .5f)
 			{
-				mon = "Goblin";
-			}
+                mon = "Goblin";
+            }
 			else
 			{
 				float color = UnityEngine.Random.Range(0f,1.0f);
 				//different colors of the slime
 				if(color < .25)
 				{
-					mon = "Slime";
-				}
+                    mon = "Slime";
+                }
 				else if(color >= .25 && color < .5)
 				{
-					mon = "SlimeB";
-				}
+                    mon = "SlimeB";
+                }
 				else if(color >= .5 && color < .85)
 				{
-					mon = "SlimeR";
-				}
+                    mon = "SlimeR";
+                }
 				else
 				{
-					mon = "SlimeP";
-				}
+                    mon = "SlimeP";
+                }
 			}
 			Monsters.Add(mon);
 		}

@@ -224,8 +224,9 @@ public class GameMaster_Control : MonoBehaviour{
 		for (int m = 0 ; m < Enemy.Count; m ++)
 		{
 			Debug.Log(Enemy[m]);
-			//positions
-			float x = 6f;
+
+            //positions
+            float x = 6f;
 			float y = 4f;
 			float xl = -.31f;
 			if (Enemy[m] == "Slime")
@@ -293,7 +294,7 @@ public class GameMaster_Control : MonoBehaviour{
 			else if (Enemy[m] == "Sphinx")
 			{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Sphinx"));
-				y+= 3.1f;
+				y+= 5.1f;
 				xl-= 2f;
 				x-=2f;
 			}
@@ -309,7 +310,7 @@ public class GameMaster_Control : MonoBehaviour{
 				Enemies = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Enemies/Mummy"));
 				xl -=2;
 				x-=2;
-				y+=4;
+				y+=5;
 			}
 			if(Enemy.Count > 1)
 			{
@@ -615,13 +616,17 @@ public class GameMaster_Control : MonoBehaviour{
 					else
 					{
                         curmenu.GetComponent<CombatText>().combattxt.Add(CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.");
-						player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
+                        //player blocked damaged
+                        curmenu.GetComponent<CombatText>().combattxt.Add("Your armor blocked " + player.GetComponent<Player>().CurrentArmor.Armor + "damage");
+                        player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
 					}
 				}
 				else
 				{
                     curmenu.GetComponent<CombatText>().combattxt.Add(CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.");
-					player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
+                    //player blocked damaged
+                    curmenu.GetComponent<CombatText>().combattxt.Add("Your armor blocked " + player.GetComponent<Player>().CurrentArmor.Armor + " damage");
+                    player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
 				}
 
 
