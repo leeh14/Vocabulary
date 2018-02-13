@@ -558,13 +558,13 @@ public class GameMaster_Control : MonoBehaviour{
 		{
 			foreach(GameObject e in AvailableEnemies)
 			{
-				combattext += "You have dealt " + dmgdealt + " to " + e.GetComponent<GenericEnemy>().name + "\n";
+				combattext += "You have dealt " + dmgdealt + " to " + e.GetComponent<GenericEnemy>().name + ". \n";
 				e.GetComponent<LAppModelProxy>().model.GetDamaged();
 			}
 		}
 		else
 		{
-			combattext = "You have dealt " + dmgdealt + " to " + enemyname;
+			combattext = "You have dealt " + dmgdealt + " to " + enemyname + ".";
 			CurrentEnemy.GetComponent<LAppModelProxy>().model.GetDamaged();
 		}
 		//disable potion effect 
@@ -602,7 +602,7 @@ public class GameMaster_Control : MonoBehaviour{
 				if(playerattacked == false)
                 {
 					//feedback for player missed
-					curmenu.GetComponent<CombatText>().combattxt.Add("Incorrect answer you missed \n");
+					curmenu.GetComponent<CombatText>().combattxt.Add("Incorrect answer you missed. \n");
 				}
 				//run chance on armor to miss an attack
 				if(player.GetComponent<Player>().CurrentArmor.Miss)
@@ -611,13 +611,13 @@ public class GameMaster_Control : MonoBehaviour{
 					if(ran < player.GetComponent<Player>().CurrentArmor.misschance)
 					{
                         //missed the chance
-                        curmenu.GetComponent<CombatText>().combattxt.Add(CurrentEnemy.GetComponent<GenericEnemy>().name + " misses");
+                        curmenu.GetComponent<CombatText>().combattxt.Add(CurrentEnemy.GetComponent<GenericEnemy>().name + " misses.");
 					}
 					else
 					{
                         curmenu.GetComponent<CombatText>().combattxt.Add(CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.");
                         //player blocked damaged
-                        curmenu.GetComponent<CombatText>().combattxt.Add("Your armor blocked " + player.GetComponent<Player>().CurrentArmor.Armor + "damage");
+                        curmenu.GetComponent<CombatText>().combattxt.Add("Your armor blocked " + player.GetComponent<Player>().CurrentArmor.Armor + "damage.");
                         player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
 					}
 				}
@@ -625,7 +625,7 @@ public class GameMaster_Control : MonoBehaviour{
 				{
                     curmenu.GetComponent<CombatText>().combattxt.Add(CurrentEnemy.GetComponent<GenericEnemy>().name +" deals " + CurrentEnemy.GetComponent<GenericEnemy>().Damage +" damage to you.");
                     //player blocked damaged
-                    curmenu.GetComponent<CombatText>().combattxt.Add("Your armor blocked " + player.GetComponent<Player>().CurrentArmor.Armor + " damage");
+                    curmenu.GetComponent<CombatText>().combattxt.Add("Your armor blocked " + player.GetComponent<Player>().CurrentArmor.Armor + " damage.");
                     player.GetComponent<Player>().ReceiveDamage(CurrentEnemy.GetComponent<GenericEnemy>().Damage );
 				}
 

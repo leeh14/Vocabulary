@@ -43,7 +43,7 @@ public class CreateCanvas : MonoBehaviour
 		
 		mesh.RecalculateNormals() ;	
 		mesh.RecalculateBounds() ;	
-		mesh.Optimize() ;
+		 ;
 
 		if (!System.IO.File.Exists("Assets/Resources/Live2D_Canvas/Live2D_Canvas.asset"))
 		{

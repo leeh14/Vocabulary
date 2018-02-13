@@ -423,7 +423,7 @@ public class LAppModel :L2DBaseModel
 #if UNITY_5
 		asVoice.spatialBlend = 0;
 #else
-		asVoice.panLevel = 0;
+		asVoice.spatialBlend = 0;
 #endif
         asVoice.Play();
     }
