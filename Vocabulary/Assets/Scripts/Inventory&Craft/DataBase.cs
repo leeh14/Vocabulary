@@ -22,6 +22,15 @@ public class DataBase : MonoBehaviour {
 		}
 	}
 
+	public void DemoData(){
+		Inventory._Items = null;
+		Inventory._Weapons = null;
+		Inventory._Armors = null;
+		Inventory._Recipes = null;
+		CreateInventory ();
+		this.GetComponent<DebugScript>().Reset();
+	}
+
 	#region Inventory
 
 	public void CreateInventory(){

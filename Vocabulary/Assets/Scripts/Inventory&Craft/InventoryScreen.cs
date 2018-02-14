@@ -238,7 +238,7 @@ public class InventoryScreen : MonoBehaviour {
 	// onclick for change armor in armor
 	public static void ArmorChange(string name){
 		Inventory.ChangeArmor (name);
-		Debug.Log ("change armor to: " + name);
+		//Debug.Log ("change armor to: " + name);
 		UpdateArmorList (name);
 	}
 	

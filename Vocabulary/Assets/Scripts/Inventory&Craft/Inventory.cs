@@ -277,7 +277,7 @@ public class Inventory : MonoBehaviour {
 	public static void AddArmor(string name){
 		switch (name) {
 		case "Basic Armor":
-			_Armors.Add (new BasicArmor());
+			_Armors.Add (new BasicArmor ());
 			break;
 		case "Glowing Scales":
 			_Armors.Add(new GlowingScales());
@@ -393,11 +393,12 @@ public class Inventory : MonoBehaviour {
 			}else if (re.product.type == 1){
 				AddWeapon(re.name);
 			}
-			Debug.Log ("Crafted: " + re.product.name);
+			//Debug.Log ("Crafted: " + re.product.name);
 		}
 	}
 
 	public static string getDescription(int index, string type){
+		
 		switch(type){
 		case "Potion":
 			return _Items[index].description;

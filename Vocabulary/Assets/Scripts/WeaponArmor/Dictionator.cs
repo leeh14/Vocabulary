@@ -8,7 +8,8 @@ public class Dictionator : GenericWeapon {
 	public Dictionator()
 	{
 		name = "Dictionator";
-		Damage = 4f;
+		Damage = 10f;
+		description = "One weapon to rule them all. The ultimate weapon.";
 	}
 	// Use this for initialization
 	void Start () {

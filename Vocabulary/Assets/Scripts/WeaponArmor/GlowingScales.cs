@@ -13,6 +13,7 @@ public class GlowingScales : GenericArmor {
 		Armor = 10;
 		InsigniaNum = 2;
 		healthmodifier = 10f;
+		description = "Glow in the dark, light up the way.";
 	}
 	// Use this for initialization
 	void Start () {

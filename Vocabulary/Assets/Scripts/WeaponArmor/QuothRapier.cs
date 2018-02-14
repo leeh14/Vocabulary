@@ -9,6 +9,7 @@ public class QuothRapier : GenericWeapon {
 	{
 		name = "Quoth Rapier";
 		Damage = 4f;
+		description = "Reap the soul of your enemy. A powerful weapon with high damage.";
 	}
 	// Use this for initialization
 	void Start () {

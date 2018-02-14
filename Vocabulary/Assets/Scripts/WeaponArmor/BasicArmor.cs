@@ -12,14 +12,6 @@ public class BasicArmor : GenericArmor {
 		name = "Basic Armor";
 		Armor = 1;
 		InsigniaNum = 1;
-	}
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		description = "An ordinary armor.";
 	}
 }
