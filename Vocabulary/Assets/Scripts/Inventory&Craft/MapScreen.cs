@@ -57,6 +57,7 @@ public class MapScreen : MonoBehaviour {
 
 			if(last != null && !last.complete){
 				newButton.GetComponent<Button>().interactable = false;
+				newButton.GetComponent<Image> ().enabled = false;
 			}
 			last = ld;
 			index++;
